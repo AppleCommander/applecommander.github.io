@@ -71,7 +71,7 @@ are the current capabilites?
 </p>
 <p>
 AppleCommander is currently able to read and display information about disk images, export files of various
-types, create disk images, import files into disk images, and has a rudimentary compiler.  As of 1.3.2, 
+types, create disk images, import files into disk images, and has a rudimentary compiler.  As of 1.3.3, 
 AppleCommander has added an internal file viewer and incorporates John Matthews 
 <a href='http://www.wright.edu/~john.matthews/ac.html'>command-line</a> version.
 </p>
@@ -99,6 +99,8 @@ File export filters:
 <li>Binary file (dumps file without any converstion);</li>
 <li>Hex dump;</li>
 <li>ASCII file filter;</li>
+<li>Formatted assembly output;</li>
+<li>Pascal ".text" files;</li>
 <li>Applesoft BASIC file filter (file is de-tokenized and written out as a text file);</li>
 <li>Integer BASIC file filter (ditto);</li>
 <li>Graphic image file filter (supports black and white or color Hires images as
@@ -118,7 +120,7 @@ Viewer capabilities:
 <li>BASIC programs (Applesoft and Integer BASIC); Applesoft BASIC is colored</li>
 <li>Graphics images (same as supported by the graphics export function)</li>
 <li>Appleworks (database, spreadsheet, word processor)</li>
-<li>Text files</li>
+<li>Text files (plain text, assembly source files, Pascal text files)</li>
 <li>Hex dump of all the above</li>
 <li>"Raw" format of all of the above; this includes all data as read from disk
     including length and starting address as well as full sectors/blocks</li>
@@ -158,16 +160,15 @@ cost anything but download time:
 <ul>
 <li><b>Java</b> -
     If you need to install Java, go to the <a href="http://java.sun.com/j2se/downloads.html">Sun Java</a> site for
-    J2SE and download the latest version (1.4.1 as of October 2002) and install it.  I develop with 1.4.0_01, and have tested
+    J2SE and download the latest version (1.4.2 as of June 2004) and install it.  I develop with 1.4.2_04, and have tested
     with 1.3.1, so these should work along with any future releases.
     </li>
 <li><b>SWT</b> -
-    As far as SWT is concerned, I have created a <a href='downloads/swt-win32-2049.zip'>Windows archive (1MB)</a> of these files
-    which you can unzip into the same directory as the AppleCommander JAR file.  For those running Linux, fish around the
-    <a href="http://dev.eclipse.org/viewcvs/index.cgi/%7Echeckout%7E/platform-swt-home/main.html" target="_blank">SWT</a>
-    site, or try a <a href='http://www.google.com/search?hl=en&ie=UTF-8&oe=UTF-8&q=linux+swt+jar' target="_blank">Google
-    search</a> - <a href='http://www.erights.org/download/swt/linux/linux-motif/' target="_blank">this site</a> provides
-    a few binaries.
+    As far as SWT is concerned, I have created a Windows archive (1MB) of these files
+    which you can unzip into the same directory as the AppleCommander JAR file.  For those running Linux, OS X, or for
+    that matter, Windows, you can go directly to the Eclipse site for the latest 2.1.x release of
+    SWT.  <a href='http://download2.eclipse.org/downloads/drops/R-2.1.3-200403101828/index.php'>Here
+    is a handy link</a>!
     </li>
 </ul>
 <p>
@@ -220,6 +221,12 @@ the domain in which AppleCommander specializes.
     <th align='left'>Version</th>
     <th>Date</th>
     <th align='left'>Description</th>
+</tr>
+<tr>
+  <td valign='top'>1.3.3</td>
+  <td align='center' nowrap valign='top'>18-Jun-2004</td>
+  <td>Primarily restructuring, but added a two new file viewers (Apple Pascal .text files
+      and Assembly source code).  The summary is available <a href='news-20040618.html'>here</a>.</td>
 </tr>
 <tr>
   <td valign='top'>1.3.2</td>
