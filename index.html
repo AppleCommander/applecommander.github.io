@@ -6,6 +6,8 @@
 
 <style>
 body { font: 10pt verdana; }
+table { font: 10pt verdana; }
+th { background-color: eeeeee; border: solid black 1px; }
 </style>
 
 <body bgcolor='white'>
@@ -69,7 +71,7 @@ are the current capabilites?
 </p>
 <p>
 AppleCommander is currently able to read and display information about disk images as well as export files of various
-file types.  As of 1.2.0, AppleCommander has the ability to create disk images as well as
+file types.  As of 1.2.1, AppleCommander has the ability to create disk images as well as
 import files into them.
 </p>
 Disk image organizations currently supported:
@@ -96,9 +98,11 @@ File export filters:
 <li>Applesoft BASIC file filter (file is de-tokenized and written out as a text file);</li>
 <li>Integer BASIC file filter (ditto);</li>
 <li>Graphic image file filter (supports black and white or color Hires images as
-    well as black and white or color Double Hires images as well as Super Hires).</li>
+    well as black and white or color Double Hires images as well as Super Hires);</li>
 <li>AppleWorks word processor (AWP) file filter (converts to text, poor HTML, or
-	Rich-Text Format (RTF))</li>
+	Rich-Text Format (RTF));</li>
+<li>AppleWorks database (ADB) file filter (converts to CSV);</li>
+<li>AppleWorks spread sheet (ASP) file filter (converts to CSV).</li>
 </ul>
 
 <h2><a name='issues'>Issues</a></h2>
@@ -117,16 +121,10 @@ for an up-to-date list of issues, submit a new issue, or submit a feature reques
 
 <h2><a name='future'>Future</a></h2>
 <p>
-There is a general list of TODO items.  Some have been assigned to a target build, and are itemized below:
+There is a general list of TODO items which is managed as part of the CVS archive.
+Click <a href='http://cvs.sourceforge.net/cgi-bin/viewcvs.cgi/applecommander/AppleCommander/TODO?rev=HEAD&content-type=text/vnd.viewcvs-markup'>here</a>
+to see the current TODO list.
 </p>
-Not assigned a version - idea stage:
-<ul>
-<li>Provide a Swing GUI so people are not "limited" to SWT;</li>
-<li>Provide a command-line interface (scripting - ie, mass load).</li>
-<li>Add drag-and-drop capability.</li>
-<li>Compile into native executable (hopefully Linux and Windows).</li>
-<li>Sector/Block editor.</li>
-</ul>
 
 <h2><a name='requirements'>Requirements</a></h2>
 <p>
@@ -191,12 +189,43 @@ the domain in which AppleCommander specializes.
 
 <h2><a name='history'>Historical</a></h2>
 <p>
-The first news group posting is <a href='news-posting-20021028.html'>here</a> announcing version 1.0.<br>
-The second posting for version 1.1 is located <a href='news-posting-20021112.html'>here</a>.<br>
-The third posting for version 1.1.1 announcing the GPL release of AppleCommander is
-	<a href='news-posting-20021130.html'>here</a>.<br>
-The fourth posting for version 1.2.0 announcing import abilities is
-	<a href='news-posting-20030211.html'>here</a>.<br>
+<table>
+<tr>
+    <th>Version</th>
+    <th>Date</th>
+    <th>Description</th>
+</tr>
+<tr>
+    <td>1.2.1</td>
+    <td>1-Mar-2003</td>
+    <td>Bug fixes; added ASP and ADB exports; posting is 
+    	<a href='news-posting-20030301.html'>here</a>.</td>
+</tr>
+<tr>
+    <td>1.2.0</td>
+    <td>11-Feb-2003</td>
+    <td>The fourth posting for version 1.2.0 announcing import abilities is
+        <a href='news-posting-20030211.html'>here</a>.</td>
+</tr>
+<tr>
+    <td>1.1.1</td>
+    <td>30-Nov-2002</td>
+    <td>The third posting for version 1.1.1 announcing the GPL release 
+        of AppleCommander is <a href='news-posting-20021130.html'>here</a>.</td>
+</tr>
+<tr>
+    <td>1.1</td>
+    <td>12-Nov-2002</td>
+    <td>The second posting for version 1.1 is located 
+        <a href='news-posting-20021112.html'>here</a>.</td>
+</tr>
+<tr>
+    <td>1.0</td>
+    <td>28-Oct-2002</td>
+    <td>The first news group posting is <a href='news-posting-20021028.html'>here</a>
+        announcing version 1.0.</td>
+</tr>
+</table>
 </p>
 
 <h2><a name='contact'>Contact Me</a></h2>
@@ -209,7 +238,7 @@ RobGreene at users dot sourceforge dot net
 </p>
 
 <p align="right">
-Last updated 2/11/2003
+Last updated 3/1/2003
 </p>
 
 </body>
