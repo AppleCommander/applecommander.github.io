@@ -55,7 +55,9 @@ Some secondary (or tertiary, depending on what you are counting) considerations 
 using <a href="http://www.eclipse.org" target="_blank">Eclipse.org</a>'s
 <a href="http://dev.eclipse.org/viewcvs/index.cgi/%7Echeckout%7E/platform-swt-home/main.html" target="_blank">SWT</a>
 (Standard Widget Toolkit) - which is an alternative windowing system to Sun's AWT or Swing.
-
+</p>
+<p>
+If you wish to participate or have ideas, please let me know!
 </p>
 <p>
 <a href='http://sourceforge.net/projects/applecommander/'>Please click here to visit the
@@ -69,7 +71,7 @@ are the current capabilites?
 </p>
 <p>
 AppleCommander is currently able to read and display information about disk images as well as export files of various
-file types.  As of 1.2.3, AppleCommander has the ability to create disk images as well as
+file types.  As of 1.3.0, AppleCommander has the ability to create disk images as well as
 import files into them.
 </p>
 Disk image organizations currently supported:
@@ -103,6 +105,10 @@ File export filters:
 <li>AppleWorks database (ADB) file filter (converts to CSV);</li>
 <li>AppleWorks spread sheet (ASP) file filter (converts to CSV).</li>
 </ul>
+Compile capabilities (BETA):
+<ul>
+<li>Applesoft BASIC</li>
+</ul>
 
 <h2><a name='issues'>Issues</a></h2>
 Known issues with AppleCommander:
@@ -110,10 +116,6 @@ Known issues with AppleCommander:
 <li>If a disk is mostly in a known format, but has bad data and what-not,
     AppleCommander may crash.  Technically, the worst culprit is a retrieving a non-existant block
     or track/sector.</li>
-<li>If importing to a ProDOS disk that is not full size, AppleCommander will crash.
-    (For example, importing files into a 5MB HDV image whose physical size is 
-    1MB.  If the file being imported fills that 1MB image, AppleCommander will
-    attempt to write to a non-existant block.)
 <li>Various interface improvements.</li>
 <li>Requirement of a Java JVM as well as SWT for the interface.</li>
 </ul>
@@ -150,10 +152,9 @@ cost anything but download time:
     </li>
 </ul>
 <p>
-Because of the SWT difficulties, I hope to either <a href="http://www-106.ibm.com/developerworks/java/library/j-nativegui/"
-target="_blank">compile</a> the code to be a native executable or to remove the SWT dependency (see <a href='#future'>Future</a>
-section) to make AppleCommander easier to access.  The design of AppleCommander actually should make this fairly
-easy, as the user interface code is completely separate from the code that handles the disk images,
+Because of the SWT difficulties, I hope to continue <a href="http://www-106.ibm.com/developerworks/java/library/j-nativegui/"
+target="_blank">compiling</a> the application.  These will be tagged with a win32 in
+the filename.
 </p>
 
 <h2><a name='download'>Download</a></h2>
@@ -169,19 +170,22 @@ section of the SourceForge site</a>.
 This software is distributed under the <a href='http://www.opensource.org/licenses/gpl-license.php'>GPL</a>.
 </p>
 <p>
-To start AppleCommander, just double-click on the AppleCommander JAR file!
+To start AppleCommander, just double-click on the AppleCommander JAR file!  (If you've
+downloaded the win32 version, double-click on the EXE file.)
 </p>
 
 <h2><a name='developer'>Developer Documentation</a></h2>
 <p>
 There is currently minimal documentation available for others interested in the development,
-structore, or code of AppleCommander.  The source is, of course, available on
-<a href='http://sourceforge.net/projects/applecommander/'>SourceForge</a>.  However,
+structure, or code of AppleCommander.  The source is, of course, available on
+<a href='http://sourceforge.net/projects/applecommander/'>SourceForge</a> via
+<a href='http://cvs.sourceforge.net/viewcvs.py/applecommander/'>CVS</a>.  However,
 extra documentation is fairly sparse at this time.
 </p>
 <p>
 For your web-browsing pleasure, the <a href='javadoc/'>AppleCommander Java Documentation</a>
-has been uploaded.
+has been uploaded, and I will try to keep it up-to-date.  (If not, the code is documented,
+and you can generate it yourself.)
 </p>
 <p>
 Additionally, <a href='http://www.eclipseuml.com'>EclipseUML</a> has been used to generate the UML
@@ -198,6 +202,12 @@ the domain in which AppleCommander specializes.
     <th>Date</th>
     <th align='left'>Description</th>
 </tr>
+<tr>
+	<td valign='top'>1.3.0</td>
+	<td align='center' nowrap valign='top'>04-Dec-2003</td>
+	<td>Very early release of an Applesoft BASIC compiler; John Matthews' bug fixes
+	    have been incorporated; Chris Sebrell's fixes have been incorporated.</td>
+</td>
 <tr>
     <td>1.2.3</td>
     <td align='center'>13-Apr-2003</td>
@@ -253,7 +263,7 @@ RobGreene at users dot sourceforge dot net
 </p>
 
 <p align="right">
-Last updated 4/13/2003
+Last updated 12/4/2003
 </p>
 
 </body>
