@@ -70,9 +70,10 @@ As stated above, AppleCommander is intended to become a general utility for disk
 are the current capabilites?
 </p>
 <p>
-AppleCommander is currently able to read and display information about disk images as well as export files of various
-file types.  As of 1.3.0, AppleCommander has the ability to create disk images as well as
-import files into them.
+AppleCommander is currently able to read and display information about disk images, export files of various
+types, create disk images, import files into disk images, and has a rudimentary compiler.  As of 1.3.1, 
+AppleCommander has added an internal file viewer and incorporates John Matthews 
+<a href='http://www.wright.edu/~john.matthews/ac.html'>command-line</a> version.
 </p>
 Disk image organizations currently supported:
 <ul>
@@ -109,6 +110,16 @@ Compile capabilities (BETA):
 <ul>
 <li>Applesoft BASIC</li>
 </ul>
+Viewer capabilities:
+<ul>
+<li>BASIC programs (Applesoft and Integer BASIC); Applesoft BASIC is colored</li>
+<li>Graphics images (same as supported by the graphics export function)</li>
+<li>Appleworks (database, spreadsheet, word processor)</li>
+<li>Text files</li>
+<li>Hex dump of all the above</li>
+<li>"Raw" format of all of the above; this includes all data as read from disk
+    including length and starting address as well as full sectors/blocks</li>
+</ul>
 
 <h2><a name='issues'>Issues</a></h2>
 Known issues with AppleCommander:
@@ -118,6 +129,8 @@ Known issues with AppleCommander:
     or track/sector.</li>
 <li>Various interface improvements.</li>
 <li>Requirement of a Java JVM as well as SWT for the interface.</li>
+<li>The Win32 (compiled) version of AppleCommander doesn't interpret graphic
+    image colors correctly - however the Java JAR version does.</li>
 </ul>
 <p>
 Please visit the <a href='http://sourceforge.net/tracker/?group_id=67414'>tracker</a> page
@@ -202,6 +215,13 @@ the domain in which AppleCommander specializes.
     <th>Date</th>
     <th align='left'>Description</th>
 </tr>
+<tr>
+	<td valign='top'>1.3.1</td>
+	<td align='center' nowrap valign='top'>12-Dec-2003</td>
+	<td>Incorporated John Matthews' command-line version of AppleCommander ("ac");
+	    added file viewing capabilities. The posting is
+	    <a href='news-posting-20031212.html'>here</a>.</td>
+</td>
 <tr>
 	<td valign='top'>1.3.0</td>
 	<td align='center' nowrap valign='top'>04-Dec-2003</td>
