@@ -1,0 +1,192 @@
+<html>
+
+<head>
+<title>AppleCommander</title>
+</head>
+
+<style>
+body { font: 10pt verdana; }
+</style>
+
+<body bgcolor='white'>
+
+<center>
+<img src='images/AppleCommanderLogo.gif' alt='AppleCommander'>
+<br>
+<a href='#about'>About</a>
+|
+<a href='#capabilities'>Capabilities</a>
+|
+<a href='screenshots.html'>Screen Shots</a>
+|
+<a href='#issues'>Issues</a>
+|
+<a href='#future'>Future</a>
+|
+<a href='#requirements'>Requirements</a>
+|
+<a href='http://sourceforge.net/projects/applecommander/'>SourceForge</a>
+|
+<a href='http://sourceforge.net/project/showfiles.php?group_id=67414'>Download</a>
+|
+<a href='#history'>Historical</a>
+|
+<a href='#contact'>Contact</a>
+</center>
+
+<p>
+<a href="http://sourceforge.net"><img src="http://sourceforge.net/sflogo.php?group_id=67414&amp;type=1" width="88" height="31" border="0" alt="SourceForge.net Logo" align="left"></a>
+Welcome to the AppleCommander web site!  Click on a link to jump to the appropriate section, or continue on and read it all!  AppleCommander is hosted at SourceForge.
+</p>
+
+
+<h2><a name='about'>About</a></h2>
+<p>
+AppleCommander is a little project whose main purpose is to provide a tool to move data between Apple ][ disk images
+and a native filesystem ('C:\' for Windows, or '/wherever' for Linux and Mac OS X).  As with all good projects, this one is a little out of hand, and it is becoming a general
+utility to manipulate Apple ][ emulator images.  If you're thinking this could be useful, read on!
+</p>
+<p>
+Some secondary (or tertiary, depending on what you are counting) considerations are to give me a bit of experience
+using <a href="http://www.eclipse.org" target="_blank">Eclipse.org</a>'s
+<a href="http://dev.eclipse.org/viewcvs/index.cgi/%7Echeckout%7E/platform-swt-home/main.html" target="_blank">SWT</a>
+(Standard Widget Toolkit) - which is an alternative windowing system to Sun's AWT or Swing.
+In theory, at least, using SWT will also enable AppleCommander to be compiled into
+native code on a variety of platforms.  (Note the "theory" part - AppleCommander
+isn't this far yet.)
+</p>
+<p>
+<a href='http://sourceforge.net/projects/applecommander/'>Please click here to visit the
+AppleCommander project page</a>.
+</p>
+
+<h2><a name='capabilities'>Capabilities</a></h2>
+<p>
+As stated above, AppleCommander is intended to become a general utility for disk images.  But, where is it now? What
+are the current capabilites?
+</p>
+<p>
+AppleCommander is currently able to read and display information about disk images as well as export files of various
+file types.  Future releases are slated to address importing files and maybe add drag and drop capabilities.
+</p>
+Disk image organizations currently supported:
+<ul>
+<li>Compressed images (*.gz);</li>
+<li>140K DOS-ordered images (*.do, *.dsk);</li>
+<li>140K ProDOS-ordered images (*.po);</li>
+<li>800K ProDOS-ordered images (*.2mg, *.2img);</li>
+<li>32MB ApplePC Hard Disk images (*.hdv).</li>
+</ul>
+Disk formats currently supported (ie, operating systems):
+<ul>
+<li>DOS 3.3 (140K formats only);</li>
+<li>ProDOS;</li>
+<li>Apple Pascal (140K formats only);</li>
+<li>SSI's RDOS (140K formats only).</li>
+</ul>
+File export filters:
+<ul>
+<li>Raw disk data (dumps blocks or sectors without regard to file length or operating system storage);</li>
+<li>Binary file (dumps file without any converstion);</li>
+<li>ASCII file filter;</li>
+<li>Applesoft BASIC file filter (file is de-tokenized and written out as a text file);</li>
+<li>Integer BASIC file filter (ditto);</li>
+<li>Graphic image file filter (supports black and white or color Hires images as
+    well as black and white or color Double Hires images).</li>
+<li>AppleWorks word processor (AWP) file filter (converts to text or poor HTML)</li>
+</ul>
+
+<h2><a name='issues'>Issues</a></h2>
+Known issues with AppleCommander:
+<ul>
+<li>If a disk is mostly in a known format, but has bad data and what-not,
+    AppleCommander may crash.  Technically, the worst culprit is a retrieving a non-existant block
+    or track/sector.</li>
+<li>Various interface improvements.</li>
+<li>Requirement of a Java JVM as well as SWT for the interface.</li>
+</ul>
+<p>
+Please visit the <a href='http://sourceforge.net/tracker/?group_id=67414'>tracker</a> page
+for an up-to-date list of issues, submit a new issue, or submit a feature request.
+</p>
+
+<h2><a name='future'>Future</a></h2>
+<p>
+There is a general list of TODO items.  Some have been assigned to a target build, and are itemized below:
+</p>
+Release 1.2
+<ul>
+<li>Import files;</li>
+<li>Create disk images.</li>
+</ul>
+Not assigned a version - idea stage:
+<ul>
+<li>Provide a Swing GUI so people are not "limited" to SWT;</li>
+<li>Provide a command-line interface (scripting - ie, mass load).</li>
+<li>Add drag-and-drop capability.</li>
+<li>Compile into native executable (hopefully Linux and Windows).</li>
+</ul>
+
+<h2><a name='requirements'>Requirements</a></h2>
+<p>
+AppleCommander is written in Java and uses a non-standard Java library, SWT.  Fortunately, none of these will
+cost anything but download time:
+</p>
+<ul>
+<li><b>Java</b> -
+    If you need to install Java, go to the <a href="http://java.sun.com/j2se/downloads.html">Sun Java</a> site for
+    J2SE and download the latest version (1.4.1 as of October 2002) and install it.  I develop with 1.4.0_01, and have tested
+    with 1.3.1, so these should work along with any future releases.
+    </li>
+<li><b>SWT</b> -
+    As far as SWT is concerned, I have created a <a href='downloads/swt-win32-2049.zip'>Windows archive (1MB)</a> of these files
+    which you can unzip into the same directory as the AppleCommander JAR file.  For those running Linux, fish around the
+    <a href="http://dev.eclipse.org/viewcvs/index.cgi/%7Echeckout%7E/platform-swt-home/main.html" target="_blank">SWT</a>
+    site, or try a <a href='http://www.google.com/search?hl=en&ie=UTF-8&oe=UTF-8&q=linux+swt+jar' target="_blank">Google
+    search</a> - <a href='http://www.erights.org/download/swt/linux/linux-motif/' target="_blank">this site</a> provides
+    a few binaries.
+    </li>
+</ul>
+<p>
+Because of the SWT difficulties, I hope to either <a href="http://www-106.ibm.com/developerworks/java/library/j-nativegui/"
+target="_blank">compile</a> the code to be a native executable or to remove the SWT dependency (see <a href='#future'>Future</a>
+section) to make AppleCommander easier to access.  The design of AppleCommander actually should make this fairly
+easy, as the user interface code is completely separate from the code that handles the disk images,
+</p>
+
+<h2><a name='download'>Download</a></h2>
+<p>
+<b>Note: Please read the requirements and download Java and the SWT code, if required first!</b>
+</p>
+<p>
+Once you have installed Java and copied SWT into the future AppleCommander directory, download  a copy of AppleCommander
+from the <a href='http://sourceforge.net/project/showfiles.php?group_id=67414'>download
+section of the SourceForge site</a>.
+</p>
+<p>
+This software is distributed under the <a href='http://www.opensource.org/licenses/gpl-license.php'>GPL</a>.
+</p>
+<p>
+To start AppleCommander, just double-click on the AppleCommander JAR file!
+</p>
+
+<h2><a name='history'>Historical</a></h2>
+<p>
+The first news group posting is <a href='news-posting-20021028.html'>here</a> announcing version 1.0.<br>
+The second posting for version 1.1 is located <a href='news-posting-20021112.html'>here</a>.
+</p>
+
+<h2><a name='contact'>Contact Me</a></h2>
+<p>
+Feel free to drop some email - I don't expect traffic to be very large.  However, because of the ever-present threat
+of SPAM, I won't create an email link either (sorry, you gotta type it!):
+</p>
+<p>
+RobGreene at users dot sourceforge dot net
+</p>
+
+<p align="right">
+Last updated 11/30/2002
+</p>
+
+</body>
