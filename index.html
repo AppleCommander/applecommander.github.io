@@ -80,6 +80,7 @@ Disk image organizations currently supported:
 <li>Compressed images (*.gz);</li>
 <li>140K DOS-ordered images (*.do, *.dsk);</li>
 <li>140K ProDOS-ordered images (*.po);</li>
+<li>140K Nibble (DOS ordered) images (*.nib);</li>
 <li>800K ProDOS-ordered images (*.2mg, *.2img);</li>
 <li>32MB ApplePC Hard Disk images (*.hdv).</li>
 </ul>
@@ -89,7 +90,8 @@ Disk formats currently supported (ie, operating systems):
 <li>UniDOS, OzDOS (800K formats only);</li>
 <li>ProDOS;</li>
 <li>Apple Pascal (140K formats only);</li>
-<li>SSI's RDOS (140K formats only).</li>
+<li>SSI's RDOS (140K formats only);</li>
+<li>CP/M (probably only 140K formats).</li>
 </ul>
 File export filters:
 <ul>
@@ -100,7 +102,8 @@ File export filters:
 <li>Applesoft BASIC file filter (file is de-tokenized and written out as a text file);</li>
 <li>Integer BASIC file filter (ditto);</li>
 <li>Graphic image file filter (supports black and white or color Hires images as
-    well as black and white or color Double Hires images as well as Super Hires);</li>
+    well as black and white or color Double Hires images as well as standard Super Hires,
+    and 3200 color Super Hires);</li>
 <li>AppleWorks word processor (AWP) file filter (converts to text, poor HTML, or
 	Rich-Text Format (RTF));</li>
 <li>AppleWorks database (ADB) file filter (converts to CSV);</li>
@@ -131,6 +134,9 @@ Known issues with AppleCommander:
 <li>Requirement of a Java JVM as well as SWT for the interface.</li>
 <li>The Win32 (compiled) version of AppleCommander doesn't interpret graphic
     image colors correctly - however the Java JAR version does.</li>
+<li>There is a known issue with Mac OS X: Somehow the windows do not come into the foreground.
+    The windows can be closed but not interacted with.  Any help appreciated!  (This is most
+    likely due to a misuse of the Eclipse SWT library on my part.)
 </ul>
 <p>
 Please visit the <a href='http://sourceforge.net/tracker/?group_id=67414'>tracker</a> page
@@ -216,6 +222,12 @@ the domain in which AppleCommander specializes.
     <th align='left'>Description</th>
 </tr>
 <tr>
+  <td valign='top'>1.3.2</td>
+  <td align='center' nowrap valign='top'>05-Jun-2004</td>
+  <td>Added nibble image support, CP/M support, as well as SHR 3200-color graphics.
+      The summary is avilable <a href='news-20040605.html'>here</a>.</td>
+</tr>
+<tr>
 	<td valign='top'>1.3.1</td>
 	<td align='center' nowrap valign='top'>12-Dec-2003</td>
 	<td>Incorporated John Matthews' command-line version of AppleCommander ("ac");
@@ -283,7 +295,7 @@ RobGreene at users dot sourceforge dot net
 </p>
 
 <p align="right">
-Last updated 12/4/2003
+Last updated 6/5/2004
 </p>
 
 </body>
