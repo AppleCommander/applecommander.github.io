@@ -71,7 +71,7 @@ are the current capabilites?
 </p>
 <p>
 AppleCommander is currently able to read and display information about disk images as well as export files of various
-file types.  As of 1.2.1, AppleCommander has the ability to create disk images as well as
+file types.  As of 1.2.2, AppleCommander has the ability to create disk images as well as
 import files into them.
 </p>
 Disk image organizations currently supported:
@@ -94,6 +94,7 @@ File export filters:
 <ul>
 <li>Raw disk data (dumps blocks or sectors without regard to file length or operating system storage);</li>
 <li>Binary file (dumps file without any converstion);</li>
+<li>Hex dump;</li>
 <li>ASCII file filter;</li>
 <li>Applesoft BASIC file filter (file is de-tokenized and written out as a text file);</li>
 <li>Integer BASIC file filter (ditto);</li>
@@ -111,6 +112,10 @@ Known issues with AppleCommander:
 <li>If a disk is mostly in a known format, but has bad data and what-not,
     AppleCommander may crash.  Technically, the worst culprit is a retrieving a non-existant block
     or track/sector.</li>
+<li>If importing to a ProDOS disk that is not full size, AppleCommander will crash.
+    (For example, importing files into a 5MB HDV image whose physical size is 
+    1MB.  If the file being imported fills that 1MB image, AppleCommander will
+    attempt to write to a non-existant block.)
 <li>Various interface improvements.</li>
 <li>Requirement of a Java JVM as well as SWT for the interface.</li>
 </ul>
@@ -194,6 +199,12 @@ the domain in which AppleCommander specializes.
     <th>Version</th>
     <th>Date</th>
     <th>Description</th>
+</tr>
+<tr>
+    <td>1.2.2</td>
+    <td>15-Mar-2003</td>
+    <td>Bug fixes (primarily ProDOS updates); posting is
+    	<a href='news-posting-20030315.html'>here</a>.</td>
 </tr>
 <tr>
     <td>1.2.1</td>
