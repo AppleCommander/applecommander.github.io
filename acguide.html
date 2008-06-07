@@ -5,7 +5,7 @@
 <head>
 <title>AppleCommander Command-line Guide</title>
     <style type="text/css">
-        body { font: 10pt verdana; }
+        body { font-family: serif }
     </style>
 </head>
 
@@ -24,7 +24,7 @@ The distribution file <tt>AppleCommander-<i>version</i>-ac.jar</tt> provides a c
 <pre>
     $ cat ~/bin/ac
     #!/bin/sh
-    java -jar ~/bin/ac.jar $@
+    java -jar ~/bin/ac.jar "${@}"
 </pre>
 
 <p>
@@ -32,28 +32,31 @@ The distribution file <tt>AppleCommander-<i>version</i>-ac.jar</tt> provides a c
 </p>
 
 <p>
-For a quick list of ac options, enter the <tt>-h</tt> command:
+For a quick list of ac options, enter the <b><b><tt>-h</tt></b></b> command:
 </p>
 <pre>
     java -jar ac.jar -h
 
-    AppleCommander command line options [<i>version</i>]:
-    -i  &lt;imagename&gt; display information about image.
-    -ls &lt;imagename&gt; list brief directory of image.
-    -l  &lt;imagename&gt; list directory of image.
-    -ll &lt;imagename&gt; list detailed directory of image.
-    -e  &lt;imagename&gt; &lt;filename&gt; export file from image to stdout.
-    -g  &lt;imagename&gt; &lt;filename&gt; get raw file from image to stdout.
-    -p  &lt;imagename&gt; &lt;filename&gt; &lt;type&gt; [[$|0x]&lt;addr&gt;] put stdin
+    CommandLineHelp = AppleCommander command line options [{0}]:
+    -i  &lt;imagename> [&lt;imagename>] display information about image(s).
+    -ls &lt;imagename> [&lt;imagename>] list brief directory of image(s).
+    -l  &lt;imagename> [&lt;imagename>] list directory of image(s).
+    -ll &lt;imagename> [&lt;imagename>] list detailed directory of image(s).
+    -e  &lt;imagename> &lt;filename> export file from image to stdout.
+    -g  &lt;imagename> &lt;filename> get raw file from image to stdout.
+    -p  &lt;imagename> &lt;filename> &lt;type> [[$|0x]&lt;addr>] put stdin
         in filename on image, using file type and address [0x2000].
-    -d  &lt;imagename&gt; &lt;filename&gt; delete file from image.
-    -cc65 &lt;imagename&gt; &lt;filename&gt; &lt;type&gt; put stdin with cc65 header
+    -d  &lt;imagename> &lt;filename> delete file from image.
+    -k  &lt;imagename> &lt;filename> lock file on image.
+    -u  &lt;imagename> &lt;filename> unlock file on image.
+    -n  &lt;imagename> &lt;volname> change volume name (ProDOS or Pascal).
+    -cc65 &lt;imagename> &lt;filename> &lt;type> put stdin with cc65 header
           in filename on image, using file type and address from header.
-    -dos140 &lt;imagename&gt; create a 140K DOS 3.3 image.
-    -pro140 &lt;imagename&gt; &lt;volname&gt; create a 140K ProDOS image.
-    -pro800 &lt;imagename&gt; &lt;volname&gt; create an 800K ProDOS image.
-    -pas140 &lt;imagename&gt; &lt;volname&gt; create a 140K Pascal image.
-    -pas800 &lt;imagename&gt; &lt;volname&gt; create an 800K Pascal image.
+    -dos140 &lt;imagename> create a 140K DOS 3.3 image.
+    -pro140 &lt;imagename> &lt;volname> create a 140K ProDOS image.
+    -pro800 &lt;imagename> &lt;volname> create an 800K ProDOS image.
+    -pas140 &lt;imagename> &lt;volname> create a 140K Pascal image.
+    -pas800 &lt;imagename> &lt;volname> create an 800K Pascal image.
 </pre>
 
 <p>
@@ -61,7 +64,7 @@ Examples of some typical command options follow:
 </p>
 
 <p>
-The <tt>-dos140</tt> command creates an empty 140K DOS 3.3 disk image in DOS sector order; DOS volumes do not have names, and volume number is the default (254). The <tt>-pro140</tt> command creates an empty 140K ProDOS disk image, and <tt>-pro800</tt> creates an empty 800K image, both in ProDOS sector order. The <tt>-pas140</tt> command creates an empty 140K Pascal disk image, and <tt>-pas800</tt> creates an empty 800K image, both in Pascal sector order. To be read correctly, DOS order disk image names should end in <tt>.dsk</tt> or <tt>.do</tt>, while ProDOS and Pascal order image names should end in <tt>.po</tt>. The resulting images are not bootable, but they can be edited with the traditional utilities. To create a DOS 3.3, Pascal and ProDos image, enter the commands:
+The <b><tt>-dos140</tt></b> command creates an empty 140K DOS 3.3 disk image in DOS sector order; DOS volumes do not have names, and volume number is the default (254). The <b><tt>-pro140</tt></b> command creates an empty 140K ProDOS disk image, and <b><tt>-pro800</tt></b> creates an empty 800K image, both in ProDOS sector order. The <b><tt>-pas140</tt></b> command creates an empty 140K Pascal disk image, and <b><tt>-pas800</tt></b> creates an empty 800K image, both in Pascal sector order. To be read correctly, DOS order disk image names should end in <tt>.dsk</tt> or <tt>.do</tt>, while ProDOS and Pascal order image names should end in <tt>.po</tt>. The resulting images will not boot, but they can be edited with the traditional utilities. To create a DOS 3.3, Pascal and ProDos image, enter the commands:
 </p>
 <pre>
     java -jar ac.jar -dos140 dos.dsk
@@ -70,51 +73,63 @@ The <tt>-dos140</tt> command creates an empty 140K DOS 3.3 disk image in DOS sec
 </pre>
 
 <p>
-The <tt>-i</tt> command displays information about a disk image. To get information about a disk image named misc.dsk, enter the command:
+The <b><tt>-i</tt></b> command displays information about a disk image. Muitiple image names are permitted. To get information about one or more disks, enter any of the following commands:
 </p>
 <pre>
-    java -jar ac.jar -i misc.dsk
+    java -jar ac.jar -i ricky.2mg
+    java -jar ac.jar -i fred.dsk ethel.po
+    java -jar ac.jar -i mertz/*
+    java -jar ac.jar -i *.po *.dsk
 </pre>
 
 <p>
-The <tt>-ls</tt>, <tt>-l</tt> and <tt>-ll</tt> commands list the  directory of a disk image in short, regular and long format respectively. To see the directory of a disk image named misc.dsk, enter any of the following commands:
+The <b><tt>-ls</tt></b>, <b><tt>-l</tt></b> and <b><tt>-ll</tt></b> commands list the  directory of a disk image in short, regular and long format respectively. Muitiple image names are permitted, as suggested above. To see the directory of one or more disk, enter any of the following commands:
 </p>
 <pre>
     java -jar ac.jar -ls misc.dsk
-    java -jar ac.jar -l misc.dsk
+    java -jar ac.jar -l  misc.dsk
     java -jar ac.jar -ll misc.dsk
+    java -jar ac.jar -ls *.po *.dsk
+    java -jar ac.jar -l  Nibble*/*
 </pre>
 
 <p>
-The <tt>-e</tt> command lets you examine a file by printing a readable version to standard output. To examine a file named fred on a disk named misc.dsk, enter the command:
+The <b><tt>-e</tt></b> command lets you examine a file by printing a readable version to standard output. To examine a file named fred on a disk named misc.dsk, enter the command:
 </p>
 <pre>
     java -jar ac.jar -e misc.dsk fred
 </pre>
 
 <p>
-Because binary files are difficult to read, you may want to send the output to a program that can show the data in hexadecimal form:
+The export command tries to choose an approriate filter for the chosen file. Filters exist for formats, with a default hexadecimal foramt for binary files. If the file is probably a picture, the export format is PNG. To save the output to a file:
 </p>
 <pre>
-    java -jar ac.jar -e misc.dsk fred | hexdump
+    java -jar ac.jar -e misc.dsk lucy.pic > lucy.png
 </pre>
 
 <p>
-The <tt>-g</tt> command gets a file in its raw form. To copy a file named fred from misc.dsk to a file named ethel on your file system, enter the command:
+The <b><tt>-g</tt></b> command gets a file in its raw form. To copy a file named fred from misc.dsk to a file named ethel on your file system, enter the command:
 </p>
 <pre>
     java -jar ac.jar -g misc.dsk fred > ethel
 </pre>
 
 <p>
-The <tt>-p</tt> command puts data from the standard input stream onto a disk image. Four parameters are used: imagename, filename, type, and address. If the address is omitted and one is required, $2000 is assumed. Suppose ethel is a binary file meant to start at address 2048 ($800 or 0x800). To put the binary file named ethel back into a file named fred with that starting address on the DOS image named misc.dsk:
+Because binary files are difficult to read, you may want to send the output to a program that can show the data in a hexadecimal format other than the one used with the -e option, above:
+</p>
+<pre>
+    java -jar ac.jar -g misc.dsk fred | hexdump
+</pre>
+
+<p>
+The <b><tt>-p</tt></b> command puts data from the standard input stream onto a disk image. Four parameters are used: imagename, filename, type, and address. If the address is omitted and one is required, $2000 is assumed. Suppose ethel is a binary file meant to start at address 2048 ($800 or 0x800). To put the binary file named ethel back into a file named fred with that starting address on the DOS image named misc.dsk:
 </p>
 <pre>
     java -jar ac.jar -p misc.dsk fred B 0x800 &lt; ethel
 </pre>
 
 <p>
-The <tt>-cc65</tt> command is like -p, but it assumes the input stream includes a four-byte header, as generated by cc65. Three parameters are required: imagename, filename, and type. The start address is taken from bytes 0-1 of the header. To put the cc65 binary named ethel into a file named fred on the DOS image named misc.dsk:
+The <b><tt>-cc65</tt></b> command is like -p, but it assumes the input stream includes a four-byte header, as generated by cc65. Three parameters are required: imagename, filename, and type. The start address is taken from bytes 0-1 of the header. To put the cc65 binary named ethel into a file named fred on the DOS image named misc.dsk:
 </p>
 <pre>
     java -jar ac.jar -p misc.dsk fred B &lt; ethel
@@ -144,7 +159,7 @@ Valid file types are specific to each operating system:
 </ul>
 
 <p>
-The <tt>-d</tt> command deletes a file from an image:
+The <b><tt>-d</tt></b> command deletes a file from an image:
 </p>
 <pre>
     java -jar ac.jar -d misc.dsk fred
@@ -155,6 +170,21 @@ To copy a file from one image to another, do something like this:
 </p>
 <pre>
     java -jar ac.jar -g one.dsk fred | java -jar ac.jar -p another.dsk fred bin 2048
+</pre>
+
+<p>
+The <b><tt>-k</tt></b> and <b><tt>-u</tt></b> commands lock and unlock a file on the given image:
+</p>
+<pre>
+    java -jar ac.jar -k misc.dsk fred
+    java -jar ac.jar -u misc.dsk fred
+</pre>
+
+<p>
+The <b><tt>-n</tt></b> command changes the volume name on an image. Only ProDOS and Pascal images are affected:
+</p>
+<pre>
+    java -jar ac.jar -n misc.po name
 </pre>
 
 <p>
