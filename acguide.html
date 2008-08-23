@@ -20,11 +20,16 @@
 </p>
 
 <p>
-The distribution file <tt>AppleCommander-<i>version</i>-ac.jar</tt> provides a command-line interface to AppleCommander. It is ready to use immediately, but it may be convenient to rename it or invoke it from a script, e.g.:</p>
+The distribution file <tt>AppleCommander-<i>version</i>-ac.jar</tt> provides a command-line interface to AppleCommander. It is ready to use immediately, but it may be convenient to rename it (e.g. <tt>ac.jar</tt>) or invoke it from a script, e.g.</p>
+<small>GNU</small> bash script (<tt>a	c.sh</tt>):
 <pre>
-    $ cat ~/bin/ac
     #!/bin/sh
     java -jar ~/bin/ac.jar "${@}"
+</pre>
+<small>MS DOS</small> batch file (<tt>ac.bat</tt>):
+<pre>
+    @echo off 
+    java -jar AppleCommander-1.3.5-ac.jar %*
 </pre>
 
 <p>
