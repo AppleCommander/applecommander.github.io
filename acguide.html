@@ -58,6 +58,7 @@ For a quick list of ac options, enter the <b><b><tt>-h</tt></b></b> command:
     -n  &lt;imagename> &lt;volname> change volume name (ProDOS or Pascal).
     -cc65 &lt;imagename> &lt;filename> &lt;type> put stdin with cc65 header
           in filename on image, using file type and address from header.
+    -geos &lt;imagename&gt; interpret stdin as a ProDOS GEOS transfer file and place on image.
     -dos140 &lt;imagename> create a 140K DOS 3.3 image.
     -pro140 &lt;imagename> &lt;volname> create a 140K ProDOS image.
     -pro800 &lt;imagename> &lt;volname> create an 800K ProDOS image.
@@ -79,7 +80,7 @@ The <b><tt>-dos140</tt></b> command creates an empty 140K DOS 3.3 disk image in 
 </pre>
 
 <p>
-The <b><tt>-i</tt></b> command displays information about a disk image. Muitiple image names are permitted. To get information about one or more disks, enter any of the following commands:
+The <b><tt>-i</tt></b> command displays information about a disk image. Multiple image names are permitted. To get information about one or more disks, enter any of the following commands:
 </p>
 <pre>
     java -jar ac.jar -i ricky.2mg
@@ -195,6 +196,10 @@ The <b><tt>-n</tt></b> command changes the volume name on an image. Only ProDOS 
 
 <p>
 Here's a more comprehensive example of using AppleCommander for <a href="http://home.woh.rr.com/jbmatthews/a2/cross.html">cross-platform</a> development.
+</p>
+
+<p>
+The <b><tt>-geos</tt></b> transfer file format is specified in <a href='http://wiki.cc65.org/doku.php?id=cc65:apple2:geosconvertformat'><i>Apple GEOS CONVERT Format</i></a>.
 </p>
 
 <p>
