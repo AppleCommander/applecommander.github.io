@@ -39,7 +39,7 @@ Once you have the <tt>taskdef</tt> defined, it can be called from within ant lik
    &lt;!-- Call AppleCommander to print information about the disk image --&gt;
    &lt;appleCommander command="i" imagename="${myDiskImage}" /&gt;
 </pre>
-The commands that the ant task understands generally mirror those of the command line.
+The values for <tt>command</tt> that the ant task understands generally mirror those of the command line.
 Here's a list of them, along with their required and optional parameters:
 <pre>
    i  &lt;imagename&gt; display information about an image.
@@ -60,7 +60,7 @@ Here's a list of them, along with their required and optional parameters:
    pro800 &lt;imagename&gt; &lt;volname&gt; create an 800K ProDOS image.
    pas140 &lt;imagename&gt; &lt;volname&gt; create a 140K Pascal image.
    pas800 &lt;imagename&gt; &lt;volname&gt; create an 800K Pascal image.
-   convert &lt;filename&gt; &lt;imagename&gt; uncompress a ShrinkIt file or disk image or convert a DiskCopy 4.2 image into a ProDOS disk image.
+   convert &lt;filename&gt; &lt;imagename&gt; [&lt;sizeblocks&gt;] uncompress a ShrinkIt or Binary II file; or convert a DiskCopy 4.2 image into a ProDOS disk image.
 </pre>
 For the commands that require a <tt>type</tt> parameter, their values depend on the operating system of the underlying image's operating system:
 <ul>
