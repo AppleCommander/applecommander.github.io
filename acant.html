@@ -46,9 +46,9 @@ Here's a list of them, along with their required and optional parameters:
    ls &lt;imagename&gt; list brief directory of an image.
    l  &lt;imagename&gt; list directory of an image.
    ll &lt;imagename&gt; list detailed directory of an image.
-   e  &lt;imagename&gt; &lt;filename&gt; export file from image to stdout.
+   e  &lt;imagename&gt; &lt;filename&gt; [&lt;output&gt;] export file from image to stdout or to an output file.
    x  &lt;imagename&gt; [&lt;outputpath&gt;] extract all files from image to outputpath, or the current working directory if blank.
-   g  &lt;imagename&gt; &lt;filename&gt; get raw file from image to stdout.
+   g  &lt;imagename&gt; &lt;filename&gt; [&lt;output&gt;] get raw file from image to stdout or to an output file.
    p  &lt;imagename&gt; &lt;filename&gt; &lt;type&gt; [[$|0x]&lt;addr&gt;] put stdin in filename on image, using file type and address [0x2000].
    d  &lt;imagename&gt; &lt;filename&gt; delete file from image.
    k  &lt;imagename&gt; &lt;filename&gt; lock file on image.
@@ -77,6 +77,15 @@ In order to feed AppleCommander standard input, a file would be specified with t
                    filename="MANIFEST" 
                    type="T" /&gt;
 </pre>
+
+In order to extract a file from an image to a real file, the real file would be specified with the <tt>output</tt> parameter for the task - like this:
+<pre>
+   &lt;appleCommander command="g" 
+                   imagename="${myDiskImage}" 
+                   filename="MANIFEST" 
+                   <b>output="manifest.mf"</b> /&gt;
+</pre>
+
 AppleCommander ant tasks can be told to ignore errors with the <tt>failonerror</tt> parameter:
 <pre>
    &lt;appleCommander command="p" 

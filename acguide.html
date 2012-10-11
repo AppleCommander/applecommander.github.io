@@ -40,9 +40,11 @@ For a quick list of ac options, enter the <b><b><tt>-h</tt></b></b> command:
     -ls &lt;imagename&gt; [&lt;imagename&gt;] list brief directory of image(s).
     -l  &lt;imagename&gt; [&lt;imagename&gt;] list directory of image(s).
     -ll &lt;imagename&gt; [&lt;imagename&gt;] list detailed directory of image(s).
-    -e  &lt;imagename&gt; &lt;filename&gt; export file from image to stdout.
+    -e  &lt;imagename&gt; &lt;filename&gt; [&lt;output&gt;] export file from image to stdout
+        or to an output file.
     -x  &lt;imagename&gt; [&lt;directory&gt;] extract all files from image to directory.
-    -g  &lt;imagename&gt; &lt;filename&gt; get raw file from image to stdout.
+    -g  &lt;imagename&gt; &lt;filename&gt; [&lt;output&gt;] get raw file from image to stdout
+        or to an output file.
     -p  &lt;imagename&gt; &lt;filename&gt; &lt;type&gt; [[$|0x]&lt;addr&gt;] put stdin
         in filename on image, using file type and address [0x2000].
     -d  &lt;imagename&gt; &lt;filename&gt; delete file from image.
