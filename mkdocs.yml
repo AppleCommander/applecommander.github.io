@@ -31,7 +31,7 @@ site_author: 'a2geek'
 site_url: 'https://applecommander.github.io'
 
 # Repository
-# TBD
+remote_branch: master
 
 # Configuration
 theme:
