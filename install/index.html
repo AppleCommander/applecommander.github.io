@@ -646,8 +646,8 @@
 <p>For Linux, you may need to set the file to be executable by allowing the JAR file to be executed as a program.</p>
 <p><img alt="Setting execute permission in Ubuntu Linux" src="../images/linux-ubuntu-properties.png" /></p>
 <h4 id="command-line">Command-line</h4>
-<p>The distribution file <code>AppleCommander-ac.jar</code> provides a command-line interface to AppleCommander. It is ready to use immediately, but it may be convenient to rename it (e.g. ac.jar) or invoke it from a script, e.g.</p>
-<p>GNU bash script (<code>ac.sh</code>):</p>
+<p>The distribution file <code>AppleCommander-ac.jar</code> provides a command-line interface to AppleCommander. It is ready to use immediately, but it may be convenient to rename it (e.g. <code>ac.jar</code>) or invoke it from a script, e.g.</p>
+<p>GNU bash script for Linux or Mac OS X (<code>ac.sh</code>):</p>
 <pre><code class="bash">#!/bin/sh
 java -jar ~/bin/ac.jar &quot;${@}&quot;
 </code></pre>
@@ -657,12 +657,12 @@ java -jar ~/bin/ac.jar &quot;${@}&quot;
 java -jar AppleCommander-1.3.5-ac.jar %*
 </code></pre>
 
-<p>There is a Mac OS X <a href="https://github.com/lifepillar/homebrew-appleii">Apple II homebrew repository</a> which allows an install of:</p>
+<p>There is also a Mac OS X <a href="https://github.com/lifepillar/homebrew-appleii">Apple II homebrew repository</a> which allows an install of:</p>
 <pre><code>$ brew install applecommander
 </code></pre>
 
-<p>Visit the GitHub page for information on how to install the tap.</p>
-<p>Unix-like environments have the ability to <code>alias</code> a command, to give an <code>ac</code> command:</p>
+<p>After it installs, <code>applecommander</code> will be a command. Visit the GitHub page for information on how to install the tap.</p>
+<p>Unix-like environments have the ability to <code>alias</code> a command as well. To create an <code>ac</code> command alias, use:</p>
 <pre><code class="bash">alias ac='java -jar build/libs/AppleCommander-ac-1.4.0-BETA.jar'
 </code></pre>
                 
