@@ -72,7 +72,7 @@ New for version 1.3.1 (2003-12-12):
 * Provide a command-line interface - John Matthews "ac" is now supplied as part of the AppleCommander distribution. If AppleCommander gets no command-line arguments, the GUI version is launched. Otherwise, AppleCommander reserves the following messages:
     - `-swt` = force SWT version
     - `-swing` = force Swing version (N/A - may be removed)
-    - `-command` = force command interpreter (not done - may be superceded by the "ac" utility)
+    - `-command` = force command interpreter (not done - may be superseded by the "ac" utility)
     - `-help` or -? = general help messages
     - Everything else is passed on to John's "ac" command-line version (from the application help):
         - AppleCommander command line options:

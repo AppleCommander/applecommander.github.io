@@ -58,7 +58,7 @@ AppleCommander is currently able to read and display information about disk imag
 
 * BASIC programs (Applesoft and Integer BASIC); Applesoft BASIC is colored
 * Graphics images (same as supported by the graphics export function)
-* Appleworks (database, spreadsheet, word processor)
+* AppleWorks (database, spreadsheet, word processor)
 * Text files (plain text, assembly source files, Pascal text files)
 * Hex dump of all the above
 * "Raw" format of all of the above; this includes all data as read from disk including length and starting address as well as full sectors/blocks

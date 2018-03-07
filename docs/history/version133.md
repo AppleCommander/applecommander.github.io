@@ -29,7 +29,7 @@ New for version 1.3.3 (2004-06-18):
     - Filters are now in the filters package;
     - General storage classes remain under storage (`Disk`, `FormattedDisk`, etc).
 * Added formatted assembly `FileFilter`. Understands Merlin format source files. Need to recognize various formats - `T.*`, `*.S`, etc. Need examples for other formats (Orca, APW, etc).
-* File viewer window now scrolls an appropriate amount: PgUp/PgDn, arrows, mousewheel all work (must select content area first of course).
+* File viewer window now scrolls an appropriate amount: PgUp/PgDn, arrows, mouse wheel all work (must select content area first of course).
 * Wizard windows no longer show up with the title bar off the screen.
 * Refactored `FileViewerWindow`. Created supporting `FilterAdapter` classes as well as (presumably) reusable `ContentAdapters`. Started caching the filtered content for a little speed improvement when switching filters (native, hex, raw) in the `FileView`.
 * Hans Otten provided information on Apple Pascal's formatting of `.text` files - they are now read correctly with appropriate character spacing and header section is ignored.

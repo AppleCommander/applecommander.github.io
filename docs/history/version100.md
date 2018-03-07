@@ -4,7 +4,7 @@ Currently, it reads and displays the contents of disks. It supports DOS 3.3, Pro
 
 Future direction are to (a) have the ability to extract files from images and (b) to import files into images.
 
-Two caveats - it is written in Java (you need the JVM installed to run it), and I also have been using this as an excuse to work with the Eclipse.org SWT windowing libray (which will need to be downloaded also). However, the upside to this is that it should run wherever Java and SWT run (Windows, Linux, and Mac OS X right now).
+Two caveats - it is written in Java (you need the JVM installed to run it), and I also have been using this as an excuse to work with the Eclipse.org SWT windowing library (which will need to be downloaded also). However, the upside to this is that it should run wherever Java and SWT run (Windows, Linux, and Mac OS X right now).
 
 If you're interested, come and take a peek!
 

@@ -30,9 +30,9 @@ For Linux, you may need to set the file to be executable by allowing the JAR fil
 
 #### Command-line
 
-The distribution file `AppleCommander-ac.jar` provides a command-line interface to AppleCommander. It is ready to use immediately, but it may be convenient to rename it (e.g. ac.jar) or invoke it from a script, e.g.
+The distribution file `AppleCommander-ac.jar` provides a command-line interface to AppleCommander. It is ready to use immediately, but it may be convenient to rename it (e.g. `ac.jar`) or invoke it from a script, e.g.
 
-GNU bash script (`ac.sh`):
+GNU bash script for Linux or Mac OS X (`ac.sh`):
 ```bash
 #!/bin/sh
 java -jar ~/bin/ac.jar "${@}"
@@ -44,13 +44,13 @@ MS DOS batch file (`ac.bat`):
 java -jar AppleCommander-1.3.5-ac.jar %*
 ```
 
-There is a Mac OS X [Apple II homebrew repository](https://github.com/lifepillar/homebrew-appleii) which allows an install of:
+There is also a Mac OS X [Apple II homebrew repository](https://github.com/lifepillar/homebrew-appleii) which allows an install of:
 ```
 $ brew install applecommander
 ```
-Visit the GitHub page for information on how to install the tap.
+After it installs, `applecommander` will be a command. Visit the GitHub page for information on how to install the tap.
 
-Unix-like environments have the ability to `alias` a command, to give an `ac` command:
+Unix-like environments have the ability to `alias` a command as well. To create an `ac` command alias, use:
 ```bash
 alias ac='java -jar build/libs/AppleCommander-ac-1.4.0-BETA.jar'
 ```
