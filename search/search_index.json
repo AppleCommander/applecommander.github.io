@@ -172,8 +172,23 @@
         }, 
         {
             "location": "/dev-notes/maven/", 
-            "text": "The AppleCommander libraries are available in the Maven repository:\n\n\ndependency\n\n \ngroupId\nnet.sf.applecommander\n/groupId\n\n \nartifactId\nAppleCommander\n/artifactId\n\n \nversion\n1.3.5.14\n/version\n\n\n/dependency\n\n\n\n\n\nThis is a manual release process, so it may take a bit of time (and possibly some prodding).\n\n\nNotes:\n\n\n\n\nThere are no plans to change from \nnet.sf.applecommander\n in the GAV. (It should have been \ncom.webcodepro.applecommander\n, however, that domain was given up long ago.)\n\n\nThe Java packages will remain \ncom.webcodepro.applecommander\n as everyone depends on that package scheme.", 
+            "text": "AppleCommander\n\n\nThe AppleCommander libraries are available in the Maven repository:\n\n\ndependency\n\n \ngroupId\nnet.sf.applecommander\n/groupId\n\n \nartifactId\nAppleCommander\n/artifactId\n\n \nversion\n1.4.0\n/version\n\n\n/dependency\n\n\n\n\n\n\n\nNote that as of 1.4.0, the Shrinkit library is a separate project and is in the \npom.xml\n\nas a dependency.\n\n\n\n\nShrinkItArchive\n\n\nThe Shrinkit libary is available as a separate dependency:\n\n\ndependency\n\n \ngroupId\nnet.sf.applecommander\n/groupId\n\n \nartifactId\nShrinkItArchive\n/artifactId\n\n \nversion\n1.1.0\n/version\n\n\n/dependency\n\n\n\n\n\nFinal Notes\n\n\nThis is a manual release process, so it may take a bit of time (and possibly some prodding).\n\n\nNotes:\n\n\n\n\nThere are no plans to change from \nnet.sf.applecommander\n in the GAV. (It should have been \ncom.webcodepro.applecommander\n, however, that domain was given up long ago.)\n\n\nThe Java packages will remain \ncom.webcodepro.applecommander\n as everyone depends on that package scheme.", 
             "title": "Maven GAV"
+        }, 
+        {
+            "location": "/dev-notes/maven/#applecommander", 
+            "text": "The AppleCommander libraries are available in the Maven repository:  dependency \n  groupId net.sf.applecommander /groupId \n  artifactId AppleCommander /artifactId \n  version 1.4.0 /version  /dependency    Note that as of 1.4.0, the Shrinkit library is a separate project and is in the  pom.xml \nas a dependency.", 
+            "title": "AppleCommander"
+        }, 
+        {
+            "location": "/dev-notes/maven/#shrinkitarchive", 
+            "text": "The Shrinkit libary is available as a separate dependency:  dependency \n  groupId net.sf.applecommander /groupId \n  artifactId ShrinkItArchive /artifactId \n  version 1.1.0 /version  /dependency", 
+            "title": "ShrinkItArchive"
+        }, 
+        {
+            "location": "/dev-notes/maven/#final-notes", 
+            "text": "This is a manual release process, so it may take a bit of time (and possibly some prodding).  Notes:   There are no plans to change from  net.sf.applecommander  in the GAV. (It should have been  com.webcodepro.applecommander , however, that domain was given up long ago.)  The Java packages will remain  com.webcodepro.applecommander  as everyone depends on that package scheme.", 
+            "title": "Final Notes"
         }, 
         {
             "location": "/dev-notes/uml/", 
