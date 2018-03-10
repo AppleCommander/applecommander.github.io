@@ -1,13 +1,31 @@
+## AppleCommander
+
 The AppleCommander libraries are available in the Maven repository:
 
 ```
 <dependency>
  <groupId>net.sf.applecommander</groupId>
  <artifactId>AppleCommander</artifactId>
- <version>1.3.5.14</version>
+ <version>1.4.0</version>
 </dependency>
 ```
 
+> Note that as of 1.4.0, the Shrinkit library is a separate project and is in the `pom.xml`
+> as a dependency.
+
+## ShrinkItArchive
+
+The Shrinkit libary is available as a separate dependency:
+
+```
+<dependency>
+ <groupId>net.sf.applecommander</groupId>
+ <artifactId>ShrinkItArchive</artifactId>
+ <version>1.1.0</version>
+</dependency>
+```
+
+## Final Notes
 This is a manual release process, so it may take a bit of time (and possibly some prodding).
 
 Notes:
