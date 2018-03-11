@@ -25,6 +25,31 @@ Open a browser to http://localhost:8000/ and the site will be there and can be l
 
 Please note that the Javadoc section (`docs/dev-notes/javadoc/`) gives MkDocs fits, but it appears that the complaining can be safely ignored.
 
+## Javadocs
+
+The included `Makefile` has a rule to use Gradle to build the corresponding documentation.  It expects AppleCommander and ShrinkItArchive to be in the same directory as applecommander.github.io.
+
+```bash
+$ make javadoc
+test -d ../AppleCommander
+test -d ../ShrinkItArchive
+(cd ../AppleCommander; ./gradlew javadoc)
+Starting a Gradle Daemon (subsequent builds will be faster)
+
+BUILD SUCCESSFUL in 2s
+3 actionable tasks: 3 up-to-date
+(cd ../ShrinkItArchive; ./gradlew javadoc)
+
+BUILD SUCCESSFUL in 0s
+2 actionable tasks: 2 up-to-date
+rm -rf ./docs/dev-notes/javadoc/AppleCommander
+mkdir -p ./docs/dev-notes/javadoc/AppleCommander
+cp -r ../AppleCommander/build/docs/javadoc/* ./docs/dev-notes/javadoc/AppleCommander
+rm -rf ./docs/dev-notes/javadoc/ShrinkItArchive
+mkdir -p ./docs/dev-notes/javadoc/ShrinkItArchive
+cp -r ../ShrinkItArchive/build/docs/javadoc/* ./docs/dev-notes/javadoc/ShrinkItArchive
+```
+
 ## Publishing
 
 To publish, per [Deploying your docs](http://www.mkdocs.org/user-guide/deploying-your-docs/), the following will build and commit to the `master` branch (again, make all changes against the `working-copy` branch):
