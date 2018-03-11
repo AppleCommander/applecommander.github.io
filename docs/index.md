@@ -6,7 +6,7 @@ Please visit [AppleCommander on GitHub](https://github.com/AppleCommander)!  You
 
 ## Capabilities
 
-AppleCommander is currently able to read and display information about disk images, export files of various types, create disk images, import files into disk images, and has a rudimentary compiler. As of 1.3.5, AppleCommander incorporates support for cc65 and an improved command-line and even an Ant interface.
+AppleCommander is currently able to read and display information about disk images, export files of various types, create disk images, import files into disk images, and has a rudimentary compiler. As of 1.3.5, AppleCommander incorporates support for cc65, an improved command-line tool, and even an Ant interface.
 
 ### Disk image organizations
 
