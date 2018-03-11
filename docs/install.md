@@ -24,6 +24,12 @@ The GUI component comes pre-packaged with all needed dependencies. You do not ne
 
 Once the JAR is downloaded, just double-click on the file!
 
+For Mac OS X, AppleCommander's windowing library (SWT) requires the `-XstartOnFirstThread` flag. Starting AppleCommander will need to be from a script something like:
+```bash
+#!/bin/sh
+java -XstartOnFirstThread -jar ~/bin/AppleCommander-macosx-VERSION.jar
+```
+
 For Linux, you may need to set the file to be executable by allowing the JAR file to be executed as a program.
 
 ![Setting execute permission in Ubuntu Linux](images/linux-ubuntu-properties.png)
@@ -41,7 +47,7 @@ java -jar ~/bin/ac.jar "${@}"
 MS DOS batch file (`ac.bat`):
 ```batch
 @echo off
-java -jar AppleCommander-1.3.5-ac.jar %*
+java -jar AppleCommander-1.4.0-ac.jar %*
 ```
 
 There is also a Mac OS X [Apple II homebrew repository](https://github.com/lifepillar/homebrew-appleii) which allows an install of:
@@ -52,5 +58,5 @@ After it installs, `applecommander` will be a command. Visit the GitHub page for
 
 Unix-like environments have the ability to `alias` a command as well. To create an `ac` command alias, use:
 ```bash
-alias ac='java -jar build/libs/AppleCommander-ac-1.4.0-BETA.jar'
+alias ac='java -jar build/libs/AppleCommander-ac-1.4.0.jar'
 ```
