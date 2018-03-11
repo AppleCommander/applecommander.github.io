@@ -4,7 +4,7 @@
 
 All of these samples were done in a Unix-type environment (Mac OS X or Linux), hence the `$` is the prompt character.
 
-Every sample assumes you have an `ac.jar` in the current directory and are therefore written out "long-hand".  If you followed the [install instructions](install.md), you have have setup a command-line script to help you out, meaning that every `java -jar ac.jar` can be replaced with `ac.sh` or `ac.bat`.  Additionally if you setup an `alias`, you can replace that to just `ac`.  
+Every sample assumes you have an `ac.jar` in the current directory and are therefore written out "long-hand".  If you followed the [install instructions](install.md), you have setup a command-line script to help you out, meaning that every `java -jar ac.jar` can be replaced with `ac.sh` or `ac.bat`.  Additionally if you setup an `alias`, you can replace that to just `ac`.  
 
 Setup whatever works for you and your environment, and be cognizant that the sample commands probably aren't _quite_ exactly right for your setup!
 
@@ -15,7 +15,7 @@ For a quick list of `ac` options, enter the `-h` command:
 ```
 $ java -jar ac.jar -h
 
-CommandLineHelp = AppleCommander command line options [1.4.0-BETA]:
+CommandLineHelp = AppleCommander command line options [1.4.0]:
 -i  <imagename> [<imagename>] display information about image(s).
 -ls <imagename> [<imagename>] list brief directory of image(s).
 -l  <imagename> [<imagename>] list directory of image(s).
