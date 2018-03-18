@@ -10,6 +10,7 @@ pages:
     - 'UML diagrams': dev-notes/uml.md
     - 'Ant Task': dev-notes/ant.md
     - 'Javadoc': javadoc.md
+    - 'cc65 Pipeline': dev-notes/cc65-pipeline.md
   - History:
     - 'Current releases': history/current.md
     - '1.3.5.14 (27-Nov-2013)': history/version13514.md
