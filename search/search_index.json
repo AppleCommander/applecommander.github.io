@@ -231,8 +231,13 @@
             "title": "Javadoc"
         }, 
         {
+            "location": "/dev-notes/cc65-pipeline/", 
+            "text": "There is a \ncc65\n based pipeline that is maintained with current versions\nof various Apple II tooling, including \nac\n.\n\n\nSee the \na2geek/cc65-pipeline\n GitHub repository for\nusage and source as well as the associated \na2geek/cc65-pipeline\n\nDocker Hub repository for Docker images.", 
+            "title": "cc65 Pipeline"
+        }, 
+        {
             "location": "/history/current/", 
-            "text": "Please visit the \ninstalling AppleCommander page\n for installation instructions.\n\n\nTo download the most recent version of AppleCommander, please visit the \nreleases tab\n at our GitHub page!", 
+            "text": "Release notes and downloads are now on the GitHub releases section. To download the most recent version of AppleCommander, please visit the \nreleases tab\n at our GitHub page!\n\n\nPlease visit the \ninstalling AppleCommander page\n for installation instructions.", 
             "title": "Current releases"
         }, 
         {
