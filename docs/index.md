@@ -1,4 +1,4 @@
-![AppleCommander Logo](images/AppleCommanderLogo.gif)
+![AppleCommander Logo](images/AppleCommanderLogo.png)
 
 AppleCommander is a cross-platform set of tools used to manipulate Apple ][ disk images.  There is a GUI packaged for Windows, Linux, or Mac OS X, and there is also a command-line tool `ac` that is useful in build chains.
 
