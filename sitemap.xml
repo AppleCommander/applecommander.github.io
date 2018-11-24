@@ -1,164 +1,123 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
-    
     <url>
      <loc>https://applecommander.github.io/</loc>
-     <lastmod>2018-03-17</lastmod>
+     <lastmod>2018-11-24</lastmod>
      <changefreq>daily</changefreq>
     </url>
-    
-
-    
     <url>
      <loc>https://applecommander.github.io/install/</loc>
-     <lastmod>2018-03-17</lastmod>
+     <lastmod>2018-11-24</lastmod>
      <changefreq>daily</changefreq>
     </url>
-    
-
-    
     <url>
      <loc>https://applecommander.github.io/using/</loc>
-     <lastmod>2018-03-17</lastmod>
+     <lastmod>2018-11-24</lastmod>
      <changefreq>daily</changefreq>
     </url>
-    
-
-    
     <url>
      <loc>https://applecommander.github.io/ac/</loc>
-     <lastmod>2018-03-17</lastmod>
+     <lastmod>2018-11-24</lastmod>
      <changefreq>daily</changefreq>
     </url>
-    
-
-    
-        
     <url>
-     <loc>https://applecommander.github.io/dev-notes/maven/</loc>
-     <lastmod>2018-03-17</lastmod>
+     <loc>https://applecommander.github.io/dev-notes/gav/</loc>
+     <lastmod>2018-11-24</lastmod>
      <changefreq>daily</changefreq>
     </url>
-        
     <url>
      <loc>https://applecommander.github.io/dev-notes/uml/</loc>
-     <lastmod>2018-03-17</lastmod>
+     <lastmod>2018-11-24</lastmod>
      <changefreq>daily</changefreq>
     </url>
-        
     <url>
      <loc>https://applecommander.github.io/dev-notes/ant/</loc>
-     <lastmod>2018-03-17</lastmod>
+     <lastmod>2018-11-24</lastmod>
      <changefreq>daily</changefreq>
     </url>
-        
     <url>
      <loc>https://applecommander.github.io/javadoc/</loc>
-     <lastmod>2018-03-17</lastmod>
+     <lastmod>2018-11-24</lastmod>
      <changefreq>daily</changefreq>
     </url>
-        
     <url>
      <loc>https://applecommander.github.io/dev-notes/cc65-pipeline/</loc>
-     <lastmod>2018-03-17</lastmod>
+     <lastmod>2018-11-24</lastmod>
      <changefreq>daily</changefreq>
     </url>
-        
-    
-
-    
-        
     <url>
      <loc>https://applecommander.github.io/history/current/</loc>
-     <lastmod>2018-03-17</lastmod>
+     <lastmod>2018-11-24</lastmod>
      <changefreq>daily</changefreq>
     </url>
-        
     <url>
      <loc>https://applecommander.github.io/history/version13514/</loc>
-     <lastmod>2018-03-17</lastmod>
+     <lastmod>2018-11-24</lastmod>
      <changefreq>daily</changefreq>
     </url>
-        
     <url>
      <loc>https://applecommander.github.io/history/version135/</loc>
-     <lastmod>2018-03-17</lastmod>
+     <lastmod>2018-11-24</lastmod>
      <changefreq>daily</changefreq>
     </url>
-        
     <url>
      <loc>https://applecommander.github.io/history/version134/</loc>
-     <lastmod>2018-03-17</lastmod>
+     <lastmod>2018-11-24</lastmod>
      <changefreq>daily</changefreq>
     </url>
-        
     <url>
      <loc>https://applecommander.github.io/history/version133/</loc>
-     <lastmod>2018-03-17</lastmod>
+     <lastmod>2018-11-24</lastmod>
      <changefreq>daily</changefreq>
     </url>
-        
     <url>
      <loc>https://applecommander.github.io/history/version132/</loc>
-     <lastmod>2018-03-17</lastmod>
+     <lastmod>2018-11-24</lastmod>
      <changefreq>daily</changefreq>
     </url>
-        
     <url>
      <loc>https://applecommander.github.io/history/version131/</loc>
-     <lastmod>2018-03-17</lastmod>
+     <lastmod>2018-11-24</lastmod>
      <changefreq>daily</changefreq>
     </url>
-        
     <url>
      <loc>https://applecommander.github.io/history/version130/</loc>
-     <lastmod>2018-03-17</lastmod>
+     <lastmod>2018-11-24</lastmod>
      <changefreq>daily</changefreq>
     </url>
-        
     <url>
      <loc>https://applecommander.github.io/history/version123/</loc>
-     <lastmod>2018-03-17</lastmod>
+     <lastmod>2018-11-24</lastmod>
      <changefreq>daily</changefreq>
     </url>
-        
     <url>
      <loc>https://applecommander.github.io/history/version122/</loc>
-     <lastmod>2018-03-17</lastmod>
+     <lastmod>2018-11-24</lastmod>
      <changefreq>daily</changefreq>
     </url>
-        
     <url>
      <loc>https://applecommander.github.io/history/version121/</loc>
-     <lastmod>2018-03-17</lastmod>
+     <lastmod>2018-11-24</lastmod>
      <changefreq>daily</changefreq>
     </url>
-        
     <url>
      <loc>https://applecommander.github.io/history/version120/</loc>
-     <lastmod>2018-03-17</lastmod>
+     <lastmod>2018-11-24</lastmod>
      <changefreq>daily</changefreq>
     </url>
-        
     <url>
      <loc>https://applecommander.github.io/history/version111/</loc>
-     <lastmod>2018-03-17</lastmod>
+     <lastmod>2018-11-24</lastmod>
      <changefreq>daily</changefreq>
     </url>
-        
     <url>
      <loc>https://applecommander.github.io/history/version110/</loc>
-     <lastmod>2018-03-17</lastmod>
+     <lastmod>2018-11-24</lastmod>
      <changefreq>daily</changefreq>
     </url>
-        
     <url>
      <loc>https://applecommander.github.io/history/version100/</loc>
-     <lastmod>2018-03-17</lastmod>
+     <lastmod>2018-11-24</lastmod>
      <changefreq>daily</changefreq>
     </url>
-        
-    
-
 </urlset>

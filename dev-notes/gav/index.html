@@ -13,7 +13,7 @@
         <meta name="description" content="Information site for the AppleCommander suite of tools">
       
       
-        <link rel="canonical" href="https://applecommander.github.io/dev-notes/maven/">
+        <link rel="canonical" href="https://applecommander.github.io/dev-notes/gav/">
       
       
         <meta name="author" content="a2geek">
@@ -38,29 +38,35 @@
         <meta name="lang:search.tokenizer" content="[\s\-]+">
       
       <link rel="shortcut icon" href="../../images/apple-logo.png">
-      <meta name="generator" content="mkdocs-0.17.2, mkdocs-material-2.6.6">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.1.0">
     
     
       
-        <title>Maven GAV - AppleCommander</title>
+        <title>Maven/Gradle GAV - AppleCommander</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/application.78aab2dc.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/application.11e41852.css">
       
-        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.6079476c.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/application-palette.22915126.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#3f51b5">
       
     
     
-      <script src="../../assets/javascripts/modernizr.1aa3b519.js"></script>
+      <script src="../../assets/javascripts/modernizr.20ef595d.js"></script>
     
     
-      <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
       
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
         <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
       
-      <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    
+    <link rel="stylesheet" href="../../assets/fonts/material-icons.css">
     
     
     
@@ -74,13 +80,32 @@
       <defs>
         
         
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448"
+    viewBox="0 0 416 448" id="__github">
+  <path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19-18.125
+        8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19 18.125-8.5
+        18.125 8.5 10.75 19 3.125 20.5zM320 304q0 10-3.125 20.5t-10.75
+        19-18.125 8.5-18.125-8.5-10.75-19-3.125-20.5 3.125-20.5 10.75-19
+        18.125-8.5 18.125 8.5 10.75 19 3.125 20.5zM360
+        304q0-30-17.25-51t-46.75-21q-10.25 0-48.75 5.25-17.75 2.75-39.25
+        2.75t-39.25-2.75q-38-5.25-48.75-5.25-29.5 0-46.75 21t-17.25 51q0 22 8
+        38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0
+        37.25-1.75t35-7.375 30.5-15 20.25-25.75 8-38.375zM416 260q0 51.75-15.25
+        82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5-41.75
+        1.125q-19.5 0-35.5-0.75t-36.875-3.125-38.125-7.5-34.25-12.875-30.25-20.25-21.5-28.75q-15.5-30.75-15.5-82.75
+        0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25
+        30.875q36.75-8.75 77.25-8.75 37 0 70 8 26.25-20.5
+        46.75-30.25t47.25-9.75q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34
+        99.5z" />
+</svg>
+        
       </defs>
     </svg>
-    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="drawer">
-    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="search">
-    <label class="md-overlay" data-md-component="overlay" for="drawer"></label>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#applecommander" tabindex="1" class="md-skip">
+      <a href="#dependencies" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -96,7 +121,7 @@
         </a>
       </div>
       <div class="md-flex__cell md-flex__cell--shrink">
-        <label class="md-icon md-icon--menu md-header-nav__button" for="drawer"></label>
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
       </div>
       <div class="md-flex__cell md-flex__cell--stretch">
         <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
@@ -106,7 +131,7 @@
                 AppleCommander
               </span>
               <span class="md-header-nav__topic">
-                Maven GAV
+                Maven/Gradle GAV
               </span>
             
           
@@ -115,14 +140,14 @@
       <div class="md-flex__cell md-flex__cell--shrink">
         
           
-            <label class="md-icon md-icon--search md-header-nav__button" for="search"></label>
+            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
             
 <div class="md-search" data-md-component="search" role="dialog">
-  <label class="md-search__overlay" for="search"></label>
+  <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
       <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
-      <label class="md-icon md-search__icon" for="search"></label>
+      <label class="md-icon md-search__icon" for="__search"></label>
       <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
         &#xE5CD;
       </button>
@@ -143,6 +168,30 @@
         
       </div>
       
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+
+  <a href="https://github.com/AppleCommander/AppleCommander/" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#__github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      AppleCommander
+    </div>
+  </a>
+
+          </div>
+        </div>
+      
     </div>
   </nav>
 </header>
@@ -160,14 +209,36 @@
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     <nav class="md-nav md-nav--primary" data-md-level="0">
-  <label class="md-nav__title md-nav__title--site" for="drawer">
-    <span class="md-nav__button md-logo">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="https://applecommander.github.io" title="AppleCommander" class="md-nav__button md-logo">
       
-        <img src="../../images/apple-logo.png" width="24" height="24">
+        <img src="../../images/apple-logo.png" width="48" height="48">
       
-    </span>
+    </a>
     AppleCommander
   </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+
+  <a href="https://github.com/AppleCommander/AppleCommander/" title="Go to repository" class="md-source" data-md-source="github">
+    
+      <div class="md-source__icon">
+        <svg viewBox="0 0 24 24" width="24" height="24">
+          <use xlink:href="#__github" width="24" height="24"></use>
+        </svg>
+      </div>
+    
+    <div class="md-source__repository">
+      AppleCommander
+    </div>
+  </a>
+
+    </div>
   
   <ul class="md-nav__list" data-md-scrollfix>
     
@@ -249,23 +320,27 @@
 
   <li class="md-nav__item md-nav__item--active">
     
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
     
     
-      <label class="md-nav__link md-nav__link--active" for="toc">
-        Maven GAV
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Maven/Gradle GAV
       </label>
     
-    <a href="./" title="Maven GAV" class="md-nav__link md-nav__link--active">
-      Maven GAV
+    <a href="./" title="Maven/Gradle GAV" class="md-nav__link md-nav__link--active">
+      Maven/Gradle GAV
     </a>
     
       
 <nav class="md-nav md-nav--secondary">
   
   
+    
   
-    <label class="md-nav__title" for="toc">Table of contents</label>
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
@@ -276,8 +351,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#shrinkitarchive" title="ShrinkItArchive" class="md-nav__link">
-    ShrinkItArchive
+  <a href="#shrinkit" title="Shrinkit" class="md-nav__link">
+    Shrinkit
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#applesingle" title="AppleSingle" class="md-nav__link">
+    AppleSingle
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#basic" title="BASIC" class="md-nav__link">
+    BASIC
   </a>
   
 </li>
@@ -571,8 +660,10 @@
 <nav class="md-nav md-nav--secondary">
   
   
+    
   
-    <label class="md-nav__title" for="toc">Table of contents</label>
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
@@ -583,8 +674,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#shrinkitarchive" title="ShrinkItArchive" class="md-nav__link">
-    ShrinkItArchive
+  <a href="#shrinkit" title="Shrinkit" class="md-nav__link">
+    Shrinkit
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#applesingle" title="AppleSingle" class="md-nav__link">
+    AppleSingle
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#basic" title="BASIC" class="md-nav__link">
+    BASIC
   </a>
   
 </li>
@@ -612,29 +717,68 @@
             <article class="md-content__inner md-typeset">
               
                 
+                  <a href="https://github.com/AppleCommander/AppleCommander/edit/master/docs/dev-notes/gav.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
                 
-                  <h1>Maven GAV</h1>
                 
-                <h2 id="applecommander">AppleCommander</h2>
-<p>The AppleCommander libraries are available in the Maven repository:</p>
+                <h1 id="dependencies">Dependencies</h1>
+<p>Much of AppleCommander and it's tooling should be reusable and can be included in other projects.</p>
+<h2 id="applecommander">AppleCommander</h2>
+<p>The AppleCommander libraries are available as a dependency.</p>
+<p>Maven:</p>
 <pre><code>&lt;dependency&gt;
  &lt;groupId&gt;net.sf.applecommander&lt;/groupId&gt;
  &lt;artifactId&gt;AppleCommander&lt;/artifactId&gt;
- &lt;version&gt;1.4.0&lt;/version&gt;
+ &lt;version&gt;1.5.0&lt;/version&gt;
 &lt;/dependency&gt;
 </code></pre>
 
+<p>Gradle:</p>
+<pre><code>compile &quot;net.sf.applecommander:AppleCommander:1.5.0&quot;
+</code></pre>
+
 <blockquote>
-<p>Note that as of 1.4.0, the Shrinkit library is a separate project and is in the <code>pom.xml</code>
-as a dependency.</p>
+<p>Note that as of 1.4.0, the Shrinkit library is now a separate project.</p>
 </blockquote>
-<h2 id="shrinkitarchive">ShrinkItArchive</h2>
-<p>The Shrinkit libary is available as a separate dependency:</p>
+<h2 id="shrinkit">Shrinkit</h2>
+<p>The Shrinkit library is available as a separate dependency.</p>
+<p>Maven:</p>
 <pre><code>&lt;dependency&gt;
  &lt;groupId&gt;net.sf.applecommander&lt;/groupId&gt;
  &lt;artifactId&gt;ShrinkItArchive&lt;/artifactId&gt;
- &lt;version&gt;1.1.0&lt;/version&gt;
+ &lt;version&gt;1.2.2&lt;/version&gt;
 &lt;/dependency&gt;
+</code></pre>
+
+<p>Gradle:</p>
+<pre><code>compile &quot;net.sf.applecommander:ShrinkItArchive:1.2.2&quot;
+</code></pre>
+
+<h2 id="applesingle">AppleSingle</h2>
+<p>The AppleSingle support is available in a dedicated API.</p>
+<p>Maven:</p>
+<pre><code>&lt;dependency&gt;
+ &lt;groupId&gt;net.sf.applecommander&lt;/groupId&gt;
+ &lt;artifactId&gt;applesingle-api&lt;/artifactId&gt;
+ &lt;version&gt;1.2.1&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+
+<p>Gradle:</p>
+<pre><code>compile &quot;net.sf.applecommander:applesingle-api:1.2.1&quot;
+</code></pre>
+
+<h2 id="basic">BASIC</h2>
+<p>The BASIC tooling is available in the bastools API.</p>
+<p>Maven:</p>
+<pre><code>&lt;dependency&gt;
+ &lt;groupId&gt;net.sf.applecommander&lt;/groupId&gt;
+ &lt;artifactId&gt;bastools-api&lt;/artifactId&gt;
+ &lt;version&gt;0.3.0&lt;/version&gt;
+&lt;/dependency&gt;
+</code></pre>
+
+<p>Gradle:</p>
+<pre><code>compile &quot;net.sf.applecommander:bastools-api:0.3.0&quot;
 </code></pre>
 
 <h2 id="final-notes">Final Notes</h2>
@@ -643,6 +787,7 @@ as a dependency.</p>
 <ul>
 <li>There are no plans to change from <code>net.sf.applecommander</code> in the GAV. (It should have been <code>com.webcodepro.applecommander</code>, however, that domain was given up long ago.)</li>
 <li>The Java packages will remain <code>com.webcodepro.applecommander</code> as everyone depends on that package scheme.</li>
+<li>The versions listed here are modified by hand, so don't hesitate to check them. Note that the version should match was is in the GitHub release page for each of the subprojects.</li>
 </ul>
                 
                   
@@ -650,6 +795,8 @@ as a dependency.</p>
               
               
                 
+
+
               
             </article>
           </div>
@@ -698,8 +845,12 @@ as a dependency.</p>
     <div class="md-footer-meta__inner md-grid">
       <div class="md-footer-copyright">
         
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2002 - 2018 Robert Greene
+          </div>
+        
         powered by
-        <a href="http://www.mkdocs.org">MkDocs</a>
+        <a href="https://www.mkdocs.org">MkDocs</a>
         and
         <a href="https://squidfunk.github.io/mkdocs-material/">
           Material for MkDocs</a>
@@ -713,9 +864,9 @@ as a dependency.</p>
       
     </div>
     
-      <script src="../../assets/javascripts/application.02434462.js"></script>
+      <script src="../../assets/javascripts/application.9e1f3b71.js"></script>
       
-      <script>app.initialize({version:"0.17.2",url:{base:"../.."}})</script>
+      <script>app.initialize({version:"1.0.4",url:{base:"../.."}})</script>
       
     
     
