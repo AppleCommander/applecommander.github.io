@@ -1,6 +1,6 @@
 ![AppleCommander Logo](images/AppleCommanderLogo.png)
 
-AppleCommander is a cross-platform set of tools used to manipulate Apple ][ disk images.  There is a GUI packaged for Windows, Linux, or Mac OS X, and there is also a command-line tool `ac` that is useful in build chains.
+AppleCommander is a cross-platform set of tools used to manipulate Apple ][ disk images.  There is a GUI packaged for Windows, Linux, or Mac OS X, and there are a number of command-line tools (see below) that are useful for build chains.  
 
 Please visit [AppleCommander on GitHub](https://github.com/AppleCommander)!  You can find current releases, submit tickets, and lend a helping hand.
 
@@ -62,3 +62,19 @@ AppleCommander is currently able to read and display information about disk imag
 * Text files (plain text, assembly source files, Pascal text files)
 * Hex dump of all the above
 * "Raw" format of all of the above; this includes all data as read from disk including length and starting address as well as full sectors/blocks
+
+## Other CLI tooling
+
+AppleCommander includes a number of command-line tools:
+
+* `ac` (based on AppleCommander) - see the [ac page](ac/)  
+* `asu` (AppleSingle utility) - see the [asu README](https://github.com/AppleCommander/applesingle/blob/master/tools/asu/README.md), 
+* `bt` (Applesoft BASIC tokenizer tool) - see the [bt README](https://github.com/AppleCommander/bastools/blob/master/tools/bt/README.md), and 
+* `st` (Applesoft shape utility) - see the [st README](https://github.com/AppleCommander/bastools/blob/master/tools/st/README.md).
+
+Since the CLI tooling may be lacking, these additional resources should be useful:
+
+* [Directives section in the API overview](https://github.com/AppleCommander/bastools/blob/master/api/README-TOKENIZER.md)
+* [Source formats for the Shapes defined in the API](https://github.com/AppleCommander/bastools/blob/master/api/README-SHAPES.md)
+* [bastools sample code](https://github.com/AppleCommander/bastools/tree/master/samples) 
+

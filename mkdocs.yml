@@ -1,12 +1,12 @@
 # Project information:
 site_name: 'AppleCommander'
-pages:
+nav:
   - Overview: 'index.md'
   - Installing: 'install.md'
   - Screenshots: 'using.md'
   - Using 'ac': 'ac.md'
   - Develper Notes:
-    - 'Maven GAV': dev-notes/maven.md
+    - 'Maven/Gradle GAV': dev-notes/gav.md
     - 'UML diagrams': dev-notes/uml.md
     - 'Ant Task': dev-notes/ant.md
     - 'Javadoc': javadoc.md

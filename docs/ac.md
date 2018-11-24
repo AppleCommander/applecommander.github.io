@@ -15,7 +15,7 @@ For a quick list of `ac` options, enter the `-h` command:
 ```
 $ java -jar ac.jar -h
 
-CommandLineHelp = AppleCommander command line options [1.4.0]:
+CommandLineHelp = AppleCommander command line options [1.5.0]:
 -i  <imagename> [<imagename>] display information about image(s).
 -ls <imagename> [<imagename>] list brief directory of image(s).
 -l  <imagename> [<imagename>] list directory of image(s).
@@ -27,6 +27,9 @@ CommandLineHelp = AppleCommander command line options [1.4.0]:
     or to an output file.
 -p  <imagename> <filename> <type> [[$|0x]<addr>] put stdin
     in filename on image, using file type and address [0x2000].
+-pt <imagename> <filename> put stdin in filename on image
+    defaulting to TXT file type, setting high bit on and replacing
+    newline characters with $8D.
 -d  <imagename> <filename> delete file from image.
 -k  <imagename> <filename> lock file on image.
 -u  <imagename> <filename> unlock file on image.
@@ -45,6 +48,8 @@ CommandLineHelp = AppleCommander command line options [1.4.0]:
 -pas800 <imagename> <volname> create an 800K Pascal image.
 -convert <filename> <imagename> [<sizeblocks>] uncompress a ShrinkIt or Binary
          II file; or convert a DiskCopy 4.2 image into a ProDOS disk image.
+-bas    <imagename> <filename> import an AppleSoft basic file from text
+       back to its tokenized format.
 ```
 
 > Note that the `-cc65` has been deprecated as CC65 itself is moving to using the AppleSingle format (`-as` flag).  Use `-dos` instead. `-cc65` will still be recognized, but it maps to `-dos` and a warning will be printed.
@@ -216,6 +221,54 @@ $ java -jar ac.jar -p misc.dsk fred B 0x800 < ethel
 Alternatively, suppose `ethel` is a binary starting at 2048 destined for `fred` on a ProDOS image named `p1.po`:
 ```
 $ java -jar ac.jar -p p1.po fred bin 2048 < ethel
+```
+
+## Put standard input onto disk image as a text file
+
+The `-pt` command works the same as `-p` except that it assumes the input is a text file. This defaults the file type to `TXT`, translates line endings to the Apple 0x8d, as well as setting the high bit. It should also translate the MS-DOS CR+LF format into a single line ending.
+
+A sample using the `CONTRIB.txt` file in this archive, which happes to be in MS-DOS format:
+```
+$ cat CONTRIB.txt | hexdump -C
+00000000  41 70 70 6c 65 43 6f 6d  6d 61 6e 64 65 72 20 2d  |AppleCommander -|
+00000010  20 41 6e 20 41 70 70 6c  65 20 5d 5b 20 69 6d 61  | An Apple ][ ima|
+00000020  67 65 20 75 74 69 6c 69  74 79 2e 0d 0a 43 6f 70  |ge utility...Cop|
+<snip>
+$ # Note the CR + LF is here .............. ^^ ^^
+$ cat CONTRIB.txt | ac -pt test.dsk contrib
+$ ac -g test.dsk contrib | hexdump -C
+00000000  c1 f0 f0 ec e5 c3 ef ed  ed e1 ee e4 e5 f2 a0 ad  |................|
+00000010  a0 c1 ee a0 c1 f0 f0 ec  e5 a0 dd db a0 e9 ed e1  |................|
+00000020  e7 e5 a0 f5 f4 e9 ec e9  f4 f9 ae 8d c3 ef f0 f9  |................|
+<snip>
+$ # Note that the CR + LF is fixed ........ ^^
+```
+
+## Put standard input BASIC source code onto disk image as a BASIC file
+
+With the addition of the [bastools](https://github.com/AppleCommander/bastools) library, `ac` now has the ability to tokenize a BASIC program and place it onto the disk. Please see the [bt](https://github.com/AppleCommander/bastools/tree/master/tools/bt) and [st](https://github.com/AppleCommander/bastools/tree/master/tools/st) for more advanced capabilities!
+
+> Note: Due to the bastools API, `ac` will create a temp file in the system temp folder and then delete it once completed. 
+
+```
+$ cat sample.bas 
+10 TEXT:HOME:GR:POKE -16302,23
+20 COLOR=0:FOR I=41 TO 47 STEP 2:HLIN 0,39 AT I:NEXT
+30 COLOR=INT(RND(1)*16)
+40 PLOT INT(RND(1)*40),INT(RND(1)*48)
+50 IF PEEK(49152)<128 THEN 30
+60 GET A$:TEXT:HOME
+$ cat sample.bas | ac -bas test.dsk sample
+$ ac -g test.dsk sample | hexdump -C
+00000000  16 08 0a 00 89 3a 97 3a  88 3a b9 c9 31 36 33 30  |.....:.:.:..1630|
+00000010  32 2c 32 33 00 32 08 14  00 a0 30 3a 81 49 d0 34  |2,23.2....0:.I.4|
+00000020  31 c1 34 37 c7 32 3a 8e  30 2c 33 39 c5 49 3a 82  |1.47.2:.0,39.I:.|
+00000030  00 42 08 1e 00 a0 d3 28  db 28 31 29 ca 31 36 29  |.B.....(.(1).16)|
+00000040  00 5d 08 28 00 8d d3 28  db 28 31 29 ca 34 30 29  |.].(...(.(1).40)|
+00000050  2c d3 28 db 28 31 29 ca  34 38 29 00 72 08 32 00  |,.(.(1).48).r.2.|
+00000060  ad e2 28 34 39 31 35 32  29 d1 31 32 38 c4 33 30  |..(49152).128.30|
+00000070  00 7e 08 3c 00 be 41 24  3a 89 3a 97 00 00 00     |.~.<..A$:.:....|
+0000007f
 ```
 
 ## Put standard input with DOS 3.3 header onto disk image
