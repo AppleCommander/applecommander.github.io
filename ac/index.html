@@ -918,42 +918,45 @@
 <h2 id="options">Options</h2>
 <p>For a quick list of <code>ac</code> options, enter the <code>-h</code> command:</p>
 <pre><code>$ java -jar ac.jar -h
-
-CommandLineHelp = AppleCommander command line options [1.5.0]:
--i  &lt;imagename&gt; [&lt;imagename&gt;] display information about image(s).
--ls &lt;imagename&gt; [&lt;imagename&gt;] list brief directory of image(s).
--l  &lt;imagename&gt; [&lt;imagename&gt;] list directory of image(s).
--ll &lt;imagename&gt; [&lt;imagename&gt;] list detailed directory of image(s).
--e  &lt;imagename&gt; &lt;filename&gt; [&lt;output&gt;] export file from image to stdout
-    or to an output file.
--x  &lt;imagename&gt; [&lt;directory&gt;] extract all files from image to directory.
--g  &lt;imagename&gt; &lt;filename&gt; [&lt;output&gt;] get raw file from image to stdout
-    or to an output file.
--p  &lt;imagename&gt; &lt;filename&gt; &lt;type&gt; [[$|0x]&lt;addr&gt;] put stdin
-    in filename on image, using file type and address [0x2000].
--pt &lt;imagename&gt; &lt;filename&gt; put stdin in filename on image
-    defaulting to TXT file type, setting high bit on and replacing
-    newline characters with $8D.
--d  &lt;imagename&gt; &lt;filename&gt; delete file from image.
--k  &lt;imagename&gt; &lt;filename&gt; lock file on image.
--u  &lt;imagename&gt; &lt;filename&gt; unlock file on image.
--n  &lt;imagename&gt; &lt;volname&gt; change volume name (ProDOS or Pascal).
--dos &lt;imagename&gt; &lt;filename&gt; &lt;type&gt; put stdin with DOS header
-      in filename on image, using file type and address from header.
--as &lt;imagename&gt; [&lt;filename&gt;] put stdin with AppleSingle format
-      in filename on image, using file type, address, and (optionally) name
-      from the AppleSingle file.
--geos &lt;imagename&gt; interpret stdin as a GEOS conversion file and
-      place it on image (ProDOS only).
--dos140 &lt;imagename&gt; create a 140K DOS 3.3 image.
--pro140 &lt;imagename&gt; &lt;volname&gt; create a 140K ProDOS image.
--pro800 &lt;imagename&gt; &lt;volname&gt; create an 800K ProDOS image.
--pas140 &lt;imagename&gt; &lt;volname&gt; create a 140K Pascal image.
--pas800 &lt;imagename&gt; &lt;volname&gt; create an 800K Pascal image.
+AppleCommander command line options [1.6.0]:
+-i       &lt;imagename&gt; [&lt;imagename&gt;] display information about image(s).
+-ls      &lt;imagename&gt; [&lt;imagename&gt;] list brief directory of image(s).
+-l       &lt;imagename&gt; [&lt;imagename&gt;] list directory of image(s).
+-ll      &lt;imagename&gt; [&lt;imagename&gt;] list detailed directory of image(s).
+-e       &lt;imagename&gt; &lt;filename&gt; [&lt;output&gt;] export file from image to stdout
+         or to an output file.
+-x       &lt;imagename&gt; [&lt;directory&gt;] extract all files from image to directory.
+-g       &lt;imagename&gt; &lt;filename&gt; [&lt;output&gt;] get raw file from image to stdout
+         or to an output file.
+-p       &lt;imagename&gt; &lt;filename&gt; &lt;type&gt; [[$|0x]&lt;addr&gt;] put stdin
+         in filename on image, using file type and address [0x2000].
+-pt      &lt;imagename&gt; &lt;filename&gt; put stdin in filename on image
+         defaulting to TXT file type, setting high bit on and replacing
+         newline characters with $8D.
+-ptx     &lt;imagename&gt; &lt;filename&gt; put stdin in filename on image
+         defaulting to TXT file type, clearing high bit and replacing
+         newline characters with $0D.
+-d       &lt;imagename&gt; &lt;filename&gt; delete file from image.
+-k       &lt;imagename&gt; &lt;filename&gt; lock file on image.
+-u       &lt;imagename&gt; &lt;filename&gt; unlock file on image.
+-n       &lt;imagename&gt; &lt;volname&gt; change volume name (ProDOS or Pascal).
+-dos     &lt;imagename&gt; &lt;filename&gt; &lt;type&gt; put stdin with DOS header
+         in filename on image, using file type and address from header.
+-as      &lt;imagename&gt; [&lt;filename&gt;] put stdin with AppleSingle format
+         in filename on image, using file type, address, and (optionally) name
+         from the AppleSingle file.
+-geos    &lt;imagename&gt; interpret stdin as a GEOS conversion file and
+         place it on image (ProDOS only).
+-dos140  &lt;imagename&gt; create a 140K DOS 3.3 image.
+-pro140  &lt;imagename&gt; &lt;volname&gt;
+         create a 140K ProDOS image.
+-pro800  &lt;imagename&gt; &lt;volname&gt; create an 800K ProDOS image.
+-pas140  &lt;imagename&gt; &lt;volname&gt; create a 140K Pascal image.
+-pas800  &lt;imagename&gt; &lt;volname&gt; create an 800K Pascal image.
 -convert &lt;filename&gt; &lt;imagename&gt; [&lt;sizeblocks&gt;] uncompress a ShrinkIt or Binary
          II file; or convert a DiskCopy 4.2 image into a ProDOS disk image.
--bas    &lt;imagename&gt; &lt;filename&gt; import an AppleSoft basic file from text
-       back to its tokenized format.
+-bas     &lt;imagename&gt; &lt;filename&gt; import an AppleSoft basic file from text
+         back to its tokenized format.
 </code></pre>
 
 <blockquote>
@@ -1118,7 +1121,7 @@ ProDOS format; 0 bytes free; 143,360 bytes used.
 </code></pre>
 
 <h2 id="put-standard-input-onto-disk-image-as-a-text-file">Put standard input onto disk image as a text file</h2>
-<p>The <code>-pt</code> command works the same as <code>-p</code> except that it assumes the input is a text file. This defaults the file type to <code>TXT</code>, translates line endings to the Apple 0x8d, as well as setting the high bit. It should also translate the MS-DOS CR+LF format into a single line ending.</p>
+<p>The <code>-pt</code> and <code>-ptx</code> commands work the same as <code>-p</code> except that they assume the input is a text file. This defaults the file type to <code>TXT</code>. They also translate the MS-DOS CR+LF format into a single line ending.</p>
 <p>A sample using the <code>CONTRIB.txt</code> file in this archive, which happes to be in MS-DOS format:</p>
 <pre><code>$ cat CONTRIB.txt | hexdump -C
 00000000  41 70 70 6c 65 43 6f 6d  6d 61 6e 64 65 72 20 2d  |AppleCommander -|
@@ -1126,11 +1129,24 @@ ProDOS format; 0 bytes free; 143,360 bytes used.
 00000020  67 65 20 75 74 69 6c 69  74 79 2e 0d 0a 43 6f 70  |ge utility...Cop|
 &lt;snip&gt;
 $ # Note the CR + LF is here .............. ^^ ^^
-$ cat CONTRIB.txt | ac -pt test.dsk contrib
+</code></pre>
+
+<p>For <code>-pt</code>, it translates line endings to the Apple 0x8d as well as <em>setting</em> the high bit:</p>
+<pre><code>$ cat CONTRIB.txt | ac -pt test.dsk contrib
 $ ac -g test.dsk contrib | hexdump -C
 00000000  c1 f0 f0 ec e5 c3 ef ed  ed e1 ee e4 e5 f2 a0 ad  |................|
 00000010  a0 c1 ee a0 c1 f0 f0 ec  e5 a0 dd db a0 e9 ed e1  |................|
 00000020  e7 e5 a0 f5 f4 e9 ec e9  f4 f9 ae 8d c3 ef f0 f9  |................|
+&lt;snip&gt;
+$ # Note that the CR + LF is fixed ........ ^^
+</code></pre>
+
+<p>For <code>-ptx</code>, it translates line endings to the Apple 0x0d as well as <em>clearing</em> the high bit:</p>
+<pre><code>$ cat CONTRIB.txt | ac -ptx test.dsk contrib2
+$ ac -g test.dsk contrib2 | hexdump -C
+00000000  41 70 70 6c 65 43 6f 6d  6d 61 6e 64 65 72 20 2d  |AppleCommander -|
+00000010  20 41 6e 20 41 70 70 6c  65 20 5d 5b 20 69 6d 61  | An Apple ][ ima|
+00000020  67 65 20 75 74 69 6c 69  74 79 2e 0d 43 6f 70 79  |ge utility..Copy|
 &lt;snip&gt;
 $ # Note that the CR + LF is fixed ........ ^^
 </code></pre>
