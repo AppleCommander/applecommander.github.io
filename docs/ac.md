@@ -14,42 +14,45 @@ For a quick list of `ac` options, enter the `-h` command:
 
 ```
 $ java -jar ac.jar -h
-
-CommandLineHelp = AppleCommander command line options [1.5.0]:
--i  <imagename> [<imagename>] display information about image(s).
--ls <imagename> [<imagename>] list brief directory of image(s).
--l  <imagename> [<imagename>] list directory of image(s).
--ll <imagename> [<imagename>] list detailed directory of image(s).
--e  <imagename> <filename> [<output>] export file from image to stdout
-    or to an output file.
--x  <imagename> [<directory>] extract all files from image to directory.
--g  <imagename> <filename> [<output>] get raw file from image to stdout
-    or to an output file.
--p  <imagename> <filename> <type> [[$|0x]<addr>] put stdin
-    in filename on image, using file type and address [0x2000].
--pt <imagename> <filename> put stdin in filename on image
-    defaulting to TXT file type, setting high bit on and replacing
-    newline characters with $8D.
--d  <imagename> <filename> delete file from image.
--k  <imagename> <filename> lock file on image.
--u  <imagename> <filename> unlock file on image.
--n  <imagename> <volname> change volume name (ProDOS or Pascal).
--dos <imagename> <filename> <type> put stdin with DOS header
-      in filename on image, using file type and address from header.
--as <imagename> [<filename>] put stdin with AppleSingle format
-      in filename on image, using file type, address, and (optionally) name
-      from the AppleSingle file.
--geos <imagename> interpret stdin as a GEOS conversion file and
-      place it on image (ProDOS only).
--dos140 <imagename> create a 140K DOS 3.3 image.
--pro140 <imagename> <volname> create a 140K ProDOS image.
--pro800 <imagename> <volname> create an 800K ProDOS image.
--pas140 <imagename> <volname> create a 140K Pascal image.
--pas800 <imagename> <volname> create an 800K Pascal image.
+AppleCommander command line options [1.6.0]:
+-i       <imagename> [<imagename>] display information about image(s).
+-ls      <imagename> [<imagename>] list brief directory of image(s).
+-l       <imagename> [<imagename>] list directory of image(s).
+-ll      <imagename> [<imagename>] list detailed directory of image(s).
+-e       <imagename> <filename> [<output>] export file from image to stdout
+         or to an output file.
+-x       <imagename> [<directory>] extract all files from image to directory.
+-g       <imagename> <filename> [<output>] get raw file from image to stdout
+         or to an output file.
+-p       <imagename> <filename> <type> [[$|0x]<addr>] put stdin
+         in filename on image, using file type and address [0x2000].
+-pt      <imagename> <filename> put stdin in filename on image
+         defaulting to TXT file type, setting high bit on and replacing
+         newline characters with $8D.
+-ptx     <imagename> <filename> put stdin in filename on image
+         defaulting to TXT file type, clearing high bit and replacing
+         newline characters with $0D.
+-d       <imagename> <filename> delete file from image.
+-k       <imagename> <filename> lock file on image.
+-u       <imagename> <filename> unlock file on image.
+-n       <imagename> <volname> change volume name (ProDOS or Pascal).
+-dos     <imagename> <filename> <type> put stdin with DOS header
+         in filename on image, using file type and address from header.
+-as      <imagename> [<filename>] put stdin with AppleSingle format
+         in filename on image, using file type, address, and (optionally) name
+         from the AppleSingle file.
+-geos    <imagename> interpret stdin as a GEOS conversion file and
+         place it on image (ProDOS only).
+-dos140  <imagename> create a 140K DOS 3.3 image.
+-pro140  <imagename> <volname>
+         create a 140K ProDOS image.
+-pro800  <imagename> <volname> create an 800K ProDOS image.
+-pas140  <imagename> <volname> create a 140K Pascal image.
+-pas800  <imagename> <volname> create an 800K Pascal image.
 -convert <filename> <imagename> [<sizeblocks>] uncompress a ShrinkIt or Binary
          II file; or convert a DiskCopy 4.2 image into a ProDOS disk image.
--bas    <imagename> <filename> import an AppleSoft basic file from text
-       back to its tokenized format.
+-bas     <imagename> <filename> import an AppleSoft basic file from text
+         back to its tokenized format.
 ```
 
 > Note that the `-cc65` has been deprecated as CC65 itself is moving to using the AppleSingle format (`-as` flag).  Use `-dos` instead. `-cc65` will still be recognized, but it maps to `-dos` and a warning will be printed.
@@ -225,7 +228,7 @@ $ java -jar ac.jar -p p1.po fred bin 2048 < ethel
 
 ## Put standard input onto disk image as a text file
 
-The `-pt` command works the same as `-p` except that it assumes the input is a text file. This defaults the file type to `TXT`, translates line endings to the Apple 0x8d, as well as setting the high bit. It should also translate the MS-DOS CR+LF format into a single line ending.
+The `-pt` and `-ptx` commands work the same as `-p` except that they assume the input is a text file. This defaults the file type to `TXT`. They also translate the MS-DOS CR+LF format into a single line ending.
 
 A sample using the `CONTRIB.txt` file in this archive, which happes to be in MS-DOS format:
 ```
@@ -235,11 +238,26 @@ $ cat CONTRIB.txt | hexdump -C
 00000020  67 65 20 75 74 69 6c 69  74 79 2e 0d 0a 43 6f 70  |ge utility...Cop|
 <snip>
 $ # Note the CR + LF is here .............. ^^ ^^
+```
+
+For `-pt`, it translates line endings to the Apple 0x8d as well as _setting_ the high bit:
+```
 $ cat CONTRIB.txt | ac -pt test.dsk contrib
 $ ac -g test.dsk contrib | hexdump -C
 00000000  c1 f0 f0 ec e5 c3 ef ed  ed e1 ee e4 e5 f2 a0 ad  |................|
 00000010  a0 c1 ee a0 c1 f0 f0 ec  e5 a0 dd db a0 e9 ed e1  |................|
 00000020  e7 e5 a0 f5 f4 e9 ec e9  f4 f9 ae 8d c3 ef f0 f9  |................|
+<snip>
+$ # Note that the CR + LF is fixed ........ ^^
+```
+
+For `-ptx`, it translates line endings to the Apple 0x0d as well as _clearing_ the high bit:
+```
+$ cat CONTRIB.txt | ac -ptx test.dsk contrib2
+$ ac -g test.dsk contrib2 | hexdump -C
+00000000  41 70 70 6c 65 43 6f 6d  6d 61 6e 64 65 72 20 2d  |AppleCommander -|
+00000010  20 41 6e 20 41 70 70 6c  65 20 5d 5b 20 69 6d 61  | An Apple ][ ima|
+00000020  67 65 20 75 74 69 6c 69  74 79 2e 0d 43 6f 70 79  |ge utility..Copy|
 <snip>
 $ # Note that the CR + LF is fixed ........ ^^
 ```
