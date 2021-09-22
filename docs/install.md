@@ -56,6 +56,8 @@ $ brew install applecommander
 ```
 After it installs, `applecommander` will be a command. Visit the GitHub page for information on how to install the tap.
 
+Alternately, Mac users can choose to [install AppleCommander with MacPorts](https://ports.macports.org/port/AppleCommander).
+
 Unix-like environments have the ability to `alias` a command as well. To create an `ac` command alias, use:
 ```bash
 alias ac='java -jar build/libs/AppleCommander-ac-1.4.0.jar'
