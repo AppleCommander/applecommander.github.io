@@ -5,6 +5,7 @@ nav:
   - Installing: 'install.md'
   - Screenshots: 'using.md'
   - Using 'ac': 'ac.md'
+  - Using 'acx': 'acx.md'
   - Develper Notes:
     - 'Maven/Gradle GAV': dev-notes/gav.md
     - 'UML diagrams': dev-notes/uml.md

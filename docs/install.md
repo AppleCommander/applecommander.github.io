@@ -2,11 +2,18 @@ This section covers installation of AppleCommander. As of 1.4.0, this should be 
 
 ### Install Java
 
-If you do not already have Java 8 (or later) installed, you will be required to install one.
+If you do not already have Java 11 (or later) installed, you will be required to install one.
 
-Fortunately, Oracle maintains a site dedicated to Java at [Java.com](https://java.com/).
+There are a number of methods to install a Java JVM:
+* From the AdoptOpenJDK site: https://adoptopenjdk.net/
+* On Mac OS X: Using [Homebrew](https://brew.sh/) and installing via `brew install openjdk@11`
+* On Ubuntu Linux: `sudo apt install openjdk-11-jdk`
 
-The directions to check which version of Java you have installed is [here](https://java.com/en/download/help/version_manual.xml).
+These aren't the only options, so do what make sense for you. 
+
+### Mac note
+
+With the new Macs that have been released, there is a new wrinkle to pay attention to. These new Macs can run the old (Intel) code as well as the new Apple Silicon (ARM/aarch64), which can lead to some confusion. Either will work. But, the JVM and AppleCommander need to match. If you install a `x86_64` JVM, be sure to run that version of AppleCommander.
 
 ### Download AppleCommander
 
@@ -47,7 +54,7 @@ java -jar ~/bin/ac.jar "${@}"
 MS DOS batch file (`ac.bat`):
 ```batch
 @echo off
-java -jar AppleCommander-1.4.0-ac.jar %*
+java -jar AppleCommander-1.7.0-ac.jar %*
 ```
 
 There is also a Mac OS X [Apple II homebrew repository](https://github.com/lifepillar/homebrew-appleii) which allows an install of:
@@ -58,5 +65,12 @@ After it installs, `applecommander` will be a command. Visit the GitHub page for
 
 Unix-like environments have the ability to `alias` a command as well. To create an `ac` command alias, use:
 ```bash
-alias ac='java -jar build/libs/AppleCommander-ac-1.4.0.jar'
+alias ac='java -jar build/libs/AppleCommander-ac-1.7.0.jar'
 ```
+
+## Requirements
+
+| Version | Requirements |
+| --- | --- |
+| 1.7 or later | Java 11 | 
+| Up to 1.6 | Java 8 |

@@ -12,14 +12,14 @@ Maven:
 <dependency>
  <groupId>net.sf.applecommander</groupId>
  <artifactId>AppleCommander</artifactId>
- <version>1.5.0</version>
+ <version>1.7.0</version>
 </dependency>
 ```
 
 Gradle:
 
 ```
-compile "net.sf.applecommander:AppleCommander:1.5.0"
+compile "net.sf.applecommander:AppleCommander:1.7.0"
 ```
 
 > Note that as of 1.4.0, the Shrinkit library is now a separate project.
@@ -73,14 +73,14 @@ Maven:
 <dependency>
  <groupId>net.sf.applecommander</groupId>
  <artifactId>bastools-api</artifactId>
- <version>0.3.0</version>
+ <version>0.3.1</version>
 </dependency>
 ```
 
 Gradle:
 
 ```
-compile "net.sf.applecommander:bastools-api:0.3.0"
+compile "net.sf.applecommander:bastools-api:0.3.1"
 ```
 
 ## Final Notes

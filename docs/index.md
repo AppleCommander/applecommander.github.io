@@ -67,7 +67,8 @@ AppleCommander is currently able to read and display information about disk imag
 
 AppleCommander includes a number of command-line tools:
 
-* `ac` (based on AppleCommander) - see the [ac page](ac/)  
+* `ac` (based on AppleCommander) - see the [ac page](ac/) 
+* `acx` (experimental utility for AppleCommander) - see the [acx page](acx/) 
 * `asu` (AppleSingle utility) - see the [asu README](https://github.com/AppleCommander/applesingle/blob/master/tools/asu/README.md), 
 * `bt` (Applesoft BASIC tokenizer tool) - see the [bt README](https://github.com/AppleCommander/bastools/blob/master/tools/bt/README.md), and 
 * `st` (Applesoft shape utility) - see the [st README](https://github.com/AppleCommander/bastools/blob/master/tools/st/README.md).
