@@ -106,7 +106,7 @@ For ProDOS and Pascal, the boot block is copied over and in the ProDOS case, `ST
 
 ## File listings by name pattern
 
-A new feature when listing files is that `acx` allows "glob" pattern matching ("*" wildcard matching). 
+A new feature when listing files is that `acx` allows "glob" pattern matching ("*" wildcard matching). (Be careful with the usual shell expansion issues.)
 
 For example, to list files that might be run at startup (`*.SYSTEM`):
 
