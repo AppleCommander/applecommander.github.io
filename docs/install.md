@@ -5,11 +5,14 @@ This section covers installation of AppleCommander. As of 1.4.0, this should be 
 If you do not already have Java 11 (or later) installed, you will be required to install one.
 
 There are a number of methods to install a Java JVM:
-* From the AdoptOpenJDK site: https://adoptopenjdk.net/
+
+* From the [AdoptOpenJDK site](https://adoptopenjdk.net/).
 * On Mac OS X: Using [Homebrew](https://brew.sh/) and installing via `brew install openjdk@11`
 * On Ubuntu Linux: `sudo apt install openjdk-11-jdk`
 
 These aren't the only options, so do what make sense for you. 
+
+> If there are other options, feel free to add a ticket or submit a pull request.
 
 ### Mac note
 
@@ -63,6 +66,8 @@ $ brew install applecommander
 ```
 After it installs, `applecommander` will be a command. Visit the GitHub page for information on how to install the tap.
 
+> Please note: The Mac already has an `ac` command. Setting the alias will "hide" that command. Name it whatever makes sense for your environment - there are no dependencies on the name built into the application.
+
 Unix-like environments have the ability to `alias` a command as well. To create an `ac` command alias, use:
 ```bash
 alias ac='java -jar build/libs/AppleCommander-ac-1.7.0.jar'
@@ -70,7 +75,7 @@ alias ac='java -jar build/libs/AppleCommander-ac-1.7.0.jar'
 
 ## Requirements
 
-| Version | Requirements |
+| AppleCommander Version | Requirements |
 | --- | --- |
 | 1.7 or later | Java 11 | 
 | Up to 1.6 | Java 8 |
