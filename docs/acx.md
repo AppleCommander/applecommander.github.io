@@ -1,4 +1,4 @@
-`acx` is a new command-line tool for AppleCommander.  This tool is subcommand based (think `git pull` versus `git commit`) and is expected to allow more nuanced command activities.
+`acx` is a new command-line tool for AppleCommander.  This tool is subcommand based (think `git pull` and `git commit`) and is expected to allow more nuanced command activities.
 
 ## Overview / Asking for help
 
@@ -60,9 +60,9 @@ Options:
                       Specify which directory to place files.
 ```
 
-## Identifying disk
+## Identifying a disk
 
-`acx` differs from `ac` in that the primary disk image is _always_ specified by the `-d` flag.  However, this can be painful when running a series of commands.  To simplify usage, the environment variable `ACX_DISK_NAME` can be set to simplify scripting.
+`acx` differs from `ac` in that the primary disk image is always specified by the `-d` flag.  However, this can be painful when running a series of commands.  To simplify usage, the environment variable `ACX_DISK_NAME` can be set to simplify scripting.
 
 This means that a sequence of commands that look like this:
 ```
@@ -123,7 +123,7 @@ ProDOS format; 0 bytes free; 143,360 bytes used.
 
 ## File listing as JSON or CSV
 
-List `ac`, `acx` allows file listings to be written out as structured text.  Specifically, with JSON output, secondary processing tools can be used to extract information:
+Like `ac`, `acx` allows file listings to be written out as structured text.  Specifically, with JSON output, secondary processing tools can be used to extract information. Here's a sample using the `jq` tool:
 
 ```
 $ acx ls -d ProDOS_2_4_2.dsk --json | jq '.disks[].files[] | select(.name == "BASIC.SYSTEM")'
