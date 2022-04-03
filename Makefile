@@ -27,7 +27,7 @@ javadoc:
 	(cd ${AS_SRC}; ./gradlew javadoc)
 	rm -rf ${AC_DOC}
 	mkdir -p ${AC_DOC}
-	cp -r ${AC_SRC}/${JAVADOC}/* ${AC_DOC}
+	cp -r ${AC_SRC}/lib/ac-api/${JAVADOC}/* ${AC_DOC}
 	rm -rf ${SHK_DOC}
 	mkdir -p ${SHK_DOC}
 	cp -r ${SHK_SRC}/${JAVADOC}/* ${SHK_DOC}

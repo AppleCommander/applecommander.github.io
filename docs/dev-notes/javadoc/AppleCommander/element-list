@@ -1,0 +1,15 @@
+com.webcodepro.applecommander.compiler
+com.webcodepro.applecommander.storage
+com.webcodepro.applecommander.storage.filters
+com.webcodepro.applecommander.storage.filters.imagehandlers
+com.webcodepro.applecommander.storage.os.cpm
+com.webcodepro.applecommander.storage.os.dos33
+com.webcodepro.applecommander.storage.os.gutenberg
+com.webcodepro.applecommander.storage.os.nakedos
+com.webcodepro.applecommander.storage.os.pascal
+com.webcodepro.applecommander.storage.os.prodos
+com.webcodepro.applecommander.storage.os.rdos
+com.webcodepro.applecommander.storage.physical
+com.webcodepro.applecommander.ui
+com.webcodepro.applecommander.util
+com.webcodepro.applecommander.util.filestreamer

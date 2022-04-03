@@ -14,11 +14,17 @@ For a quick list of `ac` options, enter the `-h` command:
 
 ```
 $ java -jar ac.jar -h
-AppleCommander command line options [1.6.0]:
+AppleCommander command line options [1.7.0]:
 -i       <imagename> [<imagename>] display information about image(s).
 -ls      <imagename> [<imagename>] list brief directory of image(s).
 -l       <imagename> [<imagename>] list directory of image(s).
 -ll      <imagename> [<imagename>] list detailed directory of image(s).
+-lsv     <imagename> [<imagename>] list in CSV format brief directory of image(s).
+-lv      <imagename> [<imagename>] list in CSV format directory of image(s).
+-llv     <imagename> [<imagename>] list in CSV format detailed directory of image(s).
+-lsj     <imagename> [<imagename>] list in JSON format brief directory of image(s).
+-lj      <imagename> [<imagename>] list in JSON format directory of image(s).
+-llj     <imagename> [<imagename>] list in JSON format detailed directory of image(s).
 -e       <imagename> <filename> [<output>] export file from image to stdout
          or to an output file.
 -x       <imagename> [<directory>] extract all files from image to directory.
