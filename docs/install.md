@@ -66,6 +66,8 @@ $ brew install applecommander
 ```
 After it installs, `applecommander` will be a command. Visit the GitHub page for information on how to install the tap.
 
+Alternately, Mac users can choose to [install AppleCommander with MacPorts](https://ports.macports.org/port/AppleCommander).
+
 > Please note: The Mac already has an `ac` command. Setting the alias will "hide" that command. Name it whatever makes sense for your environment - there are no dependencies on the name built into the application.
 
 Unix-like environments have the ability to `alias` a command as well. To create an `ac` command alias, use:
