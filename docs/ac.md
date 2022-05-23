@@ -14,7 +14,7 @@ For a quick list of `ac` options, enter the `-h` command:
 
 ```
 $ java -jar ac.jar -h
-AppleCommander command line options [1.7.0]:
+AppleCommander command line options [1.8.0]:
 -i       <imagename> [<imagename>] display information about image(s).
 -ls      <imagename> [<imagename>] list brief directory of image(s).
 -l       <imagename> [<imagename>] list directory of image(s).

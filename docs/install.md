@@ -28,17 +28,23 @@ Visit the [AppleCommander release page](https://github.com/AppleCommander/AppleC
 
 The GUI component comes pre-packaged with all needed dependencies. You do not need to find and install the SWT toolkit any more!
 
-* For Windows use the file with `AppleCommander-win64-VERSION.jar`,
-* For Macintosh use `AppleCommander-macosx-VERSION.jar`, and
-* For Linux use `AppleCommander-linux64-gtk-VERSION.jar`.
+* For Windows use the file with `AppleCommander-win32-x86_64-VERSION.jar`.
+* For Macintosh use one of the following:
+    * Intel Macs: `AppleCommander-macosx-x86_64-VERSION.jar`.
+    * M1+ Macs: `AppleCommander-macosx-aarch64-VERSION.jar`.
+* For Linux use:
+    * Intel: `AppleCommander-linux-x86_64-VERSION.jar`.
+    * ARM 64-bit: `AppleCommander-linux-aarch64-VERSION.jar`.
+* For 32-bit Raspberry Pi's use: `AppleCommander-linux-arm-VERSION.jar`.
 
-Once the JAR is downloaded, just double-click on the file!
+Generally, once the JAR is downloaded, just double-click on the file!
 
 For Mac OS X, AppleCommander's windowing library (SWT) requires the `-XstartOnFirstThread` flag. Starting AppleCommander will need to be from a script something like:
 ```bash
 #!/bin/sh
-java -XstartOnFirstThread -jar ~/bin/AppleCommander-macosx-VERSION.jar
+java -XstartOnFirstThread -jar ~/bin/AppleCommander-macosx-ARCH-VERSION.jar
 ```
+(ARCH is one of `x86_64` or `aarch64` and VERSION is the current release of AppleCommander.)
 
 For Linux, you may need to set the file to be executable by allowing the JAR file to be executed as a program.
 
@@ -46,7 +52,7 @@ For Linux, you may need to set the file to be executable by allowing the JAR fil
 
 #### Command-line
 
-The distribution file `AppleCommander-ac.jar` provides a command-line interface to AppleCommander. It is ready to use immediately, but it may be convenient to rename it (e.g. `ac.jar`) or invoke it from a script, e.g.
+The distribution file `AppleCommander-ac-VERSION.jar` provides a command-line interface to AppleCommander. It is ready to use immediately, but it may be convenient to rename it (e.g. `ac.jar`) or invoke it from a script, e.g.
 
 GNU bash script for Linux or Mac OS X (`ac.sh`):
 ```bash
@@ -57,7 +63,7 @@ java -jar ~/bin/ac.jar "${@}"
 MS DOS batch file (`ac.bat`):
 ```batch
 @echo off
-java -jar AppleCommander-1.7.0-ac.jar %*
+java -jar AppleCommander-ac-1.8.0.jar %*
 ```
 
 There is also a Mac OS X [Apple II homebrew repository](https://github.com/lifepillar/homebrew-appleii) which allows an install of:
@@ -70,10 +76,11 @@ Alternately, Mac users can choose to [install AppleCommander with MacPorts](http
 
 > Please note: The Mac already has an `ac` command. Setting the alias will "hide" that command. Name it whatever makes sense for your environment - there are no dependencies on the name built into the application.
 
-Unix-like environments have the ability to `alias` a command as well. To create an `ac` command alias, use:
+Unix-like environments have the ability to `alias` a command as well. To create an `ac` command alias, use something like this:
 ```bash
-alias ac='java -jar build/libs/AppleCommander-ac-1.7.0.jar'
+alias ac='java -jar app/cli-ac/build/libs/AppleCommander-ac-1.8.0.jar'
 ```
+(Adjust the path as it applies to your configuration - this sample pulls from the build directories.)
 
 ## Requirements
 

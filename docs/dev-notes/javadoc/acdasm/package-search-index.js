@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"io.github.applecommander.disassembler.api"},{"l":"io.github.applecommander.disassembler.api.mos6502"},{"l":"io.github.applecommander.disassembler.api.sweet16"},{"l":"io.github.applecommander.disassembler.api.switching6502"}]

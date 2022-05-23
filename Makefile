@@ -2,11 +2,13 @@ AC_SRC = ../AppleCommander
 SHK_SRC = ../ShrinkItArchive
 BT_SRC = ../bastools
 AS_SRC = ../applesingle
+DASM_SRC = ../acdasm
 JAVADOC = build/docs/javadoc
 AC_DOC = ./docs/dev-notes/javadoc/AppleCommander
 SHK_DOC = ./docs/dev-notes/javadoc/ShrinkItArchive
 BT_DOC = ./docs/dev-notes/javadoc/bastools
 AS_DOC = ./docs/dev-notes/javadoc/applesingle
+DASM_DOC = ./docs/dev-notes/javadoc/acdasm
 
 .PHONY: help javadoc
 
@@ -21,10 +23,12 @@ javadoc:
 	test -d ${SHK_SRC}
 	test -d ${BT_SRC}
 	test -d ${AS_SRC}
+	test -d ${DASM_SRC}
 	(cd ${AC_SRC}; ./gradlew javadoc)
 	(cd ${SHK_SRC}; ./gradlew javadoc)
 	(cd ${BT_SRC}; ./gradlew javadoc)
 	(cd ${AS_SRC}; ./gradlew javadoc)
+	(cd ${DASM_SRC}; ./gradlew javadoc)
 	rm -rf ${AC_DOC}
 	mkdir -p ${AC_DOC}
 	cp -r ${AC_SRC}/lib/ac-api/${JAVADOC}/* ${AC_DOC}
@@ -37,4 +41,7 @@ javadoc:
 	rm -rf ${AS_DOC}
 	mkdir -p ${AS_DOC}
 	cp -r ${AS_SRC}/api/${JAVADOC}/* ${AS_DOC}
+	rm -rf ${DASM_DOC}
+	mkdir -p ${DASM_DOC}
+	cp -r ${DASM_SRC}/api/${JAVADOC}/* ${DASM_DOC}
 	

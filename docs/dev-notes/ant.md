@@ -1,7 +1,5 @@
 The distribution file `AppleCommander-version-ac.jar` provides an Ant task that can be used as part of Ant-based builds.
 
-> Please add a ticket if you would like to see the Ant task maintained. As of 1.7.0, there are no packages being produced.
-
 ## Using the Apple Commander Ant task
 
 The AppleCommander Ant task mirrors the `ac` command line as much as possible. The advantage over using the ant task over simply calling the AppleCommander command line directly is speed. It is much faster to call on the Ant task than it is for ant to shell out to the system, fire up a Java instance, and then execute your command.
@@ -10,7 +8,7 @@ As with any external ant task, the first thing that must be done is to declare a
 ```
 <taskdef name="appleCommander"
          classname="com.webcodepro.applecommander.ui.AntTask"
-         classpath="AppleCommander-${version}-ac.jar"/>
+         classpath="AppleCommander-ac-${version}.jar"/>
 ```
 
 Where `${version}` would need to be defined by you to be the version of the command-line AppleCommander you are using. The first version of the AC command line that included this Ant task support is 1.3.5.13.
