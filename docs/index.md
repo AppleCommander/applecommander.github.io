@@ -31,7 +31,7 @@ AppleCommander is currently able to read and display information about disk imag
 ### Archive formats
 
 * ShrinkIt (the archive will be automatically extracted into a ProDOS disk);
-* AppleSingle (`ac` only).
+* AppleSingle.
 
 ### File export filters
 
@@ -77,4 +77,3 @@ Since the CLI tooling may be lacking, these additional resources should be usefu
 * [Directives section in the API overview](https://github.com/AppleCommander/bastools/blob/master/api/README-TOKENIZER.md)
 * [Source formats for the Shapes defined in the API](https://github.com/AppleCommander/bastools/blob/master/api/README-SHAPES.md)
 * [bastools sample code](https://github.com/AppleCommander/bastools/tree/master/samples) 
-

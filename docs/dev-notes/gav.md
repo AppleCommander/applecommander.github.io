@@ -12,14 +12,14 @@ Maven:
 <dependency>
  <groupId>net.sf.applecommander</groupId>
  <artifactId>AppleCommander</artifactId>
- <version>1.8.0</version>
+ <version>1.9.0</version>
 </dependency>
 ```
 
 Gradle:
 
 ```
-implementation 'net.sf.applecommander:AppleCommander:1.8.0'
+implementation 'net.sf.applecommander:AppleCommander:1.9.0'
 ```
 
 > Note that as of 1.4.0, the Shrinkit library is now a separate project.
@@ -54,13 +54,13 @@ Maven:
 <dependency>
  <groupId>net.sf.applecommander</groupId>
  <artifactId>applesingle-api</artifactId>
- <version>1.2.1</version>
+ <version>1.2.2</version>
 </dependency>
 ```
 Gradle:
 
 ```
-implementation 'net.sf.applecommander:applesingle-api:1.2.1'
+implementation 'net.sf.applecommander:applesingle-api:1.2.2'
 ```
 
 ## BASIC 
@@ -73,14 +73,14 @@ Maven:
 <dependency>
  <groupId>net.sf.applecommander</groupId>
  <artifactId>bastools-api</artifactId>
- <version>0.3.1</version>
+ <version>0.4.0</version>
 </dependency>
 ```
 
 Gradle:
 
 ```
-implementation 'net.sf.applecommander:bastools-api:0.3.1'
+implementation 'net.sf.applecommander:bastools-api:0.4.0'
 ```
 
 ## AppleCommander disassembler
@@ -93,14 +93,14 @@ Maven:
 <dependency>
     <groupId>net.sf.applecommander</groupId>
     <artifactId>acdasm</artifactId>
-    <version>0.4.0</version>
+    <version>0.5.0</version>
 </dependency>
 ```
 
 Gradle:
 
 ```
-implementation 'net.sf.applecommander:acdasm:0.4.0'
+implementation 'net.sf.applecommander:acdasm:0.5.0'
 ```
 
 ## Final Notes
