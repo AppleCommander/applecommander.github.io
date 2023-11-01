@@ -63,7 +63,7 @@ java -jar ~/bin/ac.jar "${@}"
 MS DOS batch file (`ac.bat`):
 ```batch
 @echo off
-java -jar AppleCommander-ac-1.8.0.jar %*
+java -jar AppleCommander-ac-1.9.0.jar %*
 ```
 
 There is also a Mac OS X [Apple II homebrew repository](https://github.com/lifepillar/homebrew-appleii) which allows an install of:
@@ -78,7 +78,7 @@ Alternately, Mac users can choose to [install AppleCommander with MacPorts](http
 
 Unix-like environments have the ability to `alias` a command as well. To create an `ac` command alias, use something like this:
 ```bash
-alias ac='java -jar app/cli-ac/build/libs/AppleCommander-ac-1.8.0.jar'
+alias ac='java -jar app/cli-ac/build/libs/AppleCommander-ac-1.9.0.jar'
 ```
 (Adjust the path as it applies to your configuration - this sample pulls from the build directories.)
 
