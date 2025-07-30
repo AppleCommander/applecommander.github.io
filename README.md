@@ -4,11 +4,13 @@ This site has moved to using the [Material theme](https://squidfunk.github.io/mk
 
 ## Setup
 
-Generally follow their directions to get setup, but what was needed on Ubuntu Linux is only:
+Generally follow the directions to get setup, but what was needed on Ubuntu Linux is only:
 
 ```bash
-$ sudo apt-get install python-pip
-$ pip install mkdocs-material
+$ sudo apt install python3-pip python3-venv
+$ python3 -m venv venv/
+$ source venv/bin/activate
+(venv) $ pip install mkdocs-material
 ```
 
 ## Developing
