@@ -14,12 +14,13 @@ AppleCommander is currently able to read and display information about disk imag
 * 140K DOS-ordered images (`*.do`, `*.dsk`);
 * 140K ProDOS-ordered images (`*.po`);
 * 140K Nibble (DOS ordered) images (`*.nib`);
-* 800K ProDOS-ordered images (`*.2mg`, `*.2img`);
 * 32MB ApplePC Hard Disk images (`*.hdv`).
+* Universal Disk Images (`*.2mg`, `*.2img`);
+* WOZ Disk Image, version 1 and 2 (`*.woz`) - 5.25" only
 
 ### Disk formats
 
-* DOS 3.3 (140K formats only);
+* DOS (both 13-sector and 16-sector);
 * UniDOS, OzDOS (800K formats only);
 * ProDOS;
 * Apple Pascal (140K and 800K formats);
