@@ -12,14 +12,14 @@ Maven:
 <dependency>
  <groupId>net.sf.applecommander</groupId>
  <artifactId>AppleCommander</artifactId>
- <version>1.9.0</version>
+ <version>1.10</version>
 </dependency>
 ```
 
 Gradle:
 
 ```
-implementation 'net.sf.applecommander:AppleCommander:1.9.0'
+implementation 'net.sf.applecommander:AppleCommander:1.10'
 ```
 
 > Note that as of 1.4.0, the Shrinkit library is now a separate project.
