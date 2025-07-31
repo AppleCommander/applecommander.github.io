@@ -33,7 +33,7 @@ site_author: 'a2geek'
 site_url: 'https://applecommander.github.io'
 
 # Repository
-remote_branch: main
+remote_branch: master
 repo_name: AppleCommander
 repo_url: https://github.com/AppleCommander/AppleCommander
 
