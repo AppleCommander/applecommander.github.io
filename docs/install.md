@@ -2,13 +2,13 @@ This section covers installation of AppleCommander. As of 1.4.0, this should be 
 
 ### Install Java
 
-If you do not already have Java 11 (or later) installed, you will be required to install one.
+If you do not already have Java 21 (or later) installed, you will be required to install one.
 
 There are a number of methods to install a Java JVM:
 
 * From the [AdoptOpenJDK site](https://adoptopenjdk.net/).
-* On Mac OS X: Using [Homebrew](https://brew.sh/) and installing via `brew install openjdk@11`
-* On Ubuntu Linux: `sudo apt install openjdk-11-jdk`
+* On Mac OS X: Using [Homebrew](https://brew.sh/) and installing via `brew install openjdk@21`
+* On Ubuntu Linux: `sudo apt install openjdk-21-jdk`
 
 These aren't the only options, so do what make sense for you. 
 
@@ -63,7 +63,7 @@ java -jar ~/bin/ac.jar "${@}"
 MS DOS batch file (`ac.bat`):
 ```batch
 @echo off
-java -jar AppleCommander-ac-1.10.jar %*
+java -jar AppleCommander-ac-1.11.0.jar %*
 ```
 
 There is also a Mac OS X [Apple II homebrew repository](https://github.com/lifepillar/homebrew-appleii) which allows an install of:
@@ -78,7 +78,7 @@ Alternately, Mac users can choose to [install AppleCommander with MacPorts](http
 
 Unix-like environments have the ability to `alias` a command as well. To create an `ac` command alias, use something like this:
 ```bash
-alias ac='java -jar app/cli-ac/build/libs/AppleCommander-ac-1.10.jar'
+alias ac='java -jar app/cli-ac/build/libs/AppleCommander-ac-1.11.0.jar'
 ```
 (Adjust the path as it applies to your configuration - this sample pulls from the build directories.)
 
@@ -86,5 +86,6 @@ alias ac='java -jar app/cli-ac/build/libs/AppleCommander-ac-1.10.jar'
 
 | AppleCommander Version | Requirements |
 | --- | --- |
+| 1.11 or later | Java 21 |
 | 1.7 or later | Java 11 | 
 | Up to 1.6 | Java 8 |

@@ -28,7 +28,7 @@ Commands:
   dump             Dump a block or sector.
   export, x, get   Export file(s) from a disk image.
   dups             Find duplicate files.
-  help             Displays help information about the specified command
+  help             Display help information about the specified command.
   import, put      Import file onto disk.
   info, i          Show information on a disk image(s).
   list, ls         List directory of disk image(s).
@@ -38,6 +38,7 @@ Commands:
   rename, ren      Rename file on a disk image.
   rename-disk      Rename volume of a disk image.
   rmdir, rd        Remove a directory on disk.
+  scan             Scan directory and report on disks found and understood.
   unlock           Unlock file(s) on a disk image.
   write            Write a block or sector.
 ```
@@ -234,4 +235,81 @@ Name: DISK VOLUME #254
   A D2                                703 004         T14 S8  A=$0000 
 * A HELP                           14,065 056         T13 S5  A=$0000 
 DOS 3.3 format; 29,440 bytes free; 113,920 bytes used.
+```
+
+## Scan directory to identify/classify files
+
+This was added in `acx` version 1.11.0. The primary intention is to track any slips in ongoing code changes but may also be useful to others.
+
+Note that each record is an independent JSON structure. It will work with tools such as `jq` (see below for sample).
+
+Sample run: (for more output, use `acx -vvv scan ./Apple2/ -o newscan.json` for more verbosity)
+
+```
+$ acx scan ./Apple2/ -o newscan.json
+Scanned 3820 disk images.
+```
+
+Success record:
+
+```json
+{
+  "imageName": "./Apple2/APPLE-II-DISK-IMAGES/programming/assembler/prodosexerciser.dsk",
+  "success": true,
+  "imageType": "ProDOS",
+  "logicalDisks": 1,
+  "deletedFiles": 0,
+  "directoriesVisited": 1,
+  "filesVisited": 2,
+  "filesRead": 2,
+  "dataType": "blocks",
+  "dataRead": 280,
+  "errors": []
+}
+```
+
+Failure record: (one of many types)
+
+```json
+{
+  "imageName": "./Apple2/APPLE-II-DISK-IMAGES/programming/assembler/prodosexerciser.dsk",
+  "success": true,
+  "imageType": "ProDOS",
+  "logicalDisks": 1,
+  "deletedFiles": 0,
+  "directoriesVisited": 1,
+  "filesVisited": 2,
+  "filesRead": 2,
+  "dataType": "blocks",
+  "dataRead": 280,
+  "errors": []
+}
+```
+
+Using `jq`: (selects failures that have the `Unknown ProDOS storage type!` error message)
+
+```
+$ cat newscan.json | jq -r 'select(.success | not) | select(.errors | contains(["Unknown ProDOS storage type!"]))'
+<snip>
+{
+  "imageName": "./Apple2/System 6.0.1/Disk 1 of 7 Install.2mg",
+  "success": false,
+  "imageType": "ProDOS",
+  "logicalDisks": 1,
+  "deletedFiles": 1,
+  "directoriesVisited": 11,
+  "filesVisited": 97,
+  "filesRead": 91,
+  "dataType": "blocks",
+  "dataRead": 1600,
+  "errors": [
+    "Unable to read file 0/SYSTEM.SETUP/SYS.RESOURCES: Unknown ProDOS storage type!",
+    "Unable to read file 0/CDEVS/SETSTART: Unknown ProDOS storage type!",
+    "Unable to read file 0/CDEVS/GENERAL: Unknown ProDOS storage type!",
+    "Unable to read file 0/CDEVS/RAM: Unknown ProDOS storage type!",
+    "Unable to read file 0/DESK.ACCS/CONTROLPANEL: Unknown ProDOS storage type!",
+    "Unable to read file 0//INSTALL//INSTALLER: Unknown ProDOS storage type!"
+  ]
+}
+<snip>
 ```
