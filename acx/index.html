@@ -435,6 +435,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#scan-directory-to-identifyclassify-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scan directory to identify/classify files
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1089,6 +1098,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#scan-directory-to-identifyclassify-files" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scan directory to identify/classify files
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1136,7 +1154,7 @@ Commands:
   dump             Dump a block or sector.
   export, x, get   Export file(s) from a disk image.
   dups             Find duplicate files.
-  help             Displays help information about the specified command
+  help             Display help information about the specified command.
   import, put      Import file onto disk.
   info, i          Show information on a disk image(s).
   list, ls         List directory of disk image(s).
@@ -1146,6 +1164,7 @@ Commands:
   rename, ren      Rename file on a disk image.
   rename-disk      Rename volume of a disk image.
   rmdir, rd        Remove a directory on disk.
+  scan             Scan directory and report on disks found and understood.
   unlock           Unlock file(s) on a disk image.
   write            Write a block or sector.
 </code></pre>
@@ -1305,6 +1324,70 @@ Name: DISK VOLUME #254
   A D2                                703 004         T14 S8  A=$0000 
 * A HELP                           14,065 056         T13 S5  A=$0000 
 DOS 3.3 format; 29,440 bytes free; 113,920 bytes used.
+</code></pre>
+<h2 id="scan-directory-to-identifyclassify-files">Scan directory to identify/classify files</h2>
+<p>This was added in <code>acx</code> version 1.11.0. The primary intention is to track any slips in ongoing code changes but may also be useful to others.</p>
+<p>Note that each record is an independent JSON structure. It will work with tools such as <code>jq</code> (see below for sample).</p>
+<p>Sample run: (for more output, use <code>acx -vvv scan ./Apple2/ -o newscan.json</code> for more verbosity)</p>
+<pre><code>$ acx scan ./Apple2/ -o newscan.json
+Scanned 3820 disk images.
+</code></pre>
+<p>Success record:</p>
+<pre><code class="language-json">{
+  &quot;imageName&quot;: &quot;./Apple2/APPLE-II-DISK-IMAGES/programming/assembler/prodosexerciser.dsk&quot;,
+  &quot;success&quot;: true,
+  &quot;imageType&quot;: &quot;ProDOS&quot;,
+  &quot;logicalDisks&quot;: 1,
+  &quot;deletedFiles&quot;: 0,
+  &quot;directoriesVisited&quot;: 1,
+  &quot;filesVisited&quot;: 2,
+  &quot;filesRead&quot;: 2,
+  &quot;dataType&quot;: &quot;blocks&quot;,
+  &quot;dataRead&quot;: 280,
+  &quot;errors&quot;: []
+}
+</code></pre>
+<p>Failure record: (one of many types)</p>
+<pre><code class="language-json">{
+  &quot;imageName&quot;: &quot;./Apple2/APPLE-II-DISK-IMAGES/programming/basic/tipdisk1.sdk&quot;,
+  &quot;success&quot;: false,
+  &quot;imageType&quot;: &quot;DOS 3.3&quot;,
+  &quot;logicalDisks&quot;: 1,
+  &quot;deletedFiles&quot;: 0,
+  &quot;directoriesVisited&quot;: 1,
+  &quot;filesVisited&quot;: 117,
+  &quot;filesRead&quot;: 116,
+  &quot;dataType&quot;: &quot;sectors&quot;,
+  &quot;dataRead&quot;: 560,
+  &quot;errors&quot;: [
+    &quot;Unable to read file 0/DISK VOLUME #254/(C) 1981, BEAGLE BROS, INC.: arraycopy: last source index 54740 out of bounds for byte[256]&quot;
+  ]
+}
+</code></pre>
+<p>Using <code>jq</code>: (selects failures that have the <code>Unknown ProDOS storage type!</code> error message)</p>
+<pre><code>$ cat newscan.json | jq -r 'select(.success | not) | select(.errors | contains([&quot;Unknown ProDOS storage type!&quot;]))'
+&lt;snip&gt;
+{
+  &quot;imageName&quot;: &quot;./Apple2/System 6.0.1/Disk 1 of 7 Install.2mg&quot;,
+  &quot;success&quot;: false,
+  &quot;imageType&quot;: &quot;ProDOS&quot;,
+  &quot;logicalDisks&quot;: 1,
+  &quot;deletedFiles&quot;: 1,
+  &quot;directoriesVisited&quot;: 11,
+  &quot;filesVisited&quot;: 97,
+  &quot;filesRead&quot;: 91,
+  &quot;dataType&quot;: &quot;blocks&quot;,
+  &quot;dataRead&quot;: 1600,
+  &quot;errors&quot;: [
+    &quot;Unable to read file 0/SYSTEM.SETUP/SYS.RESOURCES: Unknown ProDOS storage type!&quot;,
+    &quot;Unable to read file 0/CDEVS/SETSTART: Unknown ProDOS storage type!&quot;,
+    &quot;Unable to read file 0/CDEVS/GENERAL: Unknown ProDOS storage type!&quot;,
+    &quot;Unable to read file 0/CDEVS/RAM: Unknown ProDOS storage type!&quot;,
+    &quot;Unable to read file 0/DESK.ACCS/CONTROLPANEL: Unknown ProDOS storage type!&quot;,
+    &quot;Unable to read file 0//INSTALL//INSTALLER: Unknown ProDOS storage type!&quot;
+  ]
+}
+&lt;snip&gt;
 </code></pre>
 
 

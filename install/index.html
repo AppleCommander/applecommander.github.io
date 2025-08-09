@@ -1088,12 +1088,12 @@
 
 <p>This section covers installation of AppleCommander. As of 1.4.0, this should be a bit simpler as SWT is now packaged for each platform.</p>
 <h3 id="install-java">Install Java</h3>
-<p>If you do not already have Java 11 (or later) installed, you will be required to install one.</p>
+<p>If you do not already have Java 21 (or later) installed, you will be required to install one.</p>
 <p>There are a number of methods to install a Java JVM:</p>
 <ul>
 <li>From the <a href="https://adoptopenjdk.net/">AdoptOpenJDK site</a>.</li>
-<li>On Mac OS X: Using <a href="https://brew.sh/">Homebrew</a> and installing via <code>brew install openjdk@11</code></li>
-<li>On Ubuntu Linux: <code>sudo apt install openjdk-11-jdk</code></li>
+<li>On Mac OS X: Using <a href="https://brew.sh/">Homebrew</a> and installing via <code>brew install openjdk@21</code></li>
+<li>On Ubuntu Linux: <code>sudo apt install openjdk-21-jdk</code></li>
 </ul>
 <p>These aren't the only options, so do what make sense for you. </p>
 <blockquote>
@@ -1136,7 +1136,7 @@ java -jar ~/bin/ac.jar &quot;${@}&quot;
 </code></pre>
 <p>MS DOS batch file (<code>ac.bat</code>):</p>
 <pre><code class="language-batch">@echo off
-java -jar AppleCommander-ac-1.10.jar %*
+java -jar AppleCommander-ac-1.11.0.jar %*
 </code></pre>
 <p>There is also a Mac OS X <a href="https://github.com/lifepillar/homebrew-appleii">Apple II homebrew repository</a> which allows an install of:</p>
 <pre><code>$ brew install applecommander
@@ -1147,7 +1147,7 @@ java -jar AppleCommander-ac-1.10.jar %*
 <p>Please note: The Mac already has an <code>ac</code> command. Setting the alias will "hide" that command. Name it whatever makes sense for your environment - there are no dependencies on the name built into the application.</p>
 </blockquote>
 <p>Unix-like environments have the ability to <code>alias</code> a command as well. To create an <code>ac</code> command alias, use something like this:</p>
-<pre><code class="language-bash">alias ac='java -jar app/cli-ac/build/libs/AppleCommander-ac-1.10.jar'
+<pre><code class="language-bash">alias ac='java -jar app/cli-ac/build/libs/AppleCommander-ac-1.11.0.jar'
 </code></pre>
 <p>(Adjust the path as it applies to your configuration - this sample pulls from the build directories.)</p>
 <h2 id="requirements">Requirements</h2>
@@ -1159,6 +1159,10 @@ java -jar AppleCommander-ac-1.10.jar %*
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>1.11 or later</td>
+<td>Java 21</td>
+</tr>
 <tr>
 <td>1.7 or later</td>
 <td>Java 11</td>
