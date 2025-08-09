@@ -272,17 +272,19 @@ Failure record: (one of many types)
 
 ```json
 {
-  "imageName": "./Apple2/APPLE-II-DISK-IMAGES/programming/assembler/prodosexerciser.dsk",
-  "success": true,
-  "imageType": "ProDOS",
+  "imageName": "./Apple2/APPLE-II-DISK-IMAGES/programming/basic/tipdisk1.sdk",
+  "success": false,
+  "imageType": "DOS 3.3",
   "logicalDisks": 1,
   "deletedFiles": 0,
   "directoriesVisited": 1,
-  "filesVisited": 2,
-  "filesRead": 2,
-  "dataType": "blocks",
-  "dataRead": 280,
-  "errors": []
+  "filesVisited": 117,
+  "filesRead": 116,
+  "dataType": "sectors",
+  "dataRead": 560,
+  "errors": [
+    "Unable to read file 0/DISK VOLUME #254/(C) 1981, BEAGLE BROS, INC.: arraycopy: last source index 54740 out of bounds for byte[256]"
+  ]
 }
 ```
 
