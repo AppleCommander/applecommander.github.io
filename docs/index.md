@@ -6,7 +6,7 @@ Please visit [AppleCommander on GitHub](https://github.com/AppleCommander)!  You
 
 ## Capabilities
 
-AppleCommander is currently able to read and display information about disk images, export files of various types, create disk images, import files into disk images, and has a rudimentary compiler. AppleCommander incorporates support for [cc65](https://cc65.github.io/), an improved command-line tool, and even an Ant interface.
+AppleCommander is currently able to read and display information about disk images, export files of various types, create disk images, and import files into disk images. AppleCommander incorporates support for AppleSingle archives (useful for [cc65](https://cc65.github.io/) toolchains), an improved command-line tool, and even an Ant interface.
 
 ### Disk image organizations
 
@@ -16,6 +16,7 @@ AppleCommander is currently able to read and display information about disk imag
 * 140K Nibble (DOS ordered) images (`*.nib`);
 * 32MB ApplePC Hard Disk images (`*.hdv`).
 * Universal Disk Images (`*.2mg`, `*.2img`);
+* Disk Copy Images (`*.dc`);
 * WOZ Disk Image, version 1 and 2 (`*.woz`) - 5.25" only
 
 ### Disk formats

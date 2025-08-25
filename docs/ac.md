@@ -12,9 +12,9 @@ Setup whatever works for you and your environment, and be cognizant that the sam
 
 For a quick list of `ac` options, enter the `-h` command:
 
-```
+```shell
 $ java -jar ac.jar -h
-AppleCommander command line options [1.11.0]:
+AppleCommander command line options [12.0-SNAPSHOT]:
 -i       <imagename> [<imagename>] display information about image(s).
 -ls      <imagename> [<imagename>] list brief directory of image(s).
 -l       <imagename> [<imagename>] list directory of image(s).
@@ -75,7 +75,7 @@ To be read correctly, DOS order disk image names should end in `.dsk` or `.do`, 
 
 To create a DOS 3.3, Pascal and ProDOS image, enter the commands:
 
-```
+```shell
 $ java -jar ac.jar -dos140 dos.dsk
 $ java -jar ac.jar -pas140 pas.po volume1
 $ java -jar ac.jar -pro140 pro.po volume2
@@ -89,7 +89,7 @@ The `-i` command displays information about a disk image. Multiple image names a
 
 To get information about one or more disks, enter any of the following commands:
 
-```
+```shell
 $ java -jar ac.jar -i ricky.2mg
 $ java -jar ac.jar -i fred.dsk ethel.po
 $ java -jar ac.jar -i mertz/*
@@ -98,7 +98,7 @@ $ java -jar ac.jar -i *.po *.dsk
 
 A sample from the ProDOS 2.4.2 master disk:
 
-```
+```shell
 $ java -jar ac.jar -i ProDOS_2_4_2.dsk
 File Name: ProDOS_2_4_2.dsk
 Disk Name: /PRODOS.2.4.2/
@@ -128,7 +128,7 @@ Volume Name: PRODOS.2.4.2
 
 The `-ls`, `-l` and `-ll` commands list the directory of a disk image in short, regular and long format respectively. Multiple image names are permitted, as suggested above. To see the directory of one or more disk, enter any of the following commands:
 
-```
+```shell
 $ java -jar ac.jar -ls misc.dsk
 $ java -jar ac.jar -l  misc.dsk
 $ java -jar ac.jar -ll misc.dsk
@@ -138,7 +138,7 @@ $ java -jar ac.jar -l  Nibble*/*
 
 Sample runs (with some text omitted for brevity):
 
-```
+```shell
 $ java -jar ac.jar -ls ProDOS_2_4_2.dsk
 /home/rob/Downloads/ProDOS_2_4_2.dsk /PRODOS.2.4.2/
 VIEW.README BAS 512  
@@ -164,28 +164,28 @@ ProDOS format; 0 bytes free; 143,360 bytes used.
 ## Examining a file
 
 The `-e` command lets you examine a file by printing a readable version to standard output. To examine a file named `fred` on a disk named `misc.dsk`, enter the command:
-```
+```shell
 $ java -jar ac.jar -e misc.dsk fred
 ```
 
 The export command tries to choose an appropriate filter for the chosen file. Filters exist for formats, with a default hexadecimal format for binary files. If the file is probably a picture, the export format is PNG. To save the output to a file:
-```
+```shell
 $ java -jar ac.jar -e misc.dsk lucy.pic > lucy.png
 ```
 
 A sample run against an AppleSoft BASIC program on the ProDOS 2.4.2 disk:
-```
-$ java -jar ac.jar -e ProDOS_2_4_2.dsk VIEW.README
+```shell
+$ java -jar ac.jar -e ProDOS_2_4_3.po VIEW.README
 10  REM VIEW.README BY J.BROOKS. 9/15/2016
 20 ADR = 768
-30  READ BYTE: IF BYTE <0  THEN 100
-40  POKE ADR,BYTE:ADR = ADR +1: GOTO 30
+30  READ BYTE: IF BYTE < 0 THEN 100
+40  POKE ADR,BYTE:ADR = ADR + 1: GOTO 30
 100  CALL 806
 150  PRINT  CHR$(4)"BLOAD README,A$2000,TTXT"
-200  HOME : FOR I = 1 TO 22: CALL 768: NEXT
+200  HOME : FOR I = 1 TO 23: CALL 768: NEXT 
 300  CALL 768: GET KEY$
 350  IF  ASC(KEY$) = 27 GOTO 500
-400  IF  PEEK(251) >0 GOTO 300
+400  IF  PEEK(251) > 0 GOTO 300
 500  PRINT  CHR$(4)"bye"
 1000  DATA 162,40,160,0,177,250,240,29,9,128,201,225,144,2,41,255,32,237,253,200,201,141,240,3,202,208,233,152,24,101,250,133,250,144,2,230,251,96,162,96,169,32,133,251,141,54,3,169
 1010  DATA 0,133,250,168,153,0,32,200,208,250,238,54,3,202,208,244,26,208,2,160,224,136,140,15,3,96,-1
@@ -194,17 +194,17 @@ $ java -jar ac.jar -e ProDOS_2_4_2.dsk VIEW.README
 ## Get a raw data file
 
 The `-g` command gets a file in its raw form. To copy a file named `fred` from `misc.dsk` to a file named `ethel` on your file system, enter the command:
-```
+```shell
 $ java -jar ac.jar -g misc.dsk fred > ethel
 ```
 
 Because binary files are difficult to read, you may want to send the output to a program that can show the data in a hexadecimal format other than the one used with the `-e` option, above:
-```
+```shell
 $ java -jar ac.jar -g misc.dsk fred | hexdump
 ```
 
 Again, a sample run with the AppleSoft BASIC program from the ProDOS 2.4.2 image.  This time, however, you will see the tokenized program:
-```
+```shell
 $ java -jar ac.jar -g ProDOS_2_4_2.dsk VIEW.README | hexdump -C
 00000000  29 08 0a 00 b2 56 49 45  57 2e 52 45 41 44 4d 45  |)....VIEW.README|
 00000010  20 42 59 20 4a 2e 42 52  4f 4f 4b 53 2e 20 39 2f  | BY J.BROOKS. 9/|
@@ -223,12 +223,12 @@ $ java -jar ac.jar -g ProDOS_2_4_2.dsk VIEW.README | hexdump -C
 ## Put standard input onto disk image
 
 The `-p` command puts data from the standard input stream onto a disk image. Four parameters are used: imagename, filename, type, and address. If the address is omitted and one is required, $2000 is assumed. Suppose `ethel` is a binary file meant to start at address 2048 ($800 or 0x800). To put the binary file named `ethel` back into a file named `fred` with that starting address on the DOS image named `misc.dsk`:
-```
+```shell
 $ java -jar ac.jar -p misc.dsk fred B 0x800 < ethel
 ```
 
 Alternatively, suppose `ethel` is a binary starting at 2048 destined for `fred` on a ProDOS image named `p1.po`:
-```
+```shell
 $ java -jar ac.jar -p p1.po fred bin 2048 < ethel
 ```
 
@@ -237,7 +237,7 @@ $ java -jar ac.jar -p p1.po fred bin 2048 < ethel
 The `-pt` and `-ptx` commands work the same as `-p` except that they assume the input is a text file. This defaults the file type to `TXT`. They also translate the MS-DOS CR+LF format into a single line ending.
 
 A sample using the `CONTRIB.txt` file in this archive, which happes to be in MS-DOS format:
-```
+```shell
 $ cat CONTRIB.txt | hexdump -C
 00000000  41 70 70 6c 65 43 6f 6d  6d 61 6e 64 65 72 20 2d  |AppleCommander -|
 00000010  20 41 6e 20 41 70 70 6c  65 20 5d 5b 20 69 6d 61  | An Apple ][ ima|
@@ -247,7 +247,7 @@ $ # Note the CR + LF is here .............. ^^ ^^
 ```
 
 For `-pt`, it translates line endings to the Apple 0x8d as well as _setting_ the high bit:
-```
+```shell
 $ cat CONTRIB.txt | ac -pt test.dsk contrib
 $ ac -g test.dsk contrib | hexdump -C
 00000000  c1 f0 f0 ec e5 c3 ef ed  ed e1 ee e4 e5 f2 a0 ad  |................|
@@ -258,7 +258,7 @@ $ # Note that the CR + LF is fixed ........ ^^
 ```
 
 For `-ptx`, it translates line endings to the Apple 0x0d as well as _clearing_ the high bit:
-```
+```shell
 $ cat CONTRIB.txt | ac -ptx test.dsk contrib2
 $ ac -g test.dsk contrib2 | hexdump -C
 00000000  41 70 70 6c 65 43 6f 6d  6d 61 6e 64 65 72 20 2d  |AppleCommander -|
@@ -274,7 +274,7 @@ With the addition of the [bastools](https://github.com/AppleCommander/bastools) 
 
 > Note: Due to the bastools API, `ac` will create a temp file in the system temp folder and then delete it once completed. 
 
-```
+```shell
 $ cat sample.bas 
 10 TEXT:HOME:GR:POKE -16302,23
 20 COLOR=0:FOR I=41 TO 47 STEP 2:HLIN 0,39 AT I:NEXT
@@ -298,21 +298,21 @@ $ ac -g test.dsk sample | hexdump -C
 ## Put standard input with DOS 3.3 header onto disk image
 
 The `-dos` command is like `-p`, but it assumes the input stream includes a four-byte header, as generated by older versions of `cc65`. Three parameters are required: imagename, filename, and type. The start address is taken from bytes 0-1 of the header. To put the DOS binary named `ethel` into a file named `fred` on the DOS image named `misc.dsk`:
-```
+```shell
 $ java -jar ac.jar -dos misc.dsk fred B < ethel
 ```
 
 ## Put standard input in AppleSingle format onto disk image
 
 The `-as` command is like `-p`, but it assumes the input stream is in the AppleSingle format, as generated by newer versions of `cc65` ([see ticket #20](https://github.com/AppleCommander/AppleCommander/issues/20)). The parameters are imagename (required) and, optionally, filename. The AppleSingle format supports a filename entry, but it is not always populated.  To put the AppleSingle binary named `ethel` into a file named `fred` on the ProDOS image named `misc.dsk`:
-```
+```shell
 $ java -jar ac.jar -as misc.dsk fred < ethel
 ```
 
 ## Putting files and file types
 
 As another example, consider the text file named `foo.text` and the Pascal image named `src.po`:
-```
+```shell
 $ java -jar ac.jar -p p2.po foo.text text < foo.text
 ```
 
@@ -327,7 +327,7 @@ Valid file types are specific to each operating system:
 ## Delete a file
 
 The `-d` command deletes a file from an image:
-```
+```shell
 $ java -jar ac.jar -d misc.dsk fred
 ```
 
@@ -335,14 +335,14 @@ $ java -jar ac.jar -d misc.dsk fred
 
 To copy a file from one image to another, do something like this:
 
-```
+```shell
 $ java -jar ac.jar -g one.dsk fred | java -jar ac.jar -p another.dsk fred bin 2048
 ```
 
 ## Locking and unlocking a file
 
 The `-k` and `-u` commands lock and unlock a file on the given image:
-```
+```shell
 $ java -jar ac.jar -k misc.dsk fred
 $ java -jar ac.jar -u misc.dsk fred
 ```
@@ -350,7 +350,7 @@ $ java -jar ac.jar -u misc.dsk fred
 ## Change a volume name
 
 The `-n` command changes the volume name on an image. Only ProDOS and Pascal images are affected:
-```
+```shell
 $ java -jar ac.jar -n misc.po name
 ```
 

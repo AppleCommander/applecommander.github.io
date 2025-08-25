@@ -6,9 +6,10 @@ nav:
   - Screenshots: 'using.md'
   - Using 'ac': 'ac.md'
   - Using 'acx': 'acx.md'
-  - Develper Notes:
+  - Developer Notes:
     - 'Maven/Gradle GAV': dev-notes/gav.md
-    - 'UML diagrams': dev-notes/uml.md
+    - 'Updated API and UML': dev-notes/redesign.md
+    - 'Historical UML diagrams': dev-notes/uml.md
     - 'Ant Task': dev-notes/ant.md
     - 'Javadoc': javadoc.md
     - 'cc65 Pipeline': dev-notes/cc65-pipeline.md
@@ -49,3 +50,8 @@ theme:
     accent: 'indigo'
   logo: 'images/apple-logo.png'
   favicon: 'images/apple-logo.png'
+
+# Plugins
+plugins:
+  - plantuml:
+      puml_url: https://www.plantuml.com/plantuml/

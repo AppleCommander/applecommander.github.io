@@ -4,7 +4,7 @@
 
 All commands and subcommands will show options and command structure with the `--help` flag. 
 
-```
+```shell
 $ acx --help
 Usage: acx [-hVv] [--debug] [--quiet] [COMMAND]
 
@@ -45,25 +45,25 @@ Commands:
 
 When looking for options for a subcommand, the `help` subcommand may be used as an alternate (`acx copy --help` or `acx help copy` are both valid).
 
-```
+```shell
 $ acx copy --help
-Usage: acx copy [-fhr] -d=<disk> -s=<sourceDisk> [--to=<targetPath>]
-                [<globs>...]
+Usage: acx copy [-fhr] [--to=<targetPath>] -d=<disks> [-d=<disks>]...
+                -s=<sourceDisks> [-s=<sourceDisks>]... [<globs>...]
 
 Copy files between disks.
 
 Parameters:
-      [<globs>...]    File glob(s) to copy (default = '*')
+      [<globs>...]     File glob(s) to copy (default = '*')
 
 Options:
-  -d, --disk=<disk>   Image to process [$ACX_DISK_NAME].
-  -f, --force         Overwrite existing files.
-  -h, --help          Show help for subcommand.
-  -r, --recursive     Copy files recursively.
-  -s, --from, --source=<sourceDisk>
-                      Source disk for files.
+  -d, --disk=<disks>   Image to process [$ACX_DISK_NAME].
+  -f, --force          Overwrite existing files.
+  -h, --help           Show help for subcommand.
+  -r, --recursive      Copy files recursively.
+  -s, --from, --source=<sourceDisks>
+                       Source disk for files.
       --to, --directory=<targetPath>
-                      Specify which directory to place files.
+                       Specify which directory to place files.
 ```
 
 ## Identifying a disk
@@ -71,7 +71,7 @@ Options:
 `acx` differs from `ac` in that the primary disk image is always specified by the `-d` flag.  However, this can be painful when running a series of commands.  To simplify usage, the environment variable `ACX_DISK_NAME` can be set to simplify scripting.
 
 This means that a sequence of commands that look like this:
-```
+```shell
 $ acx create -d disk1.po --prodos
 $ acx copy -d disk1.po --from ProDOS_2_4_2.dsk PRODOS BASIC.SYSTEM
 $ acx list -d disk1.po --native
@@ -84,7 +84,7 @@ ProDOS format; 111,104 bytes free; 32,256 bytes used.
 ```
 
 Can also be specified in this manner:
-```
+```shell
 $ export ACX_DISK_NAME=disk2.po   # This sets the environment variable with the disk name
 $ acx create --prodos
 $ acx copy --from ProDOS_2_4_2.dsk PRODOS BASIC.SYSTEM
@@ -102,7 +102,7 @@ $ unset ACX_DISK_NAME               # This removes the environment variable
 
 `acx` introduces experimenal capability to create bootable disks. Note that this is only viable for writeable disks (DOS, ProDOS, and Pascal).
 
-```
+```shell
 $ acx create -d disk1.po --format ProDOS_2_4_2.dsk --prodos --size=140kb
 $ acx create -d disk2.dsk --format original332sysmas.nib --dos --size=140kb
 $ acx create -d disk3.po --format UCSD\ Pascal\ 1.2_0.DSK --pascal
@@ -116,7 +116,7 @@ For ProDOS and Pascal, the boot block is copied over and in the ProDOS case, `ST
 
 `acx` can dump any sector or block in a hex format:
 
-```
+```shell
 $ acx dump -d ProDOS_2_4_2.dsk --block 2
 Offset   Hex Data                                          Characters
 =======  ================================================  =================
@@ -132,11 +132,51 @@ $000880  59 53 54 45 4D 00 00 00  00 FF 27 00 01 00 38 00  YSTEM... ..'...8.
 <snip>
 ```
 
+Or a range of them:
+
+```shell
+$ acx dump -d original332sysmas.do -t 17 -s 1-15
+Track 17, Sector 01:
+Offset   Hex Data                                          Characters
+=======  ================================================  =================
+$000000  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  ........ ........
+$000010  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  ........ ........
+<snip>
+
+Track 17, Sector 02:
+Offset   Hex Data                                          Characters
+=======  ================================================  =================
+$000000  00 11 01 00 00 00 00 00  00 00 00 00 00 00 00 00  ........ ........
+$000010  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  ........ ........
+<snip>
+
+Track 17, Sector 15:
+Offset   Hex Data                                          Characters
+=======  ================================================  =================
+$000000  00 11 0E 00 00 00 00 00  00 00 00 1A 0F 82 C8 C5  ........ ......HE
+$000010  CC CC CF A0 A0 A0 A0 A0  A0 A0 A0 A0 A0 A0 A0 A0  LLO              
+$000020  A0 A0 A0 A0 A0 A0 A0 A0  A0 A0 A0 A0 03 00 1A 0C               ....
+$000030  81 C1 D0 D0 CC C5 D3 CF  C6 D4 A0 A0 A0 A0 A0 A0  .APPLESO FT      
+$000040  A0 A0 A0 A0 A0 A0 A0 A0  A0 A0 A0 A0 A0 A0 A0 03                  .
+$000050  00 1A 09 84 CC CF C1 C4  C5 D2 AE CF C2 CA B0 A0  ....LOAD ER.OBJ0 
+$000060  A0 A0 A0 A0 A0 A0 A0 A0  A0 A0 A0 A0 A0 A0 A0 A0                   
+$000070  A0 A0 06 00 1A 03 84 C6  D0 C2 C1 D3 C9 C3 A0 A0    .....F PBASIC  
+$000080  A0 A0 A0 A0 A0 A0 A0 A0  A0 A0 A0 A0 A0 A0 A0 A0                   
+$000090  A0 A0 A0 A0 A0 2A 00 1D  09 84 C9 CE D4 C2 C1 D3       *.. ..INTBAS
+$0000A0  C9 C3 A0 A0 A0 A0 A0 A0  A0 A0 A0 A0 A0 A0 A0 A0  IC               
+$0000B0  A0 A0 A0 A0 A0 A0 A0 A0  2A 00 20 0F 82 CD C1 D3           *. ..MAS
+$0000C0  D4 C5 D2 A0 A0 A0 A0 A0  A0 A0 A0 A0 A0 A0 A0 A0  TER              
+$0000D0  A0 A0 A0 A0 A0 A0 A0 A0  A0 A0 A0 03 00 20 0C 84              .. ..
+$0000E0  CD C1 D3 D4 C5 D2 A0 C3  D2 C5 C1 D4 C5 A0 A0 A0  MASTER C REATE   
+$0000F0  A0 A0 A0 A0 A0 A0 A0 A0  A0 A0 A0 A0 A0 A0 09 00                 ..
+** END **
+```
+
 ## Disassembling the boot sector
 
 `acx` can dump any sector or block in a disassembled format:
 
-```
+```shell
 $ acx dump -d ~/Downloads/ProDOS_2_4_2.dsk -t 0 -s 0 --disassembly
 0800- 01        ---
 0801- 38        SEC
@@ -171,7 +211,7 @@ A new feature when listing files is that `acx` allows "glob" pattern matching ("
 
 For example, to list files that might be run at startup (`*.SYSTEM`):
 
-```
+```shell
 $ acx ls -d ProDOS_2_4_2.dsk --globs "*.SYSTEM"
 
 File: ProDOS_2_4_2.dsk
@@ -186,7 +226,7 @@ ProDOS format; 0 bytes free; 143,360 bytes used.
 
 Like `ac`, `acx` allows file listings to be written out as structured text.  Specifically, with JSON output, secondary processing tools can be used to extract information. Here's a sample using the `jq` tool:
 
-```
+```shell
 $ acx ls -d ProDOS_2_4_2.dsk --json | jq '.disks[].files[] | select(.name == "BASIC.SYSTEM")'
 {
   "locked": "*",
@@ -204,7 +244,7 @@ $ acx ls -d ProDOS_2_4_2.dsk --json | jq '.disks[].files[] | select(.name == "BA
 
 `acx` can look for duplicate files:
 
-```
+```shell
 $ acx dups -d "Beagle Bros Tip Disk #1.dsk"
 Differences:
 /mmmmmmmm TIP BOOK #1 mmmmmmmmm has the following duplicates:
@@ -217,7 +257,7 @@ Differences:
 
 ... and a partial directory listing:
 
-```
+```shell
 $ acx ls -l -d "Beagle Bros Tip Disk #1.dsk"
 
 File: Beagle Bros Tip Disk #1.dsk
@@ -245,7 +285,7 @@ Note that each record is an independent JSON structure. It will work with tools 
 
 Sample run: (for more output, use `acx -vvv scan ./Apple2/ -o newscan.json` for more verbosity)
 
-```
+```shell
 $ acx scan ./Apple2/ -o newscan.json
 Scanned 3820 disk images.
 ```
@@ -290,7 +330,7 @@ Failure record: (one of many types)
 
 Using `jq`: (selects failures that have the `Unknown ProDOS storage type!` error message)
 
-```
+```shell
 $ cat newscan.json | jq -r 'select(.success | not) | select(.errors | contains(["Unknown ProDOS storage type!"]))'
 <snip>
 {

@@ -2,7 +2,27 @@
 
 Much of AppleCommander and it's tooling should be reusable and can be included in other projects.
 
-## AppleCommander
+## AppleCommander (12.0 or later)
+
+The AppleCommander libraries are available as a dependency.
+
+Maven:
+
+```
+<dependency>
+ <groupId>org.applecommander</groupId>
+ <artifactId>AppleCommander</artifactId>
+ <version>12.0</version>
+</dependency>
+```
+
+Gradle:
+
+```
+implementation 'org.applecommander:AppleCommander:12.0'
+```
+
+## AppleCommander (before 12.0)
 
 The AppleCommander libraries are available as a dependency.
 
