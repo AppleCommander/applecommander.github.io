@@ -1,4 +1,3 @@
-com.webcodepro.applecommander.compiler
 com.webcodepro.applecommander.storage
 com.webcodepro.applecommander.storage.compare
 com.webcodepro.applecommander.storage.filters
@@ -15,3 +14,11 @@ com.webcodepro.applecommander.ui
 com.webcodepro.applecommander.util
 com.webcodepro.applecommander.util.filestreamer
 com.webcodepro.applecommander.util.readerwriter
+org.applecommander.capability
+org.applecommander.codec
+org.applecommander.device
+org.applecommander.hint
+org.applecommander.image
+org.applecommander.os.dos
+org.applecommander.source
+org.applecommander.util

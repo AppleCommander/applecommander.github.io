@@ -52,6 +52,10 @@
       
     
     
+      <link rel="stylesheet" href="../assets/mkdocs_puml/puml.css">
+    
+      <link rel="stylesheet" href="../assets/mkdocs_puml/interaction.css">
+    
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -122,46 +126,6 @@
     
     
     
-    
-      
-      
-        <label class="md-header__button md-icon" for="__search">
-          
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
-        </label>
-        <div class="md-search" data-md-component="search" role="dialog">
-  <label class="md-search__overlay" for="__search"></label>
-  <div class="md-search__inner" role="search">
-    <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
-      <label class="md-search__icon md-icon" for="__search">
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
-      </label>
-      <nav class="md-search__options" aria-label="Search">
-        
-        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
-          
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
-        </button>
-      </nav>
-      
-    </form>
-    <div class="md-search__output">
-      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="search-result">
-          <div class="md-search-result__meta">
-            Initializing search
-          </div>
-          <ol class="md-search-result__list" role="presentation"></ol>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-      
     
     
       <div class="md-header__source">
@@ -565,7 +529,7 @@
   
   
   <span class="md-ellipsis">
-    Develper Notes
+    Developer Notes
     
   </span>
   
@@ -576,7 +540,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
-            Develper Notes
+            Developer Notes
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -610,12 +574,35 @@
   
   
     <li class="md-nav__item">
+      <a href="../dev-notes/redesign/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Updated API and UML
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../dev-notes/uml/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    UML diagrams
+    Historical UML diagrams
     
   </span>
   
@@ -1315,8 +1302,8 @@
 <p>Setup whatever works for you and your environment, and be cognizant that the sample commands probably aren't <em>quite</em> exactly right for your setup!</p>
 <h2 id="options">Options</h2>
 <p>For a quick list of <code>ac</code> options, enter the <code>-h</code> command:</p>
-<pre><code>$ java -jar ac.jar -h
-AppleCommander command line options [1.11.0]:
+<pre><code class="language-shell">$ java -jar ac.jar -h
+AppleCommander command line options [12.0-SNAPSHOT]:
 -i       &lt;imagename&gt; [&lt;imagename&gt;] display information about image(s).
 -ls      &lt;imagename&gt; [&lt;imagename&gt;] list brief directory of image(s).
 -l       &lt;imagename&gt; [&lt;imagename&gt;] list directory of image(s).
@@ -1390,7 +1377,7 @@ AppleCommander command line options [1.11.0]:
 </table>
 <p>To be read correctly, DOS order disk image names should end in <code>.dsk</code> or <code>.do</code>, while ProDOS and Pascal order image names should end in <code>.po</code>. The resulting images will not boot, but they can be edited with the traditional utilities.</p>
 <p>To create a DOS 3.3, Pascal and ProDOS image, enter the commands:</p>
-<pre><code>$ java -jar ac.jar -dos140 dos.dsk
+<pre><code class="language-shell">$ java -jar ac.jar -dos140 dos.dsk
 $ java -jar ac.jar -pas140 pas.po volume1
 $ java -jar ac.jar -pro140 pro.po volume2
 </code></pre>
@@ -1398,13 +1385,13 @@ $ java -jar ac.jar -pro140 pro.po volume2
 <h2 id="displaying-information-about-an-image">Displaying information about an image</h2>
 <p>The <code>-i</code> command displays information about a disk image. Multiple image names are permitted.</p>
 <p>To get information about one or more disks, enter any of the following commands:</p>
-<pre><code>$ java -jar ac.jar -i ricky.2mg
+<pre><code class="language-shell">$ java -jar ac.jar -i ricky.2mg
 $ java -jar ac.jar -i fred.dsk ethel.po
 $ java -jar ac.jar -i mertz/*
 $ java -jar ac.jar -i *.po *.dsk
 </code></pre>
 <p>A sample from the ProDOS 2.4.2 master disk:</p>
-<pre><code>$ java -jar ac.jar -i ProDOS_2_4_2.dsk
+<pre><code class="language-shell">$ java -jar ac.jar -i ProDOS_2_4_2.dsk
 File Name: ProDOS_2_4_2.dsk
 Disk Name: /PRODOS.2.4.2/
 Physical Size (bytes): 143360
@@ -1430,14 +1417,14 @@ Volume Name: PRODOS.2.4.2
 </code></pre>
 <h2 id="directory-listings">Directory listings</h2>
 <p>The <code>-ls</code>, <code>-l</code> and <code>-ll</code> commands list the directory of a disk image in short, regular and long format respectively. Multiple image names are permitted, as suggested above. To see the directory of one or more disk, enter any of the following commands:</p>
-<pre><code>$ java -jar ac.jar -ls misc.dsk
+<pre><code class="language-shell">$ java -jar ac.jar -ls misc.dsk
 $ java -jar ac.jar -l  misc.dsk
 $ java -jar ac.jar -ll misc.dsk
 $ java -jar ac.jar -ls *.po *.dsk
 $ java -jar ac.jar -l  Nibble*/*
 </code></pre>
 <p>Sample runs (with some text omitted for brevity):</p>
-<pre><code>$ java -jar ac.jar -ls ProDOS_2_4_2.dsk
+<pre><code class="language-shell">$ java -jar ac.jar -ls ProDOS_2_4_2.dsk
 /home/rob/Downloads/ProDOS_2_4_2.dsk /PRODOS.2.4.2/
 VIEW.README BAS 512  
 &lt;snip&gt;
@@ -1460,36 +1447,36 @@ ProDOS format; 0 bytes free; 143,360 bytes used.
 </code></pre>
 <h2 id="examining-a-file">Examining a file</h2>
 <p>The <code>-e</code> command lets you examine a file by printing a readable version to standard output. To examine a file named <code>fred</code> on a disk named <code>misc.dsk</code>, enter the command:</p>
-<pre><code>$ java -jar ac.jar -e misc.dsk fred
+<pre><code class="language-shell">$ java -jar ac.jar -e misc.dsk fred
 </code></pre>
 <p>The export command tries to choose an appropriate filter for the chosen file. Filters exist for formats, with a default hexadecimal format for binary files. If the file is probably a picture, the export format is PNG. To save the output to a file:</p>
-<pre><code>$ java -jar ac.jar -e misc.dsk lucy.pic &gt; lucy.png
+<pre><code class="language-shell">$ java -jar ac.jar -e misc.dsk lucy.pic &gt; lucy.png
 </code></pre>
 <p>A sample run against an AppleSoft BASIC program on the ProDOS 2.4.2 disk:</p>
-<pre><code>$ java -jar ac.jar -e ProDOS_2_4_2.dsk VIEW.README
+<pre><code class="language-shell">$ java -jar ac.jar -e ProDOS_2_4_3.po VIEW.README
 10  REM VIEW.README BY J.BROOKS. 9/15/2016
 20 ADR = 768
-30  READ BYTE: IF BYTE &lt;0  THEN 100
-40  POKE ADR,BYTE:ADR = ADR +1: GOTO 30
+30  READ BYTE: IF BYTE &lt; 0 THEN 100
+40  POKE ADR,BYTE:ADR = ADR + 1: GOTO 30
 100  CALL 806
 150  PRINT  CHR$(4)&quot;BLOAD README,A$2000,TTXT&quot;
-200  HOME : FOR I = 1 TO 22: CALL 768: NEXT
+200  HOME : FOR I = 1 TO 23: CALL 768: NEXT 
 300  CALL 768: GET KEY$
 350  IF  ASC(KEY$) = 27 GOTO 500
-400  IF  PEEK(251) &gt;0 GOTO 300
+400  IF  PEEK(251) &gt; 0 GOTO 300
 500  PRINT  CHR$(4)&quot;bye&quot;
 1000  DATA 162,40,160,0,177,250,240,29,9,128,201,225,144,2,41,255,32,237,253,200,201,141,240,3,202,208,233,152,24,101,250,133,250,144,2,230,251,96,162,96,169,32,133,251,141,54,3,169
 1010  DATA 0,133,250,168,153,0,32,200,208,250,238,54,3,202,208,244,26,208,2,160,224,136,140,15,3,96,-1
 </code></pre>
 <h2 id="get-a-raw-data-file">Get a raw data file</h2>
 <p>The <code>-g</code> command gets a file in its raw form. To copy a file named <code>fred</code> from <code>misc.dsk</code> to a file named <code>ethel</code> on your file system, enter the command:</p>
-<pre><code>$ java -jar ac.jar -g misc.dsk fred &gt; ethel
+<pre><code class="language-shell">$ java -jar ac.jar -g misc.dsk fred &gt; ethel
 </code></pre>
 <p>Because binary files are difficult to read, you may want to send the output to a program that can show the data in a hexadecimal format other than the one used with the <code>-e</code> option, above:</p>
-<pre><code>$ java -jar ac.jar -g misc.dsk fred | hexdump
+<pre><code class="language-shell">$ java -jar ac.jar -g misc.dsk fred | hexdump
 </code></pre>
 <p>Again, a sample run with the AppleSoft BASIC program from the ProDOS 2.4.2 image.  This time, however, you will see the tokenized program:</p>
-<pre><code>$ java -jar ac.jar -g ProDOS_2_4_2.dsk VIEW.README | hexdump -C
+<pre><code class="language-shell">$ java -jar ac.jar -g ProDOS_2_4_2.dsk VIEW.README | hexdump -C
 00000000  29 08 0a 00 b2 56 49 45  57 2e 52 45 41 44 4d 45  |)....VIEW.README|
 00000010  20 42 59 20 4a 2e 42 52  4f 4f 4b 53 2e 20 39 2f  | BY J.BROOKS. 9/|
 00000020  31 35 2f 32 30 31 36 00  35 08 14 00 41 44 52 d0  |15/2016.5...ADR.|
@@ -1505,15 +1492,15 @@ ProDOS format; 0 bytes free; 143,360 bytes used.
 </code></pre>
 <h2 id="put-standard-input-onto-disk-image">Put standard input onto disk image</h2>
 <p>The <code>-p</code> command puts data from the standard input stream onto a disk image. Four parameters are used: imagename, filename, type, and address. If the address is omitted and one is required, $2000 is assumed. Suppose <code>ethel</code> is a binary file meant to start at address 2048 ($800 or 0x800). To put the binary file named <code>ethel</code> back into a file named <code>fred</code> with that starting address on the DOS image named <code>misc.dsk</code>:</p>
-<pre><code>$ java -jar ac.jar -p misc.dsk fred B 0x800 &lt; ethel
+<pre><code class="language-shell">$ java -jar ac.jar -p misc.dsk fred B 0x800 &lt; ethel
 </code></pre>
 <p>Alternatively, suppose <code>ethel</code> is a binary starting at 2048 destined for <code>fred</code> on a ProDOS image named <code>p1.po</code>:</p>
-<pre><code>$ java -jar ac.jar -p p1.po fred bin 2048 &lt; ethel
+<pre><code class="language-shell">$ java -jar ac.jar -p p1.po fred bin 2048 &lt; ethel
 </code></pre>
 <h2 id="put-standard-input-onto-disk-image-as-a-text-file">Put standard input onto disk image as a text file</h2>
 <p>The <code>-pt</code> and <code>-ptx</code> commands work the same as <code>-p</code> except that they assume the input is a text file. This defaults the file type to <code>TXT</code>. They also translate the MS-DOS CR+LF format into a single line ending.</p>
 <p>A sample using the <code>CONTRIB.txt</code> file in this archive, which happes to be in MS-DOS format:</p>
-<pre><code>$ cat CONTRIB.txt | hexdump -C
+<pre><code class="language-shell">$ cat CONTRIB.txt | hexdump -C
 00000000  41 70 70 6c 65 43 6f 6d  6d 61 6e 64 65 72 20 2d  |AppleCommander -|
 00000010  20 41 6e 20 41 70 70 6c  65 20 5d 5b 20 69 6d 61  | An Apple ][ ima|
 00000020  67 65 20 75 74 69 6c 69  74 79 2e 0d 0a 43 6f 70  |ge utility...Cop|
@@ -1521,7 +1508,7 @@ ProDOS format; 0 bytes free; 143,360 bytes used.
 $ # Note the CR + LF is here .............. ^^ ^^
 </code></pre>
 <p>For <code>-pt</code>, it translates line endings to the Apple 0x8d as well as <em>setting</em> the high bit:</p>
-<pre><code>$ cat CONTRIB.txt | ac -pt test.dsk contrib
+<pre><code class="language-shell">$ cat CONTRIB.txt | ac -pt test.dsk contrib
 $ ac -g test.dsk contrib | hexdump -C
 00000000  c1 f0 f0 ec e5 c3 ef ed  ed e1 ee e4 e5 f2 a0 ad  |................|
 00000010  a0 c1 ee a0 c1 f0 f0 ec  e5 a0 dd db a0 e9 ed e1  |................|
@@ -1530,7 +1517,7 @@ $ ac -g test.dsk contrib | hexdump -C
 $ # Note that the CR + LF is fixed ........ ^^
 </code></pre>
 <p>For <code>-ptx</code>, it translates line endings to the Apple 0x0d as well as <em>clearing</em> the high bit:</p>
-<pre><code>$ cat CONTRIB.txt | ac -ptx test.dsk contrib2
+<pre><code class="language-shell">$ cat CONTRIB.txt | ac -ptx test.dsk contrib2
 $ ac -g test.dsk contrib2 | hexdump -C
 00000000  41 70 70 6c 65 43 6f 6d  6d 61 6e 64 65 72 20 2d  |AppleCommander -|
 00000010  20 41 6e 20 41 70 70 6c  65 20 5d 5b 20 69 6d 61  | An Apple ][ ima|
@@ -1543,7 +1530,7 @@ $ # Note that the CR + LF is fixed ........ ^^
 <blockquote>
 <p>Note: Due to the bastools API, <code>ac</code> will create a temp file in the system temp folder and then delete it once completed. </p>
 </blockquote>
-<pre><code>$ cat sample.bas 
+<pre><code class="language-shell">$ cat sample.bas 
 10 TEXT:HOME:GR:POKE -16302,23
 20 COLOR=0:FOR I=41 TO 47 STEP 2:HLIN 0,39 AT I:NEXT
 30 COLOR=INT(RND(1)*16)
@@ -1564,15 +1551,15 @@ $ ac -g test.dsk sample | hexdump -C
 </code></pre>
 <h2 id="put-standard-input-with-dos-33-header-onto-disk-image">Put standard input with DOS 3.3 header onto disk image</h2>
 <p>The <code>-dos</code> command is like <code>-p</code>, but it assumes the input stream includes a four-byte header, as generated by older versions of <code>cc65</code>. Three parameters are required: imagename, filename, and type. The start address is taken from bytes 0-1 of the header. To put the DOS binary named <code>ethel</code> into a file named <code>fred</code> on the DOS image named <code>misc.dsk</code>:</p>
-<pre><code>$ java -jar ac.jar -dos misc.dsk fred B &lt; ethel
+<pre><code class="language-shell">$ java -jar ac.jar -dos misc.dsk fred B &lt; ethel
 </code></pre>
 <h2 id="put-standard-input-in-applesingle-format-onto-disk-image">Put standard input in AppleSingle format onto disk image</h2>
 <p>The <code>-as</code> command is like <code>-p</code>, but it assumes the input stream is in the AppleSingle format, as generated by newer versions of <code>cc65</code> (<a href="https://github.com/AppleCommander/AppleCommander/issues/20">see ticket #20</a>). The parameters are imagename (required) and, optionally, filename. The AppleSingle format supports a filename entry, but it is not always populated.  To put the AppleSingle binary named <code>ethel</code> into a file named <code>fred</code> on the ProDOS image named <code>misc.dsk</code>:</p>
-<pre><code>$ java -jar ac.jar -as misc.dsk fred &lt; ethel
+<pre><code class="language-shell">$ java -jar ac.jar -as misc.dsk fred &lt; ethel
 </code></pre>
 <h2 id="putting-files-and-file-types">Putting files and file types</h2>
 <p>As another example, consider the text file named <code>foo.text</code> and the Pascal image named <code>src.po</code>:</p>
-<pre><code>$ java -jar ac.jar -p p2.po foo.text text &lt; foo.text
+<pre><code class="language-shell">$ java -jar ac.jar -p p2.po foo.text text &lt; foo.text
 </code></pre>
 <p>Valid file types are specific to each operating system:</p>
 <table>
@@ -1599,20 +1586,20 @@ $ ac -g test.dsk sample | hexdump -C
 </table>
 <h2 id="delete-a-file">Delete a file</h2>
 <p>The <code>-d</code> command deletes a file from an image:</p>
-<pre><code>$ java -jar ac.jar -d misc.dsk fred
+<pre><code class="language-shell">$ java -jar ac.jar -d misc.dsk fred
 </code></pre>
 <h2 id="copying-a-file-between-disks">Copying a file between disks</h2>
 <p>To copy a file from one image to another, do something like this:</p>
-<pre><code>$ java -jar ac.jar -g one.dsk fred | java -jar ac.jar -p another.dsk fred bin 2048
+<pre><code class="language-shell">$ java -jar ac.jar -g one.dsk fred | java -jar ac.jar -p another.dsk fred bin 2048
 </code></pre>
 <h2 id="locking-and-unlocking-a-file">Locking and unlocking a file</h2>
 <p>The <code>-k</code> and <code>-u</code> commands lock and unlock a file on the given image:</p>
-<pre><code>$ java -jar ac.jar -k misc.dsk fred
+<pre><code class="language-shell">$ java -jar ac.jar -k misc.dsk fred
 $ java -jar ac.jar -u misc.dsk fred
 </code></pre>
 <h2 id="change-a-volume-name">Change a volume name</h2>
 <p>The <code>-n</code> command changes the volume name on an image. Only ProDOS and Pascal images are affected:</p>
-<pre><code>$ java -jar ac.jar -n misc.po name
+<pre><code class="language-shell">$ java -jar ac.jar -n misc.po name
 </code></pre>
 <h2 id="further-details">Further details</h2>
 <ul>
@@ -1681,6 +1668,12 @@ $ java -jar ac.jar -u misc.dsk fred
     
     
       <script src="../assets/javascripts/bundle.50899def.min.js"></script>
+      
+        <script src="../assets/mkdocs_puml/puml.js"></script>
+      
+        <script src="https://unpkg.com/@panzoom/panzoom@4.5.1/dist/panzoom.min.js"></script>
+      
+        <script src="../assets/mkdocs_puml/interaction.js"></script>
       
     
   </body>

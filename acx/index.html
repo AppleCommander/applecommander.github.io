@@ -52,6 +52,10 @@
       
     
     
+      <link rel="stylesheet" href="../assets/mkdocs_puml/puml.css">
+    
+      <link rel="stylesheet" href="../assets/mkdocs_puml/interaction.css">
+    
     <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -122,46 +126,6 @@
     
     
     
-    
-      
-      
-        <label class="md-header__button md-icon" for="__search">
-          
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
-        </label>
-        <div class="md-search" data-md-component="search" role="dialog">
-  <label class="md-search__overlay" for="__search"></label>
-  <div class="md-search__inner" role="search">
-    <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
-      <label class="md-search__icon md-icon" for="__search">
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
-        
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
-      </label>
-      <nav class="md-search__options" aria-label="Search">
-        
-        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
-          
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
-        </button>
-      </nav>
-      
-    </form>
-    <div class="md-search__output">
-      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="search-result">
-          <div class="md-search-result__meta">
-            Initializing search
-          </div>
-          <ol class="md-search-result__list" role="presentation"></ol>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-      
     
     
       <div class="md-header__source">
@@ -475,7 +439,7 @@
   
   
   <span class="md-ellipsis">
-    Develper Notes
+    Developer Notes
     
   </span>
   
@@ -486,7 +450,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
-            Develper Notes
+            Developer Notes
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -520,12 +484,35 @@
   
   
     <li class="md-nav__item">
+      <a href="../dev-notes/redesign/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Updated API and UML
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../dev-notes/uml/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    UML diagrams
+    Historical UML diagrams
     
   </span>
   
@@ -1131,7 +1118,7 @@
 <p><code>acx</code> is a new command-line tool for AppleCommander.  This tool is subcommand based (think <code>git pull</code> and <code>git commit</code>) and is expected to allow more nuanced command activities.</p>
 <h2 id="overview-asking-for-help">Overview / Asking for help</h2>
 <p>All commands and subcommands will show options and command structure with the <code>--help</code> flag. </p>
-<pre><code>$ acx --help
+<pre><code class="language-shell">$ acx --help
 Usage: acx [-hVv] [--debug] [--quiet] [COMMAND]
 
 'acx' experimental utility
@@ -1169,29 +1156,29 @@ Commands:
   write            Write a block or sector.
 </code></pre>
 <p>When looking for options for a subcommand, the <code>help</code> subcommand may be used as an alternate (<code>acx copy --help</code> or <code>acx help copy</code> are both valid).</p>
-<pre><code>$ acx copy --help
-Usage: acx copy [-fhr] -d=&lt;disk&gt; -s=&lt;sourceDisk&gt; [--to=&lt;targetPath&gt;]
-                [&lt;globs&gt;...]
+<pre><code class="language-shell">$ acx copy --help
+Usage: acx copy [-fhr] [--to=&lt;targetPath&gt;] -d=&lt;disks&gt; [-d=&lt;disks&gt;]...
+                -s=&lt;sourceDisks&gt; [-s=&lt;sourceDisks&gt;]... [&lt;globs&gt;...]
 
 Copy files between disks.
 
 Parameters:
-      [&lt;globs&gt;...]    File glob(s) to copy (default = '*')
+      [&lt;globs&gt;...]     File glob(s) to copy (default = '*')
 
 Options:
-  -d, --disk=&lt;disk&gt;   Image to process [$ACX_DISK_NAME].
-  -f, --force         Overwrite existing files.
-  -h, --help          Show help for subcommand.
-  -r, --recursive     Copy files recursively.
-  -s, --from, --source=&lt;sourceDisk&gt;
-                      Source disk for files.
+  -d, --disk=&lt;disks&gt;   Image to process [$ACX_DISK_NAME].
+  -f, --force          Overwrite existing files.
+  -h, --help           Show help for subcommand.
+  -r, --recursive      Copy files recursively.
+  -s, --from, --source=&lt;sourceDisks&gt;
+                       Source disk for files.
       --to, --directory=&lt;targetPath&gt;
-                      Specify which directory to place files.
+                       Specify which directory to place files.
 </code></pre>
 <h2 id="identifying-a-disk">Identifying a disk</h2>
 <p><code>acx</code> differs from <code>ac</code> in that the primary disk image is always specified by the <code>-d</code> flag.  However, this can be painful when running a series of commands.  To simplify usage, the environment variable <code>ACX_DISK_NAME</code> can be set to simplify scripting.</p>
 <p>This means that a sequence of commands that look like this:</p>
-<pre><code>$ acx create -d disk1.po --prodos
+<pre><code class="language-shell">$ acx create -d disk1.po --prodos
 $ acx copy -d disk1.po --from ProDOS_2_4_2.dsk PRODOS BASIC.SYSTEM
 $ acx list -d disk1.po --native
 
@@ -1202,7 +1189,7 @@ Name: /NEW.DISK/
 ProDOS format; 111,104 bytes free; 32,256 bytes used.
 </code></pre>
 <p>Can also be specified in this manner:</p>
-<pre><code>$ export ACX_DISK_NAME=disk2.po   # This sets the environment variable with the disk name
+<pre><code class="language-shell">$ export ACX_DISK_NAME=disk2.po   # This sets the environment variable with the disk name
 $ acx create --prodos
 $ acx copy --from ProDOS_2_4_2.dsk PRODOS BASIC.SYSTEM
 $ acx list --native
@@ -1216,7 +1203,7 @@ $ unset ACX_DISK_NAME               # This removes the environment variable
 </code></pre>
 <h2 id="creating-a-bootable-disk">Creating a bootable disk</h2>
 <p><code>acx</code> introduces experimenal capability to create bootable disks. Note that this is only viable for writeable disks (DOS, ProDOS, and Pascal).</p>
-<pre><code>$ acx create -d disk1.po --format ProDOS_2_4_2.dsk --prodos --size=140kb
+<pre><code class="language-shell">$ acx create -d disk1.po --format ProDOS_2_4_2.dsk --prodos --size=140kb
 $ acx create -d disk2.dsk --format original332sysmas.nib --dos --size=140kb
 $ acx create -d disk3.po --format UCSD\ Pascal\ 1.2_0.DSK --pascal
 </code></pre>
@@ -1226,7 +1213,7 @@ $ acx create -d disk3.po --format UCSD\ Pascal\ 1.2_0.DSK --pascal
 <p>For ProDOS and Pascal, the boot block is copied over and in the ProDOS case, <code>STARTUP</code> and <code>BASIC.SYSTEM</code> as well. For DOS 3.3, tracks 0-2 are copied and marked as used.</p>
 <h2 id="dumping-a-block-or-sector">Dumping a block or sector</h2>
 <p><code>acx</code> can dump any sector or block in a hex format:</p>
-<pre><code>$ acx dump -d ProDOS_2_4_2.dsk --block 2
+<pre><code class="language-shell">$ acx dump -d ProDOS_2_4_2.dsk --block 2
 Offset   Hex Data                                          Characters
 =======  ================================================  =================
 $000800  00 00 03 00 FC 50 52 4F  44 4F 53 2E 32 2E 34 2E  ....|PRO DOS.2.4.
@@ -1240,9 +1227,46 @@ $000870  21 00 20 2F 21 31 09 02  00 1B 51 55 49 54 2E 53  !. /!1.. ..QUIT.S
 $000880  59 53 54 45 4D 00 00 00  00 FF 27 00 01 00 38 00  YSTEM... ..'...8.
 &lt;snip&gt;
 </code></pre>
+<p>Or a range of them:</p>
+<pre><code class="language-shell">$ acx dump -d original332sysmas.do -t 17 -s 1-15
+Track 17, Sector 01:
+Offset   Hex Data                                          Characters
+=======  ================================================  =================
+$000000  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  ........ ........
+$000010  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  ........ ........
+&lt;snip&gt;
+
+Track 17, Sector 02:
+Offset   Hex Data                                          Characters
+=======  ================================================  =================
+$000000  00 11 01 00 00 00 00 00  00 00 00 00 00 00 00 00  ........ ........
+$000010  00 00 00 00 00 00 00 00  00 00 00 00 00 00 00 00  ........ ........
+&lt;snip&gt;
+
+Track 17, Sector 15:
+Offset   Hex Data                                          Characters
+=======  ================================================  =================
+$000000  00 11 0E 00 00 00 00 00  00 00 00 1A 0F 82 C8 C5  ........ ......HE
+$000010  CC CC CF A0 A0 A0 A0 A0  A0 A0 A0 A0 A0 A0 A0 A0  LLO              
+$000020  A0 A0 A0 A0 A0 A0 A0 A0  A0 A0 A0 A0 03 00 1A 0C               ....
+$000030  81 C1 D0 D0 CC C5 D3 CF  C6 D4 A0 A0 A0 A0 A0 A0  .APPLESO FT      
+$000040  A0 A0 A0 A0 A0 A0 A0 A0  A0 A0 A0 A0 A0 A0 A0 03                  .
+$000050  00 1A 09 84 CC CF C1 C4  C5 D2 AE CF C2 CA B0 A0  ....LOAD ER.OBJ0 
+$000060  A0 A0 A0 A0 A0 A0 A0 A0  A0 A0 A0 A0 A0 A0 A0 A0                   
+$000070  A0 A0 06 00 1A 03 84 C6  D0 C2 C1 D3 C9 C3 A0 A0    .....F PBASIC  
+$000080  A0 A0 A0 A0 A0 A0 A0 A0  A0 A0 A0 A0 A0 A0 A0 A0                   
+$000090  A0 A0 A0 A0 A0 2A 00 1D  09 84 C9 CE D4 C2 C1 D3       *.. ..INTBAS
+$0000A0  C9 C3 A0 A0 A0 A0 A0 A0  A0 A0 A0 A0 A0 A0 A0 A0  IC               
+$0000B0  A0 A0 A0 A0 A0 A0 A0 A0  2A 00 20 0F 82 CD C1 D3           *. ..MAS
+$0000C0  D4 C5 D2 A0 A0 A0 A0 A0  A0 A0 A0 A0 A0 A0 A0 A0  TER              
+$0000D0  A0 A0 A0 A0 A0 A0 A0 A0  A0 A0 A0 03 00 20 0C 84              .. ..
+$0000E0  CD C1 D3 D4 C5 D2 A0 C3  D2 C5 C1 D4 C5 A0 A0 A0  MASTER C REATE   
+$0000F0  A0 A0 A0 A0 A0 A0 A0 A0  A0 A0 A0 A0 A0 A0 09 00                 ..
+** END **
+</code></pre>
 <h2 id="disassembling-the-boot-sector">Disassembling the boot sector</h2>
 <p><code>acx</code> can dump any sector or block in a disassembled format:</p>
-<pre><code>$ acx dump -d ~/Downloads/ProDOS_2_4_2.dsk -t 0 -s 0 --disassembly
+<pre><code class="language-shell">$ acx dump -d ~/Downloads/ProDOS_2_4_2.dsk -t 0 -s 0 --disassembly
 0800- 01        ---
 0801- 38        SEC
 0802- B0 03     BCS $0807
@@ -1272,7 +1296,7 @@ $000880  59 53 54 45 4D 00 00 00  00 FF 27 00 01 00 38 00  YSTEM... ..'...8.
 <h2 id="file-listings-by-name-pattern">File listings by name pattern</h2>
 <p>A new feature when listing files is that <code>acx</code> allows "glob" pattern matching ("*" wildcard matching). (Be careful with the usual shell expansion issues.)</p>
 <p>For example, to list files that might be run at startup (<code>*.SYSTEM</code>):</p>
-<pre><code>$ acx ls -d ProDOS_2_4_2.dsk --globs &quot;*.SYSTEM&quot;
+<pre><code class="language-shell">$ acx ls -d ProDOS_2_4_2.dsk --globs &quot;*.SYSTEM&quot;
 
 File: ProDOS_2_4_2.dsk
 Name: /PRODOS.2.4.2/
@@ -1283,7 +1307,7 @@ ProDOS format; 0 bytes free; 143,360 bytes used.
 </code></pre>
 <h2 id="file-listing-as-json-or-csv">File listing as JSON or CSV</h2>
 <p>Like <code>ac</code>, <code>acx</code> allows file listings to be written out as structured text.  Specifically, with JSON output, secondary processing tools can be used to extract information. Here's a sample using the <code>jq</code> tool:</p>
-<pre><code>$ acx ls -d ProDOS_2_4_2.dsk --json | jq '.disks[].files[] | select(.name == &quot;BASIC.SYSTEM&quot;)'
+<pre><code class="language-shell">$ acx ls -d ProDOS_2_4_2.dsk --json | jq '.disks[].files[] | select(.name == &quot;BASIC.SYSTEM&quot;)'
 {
   &quot;locked&quot;: &quot;*&quot;,
   &quot;name&quot;: &quot;BASIC.SYSTEM&quot;,
@@ -1297,7 +1321,7 @@ ProDOS format; 0 bytes free; 143,360 bytes used.
 </code></pre>
 <h2 id="find-duplicate-files">Find duplicate files</h2>
 <p><code>acx</code> can look for duplicate files:</p>
-<pre><code>$ acx dups -d &quot;Beagle Bros Tip Disk #1.dsk&quot;
+<pre><code class="language-shell">$ acx dups -d &quot;Beagle Bros Tip Disk #1.dsk&quot;
 Differences:
 /mmmmmmmm TIP BOOK #1 mmmmmmmmm has the following duplicates:
     - /mmmmmmmm TIP BOOK #2 mmmmmmmmm
@@ -1307,7 +1331,7 @@ Differences:
     - /D2
 </code></pre>
 <p>... and a partial directory listing:</p>
-<pre><code>$ acx ls -l -d &quot;Beagle Bros Tip Disk #1.dsk&quot;
+<pre><code class="language-shell">$ acx ls -l -d &quot;Beagle Bros Tip Disk #1.dsk&quot;
 
 File: Beagle Bros Tip Disk #1.dsk
 Name: DISK VOLUME #254
@@ -1329,7 +1353,7 @@ DOS 3.3 format; 29,440 bytes free; 113,920 bytes used.
 <p>This was added in <code>acx</code> version 1.11.0. The primary intention is to track any slips in ongoing code changes but may also be useful to others.</p>
 <p>Note that each record is an independent JSON structure. It will work with tools such as <code>jq</code> (see below for sample).</p>
 <p>Sample run: (for more output, use <code>acx -vvv scan ./Apple2/ -o newscan.json</code> for more verbosity)</p>
-<pre><code>$ acx scan ./Apple2/ -o newscan.json
+<pre><code class="language-shell">$ acx scan ./Apple2/ -o newscan.json
 Scanned 3820 disk images.
 </code></pre>
 <p>Success record:</p>
@@ -1365,7 +1389,7 @@ Scanned 3820 disk images.
 }
 </code></pre>
 <p>Using <code>jq</code>: (selects failures that have the <code>Unknown ProDOS storage type!</code> error message)</p>
-<pre><code>$ cat newscan.json | jq -r 'select(.success | not) | select(.errors | contains([&quot;Unknown ProDOS storage type!&quot;]))'
+<pre><code class="language-shell">$ cat newscan.json | jq -r 'select(.success | not) | select(.errors | contains([&quot;Unknown ProDOS storage type!&quot;]))'
 &lt;snip&gt;
 {
   &quot;imageName&quot;: &quot;./Apple2/System 6.0.1/Disk 1 of 7 Install.2mg&quot;,
@@ -1445,6 +1469,12 @@ Scanned 3820 disk images.
     
     
       <script src="../assets/javascripts/bundle.50899def.min.js"></script>
+      
+        <script src="../assets/mkdocs_puml/puml.js"></script>
+      
+        <script src="https://unpkg.com/@panzoom/panzoom@4.5.1/dist/panzoom.min.js"></script>
+      
+        <script src="../assets/mkdocs_puml/interaction.js"></script>
       
     
   </body>
