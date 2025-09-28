@@ -1,0 +1,880 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Information site for the AppleCommander suite of tools">
+      
+      
+        <meta name="author" content="a2geek">
+      
+      
+        <link rel="canonical" href="https://applecommander.github.io/dev-notes/disassembler/">
+      
+      
+        <link rel="prev" href="../uml/">
+      
+      
+        <link rel="next" href="../ant/">
+      
+      
+      <link rel="icon" href="../../images/apple-logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
+    
+    
+      
+        <title>Disassembler API - AppleCommander</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.7e37652d.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/mkdocs_puml/puml.css">
+    
+      <link rel="stylesheet" href="../../assets/mkdocs_puml/interaction.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#disassembler-api" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="AppleCommander" class="md-header__button md-logo" aria-label="AppleCommander" data-md-component="logo">
+      
+  <img src="../../images/apple-logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AppleCommander
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Disassembler API
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/AppleCommander/AppleCommander" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    AppleCommander
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="AppleCommander" class="md-nav__button md-logo" aria-label="AppleCommander" data-md-component="logo">
+      
+  <img src="../../images/apple-logo.png" alt="logo">
+
+    </a>
+    AppleCommander
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/AppleCommander/AppleCommander" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    AppleCommander
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../install/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Installing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Screenshots
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ac/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Using 'ac'
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../acx/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Using 'acx'
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Developer Notes
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Developer Notes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gav/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Maven/Gradle GAV
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../redesign/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Updated API and UML
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../uml/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Historical UML diagrams
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Disassembler API
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Disassembler API
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#api" class="md-nav__link">
+    <span class="md-ellipsis">
+      API
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#important-interfacesclassesrecords" class="md-nav__link">
+    <span class="md-ellipsis">
+      Important Interfaces/Classes/Records
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ant Task
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javadoc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Javadoc
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cc65-pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    cc65 Pipeline
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    History
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            History
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../history/current/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Current releases
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../history/legacy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Legacy releases
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#api" class="md-nav__link">
+    <span class="md-ellipsis">
+      API
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#important-interfacesclassesrecords" class="md-nav__link">
+    <span class="md-ellipsis">
+      Important Interfaces/Classes/Records
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="disassembler-api">Disassembler API</h1>
+<p>The AppleCommander disassembler API is a reusable component that can be utilized by other Java projects.
+The easiest mechanism is to use a dependency manager such as Gradle or Maven.</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Maven</label><label for="__tabbed_1_2">Gradle</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nt">&lt;dependency&gt;</span>
+<span class="w">    </span><span class="nt">&lt;groupId&gt;</span>org.applecommander<span class="nt">&lt;/groupId&gt;</span>
+<span class="w">    </span><span class="nt">&lt;artifactId&gt;</span>acdasm<span class="nt">&lt;/artifactId&gt;</span>
+<span class="w">    </span><span class="nt">&lt;version&gt;</span>6.0<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">dependencies</span><span class="w"> </span><span class="o">{</span>
+<span class="w">    </span><span class="n">implementation</span><span class="w"> </span><span class="s1">&#39;org.applecommander:acdasm:6.0&#39;</span>
+<span class="o">}</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<h2 id="api">API</h2>
+<p>Invoking the disassembler is done through a "builder" type interface. For example:</p>
+<div class="highlight"><pre><span></span><code><span class="n">List</span><span class="o">&lt;</span><span class="n">Instruction</span><span class="o">&gt;</span><span class="w"> </span><span class="n">assembly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Disassembler</span><span class="p">.</span><span class="na">with</span><span class="p">(</span><span class="n">code</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="na">startingAddress</span><span class="p">(</span><span class="n">startAddress</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="na">bytesToSkip</span><span class="p">(</span><span class="n">offset</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="na">bytesToDecode</span><span class="p">(</span><span class="n">length</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="na">use</span><span class="p">(</span><span class="n">instructionSet</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="na">section</span><span class="p">(</span><span class="n">libraries</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="na">decode</span><span class="p">(</span><span class="n">labels</span><span class="p">);</span>
+</code></pre></div>
+<p>The only required components are <code>code</code> and the <code>InstructionSet</code>.</p>
+<p>The following instruction sets are available:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Creation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">6502</td>
+<td style="text-align: left;"><code>InstructionSet6502.for6502()</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">6502 + Illegal Instructions</td>
+<td style="text-align: left;"><code>InstructionSet6502.for6502withIllegalInstructions</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">65C02</td>
+<td style="text-align: left;"><code>InstructionSet6502.for65C02()</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">SWEET-16</td>
+<td style="text-align: left;"><code>InstructionSetSWEET16.forSWEET16()</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">6502 + SWEET-16</td>
+<td style="text-align: left;"><code>InstructionSet6502Switching.withSwitching()</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">Z80</td>
+<td style="text-align: left;"><code>InstructionSetZ80.forZ80()</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">p-code</td>
+<td style="text-align: left;"><code>InstructionSetPCode.forApplePascal()</code></td>
+</tr>
+</tbody>
+</table>
+<p>As a minimal example, this would setup to disassemble 6502 code:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">byte</span><span class="o">[]</span><span class="w"> </span><span class="n">code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">File</span><span class="p">.</span><span class="na">readAllBytes</span><span class="p">(</span><span class="n">file</span><span class="p">);</span>
+<span class="n">List</span><span class="o">&lt;</span><span class="n">Instruction</span><span class="o">&gt;</span><span class="w"> </span><span class="n">assembly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Disassembler</span><span class="p">.</span><span class="na">with</span><span class="p">(</span><span class="n">code</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="na">use</span><span class="p">(</span><span class="n">InstructionSet6502</span><span class="p">.</span><span class="na">for6502</span><span class="p">())</span>
+<span class="w">    </span><span class="p">.</span><span class="na">decode</span><span class="p">();</span>
+</code></pre></div>
+<p>If you want the labels, create a <code>Map&lt;String,Integer&gt;</code> to capture them and pass it in to the <code>decode(Map)</code> method.</p>
+<h2 id="important-interfacesclassesrecords">Important Interfaces/Classes/Records</h2>
+<p>The <code>Dissassembler</code> decode interface returns a list of <code>Instruction</code> components. Each component contains
+the address, bytes involved, the opcode mnemonic, and a list of operands. The operands have two format
+options: <code>format()</code> will format the operand as expected while <code>format(String)</code> will replace an address
+with the label instead. To determine if an operand contains an address, the <code>address()</code> method returns
+a Java Optional class, so use it as applicable as the return value is never null.</p>
+<div class='puml-container'><div class="puml light" style=""><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" data-diagram-type="CLASS" height="524px" preserveAspectRatio="xMidYMid meet" style="width:816px;height:524px;background:#FFFFFF;" version="1.1" viewBox="0 0 816 524" width="816px" zoomAndPan="magnify" class="diagram"><defs/><g><g class="entity" data-entity="Instruction" data-source-line="2" data-uid="ent0002" id="entity_Instruction"><rect fill="#F1F1F1" height="145.7813" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="253.9375" x="7" y="180.89"/><ellipse cx="92.2544" cy="196.89" fill="#F1F1F1" rx="11" ry="11" style="stroke:#181818;stroke-width:1;"/><path d="M93.4575,197.0306 Q93.8169,197.1088 94.0825,197.39 Q94.3638,197.6556 94.7544,198.4369 L96.9888,202.89 L94.3013,202.89 L92.8013,199.765 Q92.7388,199.6244 92.6294,199.39 Q91.9731,197.9994 91.0825,197.9994 L90.3013,197.9994 L90.3013,202.89 L87.8638,202.89 L87.8638,190.4994 L91.395,190.4994 Q93.7856,190.4994 94.8169,191.3431 Q95.8638,192.1869 95.8638,194.0931 Q95.8638,195.3744 95.2388,196.14 Q94.6294,196.89 93.4575,197.0306 Z M90.3013,192.5619 L90.3013,195.9369 L91.4575,195.9369 Q92.4731,195.9369 92.895,195.5463 Q93.3325,195.14 93.3325,194.2338 Q93.3325,193.3431 92.895,192.9525 Q92.4731,192.5619 91.4575,192.5619 L90.3013,192.5619 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="74.9287" x="112.7544" y="201.7367">Instruction</text><line style="stroke:#181818;stroke-width:0.5;" x1="8" x2="259.9375" y1="212.89" y2="212.89"/><line style="stroke:#181818;stroke-width:0.5;" x1="8" x2="259.9375" y1="220.89" y2="220.89"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="93.6523" x="13" y="237.8851">int address();</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="96.0518" x="13" y="254.182">byte[] code();</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="135.6592" x="13" y="270.4789">String mnemonic();</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="194.0928" x="13" y="286.7757">List&lt;Operand&gt; operands();</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="222.3662" x="13" y="303.0726">Optional&lt;String&gt; description();</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="241.9375" x="13" y="319.3695">Optional&lt;Operand&gt; addressRef();</text></g><g class="entity" data-entity="Operand" data-source-line="10" data-uid="ent0003" id="entity_Operand"><rect fill="#F1F1F1" height="129.4844" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="220.4141" x="23.76" y="387.68"/><ellipse cx="99.4099" cy="403.68" fill="#F1F1F1" rx="11" ry="11" style="stroke:#181818;stroke-width:1;"/><path d="M100.613,403.8206 Q100.9724,403.8988 101.238,404.18 Q101.5193,404.4456 101.9099,405.2269 L104.1443,409.68 L101.4568,409.68 L99.9568,406.555 Q99.8943,406.4144 99.7849,406.18 Q99.1287,404.7894 98.238,404.7894 L97.4568,404.7894 L97.4568,409.68 L95.0193,409.68 L95.0193,397.2894 L98.5505,397.2894 Q100.9412,397.2894 101.9724,398.1331 Q103.0193,398.9769 103.0193,400.8831 Q103.0193,402.1644 102.3943,402.93 Q101.7849,403.68 100.613,403.8206 Z M97.4568,399.3519 L97.4568,402.7269 L98.613,402.7269 Q99.6287,402.7269 100.0505,402.3363 Q100.488,401.93 100.488,401.0238 Q100.488,400.1331 100.0505,399.7425 Q99.6287,399.3519 98.613,399.3519 L97.4568,399.3519 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="60.6143" x="119.9099" y="408.5267">Operand</text><line style="stroke:#181818;stroke-width:0.5;" x1="24.76" x2="243.1741" y1="419.68" y2="419.68"/><line style="stroke:#181818;stroke-width:0.5;" x1="24.76" x2="243.1741" y1="427.68" y2="427.68"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="106.5039" x="29.76" y="444.6751">String opFmt();</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="100.1123" x="29.76" y="460.972">String value();</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="208.4141" x="29.76" y="477.2689">Optional&lt;Integer&gt; address();</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="108.8281" x="29.76" y="493.5657">String format();</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="188.918" x="29.76" y="509.8626">String format(String label);</text></g><g class="entity" data-entity="InstructionSet" data-source-line="17" data-uid="ent0004" id="entity_InstructionSet"><rect fill="#F1F1F1" height="96.8906" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="330.3564" x="260.79" y="7"/><ellipse cx="372.7592" cy="23" fill="#B4A7E5" rx="11" ry="11" style="stroke:#181818;stroke-width:1;"/><path d="M368.6811,18.7656 L368.6811,16.6094 L376.0717,16.6094 L376.0717,18.7656 L373.603,18.7656 L373.603,26.8438 L376.0717,26.8438 L376.0717,29 L368.6811,29 L368.6811,26.8438 L371.1499,26.8438 L371.1499,18.7656 L368.6811,18.7656 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="97.918" x="393.2592" y="27.8467">InstructionSet</text><line style="stroke:#181818;stroke-width:0.5;" x1="261.79" x2="590.1464" y1="39" y2="39"/><line style="stroke:#181818;stroke-width:0.5;" x1="261.79" x2="590.1464" y1="47" y2="47"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="135.0918" x="266.79" y="63.9951">Defaults defaults();</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="318.3564" x="266.79" y="80.292">List&lt;Instruction&gt; decode(Program program);</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="257.2432" x="266.79" y="96.5889">List&lt;OpcodeTable&gt; opcodeTables();</text></g><g class="entity" data-entity="OpcodeTable" data-source-line="22" data-uid="ent0005" id="entity_OpcodeTable"><rect fill="#F1F1F1" height="80.5938" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="259.7412" x="296.1" y="213.49"/><ellipse cx="375.6259" cy="229.49" fill="#B4A7E5" rx="11" ry="11" style="stroke:#181818;stroke-width:1;"/><path d="M371.5478,225.2556 L371.5478,223.0994 L378.9384,223.0994 L378.9384,225.2556 L376.4696,225.2556 L376.4696,233.3338 L378.9384,233.3338 L378.9384,235.49 L371.5478,235.49 L371.5478,233.3338 L374.0165,233.3338 L374.0165,225.2556 L371.5478,225.2556 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="92.1895" x="396.1259" y="234.3367">OpcodeTable</text><line style="stroke:#181818;stroke-width:0.5;" x1="297.1" x2="554.8412" y1="245.49" y2="245.49"/><line style="stroke:#181818;stroke-width:0.5;" x1="297.1" x2="554.8412" y1="253.49" y2="253.49"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="101.5752" x="302.1" y="270.4851">String name();</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="247.7412" x="302.1" y="286.782">String opcodeExample(int opcode);</text></g><g class="entity" data-entity="Defaults" data-source-line="26" data-uid="ent0006" id="entity_Defaults"><rect fill="#F1F1F1" height="113.1875" rx="2.5" ry="2.5" style="stroke:#181818;stroke-width:0.5;" width="218.5205" x="590.71" y="197.19"/><ellipse cx="666.4966" cy="213.19" fill="#F1F1F1" rx="11" ry="11" style="stroke:#181818;stroke-width:1;"/><path d="M667.6997,213.3306 Q668.0591,213.4088 668.3247,213.69 Q668.606,213.9556 668.9966,214.7369 L671.231,219.19 L668.5435,219.19 L667.0435,216.065 Q666.981,215.9244 666.8716,215.69 Q666.2154,214.2994 665.3247,214.2994 L664.5435,214.2994 L664.5435,219.19 L662.106,219.19 L662.106,206.7994 L665.6372,206.7994 Q668.0279,206.7994 669.0591,207.6431 Q670.106,208.4869 670.106,210.3931 Q670.106,211.6744 669.481,212.44 Q668.8716,213.19 667.6997,213.3306 Z M664.5435,208.8619 L664.5435,212.2369 L665.6997,212.2369 Q666.7154,212.2369 667.1372,211.8463 Q667.5747,211.44 667.5747,210.5338 Q667.5747,209.6431 667.1372,209.2525 Q666.7154,208.8619 665.6997,208.8619 L664.5435,208.8619 Z " fill="#000000"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="58.4473" x="686.9966" y="218.0367">Defaults</text><line style="stroke:#181818;stroke-width:0.5;" x1="591.71" x2="808.2305" y1="229.19" y2="229.19"/><line style="stroke:#181818;stroke-width:0.5;" x1="591.71" x2="808.2305" y1="237.19" y2="237.19"/><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="127.2578" x="596.71" y="254.1851">int startAddress();</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="199.9102" x="596.71" y="270.482">List&lt;String&gt; libraryLabels();</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="174.6514" x="596.71" y="286.7789">int bytesPerInstruction();</text><text fill="#000000" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="206.5205" x="596.71" y="303.0757">boolean includeDescription();</text></g><g class="link" data-entity-1="Instruction" data-entity-2="Operand" data-source-line="32" data-uid="lnk7" id="link_Instruction_Operand"><path codeLine="32" d="M133.97,327.17 C133.97,346.88 133.97,362.09 133.97,381.3" fill="none" id="Instruction-to-Operand" style="stroke:#181818;stroke-width:1;"/><polygon fill="#181818" points="133.97,387.3,137.97,378.3,133.97,382.3,129.97,378.3,133.97,387.3" style="stroke:#181818;stroke-width:1;"/></g><g class="link" data-entity-1="InstructionSet" data-entity-2="Defaults" data-source-line="33" data-uid="lnk8" id="link_InstructionSet_Defaults"><path codeLine="33" d="M492.65,104.23 C531.61,132.15 576.1229,164.0451 616.9129,193.2751" fill="none" id="InstructionSet-to-Defaults" style="stroke:#181818;stroke-width:1;"/><polygon fill="#181818" points="621.79,196.77,616.8043,188.2763,617.7258,193.8576,612.1445,194.779,621.79,196.77" style="stroke:#181818;stroke-width:1;"/></g><g class="link" data-entity-1="InstructionSet" data-entity-2="Instruction" data-source-line="34" data-uid="lnk9" id="link_InstructionSet_Instruction"><path codeLine="34" d="M354.91,104.23 C320.81,127.16 284.2095,151.7727 246.3495,177.2227" fill="none" id="InstructionSet-to-Instruction" style="stroke:#181818;stroke-width:1;stroke-dasharray:7,7;"/><polygon fill="#181818" points="241.37,180.57,251.0708,178.8687,245.5196,177.7806,246.6077,172.2294,241.37,180.57" style="stroke:#181818;stroke-width:1;"/><text fill="#000000" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="54.374" x="307.97" y="146.9569">decodes</text></g><g class="link" data-entity-1="InstructionSet" data-entity-2="OpcodeTable" data-source-line="35" data-uid="lnk10" id="link_InstructionSet_OpcodeTable"><path codeLine="35" d="M425.97,116.23 C425.97,149.6 425.97,181.63 425.97,213.07" fill="none" id="InstructionSet-backto-OpcodeTable" style="stroke:#181818;stroke-width:1;"/><polygon fill="#181818" points="425.97,104.23,421.97,110.23,425.97,116.23,429.97,110.23,425.97,104.23" style="stroke:#181818;stroke-width:1;"/></g></g></svg></div><div class="puml dark" style=""><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" contentStyleType="text/css" data-diagram-type="CLASS" height="524px" preserveAspectRatio="xMidYMid meet" style="width:816px;height:524px;background:#1B1B1B;" version="1.1" viewBox="0 0 816 524" width="816px" zoomAndPan="magnify" class="diagram"><defs/><g><rect fill="#1B1B1B" height="524" style="stroke:none;stroke-width:1;" width="816" x="0" y="0"/><g class="entity" data-entity="Instruction" data-source-line="2" data-uid="ent0002" id="entity_Instruction"><rect fill="#313139" height="145.7813" rx="2.5" ry="2.5" style="stroke:#E7E7E7;stroke-width:0.5;" width="253.9375" x="7" y="180.89"/><ellipse cx="92.2544" cy="196.89" fill="#313139" rx="11" ry="11" style="stroke:#E7E7E7;stroke-width:1;"/><path d="M93.4575,197.0306 Q93.8169,197.1088 94.0825,197.39 Q94.3638,197.6556 94.7544,198.4369 L96.9888,202.89 L94.3013,202.89 L92.8013,199.765 Q92.7388,199.6244 92.6294,199.39 Q91.9731,197.9994 91.0825,197.9994 L90.3013,197.9994 L90.3013,202.89 L87.8638,202.89 L87.8638,190.4994 L91.395,190.4994 Q93.7856,190.4994 94.8169,191.3431 Q95.8638,192.1869 95.8638,194.0931 Q95.8638,195.3744 95.2388,196.14 Q94.6294,196.89 93.4575,197.0306 Z M90.3013,192.5619 L90.3013,195.9369 L91.4575,195.9369 Q92.4731,195.9369 92.895,195.5463 Q93.3325,195.14 93.3325,194.2338 Q93.3325,193.3431 92.895,192.9525 Q92.4731,192.5619 91.4575,192.5619 L90.3013,192.5619 Z " fill="#FFFFFF"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="74.9287" x="112.7544" y="201.7367">Instruction</text><line style="stroke:#E7E7E7;stroke-width:0.5;" x1="8" x2="259.9375" y1="212.89" y2="212.89"/><line style="stroke:#E7E7E7;stroke-width:0.5;" x1="8" x2="259.9375" y1="220.89" y2="220.89"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="93.6523" x="13" y="237.8851">int address();</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="96.0518" x="13" y="254.182">byte[] code();</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="135.6592" x="13" y="270.4789">String mnemonic();</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="194.0928" x="13" y="286.7757">List&lt;Operand&gt; operands();</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="222.3662" x="13" y="303.0726">Optional&lt;String&gt; description();</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="241.9375" x="13" y="319.3695">Optional&lt;Operand&gt; addressRef();</text></g><g class="entity" data-entity="Operand" data-source-line="10" data-uid="ent0003" id="entity_Operand"><rect fill="#313139" height="129.4844" rx="2.5" ry="2.5" style="stroke:#E7E7E7;stroke-width:0.5;" width="220.4141" x="23.76" y="387.68"/><ellipse cx="99.4099" cy="403.68" fill="#313139" rx="11" ry="11" style="stroke:#E7E7E7;stroke-width:1;"/><path d="M100.613,403.8206 Q100.9724,403.8988 101.238,404.18 Q101.5193,404.4456 101.9099,405.2269 L104.1443,409.68 L101.4568,409.68 L99.9568,406.555 Q99.8943,406.4144 99.7849,406.18 Q99.1287,404.7894 98.238,404.7894 L97.4568,404.7894 L97.4568,409.68 L95.0193,409.68 L95.0193,397.2894 L98.5505,397.2894 Q100.9412,397.2894 101.9724,398.1331 Q103.0193,398.9769 103.0193,400.8831 Q103.0193,402.1644 102.3943,402.93 Q101.7849,403.68 100.613,403.8206 Z M97.4568,399.3519 L97.4568,402.7269 L98.613,402.7269 Q99.6287,402.7269 100.0505,402.3363 Q100.488,401.93 100.488,401.0238 Q100.488,400.1331 100.0505,399.7425 Q99.6287,399.3519 98.613,399.3519 L97.4568,399.3519 Z " fill="#FFFFFF"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="60.6143" x="119.9099" y="408.5267">Operand</text><line style="stroke:#E7E7E7;stroke-width:0.5;" x1="24.76" x2="243.1741" y1="419.68" y2="419.68"/><line style="stroke:#E7E7E7;stroke-width:0.5;" x1="24.76" x2="243.1741" y1="427.68" y2="427.68"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="106.5039" x="29.76" y="444.6751">String opFmt();</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="100.1123" x="29.76" y="460.972">String value();</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="208.4141" x="29.76" y="477.2689">Optional&lt;Integer&gt; address();</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="108.8281" x="29.76" y="493.5657">String format();</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="188.918" x="29.76" y="509.8626">String format(String label);</text></g><g class="entity" data-entity="InstructionSet" data-source-line="17" data-uid="ent0004" id="entity_InstructionSet"><rect fill="#313139" height="96.8906" rx="2.5" ry="2.5" style="stroke:#E7E7E7;stroke-width:0.5;" width="330.3564" x="260.79" y="7"/><ellipse cx="372.7592" cy="23" fill="#352866" rx="11" ry="11" style="stroke:#E7E7E7;stroke-width:1;"/><path d="M368.6811,18.7656 L368.6811,16.6094 L376.0717,16.6094 L376.0717,18.7656 L373.603,18.7656 L373.603,26.8438 L376.0717,26.8438 L376.0717,29 L368.6811,29 L368.6811,26.8438 L371.1499,26.8438 L371.1499,18.7656 L368.6811,18.7656 Z " fill="#FFFFFF"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="97.918" x="393.2592" y="27.8467">InstructionSet</text><line style="stroke:#E7E7E7;stroke-width:0.5;" x1="261.79" x2="590.1464" y1="39" y2="39"/><line style="stroke:#E7E7E7;stroke-width:0.5;" x1="261.79" x2="590.1464" y1="47" y2="47"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="135.0918" x="266.79" y="63.9951">Defaults defaults();</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="318.3564" x="266.79" y="80.292">List&lt;Instruction&gt; decode(Program program);</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="257.2432" x="266.79" y="96.5889">List&lt;OpcodeTable&gt; opcodeTables();</text></g><g class="entity" data-entity="OpcodeTable" data-source-line="22" data-uid="ent0005" id="entity_OpcodeTable"><rect fill="#313139" height="80.5938" rx="2.5" ry="2.5" style="stroke:#E7E7E7;stroke-width:0.5;" width="259.7412" x="296.1" y="213.49"/><ellipse cx="375.6259" cy="229.49" fill="#352866" rx="11" ry="11" style="stroke:#E7E7E7;stroke-width:1;"/><path d="M371.5478,225.2556 L371.5478,223.0994 L378.9384,223.0994 L378.9384,225.2556 L376.4696,225.2556 L376.4696,233.3338 L378.9384,233.3338 L378.9384,235.49 L371.5478,235.49 L371.5478,233.3338 L374.0165,233.3338 L374.0165,225.2556 L371.5478,225.2556 Z " fill="#FFFFFF"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" font-style="italic" lengthAdjust="spacing" textLength="92.1895" x="396.1259" y="234.3367">OpcodeTable</text><line style="stroke:#E7E7E7;stroke-width:0.5;" x1="297.1" x2="554.8412" y1="245.49" y2="245.49"/><line style="stroke:#E7E7E7;stroke-width:0.5;" x1="297.1" x2="554.8412" y1="253.49" y2="253.49"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="101.5752" x="302.1" y="270.4851">String name();</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="247.7412" x="302.1" y="286.782">String opcodeExample(int opcode);</text></g><g class="entity" data-entity="Defaults" data-source-line="26" data-uid="ent0006" id="entity_Defaults"><rect fill="#313139" height="113.1875" rx="2.5" ry="2.5" style="stroke:#E7E7E7;stroke-width:0.5;" width="218.5205" x="590.71" y="197.19"/><ellipse cx="666.4966" cy="213.19" fill="#313139" rx="11" ry="11" style="stroke:#E7E7E7;stroke-width:1;"/><path d="M667.6997,213.3306 Q668.0591,213.4088 668.3247,213.69 Q668.606,213.9556 668.9966,214.7369 L671.231,219.19 L668.5435,219.19 L667.0435,216.065 Q666.981,215.9244 666.8716,215.69 Q666.2154,214.2994 665.3247,214.2994 L664.5435,214.2994 L664.5435,219.19 L662.106,219.19 L662.106,206.7994 L665.6372,206.7994 Q668.0279,206.7994 669.0591,207.6431 Q670.106,208.4869 670.106,210.3931 Q670.106,211.6744 669.481,212.44 Q668.8716,213.19 667.6997,213.3306 Z M664.5435,208.8619 L664.5435,212.2369 L665.6997,212.2369 Q666.7154,212.2369 667.1372,211.8463 Q667.5747,211.44 667.5747,210.5338 Q667.5747,209.6431 667.1372,209.2525 Q666.7154,208.8619 665.6997,208.8619 L664.5435,208.8619 Z " fill="#FFFFFF"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="58.4473" x="686.9966" y="218.0367">Defaults</text><line style="stroke:#E7E7E7;stroke-width:0.5;" x1="591.71" x2="808.2305" y1="229.19" y2="229.19"/><line style="stroke:#E7E7E7;stroke-width:0.5;" x1="591.71" x2="808.2305" y1="237.19" y2="237.19"/><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="127.2578" x="596.71" y="254.1851">int startAddress();</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="199.9102" x="596.71" y="270.482">List&lt;String&gt; libraryLabels();</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="174.6514" x="596.71" y="286.7789">int bytesPerInstruction();</text><text fill="#FFFFFF" font-family="sans-serif" font-size="14" lengthAdjust="spacing" textLength="206.5205" x="596.71" y="303.0757">boolean includeDescription();</text></g><g class="link" data-entity-1="Instruction" data-entity-2="Operand" data-source-line="32" data-uid="lnk7" id="link_Instruction_Operand"><path codeLine="32" d="M133.97,327.17 C133.97,346.88 133.97,362.09 133.97,381.3" fill="none" id="Instruction-to-Operand" style="stroke:#E7E7E7;stroke-width:1;"/><polygon fill="#E7E7E7" points="133.97,387.3,137.97,378.3,133.97,382.3,129.97,378.3,133.97,387.3" style="stroke:#E7E7E7;stroke-width:1;"/></g><g class="link" data-entity-1="InstructionSet" data-entity-2="Defaults" data-source-line="33" data-uid="lnk8" id="link_InstructionSet_Defaults"><path codeLine="33" d="M492.65,104.23 C531.61,132.15 576.1229,164.0451 616.9129,193.2751" fill="none" id="InstructionSet-to-Defaults" style="stroke:#E7E7E7;stroke-width:1;"/><polygon fill="#E7E7E7" points="621.79,196.77,616.8043,188.2763,617.7258,193.8576,612.1445,194.779,621.79,196.77" style="stroke:#E7E7E7;stroke-width:1;"/></g><g class="link" data-entity-1="InstructionSet" data-entity-2="Instruction" data-source-line="34" data-uid="lnk9" id="link_InstructionSet_Instruction"><path codeLine="34" d="M354.91,104.23 C320.81,127.16 284.2095,151.7727 246.3495,177.2227" fill="none" id="InstructionSet-to-Instruction" style="stroke:#E7E7E7;stroke-width:1;stroke-dasharray:7,7;"/><polygon fill="#E7E7E7" points="241.37,180.57,251.0708,178.8687,245.5196,177.7806,246.6077,172.2294,241.37,180.57" style="stroke:#E7E7E7;stroke-width:1;"/><text fill="#FFFFFF" font-family="sans-serif" font-size="13" lengthAdjust="spacing" textLength="54.374" x="307.97" y="146.9569">decodes</text></g><g class="link" data-entity-1="InstructionSet" data-entity-2="OpcodeTable" data-source-line="35" data-uid="lnk10" id="link_InstructionSet_OpcodeTable"><path codeLine="35" d="M425.97,116.23 C425.97,149.6 425.97,181.63 425.97,213.07" fill="none" id="InstructionSet-backto-OpcodeTable" style="stroke:#E7E7E7;stroke-width:1;"/><polygon fill="#E7E7E7" points="425.97,104.23,421.97,110.23,425.97,116.23,429.97,110.23,425.97,104.23" style="stroke:#E7E7E7;stroke-width:1;"/></g></g></svg></div></div>
+
+<p>If there is a new instruction set to add, implement the <code>InstructionSet</code>. The instruction set also
+supplies <code>Defaults</code> that have various attributes that can be passed into the <code>Disassembler</code>.</p>
+<blockquote>
+<p>Note that an instruction set not only decodes a program but also supplies opcode examples for 
+the <code>GenerateMarkdown</code> program. Since the instruction sets are manually added into this 
+application, the <code>opcodeTables()</code> method can likely be ignored (at least at first).</p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2002 - 2025 Robert Greene
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.50899def.min.js"></script>
+      
+        <script src="../../assets/mkdocs_puml/puml.js"></script>
+      
+        <script src="https://unpkg.com/@panzoom/panzoom@4.5.1/dist/panzoom.min.js"></script>
+      
+        <script src="../../assets/mkdocs_puml/interaction.js"></script>
+      
+    
+  </body>
+</html>
