@@ -1,3 +1,6 @@
+!!! info "Legacy"
+    Older releases were from sourceforge and are considered legacy. Please use a more current release from [GitHub](https://github.com/AppleCommander/AppleCommander).
+
 A new release of AppleCommander is available!
 
 Version 1.3.3 adds support for Apple Pascal .text files; also added support for Assembly source file viewing. Scrollbar increments are now sensible.

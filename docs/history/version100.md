@@ -1,3 +1,6 @@
+!!! info "Legacy"
+    Older releases were from sourceforge and are considered legacy. Please use a more current release from [GitHub](https://github.com/AppleCommander/AppleCommander).
+
 I am working on a general Apple2 disk image utility. Why? I haven't found any one utility that does everything for transferring files in and out of disk images - and, besides, I'm thoroughly enjoying _retro computing_.
 
 Currently, it reads and displays the contents of disks. It supports DOS 3.3, ProDOS, Apple Pascal, and RDOS formatted disks - and reads compressed (`*.gz`) images, 140K DOS ordered (`*.do`, `*.dsk`), 140K ProDOS ordered (`*.po`), 800K ProDOS ordered (`*.2img`, `*.2mg`), and 32MB ApplePC hard disk images (`*.hdv`). This doesn't cover all image formats, but covers the ones I needed/wanted to have covered - it can be expanded relatively easily.

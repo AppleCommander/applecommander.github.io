@@ -1,3 +1,6 @@
+!!! info "Legacy"
+    Older releases were from sourceforge and are considered legacy. Please use a more current release from [GitHub](https://github.com/AppleCommander/AppleCommander).
+
 A new release of AppleCommander is available. Version 1.2.0 took a bit longer than expected, as I got distracted with other fun stuff in AppleCommander (hence, super-hires exports and AWP to RTF conversion):
 
 * Can now create disk images. For the moment, these images are not bootable (including hard disk images) - they do however boot a nifty title screen...

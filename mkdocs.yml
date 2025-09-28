@@ -51,6 +51,10 @@ theme:
   logo: 'images/apple-logo.png'
   favicon: 'images/apple-logo.png'
 
+# Extensions
+markdown_extensions:
+  - admonition
+
 # Plugins
 plugins:
   - plantuml:

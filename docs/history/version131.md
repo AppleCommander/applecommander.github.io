@@ -1,3 +1,6 @@
+!!! info "Legacy"
+    Older releases were from sourceforge and are considered legacy. Please use a more current release from [GitHub](https://github.com/AppleCommander/AppleCommander).
+
 A new release of AppleCommander is available!
 
 Version 1.3.1 introduces file viewing as well as John Matthews command-line version of AppleCommander (`ac`). The beginnings of an AppleSoft compiler have been added (strictly beta and incomplete). Full gory details are listed below for both the unannounced 1.3.0 as well as the current 1.3.1.

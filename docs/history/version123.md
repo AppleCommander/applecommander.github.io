@@ -1,3 +1,6 @@
+!!! info "Legacy"
+    Older releases were from sourceforge and are considered legacy. Please use a more current release from [GitHub](https://github.com/AppleCommander/AppleCommander).
+
 A new release of AppleCommander is available! Version 1.2.3 concentrated work on being able to build a Windows executable.
 
 * Separated image support for GraphicsFileFilter. This allows easier preparation for compiling AppleCommander as a Windows executable (and allows limited image support to boot).

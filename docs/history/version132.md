@@ -1,3 +1,6 @@
+!!! info "Legacy"
+    Older releases were from sourceforge and are considered legacy. Please use a more current release from [GitHub](https://github.com/AppleCommander/AppleCommander).
+
 A new release of AppleCommander is available!
 
 Version 1.3.2 adds support for the nibble disk image order as well as support for read-only CP/M disks. SHR 3200-color graphics capability also.

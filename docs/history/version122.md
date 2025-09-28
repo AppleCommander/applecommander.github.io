@@ -1,3 +1,6 @@
+!!! info "Legacy"
+    Older releases were from sourceforge and are considered legacy. Please use a more current release from [GitHub](https://github.com/AppleCommander/AppleCommander).
+
 A new release of AppleCommander is available! Version 1.2.2 continues on the general cleanup. One new export filter of a generalized hex dump has been added and quite a bit of work in relation to ProDOS volumes.
 
 * ProDOS disks now re-use deleted file entries. Prior to this fix, deleted entries were never re-used. If importing many files, a "Disk Full" error would be generated rather quickly.

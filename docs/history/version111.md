@@ -1,3 +1,6 @@
+!!! info "Legacy"
+    Older releases were from sourceforge and are considered legacy. Please use a more current release from [GitHub](https://github.com/AppleCommander/AppleCommander).
+
 A new release of AppleCommander is available. Version 1.1.1 brings AppleWorks word processor (AWP) file exporting, multiple files can be exported at once, the wizard "guesses" the file type, along with minor bug fixes and enhancements.
 
 With this release, AppleCommander is GPL. The home page has now moved to:

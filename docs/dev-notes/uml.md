@@ -1,3 +1,7 @@
+!!! warning "Deprecated"
+    This design is being deprecated as of AppleCommander 12. See the [new API](redesign.md)
+    documentation for details.
+
 ## Disk and FormattedDisk
 
 Generally, a `Disk` represents an Apple ][ disk image.  This can be size, any order, and any

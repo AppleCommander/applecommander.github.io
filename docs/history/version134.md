@@ -1,3 +1,6 @@
+!!! info "Legacy"
+    Older releases were from sourceforge and are considered legacy. Please use a more current release from [GitHub](https://github.com/AppleCommander/AppleCommander).
+
 A new release of AppleCommander is available!
 
 Version 1.3.4 adds support for Apple Pascal 800K images; OS X issues resolved; Pascal images are now writable; and some work towards internationalization has been done.

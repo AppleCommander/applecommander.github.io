@@ -1,3 +1,6 @@
+!!! info "Legacy"
+    Older releases were from sourceforge and are considered legacy. Please use a more current release from [GitHub](https://github.com/AppleCommander/AppleCommander).
+
 A new release of AppleCommander is available. Version 1.2.1 is primarily a clean-up operation. However, there is a bit of new functionality - AppleWorks Spread Sheet (ASP) and Data Base (ADB) files can both be exported to a `*.csv` file format.
 
 * Now carries margin setting through, sets font to Courier New (more realistic formatting), and fixes boldface not being turned off correctly when converting AWP files to RTF format.

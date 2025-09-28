@@ -1,3 +1,6 @@
+!!! info "Legacy"
+    Older releases were from sourceforge and are considered legacy. Please use a more current release from [GitHub](https://github.com/AppleCommander/AppleCommander).
+
 A new release of AppleCommander is available!
 
 Version 1.3.5 adds support for cc65 and improves support for Apple UCSD Pascal 800K images and Mac OS X.
