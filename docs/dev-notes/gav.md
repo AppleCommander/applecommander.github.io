@@ -103,21 +103,39 @@ implementation 'net.sf.applecommander:bastools-api:0.4.0'
 
 The AppleCommander disassembler tooling is available in the acdasm API.
 
-Maven:
+=== "acdasm (6.0 or later)"
+    Maven:
 
-```
-<dependency>
-    <groupId>net.sf.applecommander</groupId>
-    <artifactId>acdasm</artifactId>
-    <version>0.5.0</version>
-</dependency>
-```
+    ```
+    <dependency>
+        <groupId>org.applecommander</groupId>
+        <artifactId>acdasm</artifactId>
+        <version>6.0</version>
+    </dependency>
+    ```
 
-Gradle:
+    Gradle:
 
-```
-implementation 'net.sf.applecommander:acdasm:0.5.0'
-```
+    ```
+    implementation 'org.applecommander:acdasm:6.0'
+    ```
+
+=== "acdasm (before 6.0)"
+    Maven:
+
+    ```
+    <dependency>
+        <groupId>net.sf.applecommander</groupId>
+        <artifactId>acdasm</artifactId>
+        <version>0.5.0</version>
+    </dependency>
+    ```
+
+    Gradle:
+
+    ```
+    implementation 'net.sf.applecommander:acdasm:0.5.0'
+    ```
 
 ## Final Notes
 This is a manual release process, so it may take a bit of time (and possibly some prodding).
