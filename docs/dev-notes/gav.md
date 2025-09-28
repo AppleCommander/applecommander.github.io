@@ -2,47 +2,43 @@
 
 Much of AppleCommander and it's tooling should be reusable and can be included in other projects.
 
-## AppleCommander (12.0 or later)
+=== "AppleCommander (12.0 or later)"
+    The AppleCommander libraries are available as a dependency.
 
-The AppleCommander libraries are available as a dependency.
+    Maven:
 
-Maven:
+    ```
+    <dependency>
+    <groupId>org.applecommander</groupId>
+    <artifactId>AppleCommander</artifactId>
+    <version>12.0</version>
+    </dependency>
+    ```
 
-```
-<dependency>
- <groupId>org.applecommander</groupId>
- <artifactId>AppleCommander</artifactId>
- <version>12.0</version>
-</dependency>
-```
+    Gradle:
 
-Gradle:
+    ```
+    implementation 'org.applecommander:AppleCommander:12.0'
+    ```
 
-```
-implementation 'org.applecommander:AppleCommander:12.0'
-```
+=== "AppleCommander (before 12.0)"
+    The AppleCommander libraries are available as a dependency.
 
-## AppleCommander (before 12.0)
+    Maven:
 
-The AppleCommander libraries are available as a dependency.
+    ```
+    <dependency>
+    <groupId>net.sf.applecommander</groupId>
+    <artifactId>AppleCommander</artifactId>
+    <version>1.10.1</version>
+    </dependency>
+    ```
 
-Maven:
+    Gradle:
 
-```
-<dependency>
- <groupId>net.sf.applecommander</groupId>
- <artifactId>AppleCommander</artifactId>
- <version>1.10.1</version>
-</dependency>
-```
-
-Gradle:
-
-```
-implementation 'net.sf.applecommander:AppleCommander:1.10.1'
-```
-
-> Note that as of 1.4.0, the Shrinkit library is now a separate project.
+    ```
+    implementation 'net.sf.applecommander:AppleCommander:1.10.1'
+    ```
 
 ## Shrinkit
 
@@ -103,7 +99,7 @@ Gradle:
 implementation 'net.sf.applecommander:bastools-api:0.4.0'
 ```
 
-## AppleCommander disassembler
+## Disassembler
 
 The AppleCommander disassembler tooling is available in the acdasm API.
 
@@ -128,6 +124,5 @@ This is a manual release process, so it may take a bit of time (and possibly som
 
 Notes:
 
-* There are no plans to change from `net.sf.applecommander` in the GAV. (It should have been `com.webcodepro.applecommander`, however, that domain was given up long ago.)
-* The Java packages will remain `com.webcodepro.applecommander` as everyone depends on that package scheme.
-* The versions listed here are modified by hand, so don't hesitate to check them. Note that the version should match was is in the GitHub release page for each of the subprojects.
+* The long-term strategy is to migrate all future API releases to `org.applecommander`.
+* The versions listed here are update manually, so please lookup the latest release. Note that the version should match what is in the GitHub release page for each of the subprojects.
