@@ -10,6 +10,7 @@ nav:
     - 'Maven/Gradle GAV': dev-notes/gav.md
     - 'Updated API and UML': dev-notes/redesign.md
     - 'Historical UML diagrams': dev-notes/uml.md
+    - 'Disassembler API': dev-notes/disassembler.md
     - 'Ant Task': dev-notes/ant.md
     - 'Javadoc': javadoc.md
     - 'cc65 Pipeline': dev-notes/cc65-pipeline.md
