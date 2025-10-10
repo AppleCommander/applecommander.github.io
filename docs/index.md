@@ -11,9 +11,10 @@ AppleCommander is currently able to read and display information about disk imag
 ### Disk image organizations
 
 * Compressed images (`*.gz`);
-* 140K DOS-ordered images (`*.do`, `*.dsk`);
+* 140K DOS-ordered images (`*.do`, `*.dsk`, `*.d16`);
 * 140K ProDOS-ordered images (`*.po`);
-* 140K Nibble (DOS ordered) images (`*.nib`);
+* 13-sector and 16-sector Nibble images (`*.nib`);
+* 13-sector DOS-ordered images (`*.d13`);
 * 32MB ApplePC Hard Disk images (`*.hdv`).
 * Universal Disk Images (`*.2mg`, `*.2img`);
 * Disk Copy Images (`*.dc`);
@@ -38,15 +39,18 @@ AppleCommander is currently able to read and display information about disk imag
 ### File export filters
 
 * Raw disk data (dumps blocks or sectors without regard to file length or operating system storage);
+* Raw track data (dumps a track of nibble data);
 * Binary file (dumps file without any conversion);
 * Hex dump;
 * Disassembly;
 * ASCII file filter;
 * Formatted assembly output;
 * Pascal ".text" files;
+* Pascal ".code" files (applies to both Apple II Pascal, Apple III Pascal);
 * Applesoft BASIC file filter (file is de-tokenized and written out as a text file);
 * Integer BASIC file filter (ditto);
 * Business BASIC file (ditto);
+* MBASIC/GBASIC (CP/M);
 * Graphic image file filter (supports black and white or color Hires images as well as black and white or color Double Hires images as well as standard Super Hires, and 3200 color Super Hires);
 * Shape table support;
 * Gutenberg Word processor;
@@ -56,10 +60,11 @@ AppleCommander is currently able to read and display information about disk imag
 
 ### Viewer capabilities
 
-* BASIC programs (Applesoft and Integer BASIC); Applesoft BASIC is colored
+* BASIC programs (Applesoft, Integer BASIC, Business BASIC, MBASIC/GBASIC); Applesoft BASIC is colored
 * Graphics images (same as supported by the graphics export function)
 * AppleWorks (database, spreadsheet, word processor)
 * Text files (plain text, assembly source files, Pascal text files)
+* Apple Pascal codefiles
 * Hex dump of all the above
 * "Raw" format of all of the above; this includes all data as read from disk including length and starting address as well as full sectors/blocks
 
@@ -72,7 +77,7 @@ AppleCommander includes a number of command-line tools:
 * `asu` (AppleSingle utility) - see the [asu README](https://github.com/AppleCommander/applesingle/blob/master/tools/asu/README.md).
 * `bt` (Applesoft BASIC tokenizer tool) - see the [bt README](https://github.com/AppleCommander/bastools/blob/master/tools/bt/README.md).
 * `st` (Applesoft shape utility) - see the [st README](https://github.com/AppleCommander/bastools/blob/master/tools/st/README.md).
-* `acdasm` (6502/65C02/SWEET16 disassembler) - see the [README](https://github.com/AppleCommander/acdasm/blob/main/README.md).
+* `acdasm` (6502/65C02/SWEET16/Z80/pcode disassembler) - see the [README](https://github.com/AppleCommander/acdasm/blob/main/README.md).
 
 Since the CLI tooling may be lacking, these additional resources should be useful:
 
