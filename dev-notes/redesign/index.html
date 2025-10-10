@@ -895,6 +895,7 @@ if you are a developer using the AppleCommander APIs.</p>
 <li>Constants from <code>Disk</code> are now in <code>DiskConstants</code>.</li>
 <li><code>FormattedDisk</code> discovery mechanism is now in <code>DiskFactory</code>.</li>
 <li><code>Disks#inspect(Source)</code> is now used to initiate the <code>FormattedDisk</code> discovery mechanism.</li>
+<li><code>ImageOrder</code> was replaced by <code>Device</code>. Specific cases are <code>BlockDevice</code> and <code>TrackSectorDevice</code>.</li>
 </ul>
 <h3 id="accessing-a-disk-image">Accessing a disk image</h3>
 <p>With the removal of <code>Disk</code> as the discovery and creation mechanism, there are a couple of replacement hooks to be aware of:
@@ -935,15 +936,49 @@ dedicated filesystem (or other) discovery mechanism.</p>
 <span class="n">DiskFactory</span><span class="p">.</span><span class="na">Context</span><span class="w"> </span><span class="n">ctx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Disks</span><span class="p">.</span><span class="na">inspect</span><span class="p">(</span><span class="n">source</span><span class="p">);</span>
 </code></pre></div>
 <p>This will hand back a <code>Context</code>. This contains all the information used to create <code>FormattedDisk</code>s, including the <code>Source</code>,
-and any <code>ImageOrder</code>s that were considered.</p>
-<div class="highlight"><pre><span></span><code><span class="kd">class</span> <span class="nc">Context</span><span class="w"> </span><span class="p">{</span>
+and any <code>NibbleTrackReaderWriter</code>s should that be applicable.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Context</span><span class="w"> </span><span class="p">{</span>
 <span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">Source</span><span class="w"> </span><span class="n">source</span><span class="p">;</span>
-<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">ImageOrder</span><span class="o">&gt;</span><span class="w"> </span><span class="n">orders</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">NibbleTrackReaderWriter</span><span class="w"> </span><span class="n">nibbleTrackReaderWriter</span><span class="p">;</span>
 <span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">FormattedDisk</span><span class="o">&gt;</span><span class="w"> </span><span class="n">disks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">BlockDeviceBuilder</span><span class="w"> </span><span class="nf">blockDevice</span><span class="p">();</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">TrackSectorDeviceBuilder</span><span class="w"> </span><span class="nf">trackSectorDevice</span><span class="p">();</span>
+<span class="p">}</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">BlockDeviceBuilder</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">BlockDeviceBuilder</span><span class="w"> </span><span class="nf">include16Sector</span><span class="p">(</span><span class="n">Hint</span><span class="w"> </span><span class="n">hint</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">BlockDeviceBuilder</span><span class="w"> </span><span class="nf">include800K</span><span class="p">();</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">BlockDeviceBuilder</span><span class="w"> </span><span class="nf">includeHDV</span><span class="p">();</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">BlockDevice</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">get</span><span class="p">();</span>
+<span class="p">}</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">TrackSectorDeviceBuilder</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">TrackSectorDeviceBuilder</span><span class="w"> </span><span class="nf">include13Sector</span><span class="p">();</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">TrackSectorDeviceBuilder</span><span class="w"> </span><span class="nf">include16Sector</span><span class="p">(</span><span class="n">Hint</span><span class="w"> </span><span class="n">hint</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">TrackSectorDevice</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">get</span><span class="p">();</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Most of the time, <code>disks</code> is what you'll need. If nothing is recognized, <code>disks</code> will be empty, however <code>orders</code> will
-have the <code>ImageOrder</code>s considered. Of course, <code>Source</code> is what is handed into the <code>Disks#inspect(Source)</code> method.</p>
+<p>Most of the time, <code>disks</code> is what you'll need. If nothing is recognized, <code>disks</code> will be empty, however, the device
+builder may be used to create an appropriate device. If applicable, a <code>NibbleTrackReaderWriter</code> will be avilable (either <code>*.nib</code>
+or a <code>*.woz</code> image).  Of course, <code>Source</code> is what is handed into the <code>Disks#inspect(Source)</code> method.</p>
+<p>Examples of using the builder interfaces:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">TrackSectorDevice</label><label for="__tabbed_1_2">BlockDevice</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>List&lt;TrackSectorDevice&gt; sectorDevices = ctx.trackSectorDevice()
+                .include13Sector()
+                .include16Sector(Hint.DOS_SECTOR_ORDER)
+                .get()
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>List&lt;BlockDevice&gt; blockDevices = ctx.blockDevice()
+        .include16Sector(Hint.PRODOS_BLOCK_ORDER)
+        .include800K()
+        .includeHDV()
+        .get();
+</code></pre></div>
+</div>
+</div>
+</div>
 <h3 id="other-semi-experimental">Other (semi-experimental)</h3>
 <blockquote>
 <p>Some of these are in play today (<code>DataBuffer</code>, <code>HintProvider</code>, and <code>Information</code>) and others are partly implemented 
@@ -983,7 +1018,7 @@ is if we know the sector ordering for a disk. We can provide that hint for certa
 </code></pre></div>
 <h4 id="container">Container</h4>
 <p>A "Container" allows pulling out internal components without providing a bunch of random "get" methods. For instance, the current
-<code>FormattedDisk</code> (and <code>Disk</code> before that) as well as <code>ImageOrder</code> all support both block and track/sector reading and writing. 
+<code>FormattedDisk</code> (and <code>Disk</code> before that) as well as (the retired) <code>ImageOrder</code> all support both block and track/sector reading and writing. 
 So, a ProDOS disk has reading by block or sector. DOS hsa reading by block or sector, etc. RDOS has, not only block or sector, 
 but also "RDOS" block (256) bytes; and CP/M is the same except the CP/M block is 1024 bytes. It would be nice to hide all that 
 cruft and "ask" the (in this case) file system if it supported a particular type of device. That's where containers come into 

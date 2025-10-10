@@ -408,6 +408,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#inspecting-nibble-images" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inspecting nibble images
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -818,6 +827,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#inspecting-nibble-images" class="md-nav__link">
+    <span class="md-ellipsis">
+      Inspecting nibble images
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -836,8 +854,6 @@
   
   
 
-
-  <h1>Using 'acx'</h1>
 
 <p><code>acx</code> is a new command-line tool for AppleCommander.  This tool is subcommand based (think <code>git pull</code> and <code>git commit</code>) and is expected to allow more nuanced command activities.</p>
 <h2 id="overview-asking-for-help">Overview / Asking for help</h2>
@@ -881,8 +897,9 @@ Commands:
 </code></pre></div>
 <p>When looking for options for a subcommand, the <code>help</code> subcommand may be used as an alternate (<code>acx copy --help</code> or <code>acx help copy</code> are both valid).</p>
 <div class="highlight"><pre><span></span><code>$<span class="w"> </span>acx<span class="w"> </span>copy<span class="w"> </span>--help
-Usage:<span class="w"> </span>acx<span class="w"> </span>copy<span class="w"> </span><span class="o">[</span>-fhr<span class="o">]</span><span class="w"> </span><span class="o">[</span>--to<span class="o">=</span>&lt;targetPath&gt;<span class="o">]</span><span class="w"> </span>-d<span class="o">=</span>&lt;disks&gt;<span class="w"> </span><span class="o">[</span>-d<span class="o">=</span>&lt;disks&gt;<span class="o">]</span>...
-<span class="w">                </span>-s<span class="o">=</span>&lt;sourceDisks&gt;<span class="w"> </span><span class="o">[</span>-s<span class="o">=</span>&lt;sourceDisks&gt;<span class="o">]</span>...<span class="w"> </span><span class="o">[</span>&lt;globs&gt;...<span class="o">]</span>
+Usage:<span class="w"> </span>acx<span class="w"> </span>copy<span class="w"> </span><span class="o">[</span>-fhr<span class="o">]</span><span class="w"> </span><span class="o">[</span>-k<span class="o">=</span>&lt;diskNumber&gt;<span class="o">]</span><span class="w"> </span><span class="o">[</span>--to<span class="o">=</span>&lt;targetPath&gt;<span class="o">]</span><span class="w"> </span>-d<span class="o">=</span>&lt;disks&gt;
+<span class="w">                </span><span class="o">[</span>-d<span class="o">=</span>&lt;disks&gt;<span class="o">]</span>...<span class="w"> </span>-s<span class="o">=</span>&lt;sourceDisks&gt;<span class="w"> </span><span class="o">[</span>-s<span class="o">=</span>&lt;sourceDisks&gt;<span class="o">]</span>...
+<span class="w">                </span><span class="o">[</span>&lt;globs&gt;...<span class="o">]</span>
 
 Copy<span class="w"> </span>files<span class="w"> </span>between<span class="w"> </span>disks.
 
@@ -893,6 +910,8 @@ Options:
 <span class="w">  </span>-d,<span class="w"> </span>--disk<span class="o">=</span>&lt;disks&gt;<span class="w">   </span>Image<span class="w"> </span>to<span class="w"> </span>process<span class="w"> </span><span class="o">[</span><span class="nv">$ACX_DISK_NAME</span><span class="o">]</span>.
 <span class="w">  </span>-f,<span class="w"> </span>--force<span class="w">          </span>Overwrite<span class="w"> </span>existing<span class="w"> </span>files.
 <span class="w">  </span>-h,<span class="w"> </span>--help<span class="w">           </span>Show<span class="w"> </span><span class="nb">help</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>subcommand.
+<span class="w">  </span>-k,<span class="w"> </span>--number<span class="o">=</span>&lt;diskNumber&gt;
+<span class="w">                       </span>Select<span class="w"> </span>disk<span class="w"> </span>number<span class="w"> </span>to<span class="w"> </span>access<span class="w"> </span><span class="o">[</span><span class="nv">$ACX_DISK_NUMBER</span><span class="o">]</span>.
 <span class="w">  </span>-r,<span class="w"> </span>--recursive<span class="w">      </span>Copy<span class="w"> </span>files<span class="w"> </span>recursively.
 <span class="w">  </span>-s,<span class="w"> </span>--from,<span class="w"> </span>--source<span class="o">=</span>&lt;sourceDisks&gt;
 <span class="w">                       </span>Source<span class="w"> </span>disk<span class="w"> </span><span class="k">for</span><span class="w"> </span>files.
@@ -990,31 +1009,31 @@ Offset<span class="w">   </span>Hex<span class="w"> </span>Data<span class="w"> 
 </code></pre></div>
 <h2 id="disassembling-the-boot-sector">Disassembling the boot sector</h2>
 <p><code>acx</code> can dump any sector or block in a disassembled format:</p>
-<div class="highlight"><pre><span></span><code>$<span class="w"> </span>acx<span class="w"> </span>dump<span class="w"> </span>-d<span class="w"> </span>~/Downloads/ProDOS_2_4_2.dsk<span class="w"> </span>-t<span class="w"> </span><span class="m">0</span><span class="w"> </span>-s<span class="w"> </span><span class="m">0</span><span class="w"> </span>--disassembly
-<span class="m">0800</span>-<span class="w"> </span><span class="m">01</span><span class="w">        </span>---
-<span class="m">0801</span>-<span class="w"> </span><span class="m">38</span><span class="w">        </span>SEC
-<span class="m">0802</span>-<span class="w"> </span>B0<span class="w"> </span><span class="m">03</span><span class="w">     </span>BCS<span class="w"> </span><span class="nv">$0807</span>
-<span class="m">0804</span>-<span class="w"> </span>4C<span class="w"> </span><span class="m">32</span><span class="w"> </span>A1<span class="w">  </span>JMP<span class="w"> </span><span class="nv">$A132</span>
-<span class="m">0807</span>-<span class="w"> </span><span class="m">86</span><span class="w"> </span><span class="m">43</span><span class="w">     </span>STX<span class="w"> </span><span class="nv">$43</span>
-<span class="m">0809</span>-<span class="w"> </span>C9<span class="w"> </span><span class="m">03</span><span class="w">     </span>CMP<span class="w"> </span><span class="c1">#$03</span>
-080B-<span class="w"> </span><span class="m">08</span><span class="w">        </span>PHP
-080C-<span class="w"> </span>8A<span class="w">        </span>TXA
-080D-<span class="w"> </span><span class="m">29</span><span class="w"> </span><span class="m">70</span><span class="w">     </span>AND<span class="w"> </span><span class="c1">#$70</span>
-080F-<span class="w"> </span>4A<span class="w">        </span>LSR
-<span class="m">0810</span>-<span class="w"> </span>4A<span class="w">        </span>LSR
-<span class="m">0811</span>-<span class="w"> </span>4A<span class="w">        </span>LSR
-<span class="m">0812</span>-<span class="w"> </span>4A<span class="w">        </span>LSR
-<span class="m">0813</span>-<span class="w"> </span><span class="m">09</span><span class="w"> </span>C0<span class="w">     </span>ORA<span class="w"> </span><span class="c1">#$C0</span>
-<span class="m">0815</span>-<span class="w"> </span><span class="m">85</span><span class="w"> </span><span class="m">49</span><span class="w">     </span>STA<span class="w"> </span><span class="nv">$49</span>
-<span class="m">0817</span>-<span class="w"> </span>A0<span class="w"> </span>FF<span class="w">     </span>LDY<span class="w"> </span><span class="c1">#$FF</span>
-<span class="m">0819</span>-<span class="w"> </span><span class="m">84</span><span class="w"> </span><span class="m">48</span><span class="w">     </span>STY<span class="w"> </span><span class="nv">$48</span>
-081B-<span class="w"> </span><span class="m">28</span><span class="w">        </span>PLP
-081C-<span class="w"> </span>C8<span class="w">        </span>INY
-081D-<span class="w"> </span>B1<span class="w"> </span><span class="m">48</span><span class="w">     </span>LDA<span class="w"> </span><span class="o">(</span><span class="nv">$48</span><span class="o">)</span>,Y
-081F-<span class="w"> </span>D0<span class="w"> </span>3A<span class="w">     </span>BNE<span class="w"> </span><span class="nv">$085</span>B
-<span class="m">0821</span>-<span class="w"> </span>B0<span class="w"> </span>0E<span class="w">     </span>BCS<span class="w"> </span><span class="nv">$0831</span>
-<span class="m">0823</span>-<span class="w"> </span>A9<span class="w"> </span><span class="m">03</span><span class="w">     </span>LDA<span class="w"> </span><span class="c1">#$03</span>
-<span class="m">0825</span>-<span class="w"> </span>8D<span class="w"> </span><span class="m">00</span><span class="w"> </span><span class="m">08</span><span class="w">  </span>STA<span class="w"> </span><span class="nv">$0800</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>acx<span class="w"> </span>dump<span class="w"> </span>-d<span class="w"> </span>~/Downloads/ProDOS_2_4_3.po<span class="w"> </span>-t<span class="w"> </span><span class="m">0</span><span class="w"> </span>-s<span class="w"> </span><span class="m">0</span><span class="w"> </span>--disassembly
+Track<span class="w"> </span><span class="m">00</span>,<span class="w"> </span>Sector<span class="w"> </span><span class="m">00</span>:
+<span class="m">0801</span>-<span class="w"> </span><span class="m">38</span><span class="w">                   </span>SEC<span class="w">                                  </span>
+<span class="m">0802</span>-<span class="w"> </span>B0<span class="w"> </span><span class="m">03</span><span class="w">                </span>BCS<span class="w">   </span>L0807<span class="w">                          </span>
+<span class="m">0804</span>-<span class="w"> </span>4C<span class="w"> </span><span class="m">32</span><span class="w"> </span>A1<span class="w">             </span>JMP<span class="w">   </span><span class="nv">$A132</span><span class="w">                          </span>
+<span class="m">0807</span>-<span class="w"> </span><span class="m">86</span><span class="w"> </span><span class="m">43</span><span class="w">     </span>L0807<span class="w">      </span>STX<span class="w">   </span><span class="nv">$43</span><span class="w">                            </span>
+<span class="m">0809</span>-<span class="w"> </span>C9<span class="w"> </span><span class="m">03</span><span class="w">                </span>CMP<span class="w">   </span><span class="c1">#$03                           </span>
+080B-<span class="w"> </span><span class="m">08</span><span class="w">                   </span>PHP<span class="w">                                  </span>
+080C-<span class="w"> </span>8A<span class="w">                   </span>TXA<span class="w">                                  </span>
+080D-<span class="w"> </span><span class="m">29</span><span class="w"> </span><span class="m">70</span><span class="w">                </span>AND<span class="w">   </span><span class="c1">#$70                           </span>
+080F-<span class="w"> </span>4A<span class="w">                   </span>LSR<span class="w">                                  </span>
+<span class="m">0810</span>-<span class="w"> </span>4A<span class="w">                   </span>LSR<span class="w">                                  </span>
+<span class="m">0811</span>-<span class="w"> </span>4A<span class="w">                   </span>LSR<span class="w">                                  </span>
+<span class="m">0812</span>-<span class="w"> </span>4A<span class="w">                   </span>LSR<span class="w">                                  </span>
+<span class="m">0813</span>-<span class="w"> </span><span class="m">09</span><span class="w"> </span>C0<span class="w">                </span>ORA<span class="w">   </span><span class="c1">#$C0                           </span>
+<span class="m">0815</span>-<span class="w"> </span><span class="m">85</span><span class="w"> </span><span class="m">49</span><span class="w">                </span>STA<span class="w">   </span><span class="nv">$49</span><span class="w">                            </span>
+<span class="m">0817</span>-<span class="w"> </span>A0<span class="w"> </span>FF<span class="w">                </span>LDY<span class="w">   </span><span class="c1">#$FF                           </span>
+<span class="m">0819</span>-<span class="w"> </span><span class="m">84</span><span class="w"> </span><span class="m">48</span><span class="w">                </span>STY<span class="w">   </span><span class="nv">$48</span><span class="w">                            </span>
+081B-<span class="w"> </span><span class="m">28</span><span class="w">                   </span>PLP<span class="w">                                  </span>
+081C-<span class="w"> </span>C8<span class="w">                   </span>INY<span class="w">                                  </span>
+081D-<span class="w"> </span>B1<span class="w"> </span><span class="m">48</span><span class="w">                </span>LDA<span class="w">   </span><span class="o">(</span><span class="nv">$48</span><span class="o">)</span>,Y<span class="w">                        </span>
+081F-<span class="w"> </span>D0<span class="w"> </span>3A<span class="w">                </span>BNE<span class="w">   </span>L085B<span class="w">                          </span>
+<span class="m">0821</span>-<span class="w"> </span>B0<span class="w"> </span>0E<span class="w">                </span>BCS<span class="w">   </span>L0831<span class="w">                          </span>
+<span class="m">0823</span>-<span class="w"> </span>A9<span class="w"> </span><span class="m">03</span><span class="w">                </span>LDA<span class="w">   </span><span class="c1">#$03                           </span>
+<span class="m">0825</span>-<span class="w"> </span>8D<span class="w"> </span><span class="m">00</span><span class="w"> </span><span class="m">08</span><span class="w">             </span>STA<span class="w">   </span><span class="nv">$0800</span><span class="w"> </span>
 &lt;snip&gt;
 </code></pre></div>
 <h2 id="file-listings-by-name-pattern">File listings by name pattern</h2>
@@ -1136,6 +1155,97 @@ Scanned<span class="w"> </span><span class="m">3820</span><span class="w"> </spa
 <span class="w">  </span><span class="o">]</span>
 <span class="o">}</span>
 &lt;snip&gt;
+</code></pre></div>
+<h1 id="inspecting-nibble-images">Inspecting nibble images</h1>
+<p>The <code>acx</code> tool also allows some inspection of nibble images, should that be of interest.</p>
+<p>For instance, there are a few protected images where AppleCommander can identify the encoding for the track. This is visible in the <code>info</code> subcommand:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>acx<span class="w"> </span>info<span class="w"> </span>-d<span class="w"> </span>apple_II/images/games/rpg/ultima/ultima_I/ultima_i_boot.nib
+File<span class="w"> </span>Name:<span class="w"> </span>apple_II/images/games/rpg/ultima/ultima_I/ultima_i_boot.nib
+Disk<span class="w"> </span>Name:<span class="w"> </span>DISK<span class="w"> </span>VOLUME<span class="w"> </span><span class="c1">#254</span>
+Free<span class="w"> </span>Space<span class="w"> </span><span class="o">(</span>bytes<span class="o">)</span>:<span class="w"> </span><span class="m">0</span>
+Used<span class="w"> </span>Space<span class="w"> </span><span class="o">(</span>bytes<span class="o">)</span>:<span class="w"> </span><span class="m">116480</span>
+Free<span class="w"> </span>Space<span class="w"> </span><span class="o">(</span>KB<span class="o">)</span>:<span class="w"> </span><span class="m">0</span>
+Used<span class="w"> </span>Space<span class="w"> </span><span class="o">(</span>KB<span class="o">)</span>:<span class="w"> </span><span class="m">113</span>
+Disk<span class="w"> </span>Format:<span class="w"> </span>DOS<span class="w"> </span><span class="m">3</span>.2
+Total<span class="w"> </span>Sectors:<span class="w"> </span><span class="m">455</span>
+Free<span class="w"> </span>Sectors:<span class="w"> </span><span class="m">0</span>
+Used<span class="w"> </span>Sectors:<span class="w"> </span><span class="m">455</span>
+Tracks<span class="w"> </span>On<span class="w"> </span>Disk:<span class="w"> </span><span class="m">35</span>
+Sectors<span class="w"> </span>On<span class="w"> </span>Disk:<span class="w"> </span><span class="m">13</span>
+Catalog<span class="w"> </span>Track<span class="w"> </span><span class="o">(</span>non-standard<span class="o">)</span>:<span class="w"> </span><span class="m">20</span>
+Device:<span class="w"> </span>Nibble<span class="w"> </span>Device
+Geometry:<span class="w"> </span><span class="m">35</span><span class="w"> </span>tracks,<span class="w"> </span><span class="m">13</span><span class="w"> </span>sectors
+Total<span class="w"> </span>Sectors:<span class="w"> </span><span class="m">455</span>
+Prolog/Epilog<span class="w"> </span>Bytes<span class="w"> </span><span class="o">(</span>T00<span class="o">)</span>:<span class="w"> </span>D5AAB5/D5AAAD<span class="w"> </span><span class="o">(</span><span class="m">13</span><span class="w"> </span>sectors<span class="w"> </span>on<span class="w"> </span>track<span class="o">)</span>
+Prolog/Epilog<span class="w"> </span>Bytes<span class="w"> </span><span class="o">(</span>T01<span class="o">)</span>:<span class="w"> </span>DFAAB7/DFAAFD<span class="w"> </span><span class="o">(</span><span class="m">13</span><span class="w"> </span>sectors<span class="w"> </span>on<span class="w"> </span>track<span class="o">)</span>
+Prolog/Epilog<span class="w"> </span>Bytes<span class="w"> </span><span class="o">(</span>T02<span class="o">)</span>:<span class="w"> </span>DDAAF5/D7AAFD<span class="w"> </span><span class="o">(</span><span class="m">13</span><span class="w"> </span>sectors<span class="w"> </span>on<span class="w"> </span>track<span class="o">)</span>
+Prolog/Epilog<span class="w"> </span>Bytes<span class="w"> </span><span class="o">(</span>T03<span class="o">)</span>:<span class="w"> </span>DDAAF7/DFAAFD<span class="w"> </span><span class="o">(</span><span class="m">13</span><span class="w"> </span>sectors<span class="w"> </span>on<span class="w"> </span>track<span class="o">)</span>
+Prolog/Epilog<span class="w"> </span>Bytes<span class="w"> </span><span class="o">(</span>T04<span class="o">)</span>:<span class="w"> </span>DFAAF5/DFAABD<span class="w"> </span><span class="o">(</span><span class="m">13</span><span class="w"> </span>sectors<span class="w"> </span>on<span class="w"> </span>track<span class="o">)</span>
+Prolog/Epilog<span class="w"> </span>Bytes<span class="w"> </span><span class="o">(</span>T05<span class="o">)</span>:<span class="w"> </span>DDAAF5/DDAAFD<span class="w"> </span><span class="o">(</span><span class="m">13</span><span class="w"> </span>sectors<span class="w"> </span>on<span class="w"> </span>track<span class="o">)</span>
+&lt;snip&gt;
+</code></pre></div>
+<p>The track nibble data can be viewed as well:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>acx<span class="w"> </span>dump<span class="w"> </span>-d<span class="w"> </span>apple_II/images/games/rpg/ultima/ultima_I/ultima_i_boot.nib<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span>
+Track<span class="w"> </span><span class="m">01</span>
+Offset<span class="w">   </span>Hex<span class="w"> </span>Data<span class="w">                                          </span><span class="nv">Characters</span>
+<span class="o">=======</span><span class="w">  </span><span class="o">================================================</span><span class="w">  </span><span class="o">=================</span>
+<span class="nv">$000000</span><span class="w">  </span>AD<span class="w"> </span>B6<span class="w"> </span>BB<span class="w"> </span>AB<span class="w"> </span>EB<span class="w"> </span>D6<span class="w"> </span>DD<span class="w"> </span>BB<span class="w">  </span>AB<span class="w"> </span>EB<span class="w"> </span>AB<span class="w"> </span>FE<span class="w"> </span>DD<span class="w"> </span>F7<span class="w"> </span>FD<span class="w"> </span>BA<span class="w">  </span>-6<span class="p">;</span>+kV<span class="o">]</span><span class="p">;</span><span class="w"> </span>+k+~<span class="o">]</span>w<span class="o">}</span>:
+<span class="nv">$000010</span><span class="w">  </span>FA<span class="w"> </span>B5<span class="w"> </span>B5<span class="w"> </span>F7<span class="w"> </span>DB<span class="w"> </span>AB<span class="w"> </span>F5<span class="w"> </span>D7<span class="w">  </span>AB<span class="w"> </span>AB<span class="w"> </span>F5<span class="w"> </span>F6<span class="w"> </span>AD<span class="w"> </span>DB<span class="w"> </span>F7<span class="w"> </span>F6<span class="w">  </span>z55w<span class="o">[</span>+uW<span class="w"> </span>++uv-<span class="o">[</span>wv
+<span class="nv">$000020</span><span class="w">  </span>D6<span class="w"> </span>AD<span class="w"> </span>AB<span class="w"> </span>AB<span class="w"> </span>AB<span class="w"> </span>AB<span class="w"> </span>FD<span class="w"> </span>FB<span class="w">  </span>BA<span class="w"> </span>B5<span class="w"> </span>BA<span class="w"> </span>DE<span class="w"> </span>FE<span class="w"> </span>F3<span class="w"> </span>D9<span class="w"> </span>FF<span class="w">  </span>V-++++<span class="o">}{</span><span class="w"> </span>:5:^~sY.
+<span class="nv">$000030</span><span class="w">  </span>DF<span class="w"> </span>CF<span class="w"> </span>E7<span class="w"> </span>F3<span class="w"> </span>F9<span class="w"> </span>FC<span class="w"> </span>FE<span class="w"> </span>FE<span class="w">  </span>FE<span class="w"> </span>FE<span class="w"> </span>FE<span class="w"> </span>FE<span class="w"> </span>FE<span class="w"> </span>FE<span class="w"> </span>FE<span class="w"> </span>FE<span class="w">  </span>_Ogsy<span class="p">|</span>~~<span class="w"> </span>~~~~~~~~
+<span class="nv">$000040</span><span class="w">  </span>FE<span class="w"> </span>FE<span class="w"> </span>FE<span class="w"> </span>FE<span class="w"> </span>FE<span class="w"> </span>FE<span class="w"> </span>FE<span class="w"> </span>FE<span class="w">  </span>FE<span class="w"> </span>FE<span class="w"> </span>FE<span class="w"> </span>FE<span class="w"> </span>FE<span class="w"> </span>FE<span class="w"> </span>FE<span class="w"> </span>FE<span class="w">  </span>~~~~~~~~<span class="w"> </span>~~~~~~~~
+<span class="nv">$000050</span><span class="w">  </span>FE<span class="w"> </span>FE<span class="w"> </span>FE<span class="w"> </span>FE<span class="w"> </span>FE<span class="w"> </span>FE<span class="w"> </span>FE<span class="w"> </span>FE<span class="w">  </span>FE<span class="w"> </span>FE<span class="w"> </span>DF<span class="w"> </span>AA<span class="w"> </span>B7<span class="w"> </span>FF<span class="w"> </span>FE<span class="w"> </span>AA<span class="w">  </span>~~~~~~~~<span class="w"> </span>~~_*7.~*
+<span class="nv">$000060</span><span class="w">  </span>AB<span class="w"> </span>AA<span class="w"> </span>AB<span class="w"> </span>FF<span class="w"> </span>FE<span class="w"> </span>FE<span class="w"> </span>E7<span class="w"> </span>F2<span class="w">  </span><span class="m">89</span><span class="w"> </span>9F<span class="w"> </span>CF<span class="w"> </span>E7<span class="w"> </span>F3<span class="w"> </span>F9<span class="w"> </span>FC<span class="w"> </span>FE<span class="w">  </span>+*+.~~gr<span class="w"> </span>..Ogsy<span class="p">|</span>~
+<span class="nv">$000070</span><span class="w">  </span>FE<span class="w"> </span>FE<span class="w"> </span>FE<span class="w"> </span>FE<span class="w"> </span>FE<span class="w"> </span>DF<span class="w"> </span>AA<span class="w"> </span>FD<span class="w">  </span>B7<span class="w"> </span>D6<span class="w"> </span>B7<span class="w"> </span>BD<span class="w"> </span>FB<span class="w"> </span>DB<span class="w"> </span>D6<span class="w"> </span>DF<span class="w">  </span>~~~~~_*<span class="o">}</span><span class="w"> </span><span class="nv">7V7</span><span class="o">={[</span>V_
+<span class="nv">$000080</span><span class="w">  </span>F7<span class="w"> </span>EF<span class="w"> </span>ED<span class="w"> </span>DD<span class="w"> </span>AF<span class="w"> </span>B7<span class="w"> </span>B5<span class="w"> </span>BB<span class="w">  </span>F6<span class="w"> </span>EB<span class="w"> </span>BA<span class="w"> </span>AF<span class="w"> </span>AF<span class="w"> </span>AE<span class="w"> </span>BF<span class="w"> </span>DA<span class="w">  </span>wom<span class="o">]</span>/75<span class="p">;</span><span class="w"> </span>vk://.?Z
+<span class="nv">$000090</span><span class="w">  </span>B6<span class="w"> </span>BF<span class="w"> </span>FB<span class="w"> </span>EB<span class="w"> </span>BA<span class="w"> </span>B6<span class="w"> </span>AB<span class="w"> </span>AE<span class="w">  </span>AE<span class="w"> </span>BE<span class="w"> </span>DB<span class="w"> </span>AB<span class="w"> </span>F5<span class="w"> </span>DB<span class="w"> </span>ED<span class="w"> </span>BA<span class="w">  </span><span class="m">6</span>?<span class="o">{</span>k:6+.<span class="w"> </span>.&gt;<span class="o">[</span>+u<span class="o">[</span>m:
+<span class="nv">$0000</span>A0<span class="w">  </span>D6<span class="w"> </span>B5<span class="w"> </span>F6<span class="w"> </span>B5<span class="w"> </span>AD<span class="w"> </span>FF<span class="w"> </span>F5<span class="w"> </span>DF<span class="w">  </span>BA<span class="w"> </span>FA<span class="w"> </span>BB<span class="w"> </span>DD<span class="w"> </span>B5<span class="w"> </span>AD<span class="w"> </span>EE<span class="w"> </span>EF<span class="w">  </span>V5v5-.u_<span class="w"> </span>:z<span class="p">;</span><span class="o">]</span><span class="m">5</span>-no
+&lt;snip&gt;
+</code></pre></div>
+<p>And, of course, if the protected disk is a gussied up DOS, you can view the contents:</p>
+<p><div class="highlight"><pre><span></span><code>$<span class="w"> </span>acx<span class="w"> </span>list<span class="w"> </span>-d<span class="w"> </span>apple_II/images/games/rpg/ultima/ultima_I/ultima_i_boot.nib
+
+File:<span class="w"> </span>apple_II/images/games/rpg/ultima/ultima_I/ultima_i_boot.nib
+Name:<span class="w"> </span>DISK<span class="w"> </span>VOLUME<span class="w"> </span><span class="c1">#254</span>
+*<span class="w"> </span>A<span class="w"> </span><span class="m">003</span><span class="w"> </span>ULTIMA<span class="w">                         </span>
+*<span class="w"> </span>B<span class="w"> </span><span class="m">033</span><span class="w"> </span>PIC.ULTIMATUM<span class="w">                  </span>
+*<span class="w"> </span>A<span class="w"> </span><span class="m">019</span><span class="w"> </span>INIT<span class="w"> </span>DISPLAY<span class="w">                   </span>
+*<span class="w"> </span>A<span class="w"> </span><span class="m">044</span><span class="w"> </span>OUT<span class="w"> </span>MOVE<span class="w">                       </span>
+*<span class="w"> </span>A<span class="w"> </span><span class="m">057</span><span class="w"> </span>TWN<span class="w"> </span>MOVE<span class="w">                       </span>
+*<span class="w"> </span>A<span class="w"> </span><span class="m">048</span><span class="w"> </span>CAS<span class="w"> </span>MOVE<span class="w">                       </span>
+*<span class="w"> </span>A<span class="w"> </span><span class="m">5</span>,166<span class="w"> </span>DNG<span class="w"> </span>MOVE<span class="w"> </span><span class="m">1</span><span class="w">                     </span>
+*<span class="w"> </span>B<span class="w"> </span><span class="m">011</span><span class="w"> </span>SET1<span class="w">                           </span>
+*<span class="w"> </span>B<span class="w"> </span><span class="m">011</span><span class="w"> </span>SET2<span class="w">                           </span>
+*<span class="w"> </span>B<span class="w"> </span><span class="m">011</span><span class="w"> </span>SET3<span class="w">                           </span>
+*<span class="w"> </span>B<span class="w"> </span><span class="m">011</span><span class="w"> </span>SET4<span class="w">                           </span>
+*<span class="w"> </span>B<span class="w"> </span><span class="m">010</span><span class="w"> </span>SET5<span class="w">                           </span>
+*<span class="w"> </span>A<span class="w"> </span><span class="m">037</span><span class="w"> </span>SPA<span class="w"> </span>MOVE<span class="w">                       </span>
+*<span class="w"> </span>T<span class="w"> </span><span class="m">5</span>,122<span class="w"> </span>INFO<span class="w">                           </span>
+*<span class="w"> </span>B<span class="w"> </span><span class="m">004</span><span class="w"> </span>ULTSHAPES<span class="w">                      </span>
+*<span class="w"> </span>B<span class="w"> </span><span class="m">003</span><span class="w"> </span>DRAW<span class="w"> </span><span class="m">64</span>.OBJ<span class="w">                    </span>
+*<span class="w"> </span>B<span class="w"> </span><span class="m">003</span><span class="w"> </span>OUT.SHAPES<span class="w">                     </span>
+*<span class="w"> </span>B<span class="w"> </span><span class="m">002</span><span class="w"> </span>TWN.CAS.SHAPES<span class="w">                 </span>
+*<span class="w"> </span>B<span class="w"> </span><span class="m">005</span><span class="w"> </span>SPA.SHAPES<span class="w">                     </span>
+*<span class="w"> </span>B<span class="w"> </span><span class="m">002</span><span class="w"> </span>NEAR.OBJ<span class="w">                       </span>
+*<span class="w"> </span>B<span class="w"> </span><span class="m">5</span>,126<span class="w"> </span>STAR.OBJ<span class="w">                       </span>
+*<span class="w"> </span>B<span class="w"> </span><span class="m">003</span><span class="w"> </span>FGT3<span class="w">                           </span>
+*<span class="w"> </span>B<span class="w"> </span><span class="m">002</span><span class="w"> </span>FIRE<span class="w">                           </span>
+DOS<span class="w"> </span><span class="m">3</span>.2<span class="w"> </span>format<span class="p">;</span><span class="w"> </span><span class="m">0</span><span class="w"> </span>bytes<span class="w"> </span>free<span class="p">;</span><span class="w"> </span><span class="m">116</span>,480<span class="w"> </span>bytes<span class="w"> </span>used.
+</code></pre></div>
+* The crazy block sizes are because AppleCommander decodes both bytes of the block size but DOS doesn't. Regardless, they are crazy.</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>acx<span class="w"> </span>get<span class="w"> </span>-d<span class="w"> </span>apple_II/images/games/rpg/ultima/ultima_I/ultima_i_boot.nib<span class="w"> </span>ULTIMA
+<span class="m">0</span><span class="w">  </span>ONERR<span class="w">  </span>GOTO<span class="w"> </span><span class="m">9900</span>
+<span class="m">28</span><span class="w">  </span>HGR<span class="w"> </span>:<span class="w"> </span>TEXT<span class="w"> </span>:<span class="w"> </span>HOME<span class="w"> </span>:<span class="w"> </span>VTAB<span class="w"> </span><span class="o">(</span><span class="m">12</span><span class="o">)</span>:<span class="w"> </span>HTAB<span class="w"> </span><span class="o">(</span><span class="m">16</span><span class="o">)</span>:<span class="w"> </span>PRINT<span class="w"> </span><span class="s2">&quot;--ULTIMA--&quot;</span>
+<span class="m">29</span><span class="w">  </span>PRINT<span class="w"> </span><span class="s2">&quot;&lt;CTRL-D&gt;BLOAD PIC.ULTIMATUM,A</span><span class="nv">$2000</span><span class="s2">&quot;</span>
+<span class="m">30</span><span class="w">  </span>POKE<span class="w">  </span>-<span class="w"> </span><span class="m">16302</span>,0:<span class="w"> </span>POKE<span class="w">  </span>-<span class="w"> </span><span class="m">16297</span>,0:<span class="w"> </span>POKE<span class="w">  </span>-<span class="w"> </span><span class="m">16300</span>,0:<span class="w"> </span>POKE<span class="w">  </span>-<span class="w"> </span><span class="m">16304</span>,0
+<span class="m">40</span><span class="w">  </span>POKE<span class="w"> </span><span class="m">103</span>,1:<span class="w"> </span>POKE<span class="w"> </span><span class="m">104</span>,64:<span class="w"> </span>POKE<span class="w"> </span><span class="m">16384</span>,0:<span class="w"> </span>PRINT<span class="w">  </span>CHR<span class="k">$(</span><span class="m">4</span><span class="k">)</span><span class="p">;</span><span class="s2">&quot;RUN INIT DISPLAY&quot;</span>
+<span class="m">9900</span><span class="w">  </span>POKE<span class="w"> </span><span class="m">49235</span>,0:<span class="w"> </span>VTAB<span class="w"> </span><span class="m">24</span>:<span class="w"> </span>PRINT<span class="w"> </span>:<span class="w"> </span>PRINT<span class="w"> </span>:<span class="w"> </span>IF<span class="w">  </span>PEEK<span class="o">(</span><span class="m">222</span><span class="o">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">4</span><span class="w"> </span>THEN<span class="w">  </span>PRINT<span class="w"> </span><span class="s2">&quot;PROTECT&quot;</span><span class="p">;</span>:<span class="w"> </span>GOTO<span class="w"> </span><span class="m">9930</span>
+<span class="m">9910</span><span class="w">  </span>IF<span class="w">  </span>PEEK<span class="o">(</span><span class="m">222</span><span class="o">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">8</span><span class="w"> </span>THEN<span class="w">  </span>PRINT<span class="w"> </span><span class="s2">&quot;I/O&quot;</span><span class="p">;</span>:<span class="w"> </span>GOTO<span class="w"> </span><span class="m">9940</span>
+<span class="m">9920</span><span class="w">  </span>PRINT<span class="w"> </span><span class="s2">&quot;TYPE &quot;</span><span class="p">;</span><span class="w"> </span>PEEK<span class="o">(</span><span class="m">222</span><span class="o">)</span><span class="p">;</span>
+<span class="m">9930</span><span class="w">  </span>PRINT<span class="w"> </span><span class="s2">&quot;&lt;CTRL-G&gt; ERROR IN LINE &quot;</span><span class="p">;</span><span class="w"> </span>PEEK<span class="o">(</span><span class="m">218</span><span class="o">)</span><span class="w"> </span>+<span class="w"> </span><span class="m">256</span><span class="w"> </span>*<span class="w">  </span>PEEK<span class="o">(</span><span class="m">219</span><span class="o">)</span>:<span class="w"> </span>PRINT<span class="w"> </span><span class="s2">&quot;PLEASE HIT ESC &quot;</span><span class="p">;</span>:<span class="w"> </span>POKE<span class="w"> </span><span class="m">49168</span>,0
+<span class="m">9940</span><span class="w">  </span>GET<span class="w"> </span>D$:<span class="w"> </span>IF<span class="w"> </span>D$<span class="w"> </span>&lt;<span class="w">  </span>&gt;<span class="w">  </span>CHR<span class="k">$(</span><span class="m">27</span><span class="k">)</span><span class="w"> </span>THEN<span class="w"> </span><span class="m">9940</span>
+<span class="m">9950</span><span class="w"> </span>D$<span class="w"> </span><span class="o">=</span><span class="w">  </span>CHR<span class="k">$(</span><span class="m">4</span><span class="k">)</span>:<span class="w"> </span>PRINT<span class="w"> </span>:<span class="w"> </span>IF<span class="w">  </span>PEEK<span class="o">(</span><span class="m">222</span><span class="o">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">4</span><span class="w"> </span>OR<span class="w">  </span>PEEK<span class="o">(</span><span class="m">222</span><span class="o">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">8</span><span class="w"> </span>THEN<span class="w">  </span>RESUME<span class="w"> </span>
+<span class="m">9960</span><span class="w">  </span>CALL<span class="w">  </span>-<span class="w"> </span><span class="m">16640</span>
 </code></pre></div>
 
 

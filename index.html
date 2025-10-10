@@ -821,9 +821,10 @@
 <h3 id="disk-image-organizations">Disk image organizations</h3>
 <ul>
 <li>Compressed images (<code>*.gz</code>);</li>
-<li>140K DOS-ordered images (<code>*.do</code>, <code>*.dsk</code>);</li>
+<li>140K DOS-ordered images (<code>*.do</code>, <code>*.dsk</code>, <code>*.d16</code>);</li>
 <li>140K ProDOS-ordered images (<code>*.po</code>);</li>
-<li>140K Nibble (DOS ordered) images (<code>*.nib</code>);</li>
+<li>13-sector and 16-sector Nibble images (<code>*.nib</code>);</li>
+<li>13-sector DOS-ordered images (<code>*.d13</code>);</li>
 <li>32MB ApplePC Hard Disk images (<code>*.hdv</code>).</li>
 <li>Universal Disk Images (<code>*.2mg</code>, <code>*.2img</code>);</li>
 <li>Disk Copy Images (<code>*.dc</code>);</li>
@@ -848,15 +849,18 @@
 <h3 id="file-export-filters">File export filters</h3>
 <ul>
 <li>Raw disk data (dumps blocks or sectors without regard to file length or operating system storage);</li>
+<li>Raw track data (dumps a track of nibble data);</li>
 <li>Binary file (dumps file without any conversion);</li>
 <li>Hex dump;</li>
 <li>Disassembly;</li>
 <li>ASCII file filter;</li>
 <li>Formatted assembly output;</li>
 <li>Pascal ".text" files;</li>
+<li>Pascal ".code" files (applies to both Apple II Pascal, Apple III Pascal);</li>
 <li>Applesoft BASIC file filter (file is de-tokenized and written out as a text file);</li>
 <li>Integer BASIC file filter (ditto);</li>
 <li>Business BASIC file (ditto);</li>
+<li>MBASIC/GBASIC (CP/M);</li>
 <li>Graphic image file filter (supports black and white or color Hires images as well as black and white or color Double Hires images as well as standard Super Hires, and 3200 color Super Hires);</li>
 <li>Shape table support;</li>
 <li>Gutenberg Word processor;</li>
@@ -866,10 +870,11 @@
 </ul>
 <h3 id="viewer-capabilities">Viewer capabilities</h3>
 <ul>
-<li>BASIC programs (Applesoft and Integer BASIC); Applesoft BASIC is colored</li>
+<li>BASIC programs (Applesoft, Integer BASIC, Business BASIC, MBASIC/GBASIC); Applesoft BASIC is colored</li>
 <li>Graphics images (same as supported by the graphics export function)</li>
 <li>AppleWorks (database, spreadsheet, word processor)</li>
 <li>Text files (plain text, assembly source files, Pascal text files)</li>
+<li>Apple Pascal codefiles</li>
 <li>Hex dump of all the above</li>
 <li>"Raw" format of all of the above; this includes all data as read from disk including length and starting address as well as full sectors/blocks</li>
 </ul>
@@ -881,7 +886,7 @@
 <li><code>asu</code> (AppleSingle utility) - see the <a href="https://github.com/AppleCommander/applesingle/blob/master/tools/asu/README.md">asu README</a>.</li>
 <li><code>bt</code> (Applesoft BASIC tokenizer tool) - see the <a href="https://github.com/AppleCommander/bastools/blob/master/tools/bt/README.md">bt README</a>.</li>
 <li><code>st</code> (Applesoft shape utility) - see the <a href="https://github.com/AppleCommander/bastools/blob/master/tools/st/README.md">st README</a>.</li>
-<li><code>acdasm</code> (6502/65C02/SWEET16 disassembler) - see the <a href="https://github.com/AppleCommander/acdasm/blob/main/README.md">README</a>.</li>
+<li><code>acdasm</code> (6502/65C02/SWEET16/Z80/pcode disassembler) - see the <a href="https://github.com/AppleCommander/acdasm/blob/main/README.md">README</a>.</li>
 </ul>
 <p>Since the CLI tooling may be lacking, these additional resources should be useful:</p>
 <ul>
