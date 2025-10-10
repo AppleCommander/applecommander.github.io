@@ -8,14 +8,14 @@ The easiest mechanism is to use a dependency manager such as Gradle or Maven.
     <dependency>
         <groupId>org.applecommander</groupId>
         <artifactId>acdasm</artifactId>
-        <version>6.0</version>
+        <version>6.1</version>
     </dependency>
     ```
 
 === "Gradle"
     ```groovy
     dependencies {
-        implementation 'org.applecommander:acdasm:6.0'
+        implementation 'org.applecommander:acdasm:6.1'
     }
     ```
 

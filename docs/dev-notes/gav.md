@@ -11,14 +11,14 @@ Much of AppleCommander and it's tooling should be reusable and can be included i
     <dependency>
     <groupId>org.applecommander</groupId>
     <artifactId>AppleCommander</artifactId>
-    <version>12.0</version>
+    <version>13.0</version>
     </dependency>
     ```
 
     Gradle:
 
     ```
-    implementation 'org.applecommander:AppleCommander:12.0'
+    implementation 'org.applecommander:AppleCommander:13.0'
     ```
 
 === "AppleCommander (before 12.0)"
@@ -110,14 +110,14 @@ The AppleCommander disassembler tooling is available in the acdasm API.
     <dependency>
         <groupId>org.applecommander</groupId>
         <artifactId>acdasm</artifactId>
-        <version>6.0</version>
+        <version>6.1</version>
     </dependency>
     ```
 
     Gradle:
 
     ```
-    implementation 'org.applecommander:acdasm:6.0'
+    implementation 'org.applecommander:acdasm:6.1'
     ```
 
 === "acdasm (before 6.0)"
