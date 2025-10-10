@@ -47,8 +47,9 @@ When looking for options for a subcommand, the `help` subcommand may be used as 
 
 ```shell
 $ acx copy --help
-Usage: acx copy [-fhr] [--to=<targetPath>] -d=<disks> [-d=<disks>]...
-                -s=<sourceDisks> [-s=<sourceDisks>]... [<globs>...]
+Usage: acx copy [-fhr] [-k=<diskNumber>] [--to=<targetPath>] -d=<disks>
+                [-d=<disks>]... -s=<sourceDisks> [-s=<sourceDisks>]...
+                [<globs>...]
 
 Copy files between disks.
 
@@ -59,6 +60,8 @@ Options:
   -d, --disk=<disks>   Image to process [$ACX_DISK_NAME].
   -f, --force          Overwrite existing files.
   -h, --help           Show help for subcommand.
+  -k, --number=<diskNumber>
+                       Select disk number to access [$ACX_DISK_NUMBER].
   -r, --recursive      Copy files recursively.
   -s, --from, --source=<sourceDisks>
                        Source disk for files.
@@ -177,31 +180,31 @@ $0000F0  A0 A0 A0 A0 A0 A0 A0 A0  A0 A0 A0 A0 A0 A0 09 00                 ..
 `acx` can dump any sector or block in a disassembled format:
 
 ```shell
-$ acx dump -d ~/Downloads/ProDOS_2_4_2.dsk -t 0 -s 0 --disassembly
-0800- 01        ---
-0801- 38        SEC
-0802- B0 03     BCS $0807
-0804- 4C 32 A1  JMP $A132
-0807- 86 43     STX $43
-0809- C9 03     CMP #$03
-080B- 08        PHP
-080C- 8A        TXA
-080D- 29 70     AND #$70
-080F- 4A        LSR
-0810- 4A        LSR
-0811- 4A        LSR
-0812- 4A        LSR
-0813- 09 C0     ORA #$C0
-0815- 85 49     STA $49
-0817- A0 FF     LDY #$FF
-0819- 84 48     STY $48
-081B- 28        PLP
-081C- C8        INY
-081D- B1 48     LDA ($48),Y
-081F- D0 3A     BNE $085B
-0821- B0 0E     BCS $0831
-0823- A9 03     LDA #$03
-0825- 8D 00 08  STA $0800
+$ acx dump -d ~/Downloads/ProDOS_2_4_3.po -t 0 -s 0 --disassembly
+Track 00, Sector 00:
+0801- 38                   SEC                                  
+0802- B0 03                BCS   L0807                          
+0804- 4C 32 A1             JMP   $A132                          
+0807- 86 43     L0807      STX   $43                            
+0809- C9 03                CMP   #$03                           
+080B- 08                   PHP                                  
+080C- 8A                   TXA                                  
+080D- 29 70                AND   #$70                           
+080F- 4A                   LSR                                  
+0810- 4A                   LSR                                  
+0811- 4A                   LSR                                  
+0812- 4A                   LSR                                  
+0813- 09 C0                ORA   #$C0                           
+0815- 85 49                STA   $49                            
+0817- A0 FF                LDY   #$FF                           
+0819- 84 48                STY   $48                            
+081B- 28                   PLP                                  
+081C- C8                   INY                                  
+081D- B1 48                LDA   ($48),Y                        
+081F- D0 3A                BNE   L085B                          
+0821- B0 0E                BCS   L0831                          
+0823- A9 03                LDA   #$03                           
+0825- 8D 00 08             STA   $0800 
 <snip>
 ```
 
@@ -354,4 +357,108 @@ $ cat newscan.json | jq -r 'select(.success | not) | select(.errors | contains([
   ]
 }
 <snip>
+```
+
+# Inspecting nibble images
+
+The `acx` tool also allows some inspection of nibble images, should that be of interest.
+
+For instance, there are a few protected images where AppleCommander can identify the encoding for the track. This is visible in the `info` subcommand:
+
+```shell
+$ acx info -d apple_II/images/games/rpg/ultima/ultima_I/ultima_i_boot.nib
+File Name: apple_II/images/games/rpg/ultima/ultima_I/ultima_i_boot.nib
+Disk Name: DISK VOLUME #254
+Free Space (bytes): 0
+Used Space (bytes): 116480
+Free Space (KB): 0
+Used Space (KB): 113
+Disk Format: DOS 3.2
+Total Sectors: 455
+Free Sectors: 0
+Used Sectors: 455
+Tracks On Disk: 35
+Sectors On Disk: 13
+Catalog Track (non-standard): 20
+Device: Nibble Device
+Geometry: 35 tracks, 13 sectors
+Total Sectors: 455
+Prolog/Epilog Bytes (T00): D5AAB5/D5AAAD (13 sectors on track)
+Prolog/Epilog Bytes (T01): DFAAB7/DFAAFD (13 sectors on track)
+Prolog/Epilog Bytes (T02): DDAAF5/D7AAFD (13 sectors on track)
+Prolog/Epilog Bytes (T03): DDAAF7/DFAAFD (13 sectors on track)
+Prolog/Epilog Bytes (T04): DFAAF5/DFAABD (13 sectors on track)
+Prolog/Epilog Bytes (T05): DDAAF5/DDAAFD (13 sectors on track)
+<snip>
+```
+
+The track nibble data can be viewed as well:
+
+```shell
+$ acx dump -d apple_II/images/games/rpg/ultima/ultima_I/ultima_i_boot.nib -n 1
+Track 01
+Offset   Hex Data                                          Characters
+=======  ================================================  =================
+$000000  AD B6 BB AB EB D6 DD BB  AB EB AB FE DD F7 FD BA  -6;+kV]; +k+~]w}:
+$000010  FA B5 B5 F7 DB AB F5 D7  AB AB F5 F6 AD DB F7 F6  z55w[+uW ++uv-[wv
+$000020  D6 AD AB AB AB AB FD FB  BA B5 BA DE FE F3 D9 FF  V-++++}{ :5:^~sY.
+$000030  DF CF E7 F3 F9 FC FE FE  FE FE FE FE FE FE FE FE  _Ogsy|~~ ~~~~~~~~
+$000040  FE FE FE FE FE FE FE FE  FE FE FE FE FE FE FE FE  ~~~~~~~~ ~~~~~~~~
+$000050  FE FE FE FE FE FE FE FE  FE FE DF AA B7 FF FE AA  ~~~~~~~~ ~~_*7.~*
+$000060  AB AA AB FF FE FE E7 F2  89 9F CF E7 F3 F9 FC FE  +*+.~~gr ..Ogsy|~
+$000070  FE FE FE FE FE DF AA FD  B7 D6 B7 BD FB DB D6 DF  ~~~~~_*} 7V7={[V_
+$000080  F7 EF ED DD AF B7 B5 BB  F6 EB BA AF AF AE BF DA  wom]/75; vk://.?Z
+$000090  B6 BF FB EB BA B6 AB AE  AE BE DB AB F5 DB ED BA  6?{k:6+. .>[+u[m:
+$0000A0  D6 B5 F6 B5 AD FF F5 DF  BA FA BB DD B5 AD EE EF  V5v5-.u_ :z;]5-no
+<snip>
+```
+
+And, of course, if the protected disk is a gussied up DOS, you can view the contents:
+
+```shell
+$ acx list -d apple_II/images/games/rpg/ultima/ultima_I/ultima_i_boot.nib
+
+File: apple_II/images/games/rpg/ultima/ultima_I/ultima_i_boot.nib
+Name: DISK VOLUME #254
+* A 003 ULTIMA                         
+* B 033 PIC.ULTIMATUM                  
+* A 019 INIT DISPLAY                   
+* A 044 OUT MOVE                       
+* A 057 TWN MOVE                       
+* A 048 CAS MOVE                       
+* A 5,166 DNG MOVE 1                     
+* B 011 SET1                           
+* B 011 SET2                           
+* B 011 SET3                           
+* B 011 SET4                           
+* B 010 SET5                           
+* A 037 SPA MOVE                       
+* T 5,122 INFO                           
+* B 004 ULTSHAPES                      
+* B 003 DRAW 64.OBJ                    
+* B 003 OUT.SHAPES                     
+* B 002 TWN.CAS.SHAPES                 
+* B 005 SPA.SHAPES                     
+* B 002 NEAR.OBJ                       
+* B 5,126 STAR.OBJ                       
+* B 003 FGT3                           
+* B 002 FIRE                           
+DOS 3.2 format; 0 bytes free; 116,480 bytes used.
+```
+* The crazy block sizes are because AppleCommander decodes both bytes of the block size but DOS doesn't. Regardless, they are crazy.
+
+```shell
+$ acx get -d apple_II/images/games/rpg/ultima/ultima_I/ultima_i_boot.nib ULTIMA
+0  ONERR  GOTO 9900
+28  HGR : TEXT : HOME : VTAB (12): HTAB (16): PRINT "--ULTIMA--"
+29  PRINT "<CTRL-D>BLOAD PIC.ULTIMATUM,A$2000"
+30  POKE  - 16302,0: POKE  - 16297,0: POKE  - 16300,0: POKE  - 16304,0
+40  POKE 103,1: POKE 104,64: POKE 16384,0: PRINT  CHR$(4);"RUN INIT DISPLAY"
+9900  POKE 49235,0: VTAB 24: PRINT : PRINT : IF  PEEK(222) = 4 THEN  PRINT "PROTECT";: GOTO 9930
+9910  IF  PEEK(222) = 8 THEN  PRINT "I/O";: GOTO 9940
+9920  PRINT "TYPE "; PEEK(222);
+9930  PRINT "<CTRL-G> ERROR IN LINE "; PEEK(218) + 256 *  PEEK(219): PRINT "PLEASE HIT ESC ";: POKE 49168,0
+9940  GET D$: IF D$ <  >  CHR$(27) THEN 9940
+9950 D$ =  CHR$(4): PRINT : IF  PEEK(222) = 4 OR  PEEK(222) = 8 THEN  RESUME 
+9960  CALL  - 16640
 ```
