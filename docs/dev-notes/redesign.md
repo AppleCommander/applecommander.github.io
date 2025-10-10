@@ -12,6 +12,7 @@ Changes (so far):
 * Constants from `Disk` are now in `DiskConstants`.
 * `FormattedDisk` discovery mechanism is now in `DiskFactory`.
 * `Disks#inspect(Source)` is now used to initiate the `FormattedDisk` discovery mechanism.
+* `ImageOrder` was replaced by `Device`. Specific cases are `BlockDevice` and `TrackSectorDevice`.
 
 ### Accessing a disk image
 
@@ -124,18 +125,54 @@ DiskFactory.Context ctx = Disks.inspect(source);
 ```
 
 This will hand back a `Context`. This contains all the information used to create `FormattedDisk`s, including the `Source`,
-and any `ImageOrder`s that were considered.
+and any `NibbleTrackReaderWriter`s should that be applicable.
 
 ```java
-class Context {
+public class Context {
     public final Source source;
-    public final List<ImageOrder> orders = new ArrayList<>();
+    public final NibbleTrackReaderWriter nibbleTrackReaderWriter;
     public final List<FormattedDisk> disks = new ArrayList<>();
+    public BlockDeviceBuilder blockDevice();
+    public TrackSectorDeviceBuilder trackSectorDevice();
 }
+public class BlockDeviceBuilder {
+    public BlockDeviceBuilder include16Sector(Hint hint);
+    public BlockDeviceBuilder include800K();
+    public BlockDeviceBuilder includeHDV();
+    public List<BlockDevice> get();
+}
+public class TrackSectorDeviceBuilder {
+    public TrackSectorDeviceBuilder include13Sector();
+    public TrackSectorDeviceBuilder include16Sector(Hint hint);
+    public List<TrackSectorDevice> get();
+}
+
 ```
 
-Most of the time, `disks` is what you'll need. If nothing is recognized, `disks` will be empty, however `orders` will
-have the `ImageOrder`s considered. Of course, `Source` is what is handed into the `Disks#inspect(Source)` method.
+Most of the time, `disks` is what you'll need. If nothing is recognized, `disks` will be empty, however, the device
+builder may be used to create an appropriate device. If applicable, a `NibbleTrackReaderWriter` will be avilable (either `*.nib`
+or a `*.woz` image).  Of course, `Source` is what is handed into the `Disks#inspect(Source)` method.
+
+Examples of using the builder interfaces:
+
+=== "TrackSectorDevice"
+
+    ```
+    List<TrackSectorDevice> sectorDevices = ctx.trackSectorDevice()
+                    .include13Sector()
+                    .include16Sector(Hint.DOS_SECTOR_ORDER)
+                    .get()
+    ```
+
+=== "BlockDevice"
+
+    ```
+    List<BlockDevice> blockDevices = ctx.blockDevice()
+            .include16Sector(Hint.PRODOS_BLOCK_ORDER)
+            .include800K()
+            .includeHDV()
+            .get();
+    ```
 
 ### Other (semi-experimental)
 
@@ -193,7 +230,7 @@ if (source.is(Hint.PRODOS_BLOCK_ORDER)) {
 #### Container
 
 A "Container" allows pulling out internal components without providing a bunch of random "get" methods. For instance, the current
-`FormattedDisk` (and `Disk` before that) as well as `ImageOrder` all support both block and track/sector reading and writing. 
+`FormattedDisk` (and `Disk` before that) as well as (the retired) `ImageOrder` all support both block and track/sector reading and writing. 
 So, a ProDOS disk has reading by block or sector. DOS hsa reading by block or sector, etc. RDOS has, not only block or sector, 
 but also "RDOS" block (256) bytes; and CP/M is the same except the CP/M block is 1024 bytes. It would be nice to hide all that 
 cruft and "ask" the (in this case) file system if it supported a particular type of device. That's where containers come into 
