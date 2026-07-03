@@ -11,14 +11,14 @@ Much of AppleCommander and it's tooling should be reusable and can be included i
     <dependency>
     <groupId>org.applecommander</groupId>
     <artifactId>AppleCommander</artifactId>
-    <version>13.0</version>
+    <version>13.1</version>
     </dependency>
     ```
 
     Gradle:
 
     ```
-    implementation 'org.applecommander:AppleCommander:13.0'
+    implementation 'org.applecommander:AppleCommander:13.1'
     ```
 
 === "AppleCommander (before 12.0)"
@@ -89,14 +89,14 @@ Maven:
 <dependency>
  <groupId>net.sf.applecommander</groupId>
  <artifactId>bastools-api</artifactId>
- <version>0.4.0</version>
+ <version>0.4.1</version>
 </dependency>
 ```
 
 Gradle:
 
 ```
-implementation 'net.sf.applecommander:bastools-api:0.4.0'
+implementation 'net.sf.applecommander:bastools-api:0.4.1'
 ```
 
 ## Disassembler
