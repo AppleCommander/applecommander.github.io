@@ -231,7 +231,7 @@ if (source.is(Hint.PRODOS_BLOCK_ORDER)) {
 
 A "Container" allows pulling out internal components without providing a bunch of random "get" methods. For instance, the current
 `FormattedDisk` (and `Disk` before that) as well as (the retired) `ImageOrder` all support both block and track/sector reading and writing. 
-So, a ProDOS disk has reading by block or sector. DOS hsa reading by block or sector, etc. RDOS has, not only block or sector, 
+So, a ProDOS disk has reading by block or sector. DOS has reading by block or sector, etc. RDOS has, not only block or sector, 
 but also "RDOS" block (256) bytes; and CP/M is the same except the CP/M block is 1024 bytes. It would be nice to hide all that 
 cruft and "ask" the (in this case) file system if it supported a particular type of device. That's where containers come into 
 play -- we expose one "get" method that then looks for that type of item. It returns a Java `Optional`, so it may not and we 
@@ -247,7 +247,7 @@ Expected usage:
 
 ```java
 Optional<BlockDevice> blockOpt = disk.get(BlockDevice.class);
-blockOpt.isPresent(device -> {
+blockOpt.ifPresent(device -> {
     DataBuffer data = device.readBlock(0);
     // ...
 });
