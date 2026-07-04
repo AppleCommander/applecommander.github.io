@@ -5,7 +5,7 @@ The distribution file `AppleCommander-version-ac.jar` provides an Ant task that 
 The AppleCommander Ant task mirrors the `ac` command line as much as possible. The advantage over using the ant task over simply calling the AppleCommander command line directly is speed. It is much faster to call on the Ant task than it is for ant to shell out to the system, fire up a Java instance, and then execute your command.
 As with any external ant task, the first thing that must be done is to declare a `taskdef`:
 
-```
+```xml
 <taskdef name="appleCommander"
          classname="com.webcodepro.applecommander.ui.AntTask"
          classpath="AppleCommander-ac-${version}.jar"/>
@@ -15,7 +15,7 @@ Where `${version}` would need to be defined by you to be the version of the comm
 
 Once you have the `taskdef` defined, it can be called from within ant like this:
 
-```
+```xml
 <!-- Call AppleCommander to print information about the disk image -->
 <appleCommander command="i" imagename="${myDiskImage}" />
 ```
@@ -55,7 +55,7 @@ ProDOS: bas, bin, sys, txt, rel, etc.; see ProdosFileTypes.properties for more.
 
 In order to feed AppleCommander standard input, a file would be specified with the input parameter for the task - like this:
 
-```
+```xml
 <appleCommander command="p"
                 input="manifest.mf"
                 imagename="${myDiskImage}"
@@ -65,7 +65,7 @@ In order to feed AppleCommander standard input, a file would be specified with t
 
 In order to extract a file from an image to a real file, the real file would be specified with the output parameter for the task - like this:
 
-```
+```xml
 <appleCommander command="g"
                 imagename="${myDiskImage}"
                 filename="MANIFEST"
@@ -74,7 +74,7 @@ In order to extract a file from an image to a real file, the real file would be 
 
 AppleCommander ant tasks can be told to ignore errors with the `failonerror` parameter:
 
-```
+```xml
 <appleCommander command="p"
                 failonerror="false"
                 input="${hugeFileExpectFailure}"

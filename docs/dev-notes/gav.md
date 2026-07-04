@@ -7,7 +7,7 @@ Much of AppleCommander and it's tooling should be reusable and can be included i
 
     Maven:
 
-    ```
+    ```xml
     <dependency>
     <groupId>org.applecommander</groupId>
     <artifactId>AppleCommander</artifactId>
@@ -17,7 +17,7 @@ Much of AppleCommander and it's tooling should be reusable and can be included i
 
     Gradle:
 
-    ```
+    ```groovy
     implementation 'org.applecommander:AppleCommander:13.1'
     ```
 
@@ -26,7 +26,7 @@ Much of AppleCommander and it's tooling should be reusable and can be included i
 
     Maven:
 
-    ```
+    ```xml
     <dependency>
     <groupId>net.sf.applecommander</groupId>
     <artifactId>AppleCommander</artifactId>
@@ -36,7 +36,7 @@ Much of AppleCommander and it's tooling should be reusable and can be included i
 
     Gradle:
 
-    ```
+    ```groovy
     implementation 'net.sf.applecommander:AppleCommander:1.10.1'
     ```
 
@@ -46,7 +46,7 @@ The Shrinkit library is available as a separate dependency.
 
 Maven:
 
-```
+```xml
 <dependency>
  <groupId>net.sf.applecommander</groupId>
  <artifactId>ShrinkItArchive</artifactId>
@@ -56,7 +56,7 @@ Maven:
 
 Gradle:
 
-```
+```groovy
 implementation 'net.sf.applecommander:ShrinkItArchive:1.2.2'
 ```
 
@@ -66,7 +66,7 @@ The AppleSingle support is available in a dedicated API.
 
 Maven:
 
-```
+```xml
 <dependency>
  <groupId>net.sf.applecommander</groupId>
  <artifactId>applesingle-api</artifactId>
@@ -75,7 +75,7 @@ Maven:
 ```
 Gradle:
 
-```
+```groovy
 implementation 'net.sf.applecommander:applesingle-api:1.2.2'
 ```
 
@@ -85,7 +85,7 @@ The BASIC tooling is available in the bastools API.
 
 Maven:
 
-```
+```xml
 <dependency>
  <groupId>net.sf.applecommander</groupId>
  <artifactId>bastools-api</artifactId>
@@ -95,7 +95,7 @@ Maven:
 
 Gradle:
 
-```
+```groovy
 implementation 'net.sf.applecommander:bastools-api:0.4.1'
 ```
 
@@ -106,7 +106,7 @@ The AppleCommander disassembler tooling is available in the acdasm API.
 === "acdasm (6.0 or later)"
     Maven:
 
-    ```
+    ```xml
     <dependency>
         <groupId>org.applecommander</groupId>
         <artifactId>acdasm</artifactId>
@@ -116,14 +116,14 @@ The AppleCommander disassembler tooling is available in the acdasm API.
 
     Gradle:
 
-    ```
+    ```groovy
     implementation 'org.applecommander:acdasm:6.1'
     ```
 
 === "acdasm (before 6.0)"
     Maven:
 
-    ```
+    ```xml
     <dependency>
         <groupId>net.sf.applecommander</groupId>
         <artifactId>acdasm</artifactId>
@@ -133,7 +133,7 @@ The AppleCommander disassembler tooling is available in the acdasm API.
 
     Gradle:
 
-    ```
+    ```groovy
     implementation 'net.sf.applecommander:acdasm:0.5.0'
     ```
 

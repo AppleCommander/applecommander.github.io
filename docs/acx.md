@@ -4,7 +4,7 @@
 
 All commands and subcommands will show options and command structure with the `--help` flag. 
 
-```shell
+```
 $ acx --help
 Usage: acx [-hVv] [--debug] [--quiet] [COMMAND]
 
@@ -45,7 +45,7 @@ Commands:
 
 When looking for options for a subcommand, the `help` subcommand may be used as an alternate (`acx copy --help` or `acx help copy` are both valid).
 
-```shell
+```
 $ acx copy --help
 Usage: acx copy [-fhr] [-k=<diskNumber>] [--to=<targetPath>] -d=<disks>
                 [-d=<disks>]... -s=<sourceDisks> [-s=<sourceDisks>]...
@@ -74,7 +74,7 @@ Options:
 `acx` differs from `ac` in that the primary disk image is always specified by the `-d` flag.  However, this can be painful when running a series of commands.  To simplify usage, the environment variable `ACX_DISK_NAME` can be set to simplify scripting.
 
 This means that a sequence of commands that look like this:
-```shell
+```
 $ acx create -d disk1.po --prodos
 $ acx copy -d disk1.po --from ProDOS_2_4_2.dsk PRODOS BASIC.SYSTEM
 $ acx list -d disk1.po --native
@@ -87,7 +87,7 @@ ProDOS format; 111,104 bytes free; 32,256 bytes used.
 ```
 
 Can also be specified in this manner:
-```shell
+```
 $ export ACX_DISK_NAME=disk2.po   # This sets the environment variable with the disk name
 $ acx create --prodos
 $ acx copy --from ProDOS_2_4_2.dsk PRODOS BASIC.SYSTEM
@@ -105,7 +105,7 @@ $ unset ACX_DISK_NAME               # This removes the environment variable
 
 `acx` introduces experimenal capability to create bootable disks. Note that this is only viable for writeable disks (DOS, ProDOS, and Pascal).
 
-```shell
+```
 $ acx create -d disk1.po --format ProDOS_2_4_2.dsk --prodos --size=140kb
 $ acx create -d disk2.dsk --format original332sysmas.nib --dos --size=140kb
 $ acx create -d disk3.po --format UCSD\ Pascal\ 1.2_0.DSK --pascal
@@ -119,7 +119,7 @@ For ProDOS and Pascal, the boot block is copied over and in the ProDOS case, `ST
 
 `acx` can dump any sector or block in a hex format:
 
-```shell
+```
 $ acx dump -d ProDOS_2_4_2.dsk --block 2
 Offset   Hex Data                                          Characters
 =======  ================================================  =================
@@ -137,7 +137,7 @@ $000880  59 53 54 45 4D 00 00 00  00 FF 27 00 01 00 38 00  YSTEM... ..'...8.
 
 Or a range of them:
 
-```shell
+```
 $ acx dump -d original332sysmas.do -t 17 -s 1-15
 Track 17, Sector 01:
 Offset   Hex Data                                          Characters
@@ -179,7 +179,7 @@ $0000F0  A0 A0 A0 A0 A0 A0 A0 A0  A0 A0 A0 A0 A0 A0 09 00                 ..
 
 `acx` can dump any sector or block in a disassembled format:
 
-```shell
+```
 $ acx dump -d ~/Downloads/ProDOS_2_4_3.po -t 0 -s 0 --disassembly
 Track 00, Sector 00:
 0801- 38                   SEC                                  
@@ -214,7 +214,7 @@ A new feature when listing files is that `acx` allows "glob" pattern matching ("
 
 For example, to list files that might be run at startup (`*.SYSTEM`):
 
-```shell
+```
 $ acx ls -d ProDOS_2_4_2.dsk --globs "*.SYSTEM"
 
 File: ProDOS_2_4_2.dsk
@@ -229,7 +229,7 @@ ProDOS format; 0 bytes free; 143,360 bytes used.
 
 Like `ac`, `acx` allows file listings to be written out as structured text.  Specifically, with JSON output, secondary processing tools can be used to extract information. Here's a sample using the `jq` tool:
 
-```shell
+```
 $ acx ls -d ProDOS_2_4_2.dsk --json | jq '.disks[].files[] | select(.name == "BASIC.SYSTEM")'
 {
   "locked": "*",
@@ -247,7 +247,7 @@ $ acx ls -d ProDOS_2_4_2.dsk --json | jq '.disks[].files[] | select(.name == "BA
 
 `acx` can look for duplicate files:
 
-```shell
+```
 $ acx dups -d "Beagle Bros Tip Disk #1.dsk"
 Differences:
 /mmmmmmmm TIP BOOK #1 mmmmmmmmm has the following duplicates:
@@ -260,7 +260,7 @@ Differences:
 
 ... and a partial directory listing:
 
-```shell
+```
 $ acx ls -l -d "Beagle Bros Tip Disk #1.dsk"
 
 File: Beagle Bros Tip Disk #1.dsk
@@ -288,7 +288,7 @@ Note that each record is an independent JSON structure. It will work with tools 
 
 Sample run: (for more output, use `acx -vvv scan ./Apple2/ -o newscan.json` for more verbosity)
 
-```shell
+```
 $ acx scan ./Apple2/ -o newscan.json
 Scanned 3820 disk images.
 ```
@@ -333,7 +333,7 @@ Failure record: (one of many types)
 
 Using `jq`: (selects failures that have the `Unknown ProDOS storage type!` error message)
 
-```shell
+```
 $ cat newscan.json | jq -r 'select(.success | not) | select(.errors | contains(["Unknown ProDOS storage type!"]))'
 <snip>
 {
@@ -365,7 +365,7 @@ The `acx` tool also allows some inspection of nibble images, should that be of i
 
 For instance, there are a few protected images where AppleCommander can identify the encoding for the track. This is visible in the `info` subcommand:
 
-```shell
+```
 $ acx info -d apple_II/images/games/rpg/ultima/ultima_I/ultima_i_boot.nib
 File Name: apple_II/images/games/rpg/ultima/ultima_I/ultima_i_boot.nib
 Disk Name: DISK VOLUME #254
@@ -394,7 +394,7 @@ Prolog/Epilog Bytes (T05): DDAAF5/DDAAFD (13 sectors on track)
 
 The track nibble data can be viewed as well:
 
-```shell
+```
 $ acx dump -d apple_II/images/games/rpg/ultima/ultima_I/ultima_i_boot.nib -n 1
 Track 01
 Offset   Hex Data                                          Characters
@@ -415,7 +415,7 @@ $0000A0  D6 B5 F6 B5 AD FF F5 DF  BA FA BB DD B5 AD EE EF  V5v5-.u_ :z;]5-no
 
 And, of course, if the protected disk is a gussied up DOS, you can view the contents:
 
-```shell
+```
 $ acx list -d apple_II/images/games/rpg/ultima/ultima_I/ultima_i_boot.nib
 
 File: apple_II/images/games/rpg/ultima/ultima_I/ultima_i_boot.nib
@@ -447,7 +447,7 @@ DOS 3.2 format; 0 bytes free; 116,480 bytes used.
 ```
 * The crazy block sizes are because AppleCommander decodes both bytes of the block size but DOS doesn't. Regardless, they are crazy.
 
-```shell
+```
 $ acx get -d apple_II/images/games/rpg/ultima/ultima_I/ultima_i_boot.nib ULTIMA
 0  ONERR  GOTO 9900
 28  HGR : TEXT : HOME : VTAB (12): HTAB (16): PRINT "--ULTIMA--"

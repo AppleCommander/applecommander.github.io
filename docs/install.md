@@ -40,7 +40,7 @@ The GUI component comes pre-packaged with all needed dependencies. You do not ne
 Generally, once the JAR is downloaded, just double-click on the file!
 
 For Mac OS X, AppleCommander's windowing library (SWT) requires the `-XstartOnFirstThread` flag. Starting AppleCommander will need to be from a script something like:
-```bash
+```shell
 #!/bin/sh
 java -XstartOnFirstThread -jar ~/bin/AppleCommander-macosx-ARCH-VERSION.jar
 ```
@@ -55,13 +55,13 @@ For Linux, you may need to set the file to be executable by allowing the JAR fil
 The distribution file `AppleCommander-ac-VERSION.jar` provides a command-line interface to AppleCommander. It is ready to use immediately, but it may be convenient to rename it (e.g. `ac.jar`) or invoke it from a script, e.g.
 
 GNU bash script for Linux or Mac OS X (`ac.sh`):
-```bash
+```shell
 #!/bin/sh
 java -jar ~/bin/ac.jar "${@}"
 ```
 
 MS DOS batch file (`ac.bat`):
-```batch
+```
 @echo off
 java -jar AppleCommander-ac-1.11.0.jar %*
 ```

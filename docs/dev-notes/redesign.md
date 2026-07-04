@@ -157,7 +157,7 @@ Examples of using the builder interfaces:
 
 === "TrackSectorDevice"
 
-    ```
+    ```java
     List<TrackSectorDevice> sectorDevices = ctx.trackSectorDevice()
                     .include13Sector()
                     .include16Sector(Hint.DOS_SECTOR_ORDER)
@@ -166,7 +166,7 @@ Examples of using the builder interfaces:
 
 === "BlockDevice"
 
-    ```
+    ```java
     List<BlockDevice> blockDevices = ctx.blockDevice()
             .include16Sector(Hint.PRODOS_BLOCK_ORDER)
             .include800K()
