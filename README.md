@@ -4,13 +4,16 @@ This site has moved to using the [Material theme](https://squidfunk.github.io/mk
 
 ## Setup
 
+> Note that MkDocs Material is breaking away from MkDocs [due to a rewrite that causes issues](https://squidfunk.github.io/mkdocs-material/blog/2026/02/18/mkdocs-2.0/).
+> The `requirements.txt` file was introduced to lock this project into legacy versions that work together.
+
 Generally follow the directions to get setup, but what was needed on Ubuntu Linux is only:
 
 ```bash
 $ sudo apt install python3-pip python3-venv
 $ python3 -m venv venv/
 $ source venv/bin/activate
-(venv) $ pip install mkdocs-material
+(venv) $ pip install -r requirements.txt
 ```
 
 ## Developing
@@ -20,7 +23,7 @@ Git clone the site.  Note that the branch `working-copy` is the primary branch t
 `cd` to the `applecommander.github.io` working directory and:
 
 ```bash
-$ mkdocs serve
+(venv) $ mkdocs serve
 ```
 
 Open a browser to http://localhost:8000/ and the site will be there and can be live-edited.
