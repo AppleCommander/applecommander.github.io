@@ -57,11 +57,7 @@ cp -r ../ShrinkItArchive/build/docs/javadoc/* ./docs/dev-notes/javadoc/ShrinkItA
 
 ## Publishing
 
-To publish, per [Deploying your docs](http://www.mkdocs.org/user-guide/deploying-your-docs/), the following will build and commit to the `master` branch (again, make all changes against the `working-copy` branch):
-
-```bash
-$ mkdocs gh-deploy
-```
+Any commit into the `working-copy` branch will be automatically published to the `master` branch by GitHub Actions.
 
 The `mkdocs.yml` file has been configured to publish to `master`:
 
