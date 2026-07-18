@@ -1,0 +1,1466 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Information site for the AppleCommander suite of tools">
+      
+      
+        <meta name="author" content="a2geek">
+      
+      
+        <link rel="canonical" href="https://applecommander.github.io/dev-notes/redesign/">
+      
+      
+        <link rel="prev" href="../gav/">
+      
+      
+        <link rel="next" href="../uml/">
+      
+      
+      <link rel="icon" href="../../images/apple-logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.23">
+    
+    
+      
+        <title>Updated API and UML - AppleCommander</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.84d31ad4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/mkdocs_puml/puml.css">
+    
+      <link rel="stylesheet" href="../../assets/mkdocs_puml/interaction.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#api-changes" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="AppleCommander" class="md-header__button md-logo" aria-label="AppleCommander" data-md-component="logo">
+      
+  <img src="../../images/apple-logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AppleCommander
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Updated API and UML
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/AppleCommander/AppleCommander" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    AppleCommander
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="AppleCommander" class="md-nav__button md-logo" aria-label="AppleCommander" data-md-component="logo">
+      
+  <img src="../../images/apple-logo.png" alt="logo">
+
+    </a>
+    AppleCommander
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/AppleCommander/AppleCommander" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    AppleCommander
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../install/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Installing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Screenshots
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ac/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Using 'ac'
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../acx/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Using 'acx'
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Developer Notes
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Developer Notes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gav/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Maven/Gradle GAV
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Updated API and UML
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Updated API and UML
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#api-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      API changes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="API changes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#accessing-a-disk-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      Accessing a disk image
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sources
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#disks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Disks
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-semi-experimental" class="md-nav__link">
+    <span class="md-ellipsis">
+      Other (semi-experimental)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Other (semi-experimental)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#databuffer" class="md-nav__link">
+    <span class="md-ellipsis">
+      DataBuffer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#capabilityprovider" class="md-nav__link">
+    <span class="md-ellipsis">
+      CapabilityProvider
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hintprovider" class="md-nav__link">
+    <span class="md-ellipsis">
+      HintProvider
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#container" class="md-nav__link">
+    <span class="md-ellipsis">
+      Container
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#information" class="md-nav__link">
+    <span class="md-ellipsis">
+      Information
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../uml/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Historical UML diagrams
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../disassembler/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Disassembler API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ant Task
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javadoc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Javadoc
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cc65-pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    cc65 Pipeline
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    History
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            History
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../history/current/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Current releases
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Legacy releases
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            Legacy releases
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../history/version13514/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.3.5.14 (27-Nov-2013)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../history/version135/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.3.5 (01-Jun-2008)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../history/version134/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.3.4 (31-Mar-2007)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../history/version133/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.3.3 (18-Jun-2004)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../history/version132/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.3.2 (05-Jun-2004)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../history/version131/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.3.1 (12-Dec-2003)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../history/version130/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.3.0 (04-Dec-2003)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../history/version123/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.2.3 (13-Apr-2003)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../history/version122/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.2.2 (15-Mar-2003)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../history/version121/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.2.1 (01-Mar-2003)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../history/version120/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.2.0 (11-Feb-2003)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../history/version111/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.1.1 (30-Nov-2002)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../history/version110/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.1 (12-Nov-2002)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../history/version100/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.0 (28-Oct-2002)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#api-changes" class="md-nav__link">
+    <span class="md-ellipsis">
+      API changes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="API changes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#accessing-a-disk-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      Accessing a disk image
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sources
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#disks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Disks
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#other-semi-experimental" class="md-nav__link">
+    <span class="md-ellipsis">
+      Other (semi-experimental)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Other (semi-experimental)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#databuffer" class="md-nav__link">
+    <span class="md-ellipsis">
+      DataBuffer
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#capabilityprovider" class="md-nav__link">
+    <span class="md-ellipsis">
+      CapabilityProvider
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#hintprovider" class="md-nav__link">
+    <span class="md-ellipsis">
+      HintProvider
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#container" class="md-nav__link">
+    <span class="md-ellipsis">
+      Container
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#information" class="md-nav__link">
+    <span class="md-ellipsis">
+      Information
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+  <h1>Updated API and UML</h1>
+
+<h2 id="api-changes">API changes</h2>
+<p>As of AppleCommander 12, the API is starting to be redesigned. This page will capture what the "new world" looks like
+if you are a developer using the AppleCommander APIs.</p>
+<p>Changes (so far):</p>
+<ul>
+<li><code>ByteArrayImageLayout</code> was replaced with <code>Source</code>.</li>
+<li><code>Source</code> discovery mechanism is now in <code>Source.Factory</code>.</li>
+<li><code>Sources#create(Object)</code> is now used to create <code>Source</code> objects. Sometimes with a special <code>Source</code>.</li>
+<li><code>Disk</code> was removed. After discovery was removed, it was just a placeholder and all functionality was merged into <code>FormattedDisk</code>.</li>
+<li>Constants from <code>Disk</code> are now in <code>DiskConstants</code>.</li>
+<li><code>FormattedDisk</code> discovery mechanism is now in <code>DiskFactory</code>.</li>
+<li><code>Disks#inspect(Source)</code> is now used to initiate the <code>FormattedDisk</code> discovery mechanism.</li>
+<li><code>ImageOrder</code> was replaced by <code>Device</code>. Specific cases are <code>BlockDevice</code> and <code>TrackSectorDevice</code>.</li>
+</ul>
+<h3 id="accessing-a-disk-image">Accessing a disk image</h3>
+<p>With the removal of <code>Disk</code> as the discovery and creation mechanism, there are a couple of replacement hooks to be aware of:
+A <code>FormattedDisk</code> originates from a <code>Source</code> (new) and is created via the discovery mechanism supported by <code>Disks</code>.</p>
+<p>That is:</p>
+<ol>
+<li>Create a <code>Source</code> via <code>Sources</code>.</li>
+<li>Use <code>Disks</code> to "discover" a list of <code>FormattedDisk</code> objects.</li>
+</ol>
+<h3 id="sources">Sources</h3>
+<p>A <code>Source</code>, which replaces the layout, does some of the same stuff but supports discovery and complex types (such as 2IMG and DiskCopy).
+Note that a source can wrap around another source, allowing a constant GZip support or data source (such as a <code>FileEntry</code> on an image
+or a Shrinkit archive).</p>
+<div class="highlight"><pre><span></span><code><span class="n">Source</span><span class="w"> </span><span class="n">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Sources</span><span class="p">.</span><span class="na">create</span><span class="p">(</span><span class="n">filename</span><span class="p">).</span><span class="na">orElseThrow</span><span class="p">();</span>
+</code></pre></div>
+<p>To create a source, pass in a <code>String</code>, <code>File</code>, <code>Path</code>, or another <code>Source</code> to the <code>Sources</code> factory. The <code>create(...)</code> method
+returns an <code>Optional&lt;Source&gt;</code> just in case -- mostly, you can ignore the optional part and just retrieve the object.</p>
+<div class='puml-container'><div class="puml light" style=""><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" data-diagram-type="CLASS" style="width:897px;height:497px;background:#FFFFFF;" width="897px" height="497px" viewBox="0 0 897 497" zoomAndPan="magnify" preserveAspectRatio="xMidYMid meet" contentStyleType="text/css" class="diagram"><?plantuml 1.2026.7beta8?><defs/><g font-family="sans-serif" lengthAdjust="spacing"><g class="entity" data-qualified-name="CapabilityProvider" id="ent0001" data-source-line="2"><rect x="7" y="15.15" width="255.886" height="64.297" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" rx="2.5" ry="2.5"/><ellipse cx="66.521" cy="31.15" rx="11" ry="11" fill="#B4A7E5" style="stroke:#181818;stroke-width:1;"/><path d="M62.442,26.916 L62.442,24.759 L69.833,24.759 L69.833,26.916 L67.364,26.916 L67.364,34.994 L69.833,34.994 L69.833,37.15 L62.442,37.15 L62.442,34.994 L64.911,34.994 L64.911,26.916 L62.442,26.916 Z " fill="#000"/><text x="87.021" y="35.997" fill="#000" font-size="14" textLength="128.345" font-style="italic">CapabilityProvider</text><line x1="8" y1="47.15" x2="261.886" y2="47.15" style="stroke:#181818;stroke-width:0.5;"/><line x1="8" y1="55.15" x2="261.886" y2="55.15" style="stroke:#181818;stroke-width:0.5;"/><text x="13" y="72.145" fill="#000" font-size="14" textLength="243.886">boolean can(Capability capability);</text></g><g class="entity" data-qualified-name="HintProvider" id="ent0002" data-source-line="5"><rect x="297.6" y="7" width="260.691" height="80.594" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" rx="2.5" ry="2.5"/><ellipse cx="380.209" cy="23" rx="11" ry="11" fill="#B4A7E5" style="stroke:#181818;stroke-width:1;"/><path d="M376.131,18.766 L376.131,16.609 L383.521,16.609 L383.521,18.766 L381.053,18.766 L381.053,26.844 L383.521,26.844 L383.521,29 L376.131,29 L376.131,26.844 L378.6,26.844 L378.6,18.766 L376.131,18.766 Z " fill="#000"/><text x="400.709" y="27.847" fill="#000" font-size="14" textLength="86.974" font-style="italic">HintProvider</text><line x1="298.6" y1="39" x2="557.291" y2="39" style="stroke:#181818;stroke-width:0.5;"/><line x1="298.6" y1="47" x2="557.291" y2="47" style="stroke:#181818;stroke-width:0.5;"/><text x="303.6" y="63.995" fill="#000" font-size="14" textLength="147.602">boolean is(Hint hint);</text><text x="303.6" y="80.292" fill="#000" font-size="14" textLength="248.691">default boolean isAny(Hint... hints);</text></g><g class="entity" data-qualified-name="Container" id="ent0003" data-source-line="9"><rect x="593.07" y="15.15" width="289.751" height="64.297" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" rx="2.5" ry="2.5"/><ellipse cx="699.488" cy="31.15" rx="11" ry="11" fill="#B4A7E5" style="stroke:#181818;stroke-width:1;"/><path d="M695.41,26.916 L695.41,24.759 L702.801,24.759 L702.801,26.916 L700.332,26.916 L700.332,34.994 L702.801,34.994 L702.801,37.15 L695.41,37.15 L695.41,34.994 L697.879,34.994 L697.879,26.916 L695.41,26.916 Z " fill="#000"/><text x="719.988" y="35.997" fill="#000" font-size="14" textLength="68.414" font-style="italic">Container</text><line x1="594.07" y1="47.15" x2="881.821" y2="47.15" style="stroke:#181818;stroke-width:0.5;"/><line x1="594.07" y1="55.15" x2="881.821" y2="55.15" style="stroke:#181818;stroke-width:0.5;"/><text x="599.07" y="72.145" fill="#000" font-size="14" textLength="277.751">&lt;T&gt; Optional&lt;T&gt; get(Class&lt;T&gt; iface);</text></g><g class="entity" data-qualified-name="Source" id="ent0004" data-source-line="12"><rect x="251.24" y="147.59" width="353.407" height="227.266" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" rx="2.5" ry="2.5"/><ellipse cx="399.498" cy="163.59" rx="11" ry="11" fill="#B4A7E5" style="stroke:#181818;stroke-width:1;"/><path d="M395.42,159.356 L395.42,157.199 L402.81,157.199 L402.81,159.356 L400.342,159.356 L400.342,167.434 L402.81,167.434 L402.81,169.59 L395.42,169.59 L395.42,167.434 L397.888,167.434 L397.888,159.356 L395.42,159.356 Z " fill="#000"/><text x="419.998" y="168.437" fill="#000" font-size="14" textLength="48.392" font-style="italic">Source</text><line x1="252.24" y1="179.59" x2="603.647" y2="179.59" style="stroke:#181818;stroke-width:0.5;"/><line x1="252.24" y1="187.59" x2="603.647" y2="187.59" style="stroke:#181818;stroke-width:0.5;"/><text x="257.24" y="204.585" fill="#000" font-size="14" textLength="90.07">int getSize();</text><text x="257.24" y="220.882" fill="#000" font-size="14" textLength="126.164">String getName();</text><text x="257.24" y="237.179" fill="#000" font-size="14" textLength="184.7">DataBuffer readAllBytes();</text><text x="257.24" y="253.476" fill="#000" font-size="14" textLength="306.093">DataBuffer readBytes(int offset, int length);</text><text x="257.24" y="269.773" fill="#000" font-size="14" textLength="307.74">void writeBytes(int offset, DataBuffer data);</text><text x="257.24" y="286.069" fill="#000" font-size="14" textLength="163.297">boolean hasChanged();</text><text x="257.24" y="302.366" fill="#000" font-size="14" textLength="145.147">void clearChanges();</text><text x="257.24" y="318.663" fill="#000" font-size="14" textLength="230.357">List&lt;Information&gt; information();</text><text x="257.24" y="334.96" fill="#000" font-size="14" textLength="271.722">default boolean isApproxEQ(int value);</text><text x="257.24" y="351.257" fill="#000" font-size="14" textLength="268.502">default boolean isApproxLE(int value);</text><text x="257.24" y="367.554" fill="#000" font-size="14" textLength="341.407">default boolean extensionLike(String extension);</text></g><g class="entity" data-qualified-name="FileSource" id="ent0008" data-source-line="25"><rect x="11.52" y="434.86" width="104.837" height="48" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" rx="2.5" ry="2.5"/><ellipse cx="26.52" cy="450.86" rx="11" ry="11" fill="#ADD1B2" style="stroke:#181818;stroke-width:1;"/><path d="M29.489,456.501 Q28.911,456.798 28.27,456.938 Q27.629,457.094 26.926,457.094 Q24.426,457.094 23.098,455.454 Q21.786,453.798 21.786,450.673 Q21.786,447.548 23.098,445.891 Q24.426,444.235 26.926,444.235 Q27.629,444.235 28.27,444.391 Q28.926,444.548 29.489,444.844 L29.489,447.563 Q28.864,446.985 28.27,446.719 Q27.676,446.438 27.051,446.438 Q25.708,446.438 25.02,447.516 Q24.333,448.579 24.333,450.673 Q24.333,452.766 25.02,453.844 Q25.708,454.907 27.051,454.907 Q27.676,454.907 28.27,454.641 Q28.864,454.36 29.489,453.782 L29.489,456.501 Z " fill="#000"/><text x="40.52" y="455.707" fill="#000" font-size="14" textLength="72.837">FileSource</text><line x1="12.52" y1="466.86" x2="115.357" y2="466.86" style="stroke:#181818;stroke-width:0.5;"/><line x1="12.52" y1="474.86" x2="115.357" y2="474.86" style="stroke:#181818;stroke-width:0.5;"/></g><g class="entity" data-qualified-name="UniversalDiskImage" id="ent0010" data-source-line="27"><rect x="151.27" y="434.86" width="171.344" height="48" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" rx="2.5" ry="2.5"/><ellipse cx="166.27" cy="450.86" rx="11" ry="11" fill="#ADD1B2" style="stroke:#181818;stroke-width:1;"/><path d="M169.239,456.501 Q168.661,456.798 168.02,456.938 Q167.379,457.094 166.676,457.094 Q164.176,457.094 162.848,455.454 Q161.536,453.798 161.536,450.673 Q161.536,447.548 162.848,445.891 Q164.176,444.235 166.676,444.235 Q167.379,444.235 168.02,444.391 Q168.676,444.548 169.239,444.844 L169.239,447.563 Q168.614,446.985 168.02,446.719 Q167.426,446.438 166.801,446.438 Q165.458,446.438 164.77,447.516 Q164.083,448.579 164.083,450.673 Q164.083,452.766 164.77,453.844 Q165.458,454.907 166.801,454.907 Q167.426,454.907 168.02,454.641 Q168.614,454.36 169.239,453.782 L169.239,456.501 Z " fill="#000"/><text x="180.27" y="455.707" fill="#000" font-size="14" textLength="139.344">UniversalDiskImage</text><line x1="152.27" y1="466.86" x2="321.614" y2="466.86" style="stroke:#181818;stroke-width:0.5;"/><line x1="152.27" y1="474.86" x2="321.614" y2="474.86" style="stroke:#181818;stroke-width:0.5;"/></g><g class="entity" data-qualified-name="DiskCopyImage" id="ent0012" data-source-line="29"><rect x="357.23" y="434.86" width="141.43" height="48" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" rx="2.5" ry="2.5"/><ellipse cx="372.23" cy="450.86" rx="11" ry="11" fill="#ADD1B2" style="stroke:#181818;stroke-width:1;"/><path d="M375.199,456.501 Q374.621,456.798 373.98,456.938 Q373.339,457.094 372.636,457.094 Q370.136,457.094 368.808,455.454 Q367.496,453.798 367.496,450.673 Q367.496,447.548 368.808,445.891 Q370.136,444.235 372.636,444.235 Q373.339,444.235 373.98,444.391 Q374.636,444.548 375.199,444.844 L375.199,447.563 Q374.574,446.985 373.98,446.719 Q373.386,446.438 372.761,446.438 Q371.418,446.438 370.73,447.516 Q370.043,448.579 370.043,450.673 Q370.043,452.766 370.73,453.844 Q371.418,454.907 372.761,454.907 Q373.386,454.907 373.98,454.641 Q374.574,454.36 375.199,453.782 L375.199,456.501 Z " fill="#000"/><text x="386.23" y="455.707" fill="#000" font-size="14" textLength="109.43">DiskCopyImage</text><line x1="358.23" y1="466.86" x2="497.66" y2="466.86" style="stroke:#181818;stroke-width:0.5;"/><line x1="358.23" y1="474.86" x2="497.66" y2="474.86" style="stroke:#181818;stroke-width:0.5;"/></g><g class="entity" data-qualified-name="DataBufferSource" id="ent0014" data-source-line="31"><rect x="533.68" y="434.86" width="156.523" height="48" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" rx="2.5" ry="2.5"/><ellipse cx="548.68" cy="450.86" rx="11" ry="11" fill="#ADD1B2" style="stroke:#181818;stroke-width:1;"/><path d="M551.649,456.501 Q551.071,456.798 550.43,456.938 Q549.789,457.094 549.086,457.094 Q546.586,457.094 545.258,455.454 Q543.946,453.798 543.946,450.673 Q543.946,447.548 545.258,445.891 Q546.586,444.235 549.086,444.235 Q549.789,444.235 550.43,444.391 Q551.086,444.548 551.649,444.844 L551.649,447.563 Q551.024,446.985 550.43,446.719 Q549.836,446.438 549.211,446.438 Q547.868,446.438 547.18,447.516 Q546.493,448.579 546.493,450.673 Q546.493,452.766 547.18,453.844 Q547.868,454.907 549.211,454.907 Q549.836,454.907 550.43,454.641 Q551.024,454.36 551.649,453.782 L551.649,456.501 Z " fill="#000"/><text x="562.68" y="455.707" fill="#000" font-size="14" textLength="124.523">DataBufferSource</text><line x1="534.68" y1="466.86" x2="689.203" y2="466.86" style="stroke:#181818;stroke-width:0.5;"/><line x1="534.68" y1="474.86" x2="689.203" y2="474.86" style="stroke:#181818;stroke-width:0.5;"/></g><g class="entity" data-qualified-name="FileEntrySource" id="ent0016" data-source-line="33"><rect x="724.9" y="434.86" width="142.086" height="48" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" rx="2.5" ry="2.5"/><ellipse cx="739.9" cy="450.86" rx="11" ry="11" fill="#ADD1B2" style="stroke:#181818;stroke-width:1;"/><path d="M742.869,456.501 Q742.291,456.798 741.65,456.938 Q741.009,457.094 740.306,457.094 Q737.806,457.094 736.478,455.454 Q735.166,453.798 735.166,450.673 Q735.166,447.548 736.478,445.891 Q737.806,444.235 740.306,444.235 Q741.009,444.235 741.65,444.391 Q742.306,444.548 742.869,444.844 L742.869,447.563 Q742.244,446.985 741.65,446.719 Q741.056,446.438 740.431,446.438 Q739.088,446.438 738.4,447.516 Q737.713,448.579 737.713,450.673 Q737.713,452.766 738.4,453.844 Q739.088,454.907 740.431,454.907 Q741.056,454.907 741.65,454.641 Q742.244,454.36 742.869,453.782 L742.869,456.501 Z " fill="#000"/><text x="753.9" y="455.707" fill="#000" font-size="14" textLength="110.086">FileEntrySource</text><line x1="725.9" y1="466.86" x2="865.986" y2="466.86" style="stroke:#181818;stroke-width:0.5;"/><line x1="725.9" y1="474.86" x2="865.986" y2="474.86" style="stroke:#181818;stroke-width:0.5;"/></g><g class="link" data-entity-1="ent0001" data-entity-2="ent0004" id="lnk5" data-source-line="13" data-link-type="extension"><path d="M193.077,90.346 C218.347,108.616 237.29,122.32 271.54,147.1" style="stroke:#181818;stroke-width:1;" fill="none" id="CapabilityProvider-backto-Source"/><polygon points="178.49,79.8,189.561,95.209,196.592,85.484,178.49,79.8" fill="none" style="stroke:#181818;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/></g><g class="link" data-entity-1="ent0002" data-entity-2="ent0004" id="lnk6" data-source-line="13" data-link-type="extension"><path d="M427.94,105.66 C427.94,122.78 427.94,125.8 427.94,147.2" style="stroke:#181818;stroke-width:1;" fill="none" id="HintProvider-backto-Source"/><polygon points="427.94,87.66,421.94,105.66,433.94,105.66,427.94,87.66" fill="none" style="stroke:#181818;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/></g><g class="link" data-entity-1="ent0003" data-entity-2="ent0004" id="lnk7" data-source-line="13" data-link-type="extension"><path d="M677.008,89.955 C650.268,108.225 629.66,122.32 593.42,147.1" style="stroke:#181818;stroke-width:1;" fill="none" id="Container-backto-Source"/><polygon points="691.87,79.8,673.623,85,680.393,94.909,691.87,79.8" fill="none" style="stroke:#181818;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/></g><g class="link" data-entity-1="ent0004" data-entity-2="ent0008" id="lnk9" data-link-type="extension"><path d="M234.885,365.982 C181.545,394.652 143.52,415.09 107.42,434.49" style="stroke:#181818;stroke-width:1;stroke-dasharray:7,7;" fill="none" id="Source-backto-FileSource"/><polygon points="250.74,357.46,232.044,360.697,237.726,371.267,250.74,357.46" fill="none" style="stroke:#181818;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/></g><g class="link" data-entity-1="ent0004" data-entity-2="ent0010" id="lnk11" data-link-type="extension"><path d="M305.094,388.058 C283.094,410.588 274.74,419.15 259.7,434.55" style="stroke:#181818;stroke-width:1;stroke-dasharray:7,7;" fill="none" id="Source-backto-UniversalDiskImage"/><polygon points="317.67,375.18,300.802,383.867,309.387,392.25,317.67,375.18" fill="none" style="stroke:#181818;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/></g><g class="link" data-entity-1="ent0004" data-entity-2="ent0012" id="lnk13" data-link-type="extension"><path d="M427.94,393.18 C427.94,415.71 427.94,419.15 427.94,434.55" style="stroke:#181818;stroke-width:1;stroke-dasharray:7,7;" fill="none" id="Source-backto-DiskCopyImage"/><polygon points="427.94,375.18,421.94,393.18,433.94,393.18,427.94,375.18" fill="none" style="stroke:#181818;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/></g><g class="link" data-entity-1="ent0004" data-entity-2="ent0014" id="lnk15" data-link-type="extension"><path d="M546.512,388.292 C567.702,410.822 575.53,419.15 590.02,434.55" style="stroke:#181818;stroke-width:1;stroke-dasharray:7,7;" fill="none" id="Source-backto-DataBufferSource"/><polygon points="534.18,375.18,542.141,392.403,550.883,384.181,534.18,375.18" fill="none" style="stroke:#181818;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/></g><g class="link" data-entity-1="ent0004" data-entity-2="ent0016" id="lnk17" data-link-type="extension"><path d="M620.834,364.769 C675.334,393.739 714.76,414.7 751.74,434.36" style="stroke:#181818;stroke-width:1;stroke-dasharray:7,7;" fill="none" id="Source-backto-FileEntrySource"/><polygon points="604.94,356.32,618.018,370.067,623.65,359.471,604.94,356.32" fill="none" style="stroke:#181818;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/></g><?plantuml-src ZP9BRzim3CVl-HJQpGC2-xuL0retnOfbxOPivu6nQ8k87eP4k_MAVVT9hkEcZxJrmQR47_zy-GFPIdSIXM9kmwUYy72JDyIgstO1VUKie-MySgRuJZi5fBzvw953ONRILU5FsnbT60YClc251aCXiOPESw6fKPmdO45HnjTGeIYXXIrfuk67Tpr9zE9k8UApTKuZM561pHwWUDoR7pyl_Xq8VOtc4GaAMV8A5LynAhcccWwGKpkCL9xd8nYUw9UnTI0xYv_y-YAkMoPdGIUxGSvA3I6a0wMG9m8Rr_dumTiuGHbUQ7pvg8VbiuofXPXbGtynczhOi2VRfDihCFFjEJ2STNKT8ps2FDNwR60CHzptlYJkwZeWByT46ct3Qehe7KbnuudnENoW9gCvHUpdgY2K2co3CZlKggBJtplcijOK-EJIriuRI6EDKtmuPCVtrhRUtQv-ZaNre3jy0rsltaJ77OMOTaqxpAOXpvVZNgkqQd516gUzacbr_DtZZxFVzDsC_RRKem-WpodiBWqqh-E9Abqxl8ESX_-EAbAnAyj-U8tz3m00?></g></svg></div><div class="puml dark" style=""><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" data-diagram-type="CLASS" style="width:897px;height:497px;background:#1B1B1B;" width="897px" height="497px" viewBox="0 0 897 497" zoomAndPan="magnify" preserveAspectRatio="xMidYMid meet" contentStyleType="text/css" class="diagram"><?plantuml 1.2026.7beta8?><defs/><g font-family="sans-serif" lengthAdjust="spacing"><rect x="0" y="0" width="897" height="497" fill="#1B1B1B" style="stroke:none;"/><g class="entity" data-qualified-name="CapabilityProvider" id="ent0001" data-source-line="2"><rect x="7" y="15.15" width="255.886" height="64.297" fill="#313139" style="stroke:#E7E7E7;stroke-width:0.5;" rx="2.5" ry="2.5"/><ellipse cx="66.521" cy="31.15" rx="11" ry="11" fill="#352866" style="stroke:#E7E7E7;stroke-width:1;"/><path d="M62.442,26.916 L62.442,24.759 L69.833,24.759 L69.833,26.916 L67.364,26.916 L67.364,34.994 L69.833,34.994 L69.833,37.15 L62.442,37.15 L62.442,34.994 L64.911,34.994 L64.911,26.916 L62.442,26.916 Z " fill="#FFF"/><text x="87.021" y="35.997" fill="#FFF" font-size="14" textLength="128.345" font-style="italic">CapabilityProvider</text><line x1="8" y1="47.15" x2="261.886" y2="47.15" style="stroke:#E7E7E7;stroke-width:0.5;"/><line x1="8" y1="55.15" x2="261.886" y2="55.15" style="stroke:#E7E7E7;stroke-width:0.5;"/><text x="13" y="72.145" fill="#FFF" font-size="14" textLength="243.886">boolean can(Capability capability);</text></g><g class="entity" data-qualified-name="HintProvider" id="ent0002" data-source-line="5"><rect x="297.6" y="7" width="260.691" height="80.594" fill="#313139" style="stroke:#E7E7E7;stroke-width:0.5;" rx="2.5" ry="2.5"/><ellipse cx="380.209" cy="23" rx="11" ry="11" fill="#352866" style="stroke:#E7E7E7;stroke-width:1;"/><path d="M376.131,18.766 L376.131,16.609 L383.521,16.609 L383.521,18.766 L381.053,18.766 L381.053,26.844 L383.521,26.844 L383.521,29 L376.131,29 L376.131,26.844 L378.6,26.844 L378.6,18.766 L376.131,18.766 Z " fill="#FFF"/><text x="400.709" y="27.847" fill="#FFF" font-size="14" textLength="86.974" font-style="italic">HintProvider</text><line x1="298.6" y1="39" x2="557.291" y2="39" style="stroke:#E7E7E7;stroke-width:0.5;"/><line x1="298.6" y1="47" x2="557.291" y2="47" style="stroke:#E7E7E7;stroke-width:0.5;"/><text x="303.6" y="63.995" fill="#FFF" font-size="14" textLength="147.602">boolean is(Hint hint);</text><text x="303.6" y="80.292" fill="#FFF" font-size="14" textLength="248.691">default boolean isAny(Hint... hints);</text></g><g class="entity" data-qualified-name="Container" id="ent0003" data-source-line="9"><rect x="593.07" y="15.15" width="289.751" height="64.297" fill="#313139" style="stroke:#E7E7E7;stroke-width:0.5;" rx="2.5" ry="2.5"/><ellipse cx="699.488" cy="31.15" rx="11" ry="11" fill="#352866" style="stroke:#E7E7E7;stroke-width:1;"/><path d="M695.41,26.916 L695.41,24.759 L702.801,24.759 L702.801,26.916 L700.332,26.916 L700.332,34.994 L702.801,34.994 L702.801,37.15 L695.41,37.15 L695.41,34.994 L697.879,34.994 L697.879,26.916 L695.41,26.916 Z " fill="#FFF"/><text x="719.988" y="35.997" fill="#FFF" font-size="14" textLength="68.414" font-style="italic">Container</text><line x1="594.07" y1="47.15" x2="881.821" y2="47.15" style="stroke:#E7E7E7;stroke-width:0.5;"/><line x1="594.07" y1="55.15" x2="881.821" y2="55.15" style="stroke:#E7E7E7;stroke-width:0.5;"/><text x="599.07" y="72.145" fill="#FFF" font-size="14" textLength="277.751">&lt;T&gt; Optional&lt;T&gt; get(Class&lt;T&gt; iface);</text></g><g class="entity" data-qualified-name="Source" id="ent0004" data-source-line="12"><rect x="251.24" y="147.59" width="353.407" height="227.266" fill="#313139" style="stroke:#E7E7E7;stroke-width:0.5;" rx="2.5" ry="2.5"/><ellipse cx="399.498" cy="163.59" rx="11" ry="11" fill="#352866" style="stroke:#E7E7E7;stroke-width:1;"/><path d="M395.42,159.356 L395.42,157.199 L402.81,157.199 L402.81,159.356 L400.342,159.356 L400.342,167.434 L402.81,167.434 L402.81,169.59 L395.42,169.59 L395.42,167.434 L397.888,167.434 L397.888,159.356 L395.42,159.356 Z " fill="#FFF"/><text x="419.998" y="168.437" fill="#FFF" font-size="14" textLength="48.392" font-style="italic">Source</text><line x1="252.24" y1="179.59" x2="603.647" y2="179.59" style="stroke:#E7E7E7;stroke-width:0.5;"/><line x1="252.24" y1="187.59" x2="603.647" y2="187.59" style="stroke:#E7E7E7;stroke-width:0.5;"/><text x="257.24" y="204.585" fill="#FFF" font-size="14" textLength="90.07">int getSize();</text><text x="257.24" y="220.882" fill="#FFF" font-size="14" textLength="126.164">String getName();</text><text x="257.24" y="237.179" fill="#FFF" font-size="14" textLength="184.7">DataBuffer readAllBytes();</text><text x="257.24" y="253.476" fill="#FFF" font-size="14" textLength="306.093">DataBuffer readBytes(int offset, int length);</text><text x="257.24" y="269.773" fill="#FFF" font-size="14" textLength="307.74">void writeBytes(int offset, DataBuffer data);</text><text x="257.24" y="286.069" fill="#FFF" font-size="14" textLength="163.297">boolean hasChanged();</text><text x="257.24" y="302.366" fill="#FFF" font-size="14" textLength="145.147">void clearChanges();</text><text x="257.24" y="318.663" fill="#FFF" font-size="14" textLength="230.357">List&lt;Information&gt; information();</text><text x="257.24" y="334.96" fill="#FFF" font-size="14" textLength="271.722">default boolean isApproxEQ(int value);</text><text x="257.24" y="351.257" fill="#FFF" font-size="14" textLength="268.502">default boolean isApproxLE(int value);</text><text x="257.24" y="367.554" fill="#FFF" font-size="14" textLength="341.407">default boolean extensionLike(String extension);</text></g><g class="entity" data-qualified-name="FileSource" id="ent0008" data-source-line="25"><rect x="11.52" y="434.86" width="104.837" height="48" fill="#313139" style="stroke:#E7E7E7;stroke-width:0.5;" rx="2.5" ry="2.5"/><ellipse cx="26.52" cy="450.86" rx="11" ry="11" fill="#2E5233" style="stroke:#E7E7E7;stroke-width:1;"/><path d="M29.489,456.501 Q28.911,456.798 28.27,456.938 Q27.629,457.094 26.926,457.094 Q24.426,457.094 23.098,455.454 Q21.786,453.798 21.786,450.673 Q21.786,447.548 23.098,445.891 Q24.426,444.235 26.926,444.235 Q27.629,444.235 28.27,444.391 Q28.926,444.548 29.489,444.844 L29.489,447.563 Q28.864,446.985 28.27,446.719 Q27.676,446.438 27.051,446.438 Q25.708,446.438 25.02,447.516 Q24.333,448.579 24.333,450.673 Q24.333,452.766 25.02,453.844 Q25.708,454.907 27.051,454.907 Q27.676,454.907 28.27,454.641 Q28.864,454.36 29.489,453.782 L29.489,456.501 Z " fill="#FFF"/><text x="40.52" y="455.707" fill="#FFF" font-size="14" textLength="72.837">FileSource</text><line x1="12.52" y1="466.86" x2="115.357" y2="466.86" style="stroke:#E7E7E7;stroke-width:0.5;"/><line x1="12.52" y1="474.86" x2="115.357" y2="474.86" style="stroke:#E7E7E7;stroke-width:0.5;"/></g><g class="entity" data-qualified-name="UniversalDiskImage" id="ent0010" data-source-line="27"><rect x="151.27" y="434.86" width="171.344" height="48" fill="#313139" style="stroke:#E7E7E7;stroke-width:0.5;" rx="2.5" ry="2.5"/><ellipse cx="166.27" cy="450.86" rx="11" ry="11" fill="#2E5233" style="stroke:#E7E7E7;stroke-width:1;"/><path d="M169.239,456.501 Q168.661,456.798 168.02,456.938 Q167.379,457.094 166.676,457.094 Q164.176,457.094 162.848,455.454 Q161.536,453.798 161.536,450.673 Q161.536,447.548 162.848,445.891 Q164.176,444.235 166.676,444.235 Q167.379,444.235 168.02,444.391 Q168.676,444.548 169.239,444.844 L169.239,447.563 Q168.614,446.985 168.02,446.719 Q167.426,446.438 166.801,446.438 Q165.458,446.438 164.77,447.516 Q164.083,448.579 164.083,450.673 Q164.083,452.766 164.77,453.844 Q165.458,454.907 166.801,454.907 Q167.426,454.907 168.02,454.641 Q168.614,454.36 169.239,453.782 L169.239,456.501 Z " fill="#FFF"/><text x="180.27" y="455.707" fill="#FFF" font-size="14" textLength="139.344">UniversalDiskImage</text><line x1="152.27" y1="466.86" x2="321.614" y2="466.86" style="stroke:#E7E7E7;stroke-width:0.5;"/><line x1="152.27" y1="474.86" x2="321.614" y2="474.86" style="stroke:#E7E7E7;stroke-width:0.5;"/></g><g class="entity" data-qualified-name="DiskCopyImage" id="ent0012" data-source-line="29"><rect x="357.23" y="434.86" width="141.43" height="48" fill="#313139" style="stroke:#E7E7E7;stroke-width:0.5;" rx="2.5" ry="2.5"/><ellipse cx="372.23" cy="450.86" rx="11" ry="11" fill="#2E5233" style="stroke:#E7E7E7;stroke-width:1;"/><path d="M375.199,456.501 Q374.621,456.798 373.98,456.938 Q373.339,457.094 372.636,457.094 Q370.136,457.094 368.808,455.454 Q367.496,453.798 367.496,450.673 Q367.496,447.548 368.808,445.891 Q370.136,444.235 372.636,444.235 Q373.339,444.235 373.98,444.391 Q374.636,444.548 375.199,444.844 L375.199,447.563 Q374.574,446.985 373.98,446.719 Q373.386,446.438 372.761,446.438 Q371.418,446.438 370.73,447.516 Q370.043,448.579 370.043,450.673 Q370.043,452.766 370.73,453.844 Q371.418,454.907 372.761,454.907 Q373.386,454.907 373.98,454.641 Q374.574,454.36 375.199,453.782 L375.199,456.501 Z " fill="#FFF"/><text x="386.23" y="455.707" fill="#FFF" font-size="14" textLength="109.43">DiskCopyImage</text><line x1="358.23" y1="466.86" x2="497.66" y2="466.86" style="stroke:#E7E7E7;stroke-width:0.5;"/><line x1="358.23" y1="474.86" x2="497.66" y2="474.86" style="stroke:#E7E7E7;stroke-width:0.5;"/></g><g class="entity" data-qualified-name="DataBufferSource" id="ent0014" data-source-line="31"><rect x="533.68" y="434.86" width="156.523" height="48" fill="#313139" style="stroke:#E7E7E7;stroke-width:0.5;" rx="2.5" ry="2.5"/><ellipse cx="548.68" cy="450.86" rx="11" ry="11" fill="#2E5233" style="stroke:#E7E7E7;stroke-width:1;"/><path d="M551.649,456.501 Q551.071,456.798 550.43,456.938 Q549.789,457.094 549.086,457.094 Q546.586,457.094 545.258,455.454 Q543.946,453.798 543.946,450.673 Q543.946,447.548 545.258,445.891 Q546.586,444.235 549.086,444.235 Q549.789,444.235 550.43,444.391 Q551.086,444.548 551.649,444.844 L551.649,447.563 Q551.024,446.985 550.43,446.719 Q549.836,446.438 549.211,446.438 Q547.868,446.438 547.18,447.516 Q546.493,448.579 546.493,450.673 Q546.493,452.766 547.18,453.844 Q547.868,454.907 549.211,454.907 Q549.836,454.907 550.43,454.641 Q551.024,454.36 551.649,453.782 L551.649,456.501 Z " fill="#FFF"/><text x="562.68" y="455.707" fill="#FFF" font-size="14" textLength="124.523">DataBufferSource</text><line x1="534.68" y1="466.86" x2="689.203" y2="466.86" style="stroke:#E7E7E7;stroke-width:0.5;"/><line x1="534.68" y1="474.86" x2="689.203" y2="474.86" style="stroke:#E7E7E7;stroke-width:0.5;"/></g><g class="entity" data-qualified-name="FileEntrySource" id="ent0016" data-source-line="33"><rect x="724.9" y="434.86" width="142.086" height="48" fill="#313139" style="stroke:#E7E7E7;stroke-width:0.5;" rx="2.5" ry="2.5"/><ellipse cx="739.9" cy="450.86" rx="11" ry="11" fill="#2E5233" style="stroke:#E7E7E7;stroke-width:1;"/><path d="M742.869,456.501 Q742.291,456.798 741.65,456.938 Q741.009,457.094 740.306,457.094 Q737.806,457.094 736.478,455.454 Q735.166,453.798 735.166,450.673 Q735.166,447.548 736.478,445.891 Q737.806,444.235 740.306,444.235 Q741.009,444.235 741.65,444.391 Q742.306,444.548 742.869,444.844 L742.869,447.563 Q742.244,446.985 741.65,446.719 Q741.056,446.438 740.431,446.438 Q739.088,446.438 738.4,447.516 Q737.713,448.579 737.713,450.673 Q737.713,452.766 738.4,453.844 Q739.088,454.907 740.431,454.907 Q741.056,454.907 741.65,454.641 Q742.244,454.36 742.869,453.782 L742.869,456.501 Z " fill="#FFF"/><text x="753.9" y="455.707" fill="#FFF" font-size="14" textLength="110.086">FileEntrySource</text><line x1="725.9" y1="466.86" x2="865.986" y2="466.86" style="stroke:#E7E7E7;stroke-width:0.5;"/><line x1="725.9" y1="474.86" x2="865.986" y2="474.86" style="stroke:#E7E7E7;stroke-width:0.5;"/></g><g class="link" data-entity-1="ent0001" data-entity-2="ent0004" id="lnk5" data-source-line="13" data-link-type="extension"><path d="M193.077,90.346 C218.347,108.616 237.29,122.32 271.54,147.1" style="stroke:#E7E7E7;stroke-width:1;" fill="none" id="CapabilityProvider-backto-Source"/><polygon points="178.49,79.8,189.561,95.209,196.592,85.484,178.49,79.8" fill="none" style="stroke:#E7E7E7;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/></g><g class="link" data-entity-1="ent0002" data-entity-2="ent0004" id="lnk6" data-source-line="13" data-link-type="extension"><path d="M427.94,105.66 C427.94,122.78 427.94,125.8 427.94,147.2" style="stroke:#E7E7E7;stroke-width:1;" fill="none" id="HintProvider-backto-Source"/><polygon points="427.94,87.66,421.94,105.66,433.94,105.66,427.94,87.66" fill="none" style="stroke:#E7E7E7;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/></g><g class="link" data-entity-1="ent0003" data-entity-2="ent0004" id="lnk7" data-source-line="13" data-link-type="extension"><path d="M677.008,89.955 C650.268,108.225 629.66,122.32 593.42,147.1" style="stroke:#E7E7E7;stroke-width:1;" fill="none" id="Container-backto-Source"/><polygon points="691.87,79.8,673.623,85,680.393,94.909,691.87,79.8" fill="none" style="stroke:#E7E7E7;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/></g><g class="link" data-entity-1="ent0004" data-entity-2="ent0008" id="lnk9" data-link-type="extension"><path d="M234.885,365.982 C181.545,394.652 143.52,415.09 107.42,434.49" style="stroke:#E7E7E7;stroke-width:1;stroke-dasharray:7,7;" fill="none" id="Source-backto-FileSource"/><polygon points="250.74,357.46,232.044,360.697,237.726,371.267,250.74,357.46" fill="none" style="stroke:#E7E7E7;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/></g><g class="link" data-entity-1="ent0004" data-entity-2="ent0010" id="lnk11" data-link-type="extension"><path d="M305.094,388.058 C283.094,410.588 274.74,419.15 259.7,434.55" style="stroke:#E7E7E7;stroke-width:1;stroke-dasharray:7,7;" fill="none" id="Source-backto-UniversalDiskImage"/><polygon points="317.67,375.18,300.802,383.867,309.387,392.25,317.67,375.18" fill="none" style="stroke:#E7E7E7;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/></g><g class="link" data-entity-1="ent0004" data-entity-2="ent0012" id="lnk13" data-link-type="extension"><path d="M427.94,393.18 C427.94,415.71 427.94,419.15 427.94,434.55" style="stroke:#E7E7E7;stroke-width:1;stroke-dasharray:7,7;" fill="none" id="Source-backto-DiskCopyImage"/><polygon points="427.94,375.18,421.94,393.18,433.94,393.18,427.94,375.18" fill="none" style="stroke:#E7E7E7;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/></g><g class="link" data-entity-1="ent0004" data-entity-2="ent0014" id="lnk15" data-link-type="extension"><path d="M546.512,388.292 C567.702,410.822 575.53,419.15 590.02,434.55" style="stroke:#E7E7E7;stroke-width:1;stroke-dasharray:7,7;" fill="none" id="Source-backto-DataBufferSource"/><polygon points="534.18,375.18,542.141,392.403,550.883,384.181,534.18,375.18" fill="none" style="stroke:#E7E7E7;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/></g><g class="link" data-entity-1="ent0004" data-entity-2="ent0016" id="lnk17" data-link-type="extension"><path d="M620.834,364.769 C675.334,393.739 714.76,414.7 751.74,434.36" style="stroke:#E7E7E7;stroke-width:1;stroke-dasharray:7,7;" fill="none" id="Source-backto-FileEntrySource"/><polygon points="604.94,356.32,618.018,370.067,623.65,359.471,604.94,356.32" fill="none" style="stroke:#E7E7E7;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/></g><?plantuml-src ZLBRRfj047ttLz0tAbdmtaQL4kAgKTsRt3vNOtQ04Nj1EmC9ZVhltIMOE4cTX8TbPi-PCxTzGxRKlSAa4UduNPvxkCvgagRVzuo-T5RGIbOwat-XjW7IdpqCA9oRLhcIVtUzqRa15lIvD6YGSuKLz5fo1RxD8hwYeE8hA34fe8CzQPBnktS3AVJ9xIe9tzuvZM2J4cnwJmhkmNpxVlNtIEXJC4z84ASHJPfmXAW8pIKTKSxjEB6oB9k8_4Y_29q3sKNyxEU7v5idv2peQDSeQQ61EJeKGnu9x5plmmzlmW0L_wVnzOCUrayonXP2bXtzmNHkOoUUR1rllu9PRYz1uAAlgX3f4TIvrXUZ89-0xx0exggAKTPJ8essbcQE61ofvDgJu5FoaPeAvXnnc6i3N3HWQrJfiLOPG7y7B6LjYUNiobRE6uXZ3LEyTzBJU-iwxsusFwQY1j0zla3TRbwaJZlYa7PBBQRpa9VBQQzbN7NoaJJEUoNJwV3QmyCvRFfseVsoDA1dq9V4xPM1-dbwP1Mk6r_1N8R_YYfYiHihVdoE-my0?></g></svg></div></div>
+
+<p>This is the interface for a <code>Source</code> factory. Note that in the first pass, a <code>Source</code> is identified via <code>fromObject(Object)</code>
+and in the second pass is identified via <code>fromSource(Source)</code>. The <code>FileSource</code> is identified in the first round (handling GZip as well);
+while the <code>DiskCopyImage</code> and <code>UniversalDiskImage</code> is identified via the second mechanism. Note that the <code>FileEntry</code> source
+comes in programmatically (as in via a double-click in the GUI) and <code>DataBufferSource</code> is used for blank (new) images.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">interface</span> <span class="nc">Source</span><span class="p">.</span><span class="na">Factory</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">Optional</span><span class="o">&lt;</span><span class="n">Source</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">fromObject</span><span class="p">(</span><span class="n">Object</span><span class="w"> </span><span class="n">object</span><span class="p">);</span>
+<span class="w">    </span><span class="n">Optional</span><span class="o">&lt;</span><span class="n">Source</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">fromSource</span><span class="p">(</span><span class="n">Source</span><span class="w"> </span><span class="n">source</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="disks">Disks</h3>
+<p>To identify disks, a <code>DiskFactory</code> has been created that allows every type of disk to have its own dedicated discovery mechanism.
+Prior to this, all that logic was mashed into the (old) <code>Disk</code> class and partially handled in the constructor and then handled
+in the <code>getFormattedDisks</code> method itself. The intent of a <code>DiskFactory</code> is to get that logic out of the <code>Disk</code> and into a
+dedicated filesystem (or other) discovery mechanism.</p>
+<div class='puml-container'><div class="puml light" style=""><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" data-diagram-type="CLASS" style="width:464px;height:568px;background:#FFFFFF;" width="464px" height="568px" viewBox="0 0 464 568" zoomAndPan="magnify" preserveAspectRatio="xMidYMid meet" contentStyleType="text/css" class="diagram"><?plantuml 1.2026.7beta8?><defs/><g font-family="sans-serif" lengthAdjust="spacing"><g class="entity" data-qualified-name="DiskFactory" id="ent0001" data-source-line="3"><rect x="7" y="247.85" width="193.474" height="64.297" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" rx="2.5" ry="2.5"/><ellipse cx="58.239" cy="263.85" rx="11" ry="11" fill="#B4A7E5" style="stroke:#181818;stroke-width:1;"/><path d="M54.161,259.616 L54.161,257.459 L61.551,257.459 L61.551,259.616 L59.083,259.616 L59.083,267.694 L61.551,267.694 L61.551,269.85 L54.161,269.85 L54.161,267.694 L56.629,267.694 L56.629,259.616 L54.161,259.616 Z " fill="#000"/><text x="78.739" y="268.697" fill="#000" font-size="14" textLength="82.496" font-style="italic">DiskFactory</text><line x1="8" y1="279.85" x2="199.474" y2="279.85" style="stroke:#181818;stroke-width:0.5;"/><line x1="8" y1="287.85" x2="199.474" y2="287.85" style="stroke:#181818;stroke-width:0.5;"/><text x="13" y="304.845" fill="#000" font-size="14" textLength="181.474">void inspect(Context ctx);</text></g><g class="entity" data-qualified-name="ProdosDiskFactory" id="ent0002" data-source-line="6"><rect x="274.14" y="7" width="162.006" height="48" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" rx="2.5" ry="2.5"/><ellipse cx="289.14" cy="23" rx="11" ry="11" fill="#ADD1B2" style="stroke:#181818;stroke-width:1;"/><path d="M292.109,28.641 Q291.531,28.938 290.89,29.078 Q290.249,29.234 289.546,29.234 Q287.046,29.234 285.718,27.594 Q284.406,25.938 284.406,22.813 Q284.406,19.688 285.718,18.031 Q287.046,16.375 289.546,16.375 Q290.249,16.375 290.89,16.531 Q291.546,16.688 292.109,16.984 L292.109,19.703 Q291.484,19.125 290.89,18.859 Q290.296,18.578 289.671,18.578 Q288.328,18.578 287.64,19.656 Q286.953,20.719 286.953,22.813 Q286.953,24.906 287.64,25.984 Q288.328,27.047 289.671,27.047 Q290.296,27.047 290.89,26.781 Q291.484,26.5 292.109,25.922 L292.109,28.641 Z " fill="#000"/><text x="303.14" y="27.847" fill="#000" font-size="14" textLength="130.006">ProdosDiskFactory</text><line x1="275.14" y1="39" x2="435.146" y2="39" style="stroke:#181818;stroke-width:0.5;"/><line x1="275.14" y1="47" x2="435.146" y2="47" style="stroke:#181818;stroke-width:0.5;"/></g><g class="entity" data-qualified-name="NakedosDiskFactory" id="ent0004" data-source-line="8"><rect x="267.63" y="90" width="175.015" height="48" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" rx="2.5" ry="2.5"/><ellipse cx="282.63" cy="106" rx="11" ry="11" fill="#ADD1B2" style="stroke:#181818;stroke-width:1;"/><path d="M285.599,111.641 Q285.021,111.938 284.38,112.078 Q283.739,112.234 283.036,112.234 Q280.536,112.234 279.208,110.594 Q277.896,108.938 277.896,105.813 Q277.896,102.688 279.208,101.031 Q280.536,99.375 283.036,99.375 Q283.739,99.375 284.38,99.531 Q285.036,99.688 285.599,99.984 L285.599,102.703 Q284.974,102.125 284.38,101.859 Q283.786,101.578 283.161,101.578 Q281.818,101.578 281.13,102.656 Q280.443,103.719 280.443,105.813 Q280.443,107.906 281.13,108.984 Q281.818,110.047 283.161,110.047 Q283.786,110.047 284.38,109.781 Q284.974,109.5 285.599,108.922 L285.599,111.641 Z " fill="#000"/><text x="296.63" y="110.847" fill="#000" font-size="14" textLength="143.015">NakedosDiskFactory</text><line x1="268.63" y1="122" x2="441.645" y2="122" style="stroke:#181818;stroke-width:0.5;"/><line x1="268.63" y1="130" x2="441.645" y2="130" style="stroke:#181818;stroke-width:0.5;"/></g><g class="entity" data-qualified-name="CpmDiskFactory" id="ent0006" data-source-line="10"><rect x="281.74" y="173" width="146.796" height="48" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" rx="2.5" ry="2.5"/><ellipse cx="296.74" cy="189" rx="11" ry="11" fill="#ADD1B2" style="stroke:#181818;stroke-width:1;"/><path d="M299.709,194.641 Q299.131,194.938 298.49,195.078 Q297.849,195.234 297.146,195.234 Q294.646,195.234 293.318,193.594 Q292.006,191.938 292.006,188.813 Q292.006,185.688 293.318,184.031 Q294.646,182.375 297.146,182.375 Q297.849,182.375 298.49,182.531 Q299.146,182.688 299.709,182.984 L299.709,185.703 Q299.084,185.125 298.49,184.859 Q297.896,184.578 297.271,184.578 Q295.928,184.578 295.24,185.656 Q294.553,186.719 294.553,188.813 Q294.553,190.906 295.24,191.984 Q295.928,193.047 297.271,193.047 Q297.896,193.047 298.49,192.781 Q299.084,192.5 299.709,191.922 L299.709,194.641 Z " fill="#000"/><text x="310.74" y="193.847" fill="#000" font-size="14" textLength="114.796">CpmDiskFactory</text><line x1="282.74" y1="205" x2="427.536" y2="205" style="stroke:#181818;stroke-width:0.5;"/><line x1="282.74" y1="213" x2="427.536" y2="213" style="stroke:#181818;stroke-width:0.5;"/></g><g class="entity" data-qualified-name="PascalDiskFactory" id="ent0008" data-source-line="12"><rect x="275.65" y="256" width="158.978" height="48" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" rx="2.5" ry="2.5"/><ellipse cx="290.65" cy="272" rx="11" ry="11" fill="#ADD1B2" style="stroke:#181818;stroke-width:1;"/><path d="M293.619,277.641 Q293.041,277.938 292.4,278.078 Q291.759,278.234 291.056,278.234 Q288.556,278.234 287.228,276.594 Q285.916,274.938 285.916,271.813 Q285.916,268.688 287.228,267.031 Q288.556,265.375 291.056,265.375 Q291.759,265.375 292.4,265.531 Q293.056,265.688 293.619,265.984 L293.619,268.703 Q292.994,268.125 292.4,267.859 Q291.806,267.578 291.181,267.578 Q289.838,267.578 289.15,268.656 Q288.463,269.719 288.463,271.813 Q288.463,273.906 289.15,274.984 Q289.838,276.047 291.181,276.047 Q291.806,276.047 292.4,275.781 Q292.994,275.5 293.619,274.922 L293.619,277.641 Z " fill="#000"/><text x="304.65" y="276.847" fill="#000" font-size="14" textLength="126.978">PascalDiskFactory</text><line x1="276.65" y1="288" x2="433.628" y2="288" style="stroke:#181818;stroke-width:0.5;"/><line x1="276.65" y1="296" x2="433.628" y2="296" style="stroke:#181818;stroke-width:0.5;"/></g><g class="entity" data-qualified-name="GutenbergDiskFactory" id="ent0010" data-source-line="14"><rect x="260.47" y="339" width="189.336" height="48" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" rx="2.5" ry="2.5"/><ellipse cx="275.47" cy="355" rx="11" ry="11" fill="#ADD1B2" style="stroke:#181818;stroke-width:1;"/><path d="M278.439,360.641 Q277.861,360.938 277.22,361.078 Q276.579,361.234 275.876,361.234 Q273.376,361.234 272.048,359.594 Q270.736,357.938 270.736,354.813 Q270.736,351.688 272.048,350.031 Q273.376,348.375 275.876,348.375 Q276.579,348.375 277.22,348.531 Q277.876,348.688 278.439,348.984 L278.439,351.703 Q277.814,351.125 277.22,350.859 Q276.626,350.578 276.001,350.578 Q274.658,350.578 273.97,351.656 Q273.283,352.719 273.283,354.813 Q273.283,356.906 273.97,357.984 Q274.658,359.047 276.001,359.047 Q276.626,359.047 277.22,358.781 Q277.814,358.5 278.439,357.922 L278.439,360.641 Z " fill="#000"/><text x="289.47" y="359.847" fill="#000" font-size="14" textLength="157.336">GutenbergDiskFactory</text><line x1="261.47" y1="371" x2="448.806" y2="371" style="stroke:#181818;stroke-width:0.5;"/><line x1="261.47" y1="379" x2="448.806" y2="379" style="stroke:#181818;stroke-width:0.5;"/></g><g class="entity" data-qualified-name="DosDiskFactory" id="ent0012" data-source-line="16"><rect x="284.57" y="422" width="141.136" height="48" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" rx="2.5" ry="2.5"/><ellipse cx="299.57" cy="438" rx="11" ry="11" fill="#ADD1B2" style="stroke:#181818;stroke-width:1;"/><path d="M302.539,443.641 Q301.961,443.938 301.32,444.078 Q300.679,444.234 299.976,444.234 Q297.476,444.234 296.148,442.594 Q294.836,440.938 294.836,437.813 Q294.836,434.688 296.148,433.031 Q297.476,431.375 299.976,431.375 Q300.679,431.375 301.32,431.531 Q301.976,431.688 302.539,431.984 L302.539,434.703 Q301.914,434.125 301.32,433.859 Q300.726,433.578 300.101,433.578 Q298.758,433.578 298.07,434.656 Q297.383,435.719 297.383,437.813 Q297.383,439.906 298.07,440.984 Q298.758,442.047 300.101,442.047 Q300.726,442.047 301.32,441.781 Q301.914,441.5 302.539,440.922 L302.539,443.641 Z " fill="#000"/><text x="313.57" y="442.847" fill="#000" font-size="14" textLength="109.136">DosDiskFactory</text><line x1="285.57" y1="454" x2="424.706" y2="454" style="stroke:#181818;stroke-width:0.5;"/><line x1="285.57" y1="462" x2="424.706" y2="462" style="stroke:#181818;stroke-width:0.5;"/></g><g class="entity" data-qualified-name="RdosDiskFactory" id="ent0014" data-source-line="18"><rect x="280.66" y="505" width="148.97" height="48" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" rx="2.5" ry="2.5"/><ellipse cx="295.66" cy="521" rx="11" ry="11" fill="#ADD1B2" style="stroke:#181818;stroke-width:1;"/><path d="M298.629,526.641 Q298.051,526.938 297.41,527.078 Q296.769,527.234 296.066,527.234 Q293.566,527.234 292.238,525.594 Q290.926,523.938 290.926,520.813 Q290.926,517.688 292.238,516.031 Q293.566,514.375 296.066,514.375 Q296.769,514.375 297.41,514.531 Q298.066,514.688 298.629,514.984 L298.629,517.703 Q298.004,517.125 297.41,516.859 Q296.816,516.578 296.191,516.578 Q294.848,516.578 294.16,517.656 Q293.473,518.719 293.473,520.813 Q293.473,522.906 294.16,523.984 Q294.848,525.047 296.191,525.047 Q296.816,525.047 297.41,524.781 Q298.004,524.5 298.629,523.922 L298.629,526.641 Z " fill="#000"/><text x="309.66" y="525.847" fill="#000" font-size="14" textLength="116.97">RdosDiskFactory</text><line x1="281.66" y1="537" x2="428.63" y2="537" style="stroke:#181818;stroke-width:0.5;"/><line x1="281.66" y1="545" x2="428.63" y2="545" style="stroke:#181818;stroke-width:0.5;"/></g><g class="link" data-entity-1="ent0001" data-entity-2="ent0002" id="lnk3" data-link-type="extension"><path d="M130.789,231.647 C155.919,186.797 197.73,121.75 260.47,72 C268.4,65.71 277.44,60.19 286.71,55.41" style="stroke:#181818;stroke-width:1;stroke-dasharray:7,7;" fill="none" id="DiskFactory-backto-ProdosDiskFactory"/><polygon points="121.99,247.35,136.023,234.58,125.554,228.714,121.99,247.35" fill="none" style="stroke:#181818;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/></g><g class="link" data-entity-1="ent0001" data-entity-2="ent0004" id="lnk5" data-link-type="extension"><path d="M152.961,235.585 C183.281,208.485 215.84,182.03 260.47,155 C270.34,149.02 281.24,143.44 292.01,138.43" style="stroke:#181818;stroke-width:1;stroke-dasharray:7,7;" fill="none" id="DiskFactory-backto-NakedosDiskFactory"/><polygon points="139.54,247.58,156.959,240.058,148.962,231.111,139.54,247.58" fill="none" style="stroke:#181818;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/></g><g class="link" data-entity-1="ent0001" data-entity-2="ent0006" id="lnk7" data-link-type="extension"><path d="M217.888,242.344 C244.648,233.434 256.18,229.6 281.36,221.22" style="stroke:#181818;stroke-width:1;stroke-dasharray:7,7;" fill="none" id="DiskFactory-backto-CpmDiskFactory"/><polygon points="200.81,248.03,219.784,248.036,215.993,236.651,200.81,248.03" fill="none" style="stroke:#181818;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/></g><g class="link" data-entity-1="ent0001" data-entity-2="ent0008" id="lnk9" data-link-type="extension"><path d="M218.81,280 C243.51,280 251.79,280 275.49,280" style="stroke:#181818;stroke-width:1;stroke-dasharray:7,7;" fill="none" id="DiskFactory-backto-PascalDiskFactory"/><polygon points="200.81,280,218.81,286,218.81,274,200.81,280" fill="none" style="stroke:#181818;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/></g><g class="link" data-entity-1="ent0001" data-entity-2="ent0010" id="lnk11" data-link-type="extension"><path d="M217.89,317.652 C244.37,326.462 255.6,330.2 280.59,338.52" style="stroke:#181818;stroke-width:1;stroke-dasharray:7,7;" fill="none" id="DiskFactory-backto-GutenbergDiskFactory"/><polygon points="200.81,311.97,215.995,323.346,219.784,311.959,200.81,311.97" fill="none" style="stroke:#181818;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/></g><g class="link" data-entity-1="ent0001" data-entity-2="ent0012" id="lnk13" data-link-type="extension"><path d="M152.961,324.415 C183.281,351.515 215.84,377.97 260.47,405 C270.34,410.98 281.24,416.56 292.01,421.57" style="stroke:#181818;stroke-width:1;stroke-dasharray:7,7;" fill="none" id="DiskFactory-backto-DosDiskFactory"/><polygon points="139.54,312.42,148.962,328.889,156.959,319.942,139.54,312.42" fill="none" style="stroke:#181818;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/></g><g class="link" data-entity-1="ent0001" data-entity-2="ent0014" id="lnk15" data-link-type="extension"><path d="M130.789,328.353 C155.919,373.203 197.73,438.25 260.47,488 C268.4,494.29 277.44,499.81 286.71,504.59" style="stroke:#181818;stroke-width:1;stroke-dasharray:7,7;" fill="none" id="DiskFactory-backto-RdosDiskFactory"/><polygon points="121.99,312.65,125.554,331.286,136.023,325.42,121.99,312.65" fill="none" style="stroke:#181818;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/></g><?plantuml-src bP2zJWCn48HxFuNfe3dtf4m41IAAU85eO--TL-S_UTSX2F7k-0eaH8MtNCqtcfaxIZOqXzgB57uqfiBxj93uTccCrUOac6IoEPfNMZrGUAbmHM4JLvSjdqkBmKHWmMh4OqGs3cTeGKoWnSkq2LJ0MRHaNRUNTbJH2kMagDlN6Ipg0_7w15Po_T2VIlUxPdAQ4fUklTzlGMwYhTmUTkfBsG3C-bIpo_mRfLX23v64_pZ-84TOSPJPbpYaFm5R24F8S-ixNx0kGzHXiCZRlvj_0m00?></g></svg></div><div class="puml dark" style=""><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" data-diagram-type="CLASS" style="width:464px;height:568px;background:#1B1B1B;" width="464px" height="568px" viewBox="0 0 464 568" zoomAndPan="magnify" preserveAspectRatio="xMidYMid meet" contentStyleType="text/css" class="diagram"><?plantuml 1.2026.7beta8?><defs/><g font-family="sans-serif" lengthAdjust="spacing"><rect x="0" y="0" width="464" height="568" fill="#1B1B1B" style="stroke:none;"/><g class="entity" data-qualified-name="DiskFactory" id="ent0001" data-source-line="3"><rect x="7" y="247.85" width="193.474" height="64.297" fill="#313139" style="stroke:#E7E7E7;stroke-width:0.5;" rx="2.5" ry="2.5"/><ellipse cx="58.239" cy="263.85" rx="11" ry="11" fill="#352866" style="stroke:#E7E7E7;stroke-width:1;"/><path d="M54.161,259.616 L54.161,257.459 L61.551,257.459 L61.551,259.616 L59.083,259.616 L59.083,267.694 L61.551,267.694 L61.551,269.85 L54.161,269.85 L54.161,267.694 L56.629,267.694 L56.629,259.616 L54.161,259.616 Z " fill="#FFF"/><text x="78.739" y="268.697" fill="#FFF" font-size="14" textLength="82.496" font-style="italic">DiskFactory</text><line x1="8" y1="279.85" x2="199.474" y2="279.85" style="stroke:#E7E7E7;stroke-width:0.5;"/><line x1="8" y1="287.85" x2="199.474" y2="287.85" style="stroke:#E7E7E7;stroke-width:0.5;"/><text x="13" y="304.845" fill="#FFF" font-size="14" textLength="181.474">void inspect(Context ctx);</text></g><g class="entity" data-qualified-name="ProdosDiskFactory" id="ent0002" data-source-line="6"><rect x="274.14" y="7" width="162.006" height="48" fill="#313139" style="stroke:#E7E7E7;stroke-width:0.5;" rx="2.5" ry="2.5"/><ellipse cx="289.14" cy="23" rx="11" ry="11" fill="#2E5233" style="stroke:#E7E7E7;stroke-width:1;"/><path d="M292.109,28.641 Q291.531,28.938 290.89,29.078 Q290.249,29.234 289.546,29.234 Q287.046,29.234 285.718,27.594 Q284.406,25.938 284.406,22.813 Q284.406,19.688 285.718,18.031 Q287.046,16.375 289.546,16.375 Q290.249,16.375 290.89,16.531 Q291.546,16.688 292.109,16.984 L292.109,19.703 Q291.484,19.125 290.89,18.859 Q290.296,18.578 289.671,18.578 Q288.328,18.578 287.64,19.656 Q286.953,20.719 286.953,22.813 Q286.953,24.906 287.64,25.984 Q288.328,27.047 289.671,27.047 Q290.296,27.047 290.89,26.781 Q291.484,26.5 292.109,25.922 L292.109,28.641 Z " fill="#FFF"/><text x="303.14" y="27.847" fill="#FFF" font-size="14" textLength="130.006">ProdosDiskFactory</text><line x1="275.14" y1="39" x2="435.146" y2="39" style="stroke:#E7E7E7;stroke-width:0.5;"/><line x1="275.14" y1="47" x2="435.146" y2="47" style="stroke:#E7E7E7;stroke-width:0.5;"/></g><g class="entity" data-qualified-name="NakedosDiskFactory" id="ent0004" data-source-line="8"><rect x="267.63" y="90" width="175.015" height="48" fill="#313139" style="stroke:#E7E7E7;stroke-width:0.5;" rx="2.5" ry="2.5"/><ellipse cx="282.63" cy="106" rx="11" ry="11" fill="#2E5233" style="stroke:#E7E7E7;stroke-width:1;"/><path d="M285.599,111.641 Q285.021,111.938 284.38,112.078 Q283.739,112.234 283.036,112.234 Q280.536,112.234 279.208,110.594 Q277.896,108.938 277.896,105.813 Q277.896,102.688 279.208,101.031 Q280.536,99.375 283.036,99.375 Q283.739,99.375 284.38,99.531 Q285.036,99.688 285.599,99.984 L285.599,102.703 Q284.974,102.125 284.38,101.859 Q283.786,101.578 283.161,101.578 Q281.818,101.578 281.13,102.656 Q280.443,103.719 280.443,105.813 Q280.443,107.906 281.13,108.984 Q281.818,110.047 283.161,110.047 Q283.786,110.047 284.38,109.781 Q284.974,109.5 285.599,108.922 L285.599,111.641 Z " fill="#FFF"/><text x="296.63" y="110.847" fill="#FFF" font-size="14" textLength="143.015">NakedosDiskFactory</text><line x1="268.63" y1="122" x2="441.645" y2="122" style="stroke:#E7E7E7;stroke-width:0.5;"/><line x1="268.63" y1="130" x2="441.645" y2="130" style="stroke:#E7E7E7;stroke-width:0.5;"/></g><g class="entity" data-qualified-name="CpmDiskFactory" id="ent0006" data-source-line="10"><rect x="281.74" y="173" width="146.796" height="48" fill="#313139" style="stroke:#E7E7E7;stroke-width:0.5;" rx="2.5" ry="2.5"/><ellipse cx="296.74" cy="189" rx="11" ry="11" fill="#2E5233" style="stroke:#E7E7E7;stroke-width:1;"/><path d="M299.709,194.641 Q299.131,194.938 298.49,195.078 Q297.849,195.234 297.146,195.234 Q294.646,195.234 293.318,193.594 Q292.006,191.938 292.006,188.813 Q292.006,185.688 293.318,184.031 Q294.646,182.375 297.146,182.375 Q297.849,182.375 298.49,182.531 Q299.146,182.688 299.709,182.984 L299.709,185.703 Q299.084,185.125 298.49,184.859 Q297.896,184.578 297.271,184.578 Q295.928,184.578 295.24,185.656 Q294.553,186.719 294.553,188.813 Q294.553,190.906 295.24,191.984 Q295.928,193.047 297.271,193.047 Q297.896,193.047 298.49,192.781 Q299.084,192.5 299.709,191.922 L299.709,194.641 Z " fill="#FFF"/><text x="310.74" y="193.847" fill="#FFF" font-size="14" textLength="114.796">CpmDiskFactory</text><line x1="282.74" y1="205" x2="427.536" y2="205" style="stroke:#E7E7E7;stroke-width:0.5;"/><line x1="282.74" y1="213" x2="427.536" y2="213" style="stroke:#E7E7E7;stroke-width:0.5;"/></g><g class="entity" data-qualified-name="PascalDiskFactory" id="ent0008" data-source-line="12"><rect x="275.65" y="256" width="158.978" height="48" fill="#313139" style="stroke:#E7E7E7;stroke-width:0.5;" rx="2.5" ry="2.5"/><ellipse cx="290.65" cy="272" rx="11" ry="11" fill="#2E5233" style="stroke:#E7E7E7;stroke-width:1;"/><path d="M293.619,277.641 Q293.041,277.938 292.4,278.078 Q291.759,278.234 291.056,278.234 Q288.556,278.234 287.228,276.594 Q285.916,274.938 285.916,271.813 Q285.916,268.688 287.228,267.031 Q288.556,265.375 291.056,265.375 Q291.759,265.375 292.4,265.531 Q293.056,265.688 293.619,265.984 L293.619,268.703 Q292.994,268.125 292.4,267.859 Q291.806,267.578 291.181,267.578 Q289.838,267.578 289.15,268.656 Q288.463,269.719 288.463,271.813 Q288.463,273.906 289.15,274.984 Q289.838,276.047 291.181,276.047 Q291.806,276.047 292.4,275.781 Q292.994,275.5 293.619,274.922 L293.619,277.641 Z " fill="#FFF"/><text x="304.65" y="276.847" fill="#FFF" font-size="14" textLength="126.978">PascalDiskFactory</text><line x1="276.65" y1="288" x2="433.628" y2="288" style="stroke:#E7E7E7;stroke-width:0.5;"/><line x1="276.65" y1="296" x2="433.628" y2="296" style="stroke:#E7E7E7;stroke-width:0.5;"/></g><g class="entity" data-qualified-name="GutenbergDiskFactory" id="ent0010" data-source-line="14"><rect x="260.47" y="339" width="189.336" height="48" fill="#313139" style="stroke:#E7E7E7;stroke-width:0.5;" rx="2.5" ry="2.5"/><ellipse cx="275.47" cy="355" rx="11" ry="11" fill="#2E5233" style="stroke:#E7E7E7;stroke-width:1;"/><path d="M278.439,360.641 Q277.861,360.938 277.22,361.078 Q276.579,361.234 275.876,361.234 Q273.376,361.234 272.048,359.594 Q270.736,357.938 270.736,354.813 Q270.736,351.688 272.048,350.031 Q273.376,348.375 275.876,348.375 Q276.579,348.375 277.22,348.531 Q277.876,348.688 278.439,348.984 L278.439,351.703 Q277.814,351.125 277.22,350.859 Q276.626,350.578 276.001,350.578 Q274.658,350.578 273.97,351.656 Q273.283,352.719 273.283,354.813 Q273.283,356.906 273.97,357.984 Q274.658,359.047 276.001,359.047 Q276.626,359.047 277.22,358.781 Q277.814,358.5 278.439,357.922 L278.439,360.641 Z " fill="#FFF"/><text x="289.47" y="359.847" fill="#FFF" font-size="14" textLength="157.336">GutenbergDiskFactory</text><line x1="261.47" y1="371" x2="448.806" y2="371" style="stroke:#E7E7E7;stroke-width:0.5;"/><line x1="261.47" y1="379" x2="448.806" y2="379" style="stroke:#E7E7E7;stroke-width:0.5;"/></g><g class="entity" data-qualified-name="DosDiskFactory" id="ent0012" data-source-line="16"><rect x="284.57" y="422" width="141.136" height="48" fill="#313139" style="stroke:#E7E7E7;stroke-width:0.5;" rx="2.5" ry="2.5"/><ellipse cx="299.57" cy="438" rx="11" ry="11" fill="#2E5233" style="stroke:#E7E7E7;stroke-width:1;"/><path d="M302.539,443.641 Q301.961,443.938 301.32,444.078 Q300.679,444.234 299.976,444.234 Q297.476,444.234 296.148,442.594 Q294.836,440.938 294.836,437.813 Q294.836,434.688 296.148,433.031 Q297.476,431.375 299.976,431.375 Q300.679,431.375 301.32,431.531 Q301.976,431.688 302.539,431.984 L302.539,434.703 Q301.914,434.125 301.32,433.859 Q300.726,433.578 300.101,433.578 Q298.758,433.578 298.07,434.656 Q297.383,435.719 297.383,437.813 Q297.383,439.906 298.07,440.984 Q298.758,442.047 300.101,442.047 Q300.726,442.047 301.32,441.781 Q301.914,441.5 302.539,440.922 L302.539,443.641 Z " fill="#FFF"/><text x="313.57" y="442.847" fill="#FFF" font-size="14" textLength="109.136">DosDiskFactory</text><line x1="285.57" y1="454" x2="424.706" y2="454" style="stroke:#E7E7E7;stroke-width:0.5;"/><line x1="285.57" y1="462" x2="424.706" y2="462" style="stroke:#E7E7E7;stroke-width:0.5;"/></g><g class="entity" data-qualified-name="RdosDiskFactory" id="ent0014" data-source-line="18"><rect x="280.66" y="505" width="148.97" height="48" fill="#313139" style="stroke:#E7E7E7;stroke-width:0.5;" rx="2.5" ry="2.5"/><ellipse cx="295.66" cy="521" rx="11" ry="11" fill="#2E5233" style="stroke:#E7E7E7;stroke-width:1;"/><path d="M298.629,526.641 Q298.051,526.938 297.41,527.078 Q296.769,527.234 296.066,527.234 Q293.566,527.234 292.238,525.594 Q290.926,523.938 290.926,520.813 Q290.926,517.688 292.238,516.031 Q293.566,514.375 296.066,514.375 Q296.769,514.375 297.41,514.531 Q298.066,514.688 298.629,514.984 L298.629,517.703 Q298.004,517.125 297.41,516.859 Q296.816,516.578 296.191,516.578 Q294.848,516.578 294.16,517.656 Q293.473,518.719 293.473,520.813 Q293.473,522.906 294.16,523.984 Q294.848,525.047 296.191,525.047 Q296.816,525.047 297.41,524.781 Q298.004,524.5 298.629,523.922 L298.629,526.641 Z " fill="#FFF"/><text x="309.66" y="525.847" fill="#FFF" font-size="14" textLength="116.97">RdosDiskFactory</text><line x1="281.66" y1="537" x2="428.63" y2="537" style="stroke:#E7E7E7;stroke-width:0.5;"/><line x1="281.66" y1="545" x2="428.63" y2="545" style="stroke:#E7E7E7;stroke-width:0.5;"/></g><g class="link" data-entity-1="ent0001" data-entity-2="ent0002" id="lnk3" data-link-type="extension"><path d="M130.789,231.647 C155.919,186.797 197.73,121.75 260.47,72 C268.4,65.71 277.44,60.19 286.71,55.41" style="stroke:#E7E7E7;stroke-width:1;stroke-dasharray:7,7;" fill="none" id="DiskFactory-backto-ProdosDiskFactory"/><polygon points="121.99,247.35,136.023,234.58,125.554,228.714,121.99,247.35" fill="none" style="stroke:#E7E7E7;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/></g><g class="link" data-entity-1="ent0001" data-entity-2="ent0004" id="lnk5" data-link-type="extension"><path d="M152.961,235.585 C183.281,208.485 215.84,182.03 260.47,155 C270.34,149.02 281.24,143.44 292.01,138.43" style="stroke:#E7E7E7;stroke-width:1;stroke-dasharray:7,7;" fill="none" id="DiskFactory-backto-NakedosDiskFactory"/><polygon points="139.54,247.58,156.959,240.058,148.962,231.111,139.54,247.58" fill="none" style="stroke:#E7E7E7;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/></g><g class="link" data-entity-1="ent0001" data-entity-2="ent0006" id="lnk7" data-link-type="extension"><path d="M217.888,242.344 C244.648,233.434 256.18,229.6 281.36,221.22" style="stroke:#E7E7E7;stroke-width:1;stroke-dasharray:7,7;" fill="none" id="DiskFactory-backto-CpmDiskFactory"/><polygon points="200.81,248.03,219.784,248.036,215.993,236.651,200.81,248.03" fill="none" style="stroke:#E7E7E7;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/></g><g class="link" data-entity-1="ent0001" data-entity-2="ent0008" id="lnk9" data-link-type="extension"><path d="M218.81,280 C243.51,280 251.79,280 275.49,280" style="stroke:#E7E7E7;stroke-width:1;stroke-dasharray:7,7;" fill="none" id="DiskFactory-backto-PascalDiskFactory"/><polygon points="200.81,280,218.81,286,218.81,274,200.81,280" fill="none" style="stroke:#E7E7E7;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/></g><g class="link" data-entity-1="ent0001" data-entity-2="ent0010" id="lnk11" data-link-type="extension"><path d="M217.89,317.652 C244.37,326.462 255.6,330.2 280.59,338.52" style="stroke:#E7E7E7;stroke-width:1;stroke-dasharray:7,7;" fill="none" id="DiskFactory-backto-GutenbergDiskFactory"/><polygon points="200.81,311.97,215.995,323.346,219.784,311.959,200.81,311.97" fill="none" style="stroke:#E7E7E7;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/></g><g class="link" data-entity-1="ent0001" data-entity-2="ent0012" id="lnk13" data-link-type="extension"><path d="M152.961,324.415 C183.281,351.515 215.84,377.97 260.47,405 C270.34,410.98 281.24,416.56 292.01,421.57" style="stroke:#E7E7E7;stroke-width:1;stroke-dasharray:7,7;" fill="none" id="DiskFactory-backto-DosDiskFactory"/><polygon points="139.54,312.42,148.962,328.889,156.959,319.942,139.54,312.42" fill="none" style="stroke:#E7E7E7;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/></g><g class="link" data-entity-1="ent0001" data-entity-2="ent0014" id="lnk15" data-link-type="extension"><path d="M130.789,328.353 C155.919,373.203 197.73,438.25 260.47,488 C268.4,494.29 277.44,499.81 286.71,504.59" style="stroke:#E7E7E7;stroke-width:1;stroke-dasharray:7,7;" fill="none" id="DiskFactory-backto-RdosDiskFactory"/><polygon points="121.99,312.65,125.554,331.286,136.023,325.42,121.99,312.65" fill="none" style="stroke:#E7E7E7;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/></g><?plantuml-src bP2zJWD138JxUugbW-QsXp8H58WeuWMGu_NTMRT_ihqX2F7kR0eaHCMvzNoZcRdXZB45SejPrNll1Tx7cMrffwOaMB9HjX5ByY-yBi3nMU1CfZwjeQ2-rPQYJw16ucsXHEe3JT2Y-G2oZjV_46aoPyK9pukvm49eNFB0tLqcG79xrlKHq8fykC_1zJiN3ewprgwztLrpNCoXNUuUXgy18wYwevHGz3VAgSQU8Pl-SVn13h3ILcPNqoRz4HGXRaAUMf_vH39lelORYxp-k_at?></g></svg></div></div>
+
+<p>Harnessing the <code>DiskFactory</code> is rather straight-forward. Use <code>Disks#inspect(Source)</code> to initiate discovery. For example:</p>
+<div class="highlight"><pre><span></span><code><span class="n">Source</span><span class="w"> </span><span class="n">source</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Sources</span><span class="p">.</span><span class="na">create</span><span class="p">(</span><span class="n">imageName</span><span class="p">).</span><span class="na">orElseThrow</span><span class="p">();</span>
+<span class="n">DiskFactory</span><span class="p">.</span><span class="na">Context</span><span class="w"> </span><span class="n">ctx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Disks</span><span class="p">.</span><span class="na">inspect</span><span class="p">(</span><span class="n">source</span><span class="p">);</span>
+</code></pre></div>
+<p>This will hand back a <code>Context</code>. This contains all the information used to create <code>FormattedDisk</code>s, including the <code>Source</code>,
+and any <code>NibbleTrackReaderWriter</code>s should that be applicable.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">Context</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">Source</span><span class="w"> </span><span class="n">source</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">NibbleTrackReaderWriter</span><span class="w"> </span><span class="n">nibbleTrackReaderWriter</span><span class="p">;</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="kd">final</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">FormattedDisk</span><span class="o">&gt;</span><span class="w"> </span><span class="n">disks</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">ArrayList</span><span class="o">&lt;&gt;</span><span class="p">();</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">BlockDeviceBuilder</span><span class="w"> </span><span class="nf">blockDevice</span><span class="p">();</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">TrackSectorDeviceBuilder</span><span class="w"> </span><span class="nf">trackSectorDevice</span><span class="p">();</span>
+<span class="p">}</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">BlockDeviceBuilder</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">BlockDeviceBuilder</span><span class="w"> </span><span class="nf">include16Sector</span><span class="p">(</span><span class="n">Hint</span><span class="w"> </span><span class="n">hint</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">BlockDeviceBuilder</span><span class="w"> </span><span class="nf">include800K</span><span class="p">();</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">BlockDeviceBuilder</span><span class="w"> </span><span class="nf">includeHDV</span><span class="p">();</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">BlockDevice</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">get</span><span class="p">();</span>
+<span class="p">}</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">class</span> <span class="nc">TrackSectorDeviceBuilder</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">TrackSectorDeviceBuilder</span><span class="w"> </span><span class="nf">include13Sector</span><span class="p">();</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">TrackSectorDeviceBuilder</span><span class="w"> </span><span class="nf">include16Sector</span><span class="p">(</span><span class="n">Hint</span><span class="w"> </span><span class="n">hint</span><span class="p">);</span>
+<span class="w">    </span><span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">TrackSectorDevice</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">get</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Most of the time, <code>disks</code> is what you'll need. If nothing is recognized, <code>disks</code> will be empty, however, the device
+builder may be used to create an appropriate device. If applicable, a <code>NibbleTrackReaderWriter</code> will be avilable (either <code>*.nib</code>
+or a <code>*.woz</code> image).  Of course, <code>Source</code> is what is handed into the <code>Disks#inspect(Source)</code> method.</p>
+<p>Examples of using the builder interfaces:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">TrackSectorDevice</label><label for="__tabbed_1_2">BlockDevice</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">List</span><span class="o">&lt;</span><span class="n">TrackSectorDevice</span><span class="o">&gt;</span><span class="w"> </span><span class="n">sectorDevices</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ctx</span><span class="p">.</span><span class="na">trackSectorDevice</span><span class="p">()</span>
+<span class="w">                </span><span class="p">.</span><span class="na">include13Sector</span><span class="p">()</span>
+<span class="w">                </span><span class="p">.</span><span class="na">include16Sector</span><span class="p">(</span><span class="n">Hint</span><span class="p">.</span><span class="na">DOS_SECTOR_ORDER</span><span class="p">)</span>
+<span class="w">                </span><span class="p">.</span><span class="na">get</span><span class="p">()</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="n">List</span><span class="o">&lt;</span><span class="n">BlockDevice</span><span class="o">&gt;</span><span class="w"> </span><span class="n">blockDevices</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ctx</span><span class="p">.</span><span class="na">blockDevice</span><span class="p">()</span>
+<span class="w">        </span><span class="p">.</span><span class="na">include16Sector</span><span class="p">(</span><span class="n">Hint</span><span class="p">.</span><span class="na">PRODOS_BLOCK_ORDER</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="na">include800K</span><span class="p">()</span>
+<span class="w">        </span><span class="p">.</span><span class="na">includeHDV</span><span class="p">()</span>
+<span class="w">        </span><span class="p">.</span><span class="na">get</span><span class="p">();</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<h3 id="other-semi-experimental">Other (semi-experimental)</h3>
+<blockquote>
+<p>Some of these are in play today (<code>DataBuffer</code>, <code>HintProvider</code>, and <code>Information</code>) and others are partly implemented 
+(<code>CapabilityProvider</code> and <code>Container</code>).</p>
+</blockquote>
+<h4 id="databuffer">DataBuffer</h4>
+<p>A lot of functionality was encompassed in <code>AppleUtil</code>. As an experiment, <code>DataBuffer</code> has been created to wrap around that 
+functionality (reading unsigned bytes, unsigned words, 32-bit integers, handling little-ending vs big-endian numbers, etc).
+That <code>DataBuffer</code> can "get" from a specified offset, or can "read" in a forward manner. Usage depends on what is needed.</p>
+<h4 id="capabilityprovider">CapabilityProvider</h4>
+<p>The concept of a capability is "what can this -thing- do?"  This is still early and won't really show up until devices
+are put together. But you might as if this "thing" can "write" or "save to disk". Instead of having a bunch of dedicated
+"is" methods, this should help clean up the API.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">CapabilityProvider</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">can</span><span class="p">(</span><span class="n">Capability</span><span class="w"> </span><span class="n">capability</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Expected usage:</p>
+<div class="highlight"><pre><span></span><code><span class="n">FormattedDisk</span><span class="w"> </span><span class="n">disk</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...;</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">disk</span><span class="p">.</span><span class="na">can</span><span class="p">(</span><span class="n">Capability</span><span class="p">.</span><span class="na">SAVE_TO_FILE</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">window</span><span class="p">.</span><span class="na">enableSaveButton</span><span class="p">();</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="hintprovider">HintProvider</h4>
+<p>"Hints" are used to indicate somewthing we know. In particular, a <code>Hint</code> is used while creating the disk image. One example
+is if we know the sector ordering for a disk. We can provide that hint for certain sources (DiskCopy, 2IMG, and the current
+<code>FileEntry</code> sources do this).</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">HintProvider</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">is</span><span class="p">(</span><span class="n">Hint</span><span class="w"> </span><span class="n">hint</span><span class="p">);</span>
+<span class="w">    </span><span class="k">default</span><span class="w"> </span><span class="kt">boolean</span><span class="w"> </span><span class="nf">isAny</span><span class="p">(</span><span class="n">Hint</span><span class="p">...</span><span class="w"> </span><span class="n">hints</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Example usage:</p>
+<div class="highlight"><pre><span></span><code><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">source</span><span class="p">.</span><span class="na">is</span><span class="p">(</span><span class="n">Hint</span><span class="p">.</span><span class="na">PRODOS_BLOCK_ORDER</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// ...</span>
+<span class="p">}</span>
+</code></pre></div>
+<h4 id="container">Container</h4>
+<p>A "Container" allows pulling out internal components without providing a bunch of random "get" methods. For instance, the current
+<code>FormattedDisk</code> (and <code>Disk</code> before that) as well as (the retired) <code>ImageOrder</code> all support both block and track/sector reading and writing. 
+So, a ProDOS disk has reading by block or sector. DOS has reading by block or sector, etc. RDOS has, not only block or sector, 
+but also "RDOS" block (256) bytes; and CP/M is the same except the CP/M block is 1024 bytes. It would be nice to hide all that 
+cruft and "ask" the (in this case) file system if it supported a particular type of device. That's where containers come into 
+play -- we expose one "get" method that then looks for that type of item. It returns a Java <code>Optional</code>, so it may not and we 
+can handle that accordingly.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">interface</span> <span class="nc">Container</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="n">Optional</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">get</span><span class="p">(</span><span class="n">Class</span><span class="o">&lt;</span><span class="n">T</span><span class="o">&gt;</span><span class="w"> </span><span class="n">iface</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Expected usage:</p>
+<div class="highlight"><pre><span></span><code><span class="n">Optional</span><span class="o">&lt;</span><span class="n">BlockDevice</span><span class="o">&gt;</span><span class="w"> </span><span class="n">blockOpt</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">disk</span><span class="p">.</span><span class="na">get</span><span class="p">(</span><span class="n">BlockDevice</span><span class="p">.</span><span class="na">class</span><span class="p">);</span>
+<span class="n">blockOpt</span><span class="p">.</span><span class="na">ifPresent</span><span class="p">(</span><span class="n">device</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">DataBuffer</span><span class="w"> </span><span class="n">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">device</span><span class="p">.</span><span class="na">readBlock</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="w">    </span><span class="c1">// ...</span>
+<span class="p">});</span>
+</code></pre></div>
+<h4 id="information">Information</h4>
+<p>A lot of things have extra information about them. DiskCopy has image type, disk name, and disk format (for instance) while
+2IMG supports ordering, creator, and comments. These are available through a generic <code>getInformation()</code> method call.</p>
+<div class="highlight"><pre><span></span><code><span class="kd">public</span><span class="w"> </span><span class="kd">record</span> <span class="nc">Information</span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">label</span><span class="p">,</span><span class="w"> </span><span class="n">String</span><span class="w"> </span><span class="n">value</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Note that the <code>Information</code> record includes a builder to aid in construction.</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@Override</span>
+<span class="kd">public</span><span class="w"> </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Information</span><span class="o">&gt;</span><span class="w"> </span><span class="nf">information</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">List</span><span class="o">&lt;</span><span class="n">Information</span><span class="o">&gt;</span><span class="w"> </span><span class="n">list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">source</span><span class="p">.</span><span class="na">information</span><span class="p">();</span>
+<span class="w">    </span><span class="c1">// ...</span>
+<span class="w">    </span><span class="n">list</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">Information</span><span class="p">.</span><span class="na">builder</span><span class="p">(</span><span class="s">&quot;Image Type&quot;</span><span class="p">).</span><span class="na">value</span><span class="p">(</span><span class="s">&quot;Universal Disk Image (2IMG/2MG)&quot;</span><span class="p">));</span>
+<span class="w">    </span><span class="n">list</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">Information</span><span class="p">.</span><span class="na">builder</span><span class="p">(</span><span class="s">&quot;ProDOS Blocks&quot;</span><span class="p">).</span><span class="na">value</span><span class="p">(</span><span class="n">info</span><span class="p">.</span><span class="na">prodosBlocks</span><span class="p">()));</span>
+<span class="w">    </span><span class="n">list</span><span class="p">.</span><span class="na">add</span><span class="p">(</span><span class="n">Information</span><span class="p">.</span><span class="na">builder</span><span class="p">(</span><span class="s">&quot;Data Offset &amp; Length&quot;</span><span class="p">).</span><span class="na">value</span><span class="p">(</span><span class="s">&quot;$%08x &amp; %08x&quot;</span><span class="p">,</span>
+<span class="w">            </span><span class="n">info</span><span class="p">.</span><span class="na">dataOffset</span><span class="p">(),</span><span class="w"> </span><span class="n">info</span><span class="p">.</span><span class="na">dataLength</span><span class="p">()));</span>
+<span class="w">    </span><span class="c1">// ...</span>
+<span class="p">}</span>
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2002 - 2025 Robert Greene
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+        <script src="../../assets/mkdocs_puml/puml.js"></script>
+      
+        <script src="https://unpkg.com/@panzoom/panzoom@4.5.1/dist/panzoom.min.js"></script>
+      
+        <script src="../../assets/mkdocs_puml/interaction.js"></script>
+      
+    
+  </body>
+</html>

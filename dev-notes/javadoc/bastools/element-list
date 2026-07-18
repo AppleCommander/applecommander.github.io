@@ -1,0 +1,9 @@
+io.github.applecommander.bastools.api
+io.github.applecommander.bastools.api.code
+io.github.applecommander.bastools.api.directives
+io.github.applecommander.bastools.api.model
+io.github.applecommander.bastools.api.optimizations
+io.github.applecommander.bastools.api.shapes
+io.github.applecommander.bastools.api.shapes.exporters
+io.github.applecommander.bastools.api.utils
+io.github.applecommander.bastools.api.visitors

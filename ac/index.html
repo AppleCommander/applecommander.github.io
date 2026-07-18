@@ -1,0 +1,1749 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Information site for the AppleCommander suite of tools">
+      
+      
+        <meta name="author" content="a2geek">
+      
+      
+        <link rel="canonical" href="https://applecommander.github.io/ac/">
+      
+      
+        <link rel="prev" href="../using/">
+      
+      
+        <link rel="next" href="../acx/">
+      
+      
+      <link rel="icon" href="../images/apple-logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.23">
+    
+    
+      
+        <title>Using 'ac' - AppleCommander</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.84d31ad4.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/mkdocs_puml/puml.css">
+    
+      <link rel="stylesheet" href="../assets/mkdocs_puml/interaction.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#a-quick-note" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="AppleCommander" class="md-header__button md-logo" aria-label="AppleCommander" data-md-component="logo">
+      
+  <img src="../images/apple-logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AppleCommander
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Using 'ac'
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/AppleCommander/AppleCommander" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    AppleCommander
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="AppleCommander" class="md-nav__button md-logo" aria-label="AppleCommander" data-md-component="logo">
+      
+  <img src="../images/apple-logo.png" alt="logo">
+
+    </a>
+    AppleCommander
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/AppleCommander/AppleCommander" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    AppleCommander
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../install/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Installing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../using/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Screenshots
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Using 'ac'
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Using 'ac'
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#a-quick-note" class="md-nav__link">
+    <span class="md-ellipsis">
+      A quick note
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#options" class="md-nav__link">
+    <span class="md-ellipsis">
+      Options
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-an-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating an image
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#displaying-information-about-an-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      Displaying information about an image
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#directory-listings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Directory listings
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examining-a-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Examining a file
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-a-raw-data-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get a raw data file
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#put-standard-input-onto-disk-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      Put standard input onto disk image
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#put-standard-input-onto-disk-image-as-a-text-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Put standard input onto disk image as a text file
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#put-standard-input-basic-source-code-onto-disk-image-as-a-basic-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Put standard input BASIC source code onto disk image as a BASIC file
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#put-standard-input-with-dos-33-header-onto-disk-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      Put standard input with DOS 3.3 header onto disk image
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#put-standard-input-in-applesingle-format-onto-disk-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      Put standard input in AppleSingle format onto disk image
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#putting-files-and-file-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Putting files and file types
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delete-a-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delete a file
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#copying-a-file-between-disks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Copying a file between disks
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#locking-and-unlocking-a-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Locking and unlocking a file
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#change-a-volume-name" class="md-nav__link">
+    <span class="md-ellipsis">
+      Change a volume name
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#further-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      Further details
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#known-problems-limitations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Known problems &amp; limitations
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../acx/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Using 'acx'
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Developer Notes
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Developer Notes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dev-notes/gav/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Maven/Gradle GAV
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dev-notes/redesign/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Updated API and UML
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dev-notes/uml/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Historical UML diagrams
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dev-notes/disassembler/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Disassembler API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dev-notes/ant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ant Task
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../javadoc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Javadoc
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dev-notes/cc65-pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    cc65 Pipeline
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    History
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            History
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../history/current/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Current releases
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Legacy releases
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            Legacy releases
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../history/version13514/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.3.5.14 (27-Nov-2013)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../history/version135/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.3.5 (01-Jun-2008)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../history/version134/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.3.4 (31-Mar-2007)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../history/version133/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.3.3 (18-Jun-2004)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../history/version132/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.3.2 (05-Jun-2004)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../history/version131/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.3.1 (12-Dec-2003)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../history/version130/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.3.0 (04-Dec-2003)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../history/version123/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.2.3 (13-Apr-2003)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../history/version122/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.2.2 (15-Mar-2003)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../history/version121/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.2.1 (01-Mar-2003)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../history/version120/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.2.0 (11-Feb-2003)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../history/version111/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.1.1 (30-Nov-2002)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../history/version110/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.1 (12-Nov-2002)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../history/version100/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.0 (28-Oct-2002)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#a-quick-note" class="md-nav__link">
+    <span class="md-ellipsis">
+      A quick note
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#options" class="md-nav__link">
+    <span class="md-ellipsis">
+      Options
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#creating-an-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      Creating an image
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#displaying-information-about-an-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      Displaying information about an image
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#directory-listings" class="md-nav__link">
+    <span class="md-ellipsis">
+      Directory listings
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examining-a-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Examining a file
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-a-raw-data-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get a raw data file
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#put-standard-input-onto-disk-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      Put standard input onto disk image
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#put-standard-input-onto-disk-image-as-a-text-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Put standard input onto disk image as a text file
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#put-standard-input-basic-source-code-onto-disk-image-as-a-basic-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Put standard input BASIC source code onto disk image as a BASIC file
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#put-standard-input-with-dos-33-header-onto-disk-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      Put standard input with DOS 3.3 header onto disk image
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#put-standard-input-in-applesingle-format-onto-disk-image" class="md-nav__link">
+    <span class="md-ellipsis">
+      Put standard input in AppleSingle format onto disk image
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#putting-files-and-file-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Putting files and file types
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#delete-a-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Delete a file
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#copying-a-file-between-disks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Copying a file between disks
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#locking-and-unlocking-a-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      Locking and unlocking a file
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#change-a-volume-name" class="md-nav__link">
+    <span class="md-ellipsis">
+      Change a volume name
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#further-details" class="md-nav__link">
+    <span class="md-ellipsis">
+      Further details
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#known-problems-limitations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Known problems &amp; limitations
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+  <h1>Using 'ac'</h1>
+
+<p><code>ac</code> is the command-line tool that provides access to the core of AppleCommander's capabilities.</p>
+<h2 id="a-quick-note">A quick note</h2>
+<p>All of these samples were done in a Unix-type environment (Mac OS X or Linux), hence the <code>$</code> is the prompt character.</p>
+<p>Every sample assumes you have an <code>ac.jar</code> in the current directory and are therefore written out "long-hand".  If you followed the <a href="../install/">install instructions</a>, you have setup a command-line script to help you out, meaning that every <code>java -jar ac.jar</code> can be replaced with <code>ac.sh</code> or <code>ac.bat</code>.  Additionally if you setup an <code>alias</code>, you can replace that to just <code>ac</code>.  </p>
+<p>Setup whatever works for you and your environment, and be cognizant that the sample commands probably aren't <em>quite</em> exactly right for your setup!</p>
+<h2 id="options">Options</h2>
+<p>For a quick list of <code>ac</code> options, enter the <code>-h</code> command:</p>
+<div class="highlight"><pre><span></span><code>$ java -jar ac.jar -h
+AppleCommander command line options [13.2]:
+-i       &lt;imagename&gt; [&lt;imagename&gt;] display information about image(s).
+-ls      &lt;imagename&gt; [&lt;imagename&gt;] list brief directory of image(s).
+-l       &lt;imagename&gt; [&lt;imagename&gt;] list directory of image(s).
+-ll      &lt;imagename&gt; [&lt;imagename&gt;] list detailed directory of image(s).
+-lsv     &lt;imagename&gt; [&lt;imagename&gt;] list in CSV format brief directory of image(s).
+-lv      &lt;imagename&gt; [&lt;imagename&gt;] list in CSV format directory of image(s).
+-llv     &lt;imagename&gt; [&lt;imagename&gt;] list in CSV format detailed directory of image(s).
+-lsj     &lt;imagename&gt; [&lt;imagename&gt;] list in JSON format brief directory of image(s).
+-lj      &lt;imagename&gt; [&lt;imagename&gt;] list in JSON format directory of image(s).
+-llj     &lt;imagename&gt; [&lt;imagename&gt;] list in JSON format detailed directory of image(s).
+-e       &lt;imagename&gt; &lt;filename&gt; [&lt;output&gt;] export file from image to stdout
+         or to an output file.
+-x       &lt;imagename&gt; [&lt;directory&gt;] extract all files from image to directory.
+-g       &lt;imagename&gt; &lt;filename&gt; [&lt;output&gt;] get raw file from image to stdout
+         or to an output file.
+-p       &lt;imagename&gt; &lt;filename&gt; &lt;type&gt; [[$|0x]&lt;addr&gt;] put stdin
+         in filename on image, using file type and address [0x2000].
+-pt      &lt;imagename&gt; &lt;filename&gt; put stdin in filename on image
+         defaulting to TXT file type, setting high bit on and replacing
+         newline characters with $8D.
+-ptx     &lt;imagename&gt; &lt;filename&gt; put stdin in filename on image
+         defaulting to TXT file type, clearing high bit and replacing
+         newline characters with $0D.
+-d       &lt;imagename&gt; &lt;filename&gt; delete file from image.
+-k       &lt;imagename&gt; &lt;filename&gt; lock file on image.
+-u       &lt;imagename&gt; &lt;filename&gt; unlock file on image.
+-n       &lt;imagename&gt; &lt;volname&gt; change volume name (ProDOS or Pascal).
+-dos     &lt;imagename&gt; &lt;filename&gt; &lt;type&gt; put stdin with DOS header
+         in filename on image, using file type and address from header.
+-as      &lt;imagename&gt; [&lt;filename&gt;] put stdin with AppleSingle format
+         in filename on image, using file type, address, and (optionally) name
+         from the AppleSingle file.
+-geos    &lt;imagename&gt; interpret stdin as a GEOS conversion file and
+         place it on image (ProDOS only).
+-dos140  &lt;imagename&gt; create a 140K DOS 3.3 image.
+-pro140  &lt;imagename&gt; &lt;volname&gt;
+         create a 140K ProDOS image.
+-pro800  &lt;imagename&gt; &lt;volname&gt; create an 800K ProDOS image.
+-pas140  &lt;imagename&gt; &lt;volname&gt; create a 140K Pascal image.
+-pas800  &lt;imagename&gt; &lt;volname&gt; create an 800K Pascal image.
+-convert &lt;filename&gt; &lt;imagename&gt; [&lt;sizeblocks&gt;] uncompress a ShrinkIt or Binary
+         II file; or convert a DiskCopy 4.2 image into a ProDOS disk image.
+-bas     &lt;imagename&gt; &lt;filename&gt; import an AppleSoft basic file from text
+         back to its tokenized format.
+</code></pre></div>
+<blockquote>
+<p>Note that the <code>-cc65</code> has been deprecated as CC65 itself is moving to using the AppleSingle format (<code>-as</code> flag).  Use <code>-dos</code> instead. <code>-cc65</code> will still be recognized, but it maps to <code>-dos</code> and a warning will be printed.</p>
+</blockquote>
+<h2 id="creating-an-image">Creating an image</h2>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DOS 3.3</td>
+<td>The <code>-dos140</code> command creates an empty 140K DOS 3.3 disk image in DOS sector order; DOS volumes do not have names, and volume number is the default (254).</td>
+</tr>
+<tr>
+<td>ProDOS</td>
+<td>The <code>-pro140</code> command creates an empty 140K ProDOS disk image, and <code>-pro800</code> creates an empty 800K image, both in ProDOS sector order.</td>
+</tr>
+<tr>
+<td>Pascal</td>
+<td>The <code>-pas140</code> command creates an empty 140K Pascal disk image, and <code>-pas800</code> creates an empty 800K image, both in Pascal sector order.</td>
+</tr>
+</tbody>
+</table>
+<p>To be read correctly, DOS order disk image names should end in <code>.dsk</code> or <code>.do</code>, while ProDOS and Pascal order image names should end in <code>.po</code>. The resulting images will not boot, but they can be edited with the traditional utilities.</p>
+<p>To create a DOS 3.3, Pascal and ProDOS image, enter the commands:</p>
+<div class="highlight"><pre><span></span><code>$ java -jar ac.jar -dos140 dos.dsk
+$ java -jar ac.jar -pas140 pas.po volume1
+$ java -jar ac.jar -pro140 pro.po volume2
+</code></pre></div>
+<p>There is no textual output from this command (unless an error occurs) beyond having a new blank disk image.</p>
+<h2 id="displaying-information-about-an-image">Displaying information about an image</h2>
+<p>The <code>-i</code> command displays information about a disk image. Multiple image names are permitted.</p>
+<p>To get information about one or more disks, enter any of the following commands:</p>
+<div class="highlight"><pre><span></span><code>$ java -jar ac.jar -i ricky.2mg
+$ java -jar ac.jar -i fred.dsk ethel.po
+$ java -jar ac.jar -i mertz/*
+$ java -jar ac.jar -i *.po *.dsk
+</code></pre></div>
+<p>A sample from the ProDOS 2.4.2 master disk:</p>
+<div class="highlight"><pre><span></span><code>$ java -jar ac.jar -i ProDOS_2_4_2.dsk
+File Name: ProDOS_2_4_2.dsk
+Disk Name: /PRODOS.2.4.2/
+Physical Size (bytes): 143360
+Free Space (bytes): 0
+Used Space (bytes): 143360
+Physical Size (KB): 140
+Free Space (KB): 0
+Used Space (KB): 140
+Archive Order: DOS
+Disk Format: ProDOS
+Total Blocks: 280
+Free Blocks: 0
+Used Blocks: 280
+Volume Access: Destroy Read Rename Write
+Block Number of Bitmap: 6
+Creation Date: 09/19/2016
+File Entries Per Block: 13
+File Entry Length (bytes): 39
+Active Files in Root Directory: 19
+Minimum ProDOS Version Required: 0
+Volume Created By ProDOS Version: 0
+Volume Name: PRODOS.2.4.2
+</code></pre></div>
+<h2 id="directory-listings">Directory listings</h2>
+<p>The <code>-ls</code>, <code>-l</code> and <code>-ll</code> commands list the directory of a disk image in short, regular and long format respectively. Multiple image names are permitted, as suggested above. To see the directory of one or more disk, enter any of the following commands:</p>
+<div class="highlight"><pre><span></span><code>$ java -jar ac.jar -ls misc.dsk
+$ java -jar ac.jar -l  misc.dsk
+$ java -jar ac.jar -ll misc.dsk
+$ java -jar ac.jar -ls *.po *.dsk
+$ java -jar ac.jar -l  Nibble*/*
+</code></pre></div>
+<p>Sample runs (with some text omitted for brevity):</p>
+<div class="highlight"><pre><span></span><code>$ java -jar ac.jar -ls ProDOS_2_4_2.dsk
+/home/rob/Downloads/ProDOS_2_4_2.dsk /PRODOS.2.4.2/
+VIEW.README BAS 512  
+&lt;snip&gt;
+PRODOS SYS 17,128 Locked
+ProDOS format; 0 bytes free; 143,360 bytes used.
+
+$ java -jar ac.jar -l ProDOS_2_4_2.dsk
+/home/rob/Downloads/ProDOS_2_4_2.dsk /PRODOS.2.4.2/
+  VIEW.README BAS 001 09/15/2016 01/13/2018 512 A=$0801
+&lt;snip&gt;
+* PRODOS SYS 034 01/18/2018 01/13/2018 17,128  
+ProDOS format; 0 bytes free; 143,360 bytes used.
+
+$ java -jar ac.jar -ll ProDOS_2_4_2.dsk
+/home/rob/Downloads/ProDOS_2_4_2.dsk /PRODOS.2.4.2/
+  VIEW.README  Destroy Read Rename Write BAS  001 09/15/2016 01/13/2018 512 A=$0801 0002 0116 Seedling Changed 0 36
+&lt;snip&gt;
+* PRODOS  Read  SYS  034 01/18/2018 01/13/2018 17,128 $0000 0002 0005 Sapling Changed 0 36
+ProDOS format; 0 bytes free; 143,360 bytes used.
+</code></pre></div>
+<h2 id="examining-a-file">Examining a file</h2>
+<p>The <code>-e</code> command lets you examine a file by printing a readable version to standard output. To examine a file named <code>fred</code> on a disk named <code>misc.dsk</code>, enter the command:
+<div class="highlight"><pre><span></span><code>$ java -jar ac.jar -e misc.dsk fred
+</code></pre></div></p>
+<p>The export command tries to choose an appropriate filter for the chosen file. Filters exist for formats, with a default hexadecimal format for binary files. If the file is probably a picture, the export format is PNG. To save the output to a file:
+<div class="highlight"><pre><span></span><code>$ java -jar ac.jar -e misc.dsk lucy.pic &gt; lucy.png
+</code></pre></div></p>
+<p>A sample run against an AppleSoft BASIC program on the ProDOS 2.4.2 disk:
+<div class="highlight"><pre><span></span><code>$ java -jar ac.jar -e ProDOS_2_4_3.po VIEW.README
+10  REM VIEW.README BY J.BROOKS. 9/15/2016
+20 ADR = 768
+30  READ BYTE: IF BYTE &lt; 0 THEN 100
+40  POKE ADR,BYTE:ADR = ADR + 1: GOTO 30
+100  CALL 806
+150  PRINT  CHR$(4)&quot;BLOAD README,A$2000,TTXT&quot;
+200  HOME : FOR I = 1 TO 23: CALL 768: NEXT 
+300  CALL 768: GET KEY$
+350  IF  ASC(KEY$) = 27 GOTO 500
+400  IF  PEEK(251) &gt; 0 GOTO 300
+500  PRINT  CHR$(4)&quot;bye&quot;
+1000  DATA 162,40,160,0,177,250,240,29,9,128,201,225,144,2,41,255,32,237,253,200,201,141,240,3,202,208,233,152,24,101,250,133,250,144,2,230,251,96,162,96,169,32,133,251,141,54,3,169
+1010  DATA 0,133,250,168,153,0,32,200,208,250,238,54,3,202,208,244,26,208,2,160,224,136,140,15,3,96,-1
+</code></pre></div></p>
+<h2 id="get-a-raw-data-file">Get a raw data file</h2>
+<p>The <code>-g</code> command gets a file in its raw form. To copy a file named <code>fred</code> from <code>misc.dsk</code> to a file named <code>ethel</code> on your file system, enter the command:
+<div class="highlight"><pre><span></span><code>$ java -jar ac.jar -g misc.dsk fred &gt; ethel
+</code></pre></div></p>
+<p>Because binary files are difficult to read, you may want to send the output to a program that can show the data in a hexadecimal format other than the one used with the <code>-e</code> option, above:
+<div class="highlight"><pre><span></span><code>$ java -jar ac.jar -g misc.dsk fred | hexdump
+</code></pre></div></p>
+<p>Again, a sample run with the AppleSoft BASIC program from the ProDOS 2.4.2 image.  This time, however, you will see the tokenized program:
+<div class="highlight"><pre><span></span><code>$ java -jar ac.jar -g ProDOS_2_4_2.dsk VIEW.README | hexdump -C
+00000000  29 08 0a 00 b2 56 49 45  57 2e 52 45 41 44 4d 45  |)....VIEW.README|
+00000010  20 42 59 20 4a 2e 42 52  4f 4f 4b 53 2e 20 39 2f  | BY J.BROOKS. 9/|
+00000020  31 35 2f 32 30 31 36 00  35 08 14 00 41 44 52 d0  |15/2016.5...ADR.|
+00000030  37 36 38 00 4b 08 1e 00  87 42 59 54 45 3a ad 42  |768.K....BYTE:.B|
+00000040  59 54 45 d1 30 c4 31 30  30 00 67 08 28 00 b9 41  |YTE.0.100.g.(..A|
+00000050  44 52 2c 42 59 54 45 3a  41 44 52 d0 41 44 52 c8  |DR,BYTE:ADR.ADR.|
+00000060  31 3a ab 33 30 00 70 08  64 00 8c 38 30 36 00 94  |1:.30.p.d..806..|
+00000070  08 96 00 ba e7 28 34 29  22 42 4c 4f 41 44 20 52  |.....(4)&quot;BLOAD R|
+00000080  45 41 44 4d 45 2c 41 24  32 30 30 30 2c 54 54 58  |EADME,A$2000,TTX|
+&lt;snip&gt;
+000001f0  30 2c 31 35 2c 33 2c 39  36 2c 2d 31 00 00 00 e8  |0,15,3,96,-1....|
+00000200
+</code></pre></div></p>
+<h2 id="put-standard-input-onto-disk-image">Put standard input onto disk image</h2>
+<p>The <code>-p</code> command puts data from the standard input stream onto a disk image. Four parameters are used: imagename, filename, type, and address. If the address is omitted and one is required, $2000 is assumed. Suppose <code>ethel</code> is a binary file meant to start at address 2048 ($800 or 0x800). To put the binary file named <code>ethel</code> back into a file named <code>fred</code> with that starting address on the DOS image named <code>misc.dsk</code>:
+<div class="highlight"><pre><span></span><code>$ java -jar ac.jar -p misc.dsk fred B 0x800 &lt; ethel
+</code></pre></div></p>
+<p>Alternatively, suppose <code>ethel</code> is a binary starting at 2048 destined for <code>fred</code> on a ProDOS image named <code>p1.po</code>:
+<div class="highlight"><pre><span></span><code>$ java -jar ac.jar -p p1.po fred bin 2048 &lt; ethel
+</code></pre></div></p>
+<h2 id="put-standard-input-onto-disk-image-as-a-text-file">Put standard input onto disk image as a text file</h2>
+<p>The <code>-pt</code> and <code>-ptx</code> commands work the same as <code>-p</code> except that they assume the input is a text file. This defaults the file type to <code>TXT</code>. They also translate the MS-DOS CR+LF format into a single line ending.</p>
+<p>A sample using the <code>CONTRIB.txt</code> file in this archive, which happes to be in MS-DOS format:
+<div class="highlight"><pre><span></span><code>$ cat CONTRIB.txt | hexdump -C
+00000000  41 70 70 6c 65 43 6f 6d  6d 61 6e 64 65 72 20 2d  |AppleCommander -|
+00000010  20 41 6e 20 41 70 70 6c  65 20 5d 5b 20 69 6d 61  | An Apple ][ ima|
+00000020  67 65 20 75 74 69 6c 69  74 79 2e 0d 0a 43 6f 70  |ge utility...Cop|
+&lt;snip&gt;
+$ # Note the CR + LF is here .............. ^^ ^^
+</code></pre></div></p>
+<p>For <code>-pt</code>, it translates line endings to the Apple 0x8d as well as <em>setting</em> the high bit:
+<div class="highlight"><pre><span></span><code>$ cat CONTRIB.txt | ac -pt test.dsk contrib
+$ ac -g test.dsk contrib | hexdump -C
+00000000  c1 f0 f0 ec e5 c3 ef ed  ed e1 ee e4 e5 f2 a0 ad  |................|
+00000010  a0 c1 ee a0 c1 f0 f0 ec  e5 a0 dd db a0 e9 ed e1  |................|
+00000020  e7 e5 a0 f5 f4 e9 ec e9  f4 f9 ae 8d c3 ef f0 f9  |................|
+&lt;snip&gt;
+$ # Note that the CR + LF is fixed ........ ^^
+</code></pre></div></p>
+<p>For <code>-ptx</code>, it translates line endings to the Apple 0x0d as well as <em>clearing</em> the high bit:
+<div class="highlight"><pre><span></span><code>$ cat CONTRIB.txt | ac -ptx test.dsk contrib2
+$ ac -g test.dsk contrib2 | hexdump -C
+00000000  41 70 70 6c 65 43 6f 6d  6d 61 6e 64 65 72 20 2d  |AppleCommander -|
+00000010  20 41 6e 20 41 70 70 6c  65 20 5d 5b 20 69 6d 61  | An Apple ][ ima|
+00000020  67 65 20 75 74 69 6c 69  74 79 2e 0d 43 6f 70 79  |ge utility..Copy|
+&lt;snip&gt;
+$ # Note that the CR + LF is fixed ........ ^^
+</code></pre></div></p>
+<h2 id="put-standard-input-basic-source-code-onto-disk-image-as-a-basic-file">Put standard input BASIC source code onto disk image as a BASIC file</h2>
+<p>With the addition of the <a href="https://github.com/AppleCommander/bastools">bastools</a> library, <code>ac</code> now has the ability to tokenize a BASIC program and place it onto the disk. Please see the <a href="https://github.com/AppleCommander/bastools/tree/master/tools/bt">bt</a> and <a href="https://github.com/AppleCommander/bastools/tree/master/tools/st">st</a> for more advanced capabilities!</p>
+<blockquote>
+<p>Note: Due to the bastools API, <code>ac</code> will create a temp file in the system temp folder and then delete it once completed. </p>
+</blockquote>
+<div class="highlight"><pre><span></span><code>$ cat sample.bas 
+10 TEXT:HOME:GR:POKE -16302,23
+20 COLOR=0:FOR I=41 TO 47 STEP 2:HLIN 0,39 AT I:NEXT
+30 COLOR=INT(RND(1)*16)
+40 PLOT INT(RND(1)*40),INT(RND(1)*48)
+50 IF PEEK(49152)&lt;128 THEN 30
+60 GET A$:TEXT:HOME
+$ cat sample.bas | ac -bas test.dsk sample
+$ ac -g test.dsk sample | hexdump -C
+00000000  16 08 0a 00 89 3a 97 3a  88 3a b9 c9 31 36 33 30  |.....:.:.:..1630|
+00000010  32 2c 32 33 00 32 08 14  00 a0 30 3a 81 49 d0 34  |2,23.2....0:.I.4|
+00000020  31 c1 34 37 c7 32 3a 8e  30 2c 33 39 c5 49 3a 82  |1.47.2:.0,39.I:.|
+00000030  00 42 08 1e 00 a0 d3 28  db 28 31 29 ca 31 36 29  |.B.....(.(1).16)|
+00000040  00 5d 08 28 00 8d d3 28  db 28 31 29 ca 34 30 29  |.].(...(.(1).40)|
+00000050  2c d3 28 db 28 31 29 ca  34 38 29 00 72 08 32 00  |,.(.(1).48).r.2.|
+00000060  ad e2 28 34 39 31 35 32  29 d1 31 32 38 c4 33 30  |..(49152).128.30|
+00000070  00 7e 08 3c 00 be 41 24  3a 89 3a 97 00 00 00     |.~.&lt;..A$:.:....|
+0000007f
+</code></pre></div>
+<h2 id="put-standard-input-with-dos-33-header-onto-disk-image">Put standard input with DOS 3.3 header onto disk image</h2>
+<p>The <code>-dos</code> command is like <code>-p</code>, but it assumes the input stream includes a four-byte header, as generated by older versions of <code>cc65</code>. Three parameters are required: imagename, filename, and type. The start address is taken from bytes 0-1 of the header. To put the DOS binary named <code>ethel</code> into a file named <code>fred</code> on the DOS image named <code>misc.dsk</code>:
+<div class="highlight"><pre><span></span><code>$ java -jar ac.jar -dos misc.dsk fred B &lt; ethel
+</code></pre></div></p>
+<h2 id="put-standard-input-in-applesingle-format-onto-disk-image">Put standard input in AppleSingle format onto disk image</h2>
+<p>The <code>-as</code> command is like <code>-p</code>, but it assumes the input stream is in the AppleSingle format, as generated by newer versions of <code>cc65</code> (<a href="https://github.com/AppleCommander/AppleCommander/issues/20">see ticket #20</a>). The parameters are imagename (required) and, optionally, filename. The AppleSingle format supports a filename entry, but it is not always populated.  To put the AppleSingle binary named <code>ethel</code> into a file named <code>fred</code> on the ProDOS image named <code>misc.dsk</code>:
+<div class="highlight"><pre><span></span><code>$ java -jar ac.jar -as misc.dsk fred &lt; ethel
+</code></pre></div></p>
+<h2 id="putting-files-and-file-types">Putting files and file types</h2>
+<p>As another example, consider the text file named <code>foo.text</code> and the Pascal image named <code>src.po</code>:
+<div class="highlight"><pre><span></span><code>$ java -jar ac.jar -p p2.po foo.text text &lt; foo.text
+</code></pre></div></p>
+<p>Valid file types are specific to each operating system:</p>
+<table>
+<thead>
+<tr>
+<th>Operating System</th>
+<th>File Types</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DOS 3.x</td>
+<td><code>A</code>, <code>B</code>, <code>I</code>, <code>T</code>, <code>S</code>, <code>R</code>, <code>a</code>, <code>b</code>.</td>
+</tr>
+<tr>
+<td>Pascal</td>
+<td><code>bad</code>, <code>code</code>, <code>text</code>, <code>info</code>, <code>data</code>, <code>graf</code>, <code>foto</code>.</td>
+</tr>
+<tr>
+<td>ProDOS</td>
+<td><code>bas</code>, <code>bin</code>, <code>sys</code>, <code>txt</code>, <code>rel</code>, etc.; see <code>ProdosFileTypes.properties</code> for more.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="delete-a-file">Delete a file</h2>
+<p>The <code>-d</code> command deletes a file from an image:
+<div class="highlight"><pre><span></span><code>$ java -jar ac.jar -d misc.dsk fred
+</code></pre></div></p>
+<h2 id="copying-a-file-between-disks">Copying a file between disks</h2>
+<p>To copy a file from one image to another, do something like this:</p>
+<div class="highlight"><pre><span></span><code>$ java -jar ac.jar -g one.dsk fred | java -jar ac.jar -p another.dsk fred bin 2048
+</code></pre></div>
+<h2 id="locking-and-unlocking-a-file">Locking and unlocking a file</h2>
+<p>The <code>-k</code> and <code>-u</code> commands lock and unlock a file on the given image:
+<div class="highlight"><pre><span></span><code>$ java -jar ac.jar -k misc.dsk fred
+$ java -jar ac.jar -u misc.dsk fred
+</code></pre></div></p>
+<h2 id="change-a-volume-name">Change a volume name</h2>
+<p>The <code>-n</code> command changes the volume name on an image. Only ProDOS and Pascal images are affected:
+<div class="highlight"><pre><span></span><code>$ java -jar ac.jar -n misc.po name
+</code></pre></div></p>
+<h2 id="further-details">Further details</h2>
+<ul>
+<li>Here's a more comprehensive example of using AppleCommander for <a href="https://sites.google.com/site/drjohnbmatthews/apple2/cross">cross-platform development</a>.</li>
+<li>It's also possible to invoke the command line functions from within the ant build environment by using AppleCommander's <a href="../dev-notes/ant/">ant interface</a>.</li>
+<li>The <code>-geos</code> transfer file format is specified in <a href="http://wiki.cc65.org/doku.php?id=cc65:apple2:geosconvertformat">Apple GEOS CONVERT Format</a>.</li>
+</ul>
+<h2 id="known-problems-limitations">Known problems &amp; limitations</h2>
+<ul>
+<li>To replace an existing file on an image, you must delete it first; <code>ac</code> will create as many duplicate entries as you specify, only one of which will be accessible to the operating system.</li>
+<li>Given a ProDOS image, a full pathname may be specified for the <code>-e</code>, <code>-g</code>, <code>-p</code>, <code>-d</code>, <code>-k</code>, <code>-u</code>, <code>-dos</code>, and <code>-as</code> options. Files can only be put into an existing directory.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2002 - 2025 Robert Greene
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "..", "features": [], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+        <script src="../assets/mkdocs_puml/puml.js"></script>
+      
+        <script src="https://unpkg.com/@panzoom/panzoom@4.5.1/dist/panzoom.min.js"></script>
+      
+        <script src="../assets/mkdocs_puml/interaction.js"></script>
+      
+    
+  </body>
+</html>
