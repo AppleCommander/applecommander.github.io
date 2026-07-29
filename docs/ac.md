@@ -4,7 +4,7 @@
 
 All of these samples were done in a Unix-type environment (Mac OS X or Linux), hence the `$` is the prompt character.
 
-Every sample assumes you have an `ac.jar` in the current directory and are therefore written out "long-hand".  If you followed the [install instructions](install.md), you have setup a command-line script to help you out, meaning that every `java -jar ac.jar` can be replaced with `ac.sh` or `ac.bat`.  Additionally if you setup an `alias`, you can replace that to just `ac`.  
+Every sample assumes you have an `ac.jar` in the current directory and are therefore written out "long-hand".  If you followed the [install instructions](installation/original.md), you have setup a command-line script to help you out, meaning that every `java -jar ac.jar` can be replaced with `ac.sh` or `ac.bat`.  Additionally if you setup an `alias`, you can replace that to just `ac`.  
 
 Setup whatever works for you and your environment, and be cognizant that the sample commands probably aren't _quite_ exactly right for your setup!
 
