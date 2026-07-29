@@ -4,15 +4,16 @@ To install the AppleCommander application itself (the "GUI"), there are the meth
     The installers do _not_ make any file associations. At this time, the presumption is that emulators (or other tools) use those file associations.
 
 1. Installation via a distribution package (Windows MSI installer, Macintosh DMG installer, Ubuntu DEB installer, and Fedora RPM installer).
-    * From the desktop (Windows, Macintosh, Ubuntu, Fedora).
-    * From the command-line (Ubuntu, Fedora).
-3. Installation by installing Java, downloading the proper Java JAR file, and then setting up a launch mechanism.
+    * From the [desktop](#desktop) (Windows, Macintosh, Ubuntu, Fedora).
+    * From the [command-line](#command-line) (Ubuntu, Fedora).
+3. Installation the more "traditional way" by installing Java, downloading the proper Java JAR file, and then setting up a launch mechanism. See the [original](original.md) installation notes.
 4. Specialized:
     * [Apple II homebrew repository](https://github.com/lifepillar/homebrew-appleii) which also includes many other Apple II tools.
     * [MacPorts](https://ports.macports.org/port/AppleCommander) - but this is very outdated.
 
 
-### Installation via desktop
+<a id="desktop"></a>
+## Installation via desktop
 
 === "Windows"
 
@@ -31,7 +32,29 @@ To install the AppleCommander application itself (the "GUI"), there are the meth
 
 === "Macintosh"
 
-    TBD
+    To install AppleCommander:
+
+    1. Download the correct `*.dmg` file. The name will be `AppleCommander-VERSION-mac-ARCH.dmg` where "ARCH" is either `x86_64` (older Intel based Macs) or `arm64` (newer Apple-silocon based macs, presumably both M1+ and the "A" chip).
+    2. Double-click on the downloaded file.
+        ![downloaded file](images/mac-download.png)
+    3. Accept the license agreement.
+        ![license](images/mac-license.png)
+    4. Drag the AppleCommander icon onto the Applications folder.
+        ![install](images/mac-install.png)
+    5. Tell MacOS that the application is OK to run. From a terminal type:
+        ```
+        $ xattr -d com.apple.quarantine /Applications/AppleCommander.app
+        ```
+       (Alternatively, you can _try_ to launch AppleCommander. The first time, go into the Security sections and allow AppleCommander to run.)
+    5. The application has been installed!
+    6. Some final cleanup. On the desktop, you have to eject the install media.
+        ![eject](images/mac-eject.png)
+
+    To uninstall AppleCommander:
+
+    1. Open up the Applications folder
+    2. Right-click on the AppleCommander icon and select "Move to Trash".
+        ![uninstall](images/mac-uninstall.png)
 
 === "Linux (Ubuntu/DEB)"
 
@@ -39,7 +62,7 @@ To install the AppleCommander application itself (the "GUI"), there are the meth
         Please note that these installers are _unsigned_. That means that there are usually some extra steps to say "yes, I really want to install/run this app." Other than that, they should work fine.
 
     !!! info "Uninstallation"
-        To uninstall AppleCommander, you will have to use the command-line as App Center does list the application.
+        To uninstall AppleCommander, you will have to use the command-line as App Center does not list the application.
 
     1. Download the correct `*.deb` for your platform. The name will be `AppleCommander-VERSION-linux-ARCH.deb` where "ARCH" is either `x86_64` (Intel/AMD chip) or `arm64` (for ARM-based computers).
     2. Double-click on the downloaded file. This should open App Center. If it doesn't open by default (a quick search indicates this does happen), right-click on the file and select "Open with App Center".
@@ -76,7 +99,8 @@ To install the AppleCommander application itself (the "GUI"), there are the meth
         ![uninstall](images/fedora-uninstall.png)
     4. AppleCommander has been removed.
 
-### Installation via command-line
+<a id="command-line"></a>
+## Installation via command-line
 
 These are a bit more brief, as the assumption is more familiarity with the command-line.
 
