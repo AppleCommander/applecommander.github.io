@@ -90,7 +90,7 @@ To install the AppleCommander application itself (the "GUI"), there are the meth
     To uninstall AppleCommander:
 
     !!! info
-        You can also opt to remove from the command-line. However, from what I observed, Software still thinks it's installed. No harm, just odd. ¯\(ツ)/¯
+        You can also opt to remove from the command-line. However, from what I observed, Software still thinks it's installed. No harm, just odd. ¯\\(ツ)/¯
 
     1. The Software application *will not list it as installed*.
     2. Navigate to a downloaded version of the AppleCommander RPM file (uncertain if the version needs to match). Double-click on the downloaded file.
