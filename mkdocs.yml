@@ -2,7 +2,10 @@
 site_name: 'AppleCommander'
 nav:
   - Overview: 'index.md'
-  - Installing: 'install.md'
+  - Installation:
+    - installation/index.md
+    - 'Application': installation/application.md
+    - 'Original installation notes': installation/original.md
   - Screenshots: 'using.md'
   - Using 'ac': 'ac.md'
   - Using 'acx': 'acx.md'
@@ -53,6 +56,8 @@ theme:
     accent: 'indigo'
   logo: 'images/apple-logo.png'
   favicon: 'images/apple-logo.png'
+  features:
+    - navigation.indexes
 
 # Extensions
 markdown_extensions:

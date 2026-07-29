@@ -2,15 +2,15 @@ This section covers installation of AppleCommander. As of 1.4.0, this should be 
 
 ### Install Java
 
-If you do not already have Java 21 (or later) installed, you will be required to install one.
+If you do not already have Java 25 (or later) installed, you will be required to install one.
 
 There are a number of methods to install a Java JVM:
 
 * From the [AdoptOpenJDK site](https://adoptopenjdk.net/).
-* On Mac OS X: Using [Homebrew](https://brew.sh/) and installing via `brew install openjdk@21`
-* On Ubuntu Linux: `sudo apt install openjdk-21-jdk`
+* On Mac OS X: Using [Homebrew](https://brew.sh/) and installing via `brew install openjdk@25`
+* On Ubuntu Linux: `sudo apt install openjdk-25-jdk`
 
-These aren't the only options, so do what make sense for you. 
+These aren't the only options, so do what makes sense for you. 
 
 > If there are other options, feel free to add a ticket or submit a pull request.
 
@@ -81,11 +81,3 @@ Unix-like environments have the ability to `alias` a command as well. To create 
 alias ac='java -jar app/cli-ac/build/libs/AppleCommander-ac-1.11.0.jar'
 ```
 (Adjust the path as it applies to your configuration - this sample pulls from the build directories.)
-
-## Requirements
-
-| AppleCommander Version | Requirements |
-| --- | --- |
-| 1.11 or later | Java 21 |
-| 1.7 or later | Java 11 | 
-| Up to 1.6 | Java 8 |
