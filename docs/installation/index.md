@@ -7,7 +7,7 @@ Since these sets of tools differ in their installation, the install guide has be
 Which application set are you installing?
 
 * [AppleCommander application](application.md); or
-* [Command-line tools](cli-tools.md).
+* [Command-line tools](command-line.md).
 
 ## Requirements
 

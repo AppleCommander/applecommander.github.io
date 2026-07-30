@@ -5,6 +5,7 @@ nav:
   - Installation:
     - installation/index.md
     - 'Application': installation/application.md
+    - 'Command Line': installation/command-line.md
     - 'Original installation notes': installation/original.md
   - Screenshots: 'using.md'
   - Using 'ac': 'ac.md'
