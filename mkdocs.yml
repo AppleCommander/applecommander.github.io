@@ -13,6 +13,7 @@ nav:
     - ac: cli/ac.md
     - acx: cli/acx.md
     - acdasm: cli/acdasm.md
+    - asu: cli/asu.md
   - Developer Notes:
     - 'Maven/Gradle GAV': dev-notes/gav.md
     - 'Updated API and UML': dev-notes/redesign.md
