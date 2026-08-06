@@ -2,7 +2,7 @@
 
 # Usage
 
-```shell
+```
 $ st --help
 Usage: st [-hV] [--debug] [COMMAND]
 
@@ -21,7 +21,7 @@ Commands:
 
 ## Sub-command extract
 
-```shell
+```
 $ st extract --help
 Usage: st extract [-hO] [--skip-empty] [--stdin] [--stdout]
                   [--border=<borderStyle>] [--coding=<codeStyle>]
@@ -55,7 +55,7 @@ Options:
 
 ## Sub-command generate
 
-```shell
+```
 $ st generate --help
 Usage: st generate [-h] [--demo-code] [--single] [--stdin] [--stdout]
                    [--address=<address>] [--name=<realName>] [-o=<outputFile>]
@@ -85,7 +85,7 @@ Options:
 
 ### Text extract
 
-```shell
+```
 $ st --debug extract --stdout --border=box --skip-empty --format=text --width=132 ~/Downloads/shapes/NEW\ MOUSE
 ┌─────────────────┬─────────────────┬─────────────────┬─────────────────┬─────────────────┬─────────────────┬─────────────────┐
 │XXXXXXXXXXXXXXXX*│...........*X..  │......XXXXX...+  │XXXXXXXXXXXXXXX* │XXXXXXXXXXXXXXX* │.X.X.X.X.X.X.X.* │.X.X.X.X.X.X.X.* │
@@ -128,13 +128,13 @@ $ st --debug extract --stdout --border=box --skip-empty --format=text --width=13
 
 ### Graphics extract
 
-```shell
+```
 $ st --debug extract --shape 3 --output robot.png --format png --border box ~/Downloads/shapes/NEW\ MOUSE
 ```
 
 ![Shape #3](images/robot.png "Robot") 
 
-```shell
+```
 $ st --debug extract --output=new-mouse-shapes.png --border=box --skip-empty --format=png ~/Downloads/shapes/NEW\ MOUSE
 ```
 ![All shapes](images/new-mouse-shapes.png "All shapes") 
@@ -145,7 +145,7 @@ These samples show a variety of input methods and pipes the resulting (binary) s
 
 #### Apple 'box'
 
-```shell
+```
 $ cat api/src/test/resources/box-longform.st
 ; A vector box as given by Applesoft BASIC Programmer's Reference Manual
 
@@ -179,7 +179,7 @@ $ st generate --stdout api/src/test/resources/box-longform.st | st extract --std
 
 #### The Mouse Maze mouse
 
-```shell
+```
 $ cat mouse.st
 ; extracted from NEW MOUSE
 
@@ -202,7 +202,7 @@ $ st generate --stdout mouse.st | st extract --format=source --coding=short --st
 
 ### Generate to AppleSingle
 
-```shell
+```
 $ cat api/src/test/resources/box-longform.st | st generate --stdin --stdout --single | asu info --stdin
 Real Name: SHAPES.BIN
 ProDOS info:
@@ -222,7 +222,7 @@ Resource Fork: Not present
 
 Demonstration of a Beagle Bros font:
 
-```shell
+```
 st --debug extract --format=source --coding=short ~/Downloads/shapes/\]WESTERN.dump --stdout --skip-empty --optimize |
     st generate --demo-code -o western.po --stdin
 ```
@@ -244,7 +244,7 @@ Notes:
 * `x` = plot
 * `.` = no plot; used to clarify image regions
 * `+` = origin, no plot (assumed to be upper-left if unspecified)
-* `*` = origin. plot
+* `*` = origin, plot
 * whitespace is ignored
 
 Sample:

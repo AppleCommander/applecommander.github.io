@@ -2,7 +2,7 @@
 
 ## Basic usage
 
-```shell
+```
 $ asu --help
 Usage: asu [-hV] [--debug] [COMMAND]
 
@@ -24,7 +24,7 @@ Commands:
 
 ## Subcommand help
 
-```shell
+```
 $ asu info --help
 Usage: asu info [-h] [--stdin] [<file>]
 
@@ -41,7 +41,7 @@ Options:
 
 ## Info subcommand 
 
-```shell
+```
 $ asu info api/src/test/resources/hello.applesingle.bin 
 Real Name: -Unknown-
 ProDOS info:
@@ -56,7 +56,7 @@ Resource Fork: Not present
 
 Using pipes to create a text file and display information.  Note that the invalid filename of `my-text-file` was changed to `MY.TEXT.FILE`.
 
-```shell
+```
 $ echo "Hello World!" | asu create --name my-text-file --stdout --filetype 0x04 --stdin-fork=data --fix-text | asu info --stdin
 Real Name: MY.TEXT.FILE
 ProDOS info:
@@ -69,7 +69,7 @@ Resource Fork: Not present
 
 The `--fix-text` flag flips the high-bit and translates the newline character:
 
-```shell
+```
 $ echo "Hello World!" | asu create --name my-text-file --stdout --filetype txt --stdin-fork=data --fix-text | hexdump -C
 00000000  00 05 16 00 00 02 00 00  00 00 00 00 00 00 00 00  |................|
 00000010  00 00 00 00 00 00 00 00  00 03 00 00 00 03 00 00  |................|
@@ -83,7 +83,7 @@ $ echo "Hello World!" | asu create --name my-text-file --stdout --filetype txt -
 
 Without the `--fix-text` flag:
 
-```shell
+```
 $ echo "Hello World!" | asu create --name my-text-file --stdout --filetype txt --stdin-fork=data | hexdump -C
 00000000  00 05 16 00 00 02 00 00  00 00 00 00 00 00 00 00  |................|
 00000010  00 00 00 00 00 00 00 00  00 03 00 00 00 03 00 00  |................|
@@ -98,7 +98,7 @@ $ echo "Hello World!" | asu create --name my-text-file --stdout --filetype txt -
 
 Create a disk, generate an AppleSingle text file, import into the ProDOS image, and then export the file to stdout.
 
-```shell
+```
 $ ac -pro140 demo.dsk demo
 $ echo "Hello World!" | asu create --stdout --filetype txt --stdin-fork=data --fix-text | ac -as demo.dsk MY.TEXT.FILE
 $ ac -l demo.dsk 

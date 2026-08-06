@@ -2,7 +2,7 @@
 
 ## Usage
 
-```shell
+```
 $ bt --help
 Usage: bt [-chVx] [--addresses] [--applesingle] [--debug] [--list] [--pretty]
           [--stdout] [--tokens] [--variables] [--wrapper] [-a=<address>]
@@ -89,7 +89,7 @@ Tokenizer Defaults:
 
 If your Apple emulator supports copy and paste (not all do!), this is handy when experimenting.
 
-```shell
+```
 $ bt --copy tools/bt/src/test/resources/circles.bas 
 0067:01 08 
 00AF:E2 09 
@@ -130,7 +130,7 @@ $ bt --copy tools/bt/src/test/resources/circles.bas
 
 Listing is handy when tinkering with what the tool does.  Before optimization...
 
-```shell
+```
 $ bt --list tools/bt/src/test/resources/circles.bas 
 10  GOTO 100
 20 REM draw circle routine
@@ -165,7 +165,7 @@ $ bt --list tools/bt/src/test/resources/circles.bas
 
 ... and after optimization ...
 
-```shell
+```
 $ bt --optimize --list tools/bt/src/test/resources/circles.bas 
 0 D=0:E=1:F=2:G=3:H=5:I=4:J=6:K=7:L=21:M=100:N=10:O=40:P=279:R=159: GOTO 2
 1  FOR A = D TO PT:X = X(A) * SZ:Y = Y(A) * SZ: HPLOT XO + X,YO + Y: HPLOT XO - X,YO + Y: HPLOT XO + X,YO - Y: HPLOT XO - X,YO - Y: NEXT A: RETURN 
@@ -174,7 +174,7 @@ $ bt --optimize --list tools/bt/src/test/resources/circles.bas
 
 Specific optimizations may also be triggered:
 
-```shell
+```
 $ bt -fremove-rem-statements,merge-lines --list tools/bt/src/test/resources/circles.bas 
 10  GOTO 110
 30  FOR A = 0 TO PT:X = X(A) * SZ:Y = Y(A) * SZ: HPLOT XO + X,YO + Y: HPLOT XO - X,YO + Y: HPLOT XO + X,YO - Y: HPLOT XO - X,YO - Y: NEXT A: RETURN 
@@ -185,7 +185,7 @@ $ bt -fremove-rem-statements,merge-lines --list tools/bt/src/test/resources/circ
 
 `bt` can also pipe an AppleSingle file to stdout, which can then be read in for AppleCommander 1.5 or later.  Note that file type, address, and name is set automatically.
 
-```shell
+```
 $ ac -pro140 demo.dsk demo
 $ bt --optimize --applesingle --stdout tools/bt/src/test/resources/circles.bas | ac -as demo.dsk
 $ ac -l demo.dsk 
@@ -213,7 +213,7 @@ of the check algorithm.
 
 For instance:
 
-```shell
+```
 # Note the extended digits...
 $ cat ticket-49a.bas 
 10 PRINT "MATHING"
@@ -254,7 +254,7 @@ you can get quick feedback on typos before loading onto an Apple II for verifica
 
 Some examples:
 
-```shell
+```
 $ bt --checkit checkit-example.bas 
 Nibble Checkit, Copyright 1988, Microsparc Inc.
 37|10 REM RING THE BELL
@@ -348,7 +348,7 @@ JMP $FE2C
 
 ### `$shape`
 
-`$shape` will generate a shape table based either on the source (`src=`) or binary (`bin=`) shape table provided. Source shape table generation is based on the shape table `st` tool support and is described [here in more detail](README-SHAPES.md).
+`$shape` will generate a shape table based either on the source (`src=`) or binary (`bin=`) shape table provided. Source shape table generation is based on the shape table `st` tool support and is described [here in more detail](st.md#shape-source).
 
 Overall format is as follows:
 

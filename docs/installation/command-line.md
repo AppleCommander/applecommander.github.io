@@ -2,7 +2,7 @@ AppleCommander has a number of command-line tools, so these instructions are som
 
 !!! important
     Some of the suggested CLI names may conflict with existing commands on your computer. If they do, simply use a different name.
-    None of the tools depend on being named in a particular mannter. Specifically `ac` already exists in the Mac world. If you do keep 
+    None of the tools depend on being named in a particular manner. Specifically `ac` already exists in the Mac world. If you do keep 
     it as `ac`, you will effectively hide the existing tool.
 
 The tools are:
