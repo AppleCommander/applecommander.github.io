@@ -380,6 +380,7 @@ By using the `src=` option, the source code will be generated on the fly.  For e
 ```
 
 Options on the source include:
+
 * `label=variable` which indicates a label is really a variable name; in the example, the variable name would be "MOUSE".
 * `assign=(...)` will define a mapping from the label in the source to the BASIC variable name.  A `assign(m=mouse)` will define the variable `M` to be the shape number for the mouse.
 
