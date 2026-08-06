@@ -9,9 +9,9 @@ Much of AppleCommander and it's tooling should be reusable and can be included i
 
     ```xml
     <dependency>
-    <groupId>org.applecommander</groupId>
-    <artifactId>AppleCommander</artifactId>
-    <version>13.2</version>
+        <groupId>org.applecommander</groupId>
+        <artifactId>AppleCommander</artifactId>
+        <version>13.2</version>
     </dependency>
     ```
 
@@ -28,9 +28,9 @@ Much of AppleCommander and it's tooling should be reusable and can be included i
 
     ```xml
     <dependency>
-    <groupId>net.sf.applecommander</groupId>
-    <artifactId>AppleCommander</artifactId>
-    <version>1.10.1</version>
+        <groupId>net.sf.applecommander</groupId>
+        <artifactId>AppleCommander</artifactId>
+        <version>1.10.1</version>
     </dependency>
     ```
 
@@ -48,9 +48,9 @@ Maven:
 
 ```xml
 <dependency>
- <groupId>net.sf.applecommander</groupId>
- <artifactId>ShrinkItArchive</artifactId>
- <version>1.2.2</version>
+    <groupId>net.sf.applecommander</groupId>
+    <artifactId>ShrinkItArchive</artifactId>
+    <version>1.2.2</version>
 </dependency>
 ```
 
@@ -68,9 +68,9 @@ Maven:
 
 ```xml
 <dependency>
- <groupId>net.sf.applecommander</groupId>
- <artifactId>applesingle-api</artifactId>
- <version>1.2.2</version>
+    <groupId>net.sf.applecommander</groupId>
+    <artifactId>applesingle-api</artifactId>
+    <version>1.2.2</version>
 </dependency>
 ```
 Gradle:
@@ -83,21 +83,43 @@ implementation 'net.sf.applecommander:applesingle-api:1.2.2'
 
 The BASIC tooling is available in the bastools API.
 
-Maven:
+=== "bastools (5.0 or later)"
+    The bastools libraries are available as a dependency.
 
-```xml
-<dependency>
- <groupId>net.sf.applecommander</groupId>
- <artifactId>bastools-api</artifactId>
- <version>0.4.1</version>
-</dependency>
-```
+    Maven:
 
-Gradle:
+    ```xml
+    <dependency>
+        <groupId>org.applecommander</groupId>
+        <artifactId>bastools-api</artifactId>
+        <version>5.0</version>
+    </dependency>
+    ```
 
-```groovy
-implementation 'net.sf.applecommander:bastools-api:0.4.1'
-```
+    Gradle:
+
+    ```groovy
+    implementation "org.applecommander:bastools-api:5.0"
+    ```
+
+=== "bastools (before 5.0)"
+    The bastools libraries are available as a dependency.
+
+    Maven:
+
+    ```xml
+    <dependency>
+        <groupId>net.sf.applecommander</groupId>
+        <artifactId>bastools-api</artifactId>
+        <version>0.4.1</version>
+    </dependency>
+    ```
+
+    Gradle:
+
+    ```groovy
+    implementation 'net.sf.applecommander:bastools-api:0.4.1'
+    ```
 
 ## Disassembler
 
