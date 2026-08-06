@@ -1,23 +1,6 @@
 # Disassembler API
 
 The AppleCommander disassembler API is a reusable component that can be utilized by other Java projects.
-The easiest mechanism is to use a dependency manager such as Gradle or Maven.
-
-=== "Maven"
-    ```xml
-    <dependency>
-        <groupId>org.applecommander</groupId>
-        <artifactId>acdasm</artifactId>
-        <version>6.1</version>
-    </dependency>
-    ```
-
-=== "Gradle"
-    ```groovy
-    dependencies {
-        implementation 'org.applecommander:acdasm:6.1'
-    }
-    ```
 
 ## API
 

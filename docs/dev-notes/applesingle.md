@@ -1,21 +1,4 @@
 The AppleCommander AppleSingle API is a reusable component that can be utilized by other Java projects.
-The easiest mechanism is to use a dependency manager such as Gradle or Maven.
-
-=== "Maven"
-    ```xml
-    <dependency>
-        <groupId>net.sf.applecommander</groupId>
-        <artifactId>applesingle-api</artifactId>
-        <version>1.2.0</version>
-    </dependency>
-    ```
-
-=== "Gradle"
-    ```groovy
-    dependencies {
-        implementation "net.sf.applecommander:applesingle-api:1.2.0"
-    }
-    ```
 
 ## Java API Examples
 
