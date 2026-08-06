@@ -72,12 +72,12 @@ AppleCommander is currently able to read and display information about disk imag
 
 AppleCommander includes a number of command-line tools:
 
-* `ac` (based on AppleCommander) - see the [ac page](ac.md).
-* `acx` (experimental utility for AppleCommander) - see the [acx page](acx.md).
-* `asu` (AppleSingle utility) - see the [asu README](https://github.com/AppleCommander/applesingle/blob/master/tools/asu/README.md).
-* `bt` (Applesoft BASIC tokenizer tool) - see the [bt README](https://github.com/AppleCommander/bastools/blob/master/tools/bt/README.md).
-* `st` (Applesoft shape utility) - see the [st README](https://github.com/AppleCommander/bastools/blob/master/tools/st/README.md).
-* `acdasm` (6502/65C02/SWEET16/Z80/pcode disassembler) - see the [README](https://github.com/AppleCommander/acdasm/blob/main/README.md).
+* `ac` (based on AppleCommander) - see the [ac page](cli/ac.md).
+* `acx` (experimental utility for AppleCommander) - see the [acx page](cli/acx.md).
+* `asu` (AppleSingle utility) - see the [asu page](cli/asu.md).
+* `bt` (Applesoft BASIC tokenizer tool) - see the [bt page](cli/bt.md).
+* `st` (Applesoft shape utility) - see the [st page](cli/st.md).
+* `acdasm` (6502/65C02/SWEET16/Z80/pcode disassembler) - see the [acdasm page](cli/acdasm.md).
 
 Since the CLI tooling may be lacking, these additional resources should be useful:
 
