@@ -1,6 +1,6 @@
-Over time, AppleCommander has become many different tools. There are, roughly speaking, two different sets of tools: the original AppleCommander application, and the command-line tools (`ac`, `acx`, along with the other specialized tools as well).
+# Installation
 
-## Installation
+Over time, AppleCommander has become many different tools. There are, roughly speaking, two different sets of tools: the original AppleCommander application, and the command-line tools (`ac`, `acx`, along with the other specialized tools as well).
 
 Since these sets of tools differ in their installation, the install guide has been split up.
 
