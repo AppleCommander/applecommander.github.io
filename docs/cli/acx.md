@@ -359,7 +359,7 @@ $ cat newscan.json | jq -r 'select(.success | not) | select(.errors | contains([
 <snip>
 ```
 
-# Inspecting nibble images
+## Inspecting nibble images
 
 The `acx` tool also allows some inspection of nibble images, should that be of interest.
 

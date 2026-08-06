@@ -8,8 +8,10 @@ nav:
     - 'Command Line': installation/command-line.md
     - 'Original installation notes': installation/original.md
   - Screenshots: 'using.md'
-  - Using 'ac': 'ac.md'
-  - Using 'acx': 'acx.md'
+  - Command-line tools:
+    - cli/index.md
+    - ac: cli/ac.md
+    - acx: cli/acx.md
   - Developer Notes:
     - 'Maven/Gradle GAV': dev-notes/gav.md
     - 'Updated API and UML': dev-notes/redesign.md

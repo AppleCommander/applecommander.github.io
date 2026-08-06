@@ -26,6 +26,12 @@ Git clone the site.  Note that the branch `working-copy` is the primary branch t
 (venv) $ mkdocs serve
 ```
 
+... or alternatively ...
+
+```bash
+(venv) $ python3 -m mkdocs serve
+```
+
 Open a browser to http://localhost:8000/ and the site will be there and can be live-edited.
 
 Please note that the Javadoc section (`docs/dev-notes/javadoc/`) gives MkDocs fits, but it appears that the complaining can be safely ignored.
