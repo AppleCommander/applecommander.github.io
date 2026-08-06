@@ -32,6 +32,9 @@ To install the AppleCommander application itself (the "GUI"), there are the meth
 
 === "Macintosh"
 
+    !!! warning "Unsigned installers"
+        Please note that these installers are _unsigned_. That means that there are usually some extra steps to say "yes, I really want to install/run this app." Other than that, they should work fine.
+
     To install AppleCommander:
 
     1. Download the correct `*.dmg` file. The name will be `AppleCommander-VERSION-mac-ARCH.dmg` where "ARCH" is either `x86_64` (older Intel based Macs) or `arm64` (newer Apple-silocon based macs, presumably both M1+ and the "A" chip).
