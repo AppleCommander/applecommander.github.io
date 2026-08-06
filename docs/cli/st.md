@@ -231,9 +231,16 @@ st --debug extract --format=source --coding=short ~/Downloads/shapes/\]WESTERN.d
 
 ## Shape source
 
-These samples define the same shape as given by Applesoft BASIC Programmer's Reference Manual - a box.
+!!! note
+    Note that all the shape directives may also include a variable name to reference in generated code when built with the `bt` tool.
+
+Most of these samples define the same shape as given by Applesoft BASIC Programmer's Reference Manual - a box.
 
 ### Bitmap format
+
+!!! note
+    When a bitmap shape is specified, there is _some_ attempt to optimize the drawing. No promises, but "sweeping" from various directions 
+    and a "distance" calculation are done. Currently, there are 9 patterns and the shortest one is taken.
 
 To introduce a bitmap shape, use the `.bitmap` directive.
 
@@ -259,6 +266,9 @@ Sample:
 ```
 
 ### Long vector format
+
+!!! note
+    The vector formats also optimize a bit. If there are "useless" moves (such as a left-right move with no plotting) are dropped.
 
 To introduce a long vector shape, use the `.long` directive.
 
@@ -286,6 +296,9 @@ Notes:
 
 ### Short vector format
 
+!!! note
+    The vector formats also optimize a bit. If there are "useless" moves (such as a left-right move with no plotting) are dropped.
+
 To introduce a short vector shape, use the `.short` directive.
 
 Notes:
@@ -304,3 +317,38 @@ Notes:
     dDDD
     lL
 ```
+
+### External shape import
+
+!!! important
+    At this time, it is important that the `import` line is last since the code (stupidly) does the import at that point.
+    If it is not last, you will get an error.
+
+To import shapes from either an existing shape table (type `bin`) or from other shape source (type `src`), use the `.external` directive.
+
+For example, this imports all text from the Beagle Brothers `]IMPERATOR` font from Apple Mechanic. 
+
+```
+.external
+  type=bin
+  shapes=1-96
+  import=imperator.bin
+```
+
+To import shapes from another set of shape "source code", this would import mice:
+
+```
+.external
+  type=src
+  shapes=1,3
+  import=mouse.st
+```
+
+The `shapes` range can be specified as follows:
+
+* Range: `m-n` where `m` < `n`.
+* Distinct values: `a,b,c,d`.
+* Single value: `x`.
+* Combination: `m-n;a,b,c,d;x`. Note that the semicolon (`;`) separates the range specifications.
+
+This should allow shapes to be "picked" from existing shape tables.
