@@ -44,13 +44,21 @@ To install the AppleCommander application itself (the "GUI"), there are the meth
         ![license](images/mac-license.png)
     4. Drag the AppleCommander icon onto the Applications folder.
         ![install](images/mac-install.png)
-    5. Tell MacOS that the application is OK to run. From a terminal type:
-        ```
-        $ xattr -d com.apple.quarantine /Applications/AppleCommander.app
-        ```
-       (Alternatively, you can _try_ to launch AppleCommander. The first time, go into the Security sections and allow AppleCommander to run.)
-    5. The application has been installed!
-    6. Some final cleanup. On the desktop, you have to eject the install media.
+    5. Tell MacOS that the application is OK to run. Two options:
+        1.  From a terminal type:
+            ```
+            $ xattr -d com.apple.quarantine /Applications/AppleCommander.app
+            ```
+        2.  Launch AppleCommander to trigger security warning:
+            ![security warning](images/mac-security-warning.png)
+
+            Go into the "Privacy & Security" Settings:
+            ![privacy and securiy](images/mac-privacy-and-security.png)
+
+            Indicate that AppleCommander is safe:
+            ![open anyway](images/mac-open-anyway.png)
+    6. The application has been installed!
+    7. Some final cleanup. On the desktop, you have to eject the install media.
         ![eject](images/mac-eject.png)
 
     To uninstall AppleCommander:
