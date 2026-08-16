@@ -67,6 +67,7 @@ theme:
   favicon: 'images/apple-logo.png'
   features:
     - navigation.indexes
+    - content.tabs.link
 
 # Extensions
 markdown_extensions:
