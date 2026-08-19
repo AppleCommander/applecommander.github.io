@@ -18,9 +18,9 @@ Options:
   -V, --version   Print version information and exit.
 
 Commands:
+  check            Check image for issues.
   compare          Compare two disk images.
-  convert          Uncompress a ShrinkIt or Binary II file; or convert a
-                     DiskCopy 4.2 image into a ProDOS disk image.
+  convert          Uncompress a ShrinkIt or Binary II file; or convert a DiskCopy 4.2 image into a ProDOS disk image.
   copy, cp         Copy files between disks.
   create, mkdisk   Create a disk image.
   delete, del, rm  Delete file(s) from a disk image.
@@ -34,6 +34,7 @@ Commands:
   list, ls         List directory of disk image(s).
   lock             Lock file(s) on a disk image.
   mkdir, md        Create a directory on disk.
+  proof            Proof-read/calculate program checksums (as printed in magazines) on file.
   read             Read a block or sector.
   rename, ren      Rename file on a disk image.
   rename-disk      Rename volume of a disk image.
@@ -461,4 +462,78 @@ $ acx get -d apple_II/images/games/rpg/ultima/ultima_I/ultima_i_boot.nib ULTIMA
 9940  GET D$: IF D$ <  >  CHR$(27) THEN 9940
 9950 D$ =  CHR$(4): PRINT : IF  PEEK(222) = 4 OR  PEEK(222) = 8 THEN  RESUME 
 9960  CALL  - 16640
+```
+
+## Running magazine proof-readers against programs
+
+`acx` can run "proof" checks against BASIC programs.
+
+As source on your computer:
+
+```
+$ acx proof --checkit sample1.bas 
+Nibble Checkit, Copyright 1988, Microsparc Inc.
+01 | 10  TEXT : HOME : GR : POKE  - 16302,23
+D0 | 20  COLOR= 0: FOR I = 41 TO 47 STEP 2: HLIN 0,39 AT I: NEXT 
+21 | 30  COLOR=  INT ( RND (1) * 16)
+A7 | 40  PLOT  INT ( RND (1) * 40), INT ( RND (1) * 48)
+91 | 50  IF  PEEK (49152) < 128 THEN 30
+80 | 60  GET A$: TEXT : HOME 
+TOTAL: 45D1
+```
+
+Or from the basic file in a disk image:
+
+```
+$ acx kp4 -d original332sysmas.do COPYA
+Line# - Line#   CODE-4.0
+-------------   --------
+    0 -    90       5DE0
+  100 -   180       9478
+  185 -   246       710C
+  250 -   275       66D2
+  277 -   335       B786
+  336 -   390       5572
+PROGRAM TOTAL       062B
+```
+
+Use `acx help proof` for details.  Note that there are different parsers, which may be important for the proof checker.
+
+## Checking an image for errors
+
+!!! warning
+    Consider this highly experimental. Be certain to either have a backup or enable automatic backups with `ACX_BACKUP_STRATEGY`.
+
+Sample with bad sectors:
+
+```
+$ acx check -d success_with_math.nib 
++[nibble    ] Unable to read sectors [12] on track 27. @ T27,S0
++[nibble    ] Unable to read sectors [12] on track 28. @ T28,S0
++[nibble    ] Unable to read sectors [12] on track 29. @ T29,S0
++[nibble    ] Unable to read sectors [12] on track 30. @ T30,S0
++[nibble    ] Unable to read sectors [12] on track 31. @ T31,S0
+Found 5 items.
+```
+
+... and allowing the fix to be applied:
+
+```
+$ acx check -d success_with_math.nib --fix=prompt
++[nibble    ] Unable to read sectors [12] on track 27. @ T27,S0
+Apply fix? [y/N] y
+ -> Applying fix.
++[nibble    ] Unable to read sectors [12] on track 28. @ T28,S0
+Apply fix? [y/N] n
+ -> Skipped.
++[nibble    ] Unable to read sectors [12] on track 29. @ T29,S0
+Apply fix? [y/N] n
+ -> Skipped.
++[nibble    ] Unable to read sectors [12] on track 30. @ T30,S0
+Apply fix? [y/N] n
+ -> Skipped.
++[nibble    ] Unable to read sectors [12] on track 31. @ T31,S0
+Apply fix? [y/N] n
+ -> Skipped.
+Found 5 items.
 ```

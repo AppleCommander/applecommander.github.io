@@ -14,7 +14,7 @@ For a quick list of `ac` options, enter the `-h` command:
 
 ```
 $ java -jar ac.jar -h
-AppleCommander command line options [13.2]:
+AppleCommander command line options [14.0]:
 -i       <imagename> [<imagename>] display information about image(s).
 -ls      <imagename> [<imagename>] list brief directory of image(s).
 -l       <imagename> [<imagename>] list directory of image(s).
@@ -59,6 +59,10 @@ AppleCommander command line options [13.2]:
          II file; or convert a DiskCopy 4.2 image into a ProDOS disk image.
 -bas     <imagename> <filename> import an AppleSoft basic file from text
          back to its tokenized format.
+
+Environment variables:
+- AC_BACKUP_STRATEGY: bak (mydisk.dsk -> mydisk.dsk.bak);
+                      anything else is assumed to be a directory.
 ```
 
 > Note that the `-cc65` has been deprecated as CC65 itself is moving to using the AppleSingle format (`-as` flag).  Use `-dos` instead. `-cc65` will still be recognized, but it maps to `-dos` and a warning will be printed.
@@ -352,6 +356,29 @@ $ java -jar ac.jar -u misc.dsk fred
 The `-n` command changes the volume name on an image. Only ProDOS and Pascal images are affected:
 ```
 $ java -jar ac.jar -n misc.po name
+```
+
+## Automated backups
+
+Set the environment variable `AC_BACKUP_STRATEGY` to enable automated backups.
+
+For example:
+```
+$ export AC_BACKUP_STRATEGY=bak
+$ ls demo.dsk
+demo.dsk
+$ cat sample1.bas | ac -bas demo.dsk SAMPLE1
+$ ls demo.dsk*
+demo.dsk  demo.dsk.bak
+$ ac -l demo.dsk
+demo.dsk /DEMO/
+  SAMPLE1 BAS 001 08/18/2026 08/18/2026 127 A=$0801
+ProDOS format; 139,264 bytes free; 4,096 bytes used.
+
+$ ac -l demo.dsk.bak
+demo.dsk.bak /DEMO/
+ProDOS format; 139,776 bytes free; 3,584 bytes used.
+
 ```
 
 ## Further details
