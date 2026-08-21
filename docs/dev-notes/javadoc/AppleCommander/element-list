@@ -18,6 +18,7 @@ org.applecommander.device
 org.applecommander.device.nibble
 org.applecommander.hint
 org.applecommander.image
+org.applecommander.os
 org.applecommander.os.dos
 org.applecommander.os.pascal
 org.applecommander.source

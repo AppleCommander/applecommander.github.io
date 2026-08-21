@@ -2,15 +2,27 @@
 site_name: 'AppleCommander'
 nav:
   - Overview: 'index.md'
-  - Installing: 'install.md'
+  - Installation:
+    - installation/index.md
+    - 'Application': installation/application.md
+    - 'Command Line': installation/command-line.md
+    - 'Original installation notes': installation/original.md
   - Screenshots: 'using.md'
-  - Using 'ac': 'ac.md'
-  - Using 'acx': 'acx.md'
+  - Command-line tools:
+    - cli/index.md
+    - ac: cli/ac.md
+    - acx: cli/acx.md
+    - acdasm: cli/acdasm.md
+    - asu: cli/asu.md
+    - bt: cli/bt.md
+    - st: cli/st.md
   - Developer Notes:
     - 'Maven/Gradle GAV': dev-notes/gav.md
     - 'Updated API and UML': dev-notes/redesign.md
     - 'Historical UML diagrams': dev-notes/uml.md
     - 'Disassembler API': dev-notes/disassembler.md
+    - 'AppleSingle API': dev-notes/applesingle.md
+    - 'BASIC/Shapes API': dev-notes/bastools.md
     - 'Ant Task': dev-notes/ant.md
     - 'Javadoc': javadoc.md
     - 'cc65 Pipeline': dev-notes/cc65-pipeline.md
@@ -42,7 +54,7 @@ repo_name: AppleCommander
 repo_url: https://github.com/AppleCommander/AppleCommander
 
 # Copyright
-copyright: Copyright &copy; 2002 - 2025 Robert Greene
+copyright: Copyright &copy; 2002 - 2026 Robert Greene
 
 # Configuration
 theme:
@@ -53,6 +65,9 @@ theme:
     accent: 'indigo'
   logo: 'images/apple-logo.png'
   favicon: 'images/apple-logo.png'
+  features:
+    - navigation.indexes
+    - content.tabs.link
 
 # Extensions
 markdown_extensions:
