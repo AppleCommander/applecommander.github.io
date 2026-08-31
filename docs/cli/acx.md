@@ -18,30 +18,31 @@ Options:
   -V, --version   Print version information and exit.
 
 Commands:
-  check            Check image for issues.
-  compare          Compare two disk images.
-  convert          Uncompress a ShrinkIt or Binary II file; or convert a DiskCopy 4.2 image into a ProDOS disk image.
-  copy, cp         Copy files between disks.
-  create, mkdisk   Create a disk image.
-  delete, del, rm  Delete file(s) from a disk image.
-  diskmap, map     Show disk usage map.
-  dump             Dump a block or sector.
-  export, x, get   Export file(s) from a disk image.
-  dups             Find duplicate files.
-  help             Display help information about the specified command.
-  import, put      Import file onto disk.
-  info, i          Show information on a disk image(s).
-  list, ls         List directory of disk image(s).
-  lock             Lock file(s) on a disk image.
-  mkdir, md        Create a directory on disk.
-  proof            Proof-read/calculate program checksums (as printed in magazines) on file.
-  read             Read a block or sector.
-  rename, ren      Rename file on a disk image.
-  rename-disk      Rename volume of a disk image.
-  rmdir, rd        Remove a directory on disk.
-  scan             Scan directory and report on disks found and understood.
-  unlock           Unlock file(s) on a disk image.
-  write            Write a block or sector.
+  check             Check image for issues.
+  compare           Compare two disk images.
+  convert           Uncompress a ShrinkIt or Binary II file; or convert a DiskCopy 4.2 image into a ProDOS disk image.
+  copy, cp          Copy files between disks.
+  create, mkdisk    Create a disk image.
+  delete, del, rm   Delete file(s) from a disk image.
+  diskmap, map      Show disk usage map.
+  dump              Dump a block or sector.
+  export, x, get    Export file(s) from a disk image.
+  dups              Find duplicate files.
+  help              Display help information about the specified command.
+  import, put       Import file onto disk.
+  info, i           Show information on a disk image(s).
+  list, ls          List directory of disk image(s).
+  lock              Lock file(s) on a disk image.
+  mkdir, md         Create a directory on disk.
+  optimize, krunch  Optimize disk image.
+  proof             Proof-read/calculate program checksums (as printed in magazines) on file.
+  read              Read a block or sector.
+  rename, ren       Rename file on a disk image.
+  rename-disk       Rename volume of a disk image.
+  rmdir, rd         Remove a directory on disk.
+  scan              Scan directory and report on disks found and understood.
+  unlock            Unlock file(s) on a disk image.
+  write             Write a block or sector.
 ```
 
 When looking for options for a subcommand, the `help` subcommand may be used as an alternate (`acx copy --help` or `acx help copy` are both valid).

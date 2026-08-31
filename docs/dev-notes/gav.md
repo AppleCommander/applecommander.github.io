@@ -11,14 +11,14 @@ Much of AppleCommander and it's tooling should be reusable and can be included i
     <dependency>
         <groupId>org.applecommander</groupId>
         <artifactId>AppleCommander</artifactId>
-        <version>13.2</version>
+        <version>14.1</version>
     </dependency>
     ```
 
     Gradle:
 
     ```groovy
-    implementation 'org.applecommander:AppleCommander:13.2'
+    implementation 'org.applecommander:AppleCommander:14.1'
     ```
 
 === "AppleCommander (before 12.0)"
