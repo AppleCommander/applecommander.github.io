@@ -1,0 +1,1583 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Information site for the AppleCommander suite of tools">
+      
+      
+        <meta name="author" content="a2geek">
+      
+      
+        <link rel="canonical" href="https://applecommander.github.io/cli/acdasm/">
+      
+      
+        <link rel="prev" href="../acx/">
+      
+      
+        <link rel="next" href="../asu/">
+      
+      
+      <link rel="icon" href="../../images/apple-logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.23">
+    
+    
+      
+        <title>acdasm - AppleCommander</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.84d31ad4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/mkdocs_puml/puml.css">
+    
+      <link rel="stylesheet" href="../../assets/mkdocs_puml/interaction.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="AppleCommander" class="md-header__button md-logo" aria-label="AppleCommander" data-md-component="logo">
+      
+  <img src="../../images/apple-logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AppleCommander
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              acdasm
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/AppleCommander/AppleCommander" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    AppleCommander
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="AppleCommander" class="md-nav__button md-logo" aria-label="AppleCommander" data-md-component="logo">
+      
+  <img src="../../images/apple-logo.png" alt="logo">
+
+    </a>
+    AppleCommander
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/AppleCommander/AppleCommander" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    AppleCommander
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../installation/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Installation
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Installation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installation/application/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Application
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installation/command-line/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Command Line
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installation/original/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Original installation notes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Screenshots
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Command-line tools
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Command-line tools
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ac/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ac
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../acx/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    acx
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    acdasm
+    
+  </span>
+  
+
+      </a>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../asu/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    asu
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    bt
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../st/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    st
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Developer Notes
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Developer Notes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev-notes/gav/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Maven/Gradle GAV
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev-notes/redesign/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Updated API and UML
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev-notes/uml/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Historical UML diagrams
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev-notes/disassembler/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Disassembler API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev-notes/applesingle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    AppleSingle API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev-notes/bastools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    BASIC/Shapes API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev-notes/ant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ant Task
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javadoc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Javadoc
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../dev-notes/cc65-pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    cc65 Pipeline
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    History
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            History
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../history/current/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Current releases
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Legacy releases
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            Legacy releases
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../history/version13514/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.3.5.14 (27-Nov-2013)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../history/version135/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.3.5 (01-Jun-2008)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../history/version134/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.3.4 (31-Mar-2007)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../history/version133/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.3.3 (18-Jun-2004)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../history/version132/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.3.2 (05-Jun-2004)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../history/version131/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.3.1 (12-Dec-2003)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../history/version130/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.3.0 (04-Dec-2003)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../history/version123/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.2.3 (13-Apr-2003)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../history/version122/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.2.2 (15-Mar-2003)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../history/version121/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.2.1 (01-Mar-2003)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../history/version120/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.2.0 (11-Feb-2003)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../history/version111/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.1.1 (30-Nov-2002)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../history/version110/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.1 (12-Nov-2002)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../history/version100/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.0 (28-Oct-2002)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+  <h1>acdasm</h1>
+
+<p><code>acdasm</code> is the AppleCommander disassembler. It is embedded within the AppleCommander application as well as the <code>acx</code> tool. However, the dedicated tool has more control over its capabilities. The downloads can be found at the <a href="https://github.com/AppleCommander/acdasm">acdasm</a> project.</p>
+<div class="highlight"><pre><span></span><code>$ acdasm --help
+Usage: acdasm [-hV] [--debug] [--[no-]descriptions] [--[no-]labels]
+              [-a=&lt;startAddress&gt;] [-n=&lt;length&gt;] [--offset=&lt;offset&gt;]
+              [-l=&lt;library&gt;[,&lt;library&gt;...]]... [--codefile | --6502s | --65c02
+              | --6502x | --sweet16 | --pcode | --6502 | --z80] &lt;file&gt;
+
+AppleCommander Disassembler.
+
+      &lt;file&gt;                 File to disassemble.
+
+Options:
+  -a, --addr, --origin=&lt;startAddress&gt;
+                             Set start address for application.
+      --debug                Print stack traces
+      --[no-]descriptions    Include opcode descriptions.
+  -h, --help                 Show this help message and exit.
+  -l, --library=&lt;library&gt;[,&lt;library&gt;...]
+                             Select which library labels to load. Each CPU has
+                               a default set. Use 'All' to select all. 'None'
+                               may also be used to turn library labels off.
+      --[no-]labels          Show or hide labels.
+  -n, --length=&lt;length&gt;      Disassembly length bytes.
+      --offset=&lt;offset&gt;      Skip offset bytes into binary before disassembling.
+  -V, --version              Print version information and exit.
+
+CPU Selection:
+      --6502                 MOS 6502.
+      --6502s, --6502S       MOS 6502 with SWEET16 switching.
+      --6502x, --6502X       MOS 6502 + 'illegal' instructions.
+      --65c02, --65C02       WDC 65C02.
+      --codefile, --CODEFILE Apple Pascal CODEFILE
+      --pcode, --PCODE       Apple Pascal p-code
+      --sweet16, --SWEET16   SWEET16.
+      --z80, --Z80           Zilog Z80.
+
+Processor Defaults:
+  Default Value          6502   6502X  6502S  65C02  SWEET-16  Z80    P-CODE
+  ---------------------  -----  -----  -----  -----  --------  -----  ------
+  Start Address          $0300  $0300  $0300  $0300  $0300     0100H  $0000
+  Library Labels         All    All    All    All    All       None   None
+  Max Bytes/Instruction  3      3      3      3      3         5      8
+  Show Descriptions?     No     No     No     No     No        No     Yes
+
+Library Groups:
+  F800, Applesoft, ProDOS, DOS, DISKII, Softswitches
+</code></pre></div>
+<p>Sample runs:</p>
+<div class="highlight"><pre><span></span><code>$ acdasm --6502 --addr 0x2a0 COPY.OBJ0.bin
+02A0- AD D8 03             LDA   $03D8                          
+02A3- 85 3D                STA   A1H                            
+02A5- A9 68                LDA   #$68                           
+02A7- 85 3C                STA   A1L                            
+02A9- AD D0 02             LDA   L02D0                          
+02AC- A0 00                LDY   #$00                           
+02AE- 91 3C                STA   (A1L),Y                        
+02B0- C8                   INY                                  
+02B1- C8                   INY                                  
+02B2- AD CE 02             LDA   L02CE
+...
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>$ acdasm --Z80 DUMP.COM.bin 
+0100- 21 00 00                   LD    HL,0000H                       
+0103- 39                         ADD   HL,SP                          
+0104- 22 15 02                   LD    (L0215),HL                     
+0107- 31 57 02                   LD    SP,0257H                       
+010A- CD C1 01                   CALL  L01C1                          
+010D- FE FF                      CP    A,FFH                          
+010F- C2 1B 01                   JP    NZ,L011B                       
+0112- 11 F3 01                   LD    DE,01F3H                       
+0115- CD 9C 01                   CALL  L019C                          
+0118- C3 51 01                   JP    L0151 
+...
+</code></pre></div>
+<p>The 6502/SWEET16 switching mode will switch to SWEET16 mode if a <code>JSR $F689</code> occurs in code and switch back to 6502 mode when a SWEET16 <code>RTN</code> instruction is encountered:</p>
+<div class="highlight"><pre><span></span><code>$ acdasm --6502s renumber.bin
+0300- 20 89 F6             JSR   $F689                          
+0303-                      .SWEET16                                
+0303- 11 CA 00             SET   R1,#$00CA                      
+0306- 61                   LDD   @R1                            
+0307- 31                   ST    R1                             
+0308- 12 0A 00             SET   R2,#$000A                      
+030B- 13 4C 00             SET   R3,#$004C                      
+030E- 63                   LDD   @R3                            
+030F- 33                   ST    R3                             
+0310- 14 DE 03             SET   R4,#$03DE                      
+0313- 21        L0313      LD    R1                             
+0314- D3                   CPR   R3                             
+0315- 03 0E                BC    L0325                          
+0317- 41                   LD    @R1                            
+0318- 35                   ST    R5                             
+0319- 24                   LD    R4                             
+031A- A2                   ADD   R2                             
+031B- 34                   ST    R4                             
+031C- 71                   STD   @R1                            
+031D- F1                   DCR   R1                             
+031E- F1                   DCR   R1                             
+031F- F1                   DCR   R1                             
+0320- 21                   LD    R1                             
+0321- A5                   ADD   R5                             
+0322- 31                   ST    R1                             
+0323- 01 EE                BR    L0313                          
+0325- 00        L0325      RTN                                  
+0326-                      .6502                                
+0326- 60                   RTS             
+</code></pre></div>
+<p>Labels can also be toggled off:</p>
+<div class="highlight"><pre><span></span><code>$ acdasm --sweet16 sw16.sample2.bin 
+0300- 11 00 0A             SET   R1,#$0A00                      
+0303- 12 80 0A             SET   R2,#$0A80                      
+0306- 13 23 00             SET   R3,#$0023                      
+0309- 41        L0309      LD    @R1                            
+030A- 52                   ST    @R2                            
+030B- F3                   DCR   R3                             
+030C- 07 FB                BNZ   L0309                          
+030E- 00                   RTN   
+</code></pre></div>
+<p>Finally, Apple Pascal can be dumped as well. Note that "p-code" expects just p-code up to and including the jump table. The codefile will be more useful:</p>
+<div class="highlight"><pre><span></span><code>$ acdasm --codefile HELLOWORLD.CODE.bin 
+&gt;&gt; Seg #01: FROM=$0200, TO=$0232, N='HELLOWOR', LINKED    , T=$0000, M=P_CODE_LSB, Ver=6
+&gt;  Proc#1, Lex Lvl 0, Enter $0200, Exit $0222, Param 4, Data 0, JTAB=$0224
+0200- D7                                  NOP                                  ; No operation
+0201- D7                                  NOP                                  ; No operation
+0202- B6 01 03                            LOD   1,3                            ; Load intermediate word
+0205- A6 0C 48 45 4C 4C 4F 20             LSA   'HELLO WORLD!'                 ; Load constant string address
+020D- 57 4F 52 4C 44 21 
+0213- D7                                  NOP                                  ; No operation
+0214- 00                                  SLDC  0                              ; Short load one-word constant
+0215- CD 00 13                            CXP   0,19                           ; Call external procedure
+0218- 9E 00                               IOC                                  ; IO Check (checks IORESULT)
+021A- B6 01 03                            LOD   1,3                            ; Load intermediate word
+021D- CD 00 16                            CXP   0,22                           ; Call external procedure
+0220- 9E 00                               IOC                                  ; IO Check (checks IORESULT)
+0222- C1 00                               RBP   0                              ; Return from base procedure
+</code></pre></div>
+<p>... and the same invoking just p-code:</p>
+<div class="highlight"><pre><span></span><code>$ acdasm --pcode HELLOWORLD.CODE.bin --offset 0x200 --length 0x24
+0200- D7                                  NOP                                  ; No operation
+0201- D7                                  NOP                                  ; No operation
+0202- B6 01 03                            LOD   1,3                            ; Load intermediate word
+0205- A6 0C 48 45 4C 4C 4F 20             LSA   'HELLO WORLD!'                 ; Load constant string address
+020D- 57 4F 52 4C 44 21 
+0213- D7                                  NOP                                  ; No operation
+0214- 00                                  SLDC  0                              ; Short load one-word constant
+0215- CD 00 13                            CXP   0,19                           ; Call external procedure
+0218- 9E 00                               IOC                                  ; IO Check (checks IORESULT)
+021A- B6 01 03                            LOD   1,3                            ; Load intermediate word
+021D- CD 00 16                            CXP   0,22                           ; Call external procedure
+0220- 9E 00                               IOC                                  ; IO Check (checks IORESULT)
+0222- C1 00                               RBP   0                              ; Return from base procedure
+</code></pre></div>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2002 - 2026 Robert Greene
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.indexes", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+        <script src="../../assets/mkdocs_puml/puml.js"></script>
+      
+        <script src="https://unpkg.com/@panzoom/panzoom@4.5.1/dist/panzoom.min.js"></script>
+      
+        <script src="../../assets/mkdocs_puml/interaction.js"></script>
+      
+    
+  </body>
+</html>

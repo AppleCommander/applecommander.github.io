@@ -1,0 +1,10 @@
+org.applecommander.bastools.api
+org.applecommander.bastools.api.code
+org.applecommander.bastools.api.directives
+org.applecommander.bastools.api.model
+org.applecommander.bastools.api.optimizations
+org.applecommander.bastools.api.proofreaders
+org.applecommander.bastools.api.shapes
+org.applecommander.bastools.api.shapes.exporters
+org.applecommander.bastools.api.utils
+org.applecommander.bastools.api.visitors

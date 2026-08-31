@@ -1,0 +1,6 @@
+org.applecommander.disassembler.api
+org.applecommander.disassembler.api.mos6502
+org.applecommander.disassembler.api.pcode
+org.applecommander.disassembler.api.sweet16
+org.applecommander.disassembler.api.switching6502
+org.applecommander.disassembler.api.z80
