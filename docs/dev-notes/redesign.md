@@ -5,14 +5,31 @@ if you are a developer using the AppleCommander APIs.
 
 Changes (so far):
 
+* `FileStore` will be replacing `FormattedDisk`. There currently exists a shim to map the old `FormattedDisk` APIs into `FileStore` 
+  while they get migrated.
+* `Directory` is a read-only directory while `WritableDirectory` is a directory that supports file or directory creation. The 
+  capabilities are outlined by the `CapabilityProvider` interface.
+* `FileEntry` is a read-only directory that supports resource forks while `WritableFileEntry` is a file entry that has write
+  capability.
 * `ByteArrayImageLayout` was replaced with `Source`.
 * `Source` discovery mechanism is now in `Source.Factory`.
-* `Sources#create(Object)` is now used to create `Source` objects. Sometimes with a special `Source`.
+* `Sources#create(Object)` is now used to create `Source` objects. Sometimes with a special `Source`. There are **two** `Sources`
+  during the transition. One in `com.webcodepro.applecommander.storage` which will unwrap a SHK/SDK into a ProDOS `FormattedDisk`.
+  The `Sources` in `org.applecommander.source` will instead allow discovery of the `ShrinkitFileStore`. Use the one appropriate to
+  your needs.
 * `Disk` was removed. After discovery was removed, it was just a placeholder and all functionality was merged into `FormattedDisk`.
 * Constants from `Disk` are now in `DiskConstants`.
 * `FormattedDisk` discovery mechanism is now in `DiskFactory`.
 * `Disks#inspect(Source)` is now used to initiate the `FormattedDisk` discovery mechanism.
 * `ImageOrder` was replaced by `Device`. Specific cases are `BlockDevice` and `TrackSectorDevice`.
+* `Geometry` are embedded records in the `BlockDevice` and `TrackSectorDevice`.
+* `DisplayColumn` is a somewhat more type-safe display column mechanism. (The prior incarnation was all strings and more work to
+  setup.)
+* `ProdosAttributes` is a class that encapsulates a files details as ProDOS attributes. It also includes (optionally) the
+  data. The `ProdosAttributes` can be used, for example, in creating a file. If the `ProdosAttributes` is fully populated
+  (eg, has the file data), the create call to `Directory` creates, names, translates the filetype, and writes file data
+  in one operation.
+* `FileMagic` is an attempt to consolidate the "magic" in file identification.
 
 ### Accessing a disk image
 
@@ -23,6 +40,13 @@ That is:
 
 1. Create a `Source` via `Sources`.
 2. Use `Disks` to "discover" a list of `FormattedDisk` objects.
+
+### Accessing a file store
+
+With the migration from `FormattedDisk` into a more generic `FileStore`, the discovery and creation mechanism remain similar:
+
+1. Create a `Source` via `Sources`.
+2. Use `FileStores` to discover a list of `FileStore` objects.
 
 ### Sources
 
@@ -49,7 +73,10 @@ interface HintProvider {
 interface Container {
     <T> Optional<T> get(Class<T> iface);
 }
-interface Source extends CapabilityProvider, HintProvider, Container {
+interface InformationProvider {
+    List<InformationGroup> information();
+}
+interface Source extends CapabilityProvider, HintProvider, Container, InformationProvider {
     int getSize();
     String getName();
     DataBuffer readAllBytes();
@@ -57,7 +84,7 @@ interface Source extends CapabilityProvider, HintProvider, Container {
     void writeBytes(int offset, DataBuffer data);
     boolean hasChanged();
     void clearChanges();
-    List<Information> information();
+    void save();
     default boolean isApproxEQ(int value);
     default boolean isApproxLE(int value);
     default boolean extensionLike(String extension);
@@ -174,22 +201,55 @@ Examples of using the builder interfaces:
             .get();
     ```
 
-### Other (semi-experimental)
+### FileStores
 
-> Some of these are in play today (`DataBuffer`, `HintProvider`, and `Information`) and others are partly implemented 
-(`CapabilityProvider` and `Container`).
+One of the "issues" with the `FormattedDisk` is the assumption that we are dealing with a _disk_. Hence the clever
+implementation of ShrinkIt support (this was contributed, it is indeed clever). Which also explains when a SHK/SDK 
+is opened in AppleCommander, it looks just like a ProDOS disk image. Because it is.
 
-#### DataBuffer
+A FileStore no longer assumes a disk. It just assumes that we have a "thing" that provides storage of files. (Naming
+is hard.)  They have a directory, which provides a list of files. And a bunch of file entries which are what most 
+people are interested in.
+
+Much of the components related to disks are discoverable via the `Container#get` mechanism. At this point, a _disk_ image
+may support a `Source`, `Usage` or `Device` information. Both of these also supply a `Geometry` object. In the case
+of an _archive_, only the `Source` object applies.
+
+There is a shim class called `DiskFileStoreAdapter` that wraps around a `FormattedDisk`, so while these get migrated
+over to a `FileStore`, they will still be available.
+
+```puml
+@startuml
+left to right direction
+interface FileStoreFactory {
+    void inspect(Context ctx);
+}
+class DiskFileStoreFactory implements FileStoreFactory {
+}
+class GamedosFileStoreFactory implements FileStoreFactory {
+}
+class ShrinkitFileStoreFactory implements FileStoreFactory {
+}
+class ZipFileStoreFactory implements FileStoreFactory {
+}
+@enduml
+```
+
+### DataBuffer
 
 A lot of functionality was encompassed in `AppleUtil`. As an experiment, `DataBuffer` has been created to wrap around that 
 functionality (reading unsigned bytes, unsigned words, 32-bit integers, handling little-ending vs big-endian numbers, etc).
 That `DataBuffer` can "get" from a specified offset, or can "read" in a forward manner. Usage depends on what is needed.
 
-#### CapabilityProvider
+### CapabilityProvider
 
 The concept of a capability is "what can this -thing- do?"  This is still early and won't really show up until devices
 are put together. But you might as if this "thing" can "write" or "save to disk". Instead of having a bunch of dedicated
 "is" methods, this should help clean up the API.
+
+For example these are the current capabilities that can be queried: `FORMAT_TRACK`, `WRITE_SECTOR`, `WRITE_BLOCK`,
+`SAVE_SOURCE`, `CREATE_FILES`, `DELETE_FILES`,  `WRITE_FILES`, `SUPPORTS_DIRECTORIES`, `CREATE_DIRECTORIES`,
+`SUPPORTS_RESOURCE_FORKS`.
 
 ```java
 public interface CapabilityProvider {
@@ -201,12 +261,12 @@ Expected usage:
 
 ```java
 FormattedDisk disk = ...;
-if (disk.can(Capability.SAVE_TO_FILE)) {
+if (disk.can(Capability.SAVE_SOURCE)) {
     window.enableSaveButton();
 }
 ```
 
-#### HintProvider
+### HintProvider
 
 "Hints" are used to indicate somewthing we know. In particular, a `Hint` is used while creating the disk image. One example
 is if we know the sector ordering for a disk. We can provide that hint for certain sources (DiskCopy, 2IMG, and the current
@@ -227,7 +287,7 @@ if (source.is(Hint.PRODOS_BLOCK_ORDER)) {
 }
 ```
 
-#### Container
+### Container
 
 A "Container" allows pulling out internal components without providing a bunch of random "get" methods. For instance, the current
 `FormattedDisk` (and `Disk` before that) as well as (the retired) `ImageOrder` all support both block and track/sector reading and writing. 
@@ -253,13 +313,15 @@ blockOpt.ifPresent(device -> {
 });
 ```
 
-#### Information
+### Information
 
 A lot of things have extra information about them. DiskCopy has image type, disk name, and disk format (for instance) while
-2IMG supports ordering, creator, and comments. These are available through a generic `getInformation()` method call.
+2IMG supports ordering, creator, and comments. These are available through a generic `information()` method call.
 
 ```java
-public record Information(String label, String value) {
+public record InformationGroup(String title, List<InformationItem> items) {
+}
+public record InformationItem(String label, String value) {
 }
 ```
 
@@ -267,13 +329,57 @@ Note that the `Information` record includes a builder to aid in construction.
 
 ```java
 @Override
-public List<Information> information() {
-    List<Information> list = source.information();
-    // ...
-    list.add(Information.builder("Image Type").value("Universal Disk Image (2IMG/2MG)"));
-    list.add(Information.builder("ProDOS Blocks").value(info.prodosBlocks()));
-    list.add(Information.builder("Data Offset & Length").value("$%08x & %08x",
-            info.dataOffset(), info.dataLength()));
-    // ...
+public List<InformationGroup> information() {
+    return InformationGroup.builder("Track/Sector to Block Adapter")
+        .item("Block Style").value(style.name())
+        .item("Block Size (Bytes)").value(style.blockSize)
+        .item("Sectors per Block").value(style.sectorsPerBlock)
+        .get(geometry, device);
+}
+```
+
+### DisplayColumn
+
+A `DisplayColumn` supports formatted output from various `FileStore`s in a dynamic fashion. The intent is to provide 
+a flexible display interface that does not rely on hard-coded implementations.
+
+```java
+public record DisplayColumn(String headerText, Alignment alignment, DataType dataType,
+							Function<FileEntry,Object> getValueFn, BiConsumer<FileEntry,Object> setValueFn,
+							boolean editInline, String fmt, Mode... modes) {
+<snip>
+}
+```
+
+Note that it only supports a native and detail mode; alignment can be the expected left, right, and center, and the
+datatypes (as of now) are string, integer, long, and double (typically percentages).
+
+As an example of setup, this is the `ZipFileStore#getDisplayColumns` method:
+
+```java
+@Override
+public List<DisplayColumn> getDisplayColumns() {
+    return DisplayColumn.builder(ZipFileEntry.class)
+        .addLongField("Length", FileEntry::getSize)
+        .addStringField("Method", ZipFileEntry::getMethodName, Mode.DETAIL)
+        .addLongField("Size", ZipFileEntry::getCompressedSize, Mode.DETAIL)
+        .addPercentField("Ratio", ZipFileEntry::getCompressedSize, ZipFileEntry::getSize, "%2.0f%%", Mode.DETAIL)
+        .addFileTimeField("Creation", ZipFileEntry::getCreationTime)
+        .addFileTimeField("Last Modified", ZipFileEntry::getLastModifiedTime)
+        .addLongField("CRC-32", ZipFileEntry::getCrc, "%08x", Mode.DETAIL)
+        .addStringField("Name", FileEntry::getName)
+        .toList();
+}
+```
+
+Usage is something like this:
+
+```java
+FileStore fileStore = ...
+for (FileEntry fileEntry : fileStore.getRootDirectory().getFiles()) {
+    for (DisplayColumn column : fileStore.getDisplayColumns()) {
+        System.out.printf("%s = %s\n", column.headerText(), 
+            String.format(column.fmt(), column.getValueFn().apply(fileEntry)));
+    }
 }
 ```
