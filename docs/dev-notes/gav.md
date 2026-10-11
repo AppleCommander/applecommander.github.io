@@ -2,28 +2,26 @@
 
 Much of AppleCommander and it's tooling should be reusable and can be included in other projects.
 
-=== "AppleCommander (12.0 or later)"
-    The AppleCommander libraries are available as a dependency.
+The AppleCommander libraries are available as a dependency.
 
+=== "AppleCommander (12.0 or later)"
     Maven:
 
     ```xml
     <dependency>
         <groupId>org.applecommander</groupId>
         <artifactId>AppleCommander</artifactId>
-        <version>14.1</version>
+        <version>15.0</version>
     </dependency>
     ```
 
     Gradle:
 
     ```groovy
-    implementation 'org.applecommander:AppleCommander:14.1'
+    implementation 'org.applecommander:AppleCommander:15.0'
     ```
 
 === "AppleCommander (before 12.0)"
-    The AppleCommander libraries are available as a dependency.
-
     Maven:
 
     ```xml
@@ -44,67 +42,98 @@ Much of AppleCommander and it's tooling should be reusable and can be included i
 
 The Shrinkit library is available as a separate dependency.
 
-Maven:
-
-```xml
-<dependency>
-    <groupId>net.sf.applecommander</groupId>
-    <artifactId>ShrinkItArchive</artifactId>
-    <version>1.2.2</version>
-</dependency>
-```
-
-Gradle:
-
-```groovy
-implementation 'net.sf.applecommander:ShrinkItArchive:1.2.2'
-```
-
-## AppleSingle 
-
-The AppleSingle support is available in a dedicated API.
-
-Maven:
-
-```xml
-<dependency>
-    <groupId>net.sf.applecommander</groupId>
-    <artifactId>applesingle-api</artifactId>
-    <version>1.2.2</version>
-</dependency>
-```
-Gradle:
-
-```groovy
-implementation 'net.sf.applecommander:applesingle-api:1.2.2'
-```
-
-## BASIC / Shape tables
-
-The BASIC tooling is available in the bastools API.
-
-=== "bastools (5.0 or later)"
-    The bastools libraries are available as a dependency.
-
+=== "ShrinkItArchive (2.0 or later)"
     Maven:
 
     ```xml
     <dependency>
         <groupId>org.applecommander</groupId>
-        <artifactId>bastools-api</artifactId>
-        <version>5.0</version>
+        <artifactId>ShrinkItArchive</artifactId>
+        <version>2.4</version>
     </dependency>
     ```
 
     Gradle:
 
     ```groovy
-    implementation "org.applecommander:bastools-api:5.0"
+    implementation 'org.applecommander:ShrinkItArchive:2.4'
+    ```
+
+=== "ShrinkItArchive (before 2.0)"
+    Maven:
+
+    ```xml
+    <dependency>
+        <groupId>net.sf.applecommander</groupId>
+        <artifactId>ShrinkItArchive</artifactId>
+        <version>1.2.2</version>
+    </dependency>
+    ```
+
+    Gradle:
+
+    ```groovy
+    implementation 'net.sf.applecommander:ShrinkItArchive:1.2.2'
+    ```
+
+## AppleSingle 
+
+The AppleSingle support is available in a dedicated API.
+
+=== "AppleSingle (2.0 or later)"
+    Maven:
+
+    ```xml
+    <dependency>
+        <groupId>org.applecommander</groupId>
+        <artifactId>applesingle-api</artifactId>
+        <version>2.1</version>
+    </dependency>
+    ```
+    Gradle:
+
+    ```groovy
+    implementation 'org.applecommander:applesingle-api:2.1'
+    ```
+
+=== "AppleSingle (before 2.0)"
+    Maven:
+
+    ```xml
+    <dependency>
+        <groupId>net.sf.applecommander</groupId>
+        <artifactId>applesingle-api</artifactId>
+        <version>1.2.2</version>
+    </dependency>
+    ```
+    Gradle:
+
+    ```groovy
+    implementation 'net.sf.applecommander:applesingle-api:1.2.2'
+    ```
+
+## BASIC / Shape tables
+
+The BASIC tooling is available in the bastools API.
+
+=== "bastools (5.0 or later)"
+    Maven:
+
+    ```xml
+    <dependency>
+        <groupId>org.applecommander</groupId>
+        <artifactId>bastools-api</artifactId>
+        <version>5.3</version>
+    </dependency>
+    ```
+
+    Gradle:
+
+    ```groovy
+    implementation "org.applecommander:bastools-api:5.3"
     ```
 
 === "bastools (before 5.0)"
-    The bastools libraries are available as a dependency.
-
     Maven:
 
     ```xml
@@ -132,14 +161,14 @@ The AppleCommander disassembler tooling is available in the acdasm API.
     <dependency>
         <groupId>org.applecommander</groupId>
         <artifactId>acdasm</artifactId>
-        <version>6.1</version>
+        <version>6.3</version>
     </dependency>
     ```
 
     Gradle:
 
     ```groovy
-    implementation 'org.applecommander:acdasm:6.1'
+    implementation 'org.applecommander:acdasm:6.3'
     ```
 
 === "acdasm (before 6.0)"
@@ -160,9 +189,9 @@ The AppleCommander disassembler tooling is available in the acdasm API.
     ```
 
 ## Final Notes
-This is a manual release process, so it may take a bit of time (and possibly some prodding).
+
+Most of this is now an automated release, but there is a manual step at the end. If it doesn't show up, please drop a ticket for the publishing.
 
 Notes:
 
-* The long-term strategy is to migrate all future API releases to `org.applecommander`.
-* The versions listed here are update manually, so please lookup the latest release. Note that the version should match what is in the GitHub release page for each of the subprojects.
+* The versions listed here are updated manually, so please lookup the latest release. Note that the Maven version should match what is in the GitHub release page for each of the subprojects.
