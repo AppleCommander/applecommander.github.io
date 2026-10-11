@@ -39,6 +39,16 @@ as.save(file);
 
 The `save(...)` method can save to a `File`, `Path`, or an `OutputStream`.
 
+### Modify AppleSingle
+
+The builder can also be constructed from an existing AppleSingle file:
+
+```java
+AppleSingle.Builder builder = AppleSingle.builder("original.as");
+builder.realName("ThisIsAName");
+AppleSingle as = builder.build();
+```
+
 ### Entries
 
 If the higher-level API is insufficient, the lower-level API does allow either tracking of the processing
