@@ -1,3 +1,4 @@
+module:org.applecommander.api
 com.webcodepro.applecommander.storage
 com.webcodepro.applecommander.storage.compare
 com.webcodepro.applecommander.storage.filters
@@ -13,13 +14,20 @@ com.webcodepro.applecommander.ui
 com.webcodepro.applecommander.util
 com.webcodepro.applecommander.util.filestreamer
 com.webcodepro.applecommander.util.readerwriter
+org.applecommander.archive.shrinkit
+org.applecommander.archive.zip
 org.applecommander.capability
 org.applecommander.device
 org.applecommander.device.nibble
+org.applecommander.exception
+org.applecommander.filestore
 org.applecommander.hint
 org.applecommander.image
 org.applecommander.os
 org.applecommander.os.dos
+org.applecommander.os.gamedos
 org.applecommander.os.pascal
 org.applecommander.source
+org.applecommander.transfer
+org.applecommander.usage
 org.applecommander.util
