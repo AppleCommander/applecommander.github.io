@@ -8,6 +8,7 @@ nav:
     - 'Command Line': installation/command-line.md
     - 'Original installation notes': installation/original.md
   - Screenshots: 'using.md'
+  - AppleCommanderFX: 'applecommanderfx.md'
   - Command-line tools:
     - cli/index.md
     - ac: cli/ac.md
