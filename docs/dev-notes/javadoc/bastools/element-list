@@ -1,3 +1,4 @@
+module:org.applecommander.bastools
 org.applecommander.bastools.api
 org.applecommander.bastools.api.code
 org.applecommander.bastools.api.directives

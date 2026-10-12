@@ -9,16 +9,17 @@ Usage: asu [-hV] [--debug] [COMMAND]
 AppleSingle utility
 
 Options:
-      --debug     Dump full stack trackes if an error occurs
+      --debug     Dump full stack traces if an error occurs
   -h, --help      Show this help message and exit.
   -V, --version   Print version information and exit.
 
 Commands:
   analyze  Perform an analysis on an AppleSingle file
   create   Create an AppleSingle file
+  edit     Edit an AppleSingle file
   extract  Extract contents of an AppleSingle file
   filter   Filter an AppleSingle file
-  help     Displays help information about the specified command
+  help     Display help information about the specified command.
   info     Display information about an AppleSingle file
 ```
 

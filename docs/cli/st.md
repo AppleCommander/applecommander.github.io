@@ -16,7 +16,7 @@ Options:
 Commands:
   extract   Extract shapes from shape table
   generate  Generate a shape table from source code
-  help      Displays help information about the specified command
+  help      Display help information about the specified command.
 ```
 
 ## Sub-command extract

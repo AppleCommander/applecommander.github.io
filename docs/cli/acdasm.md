@@ -5,8 +5,8 @@
 $ acdasm --help
 Usage: acdasm [-hV] [--debug] [--[no-]descriptions] [--[no-]labels]
               [-a=<startAddress>] [-n=<length>] [--offset=<offset>]
-              [-l=<library>[,<library>...]]... [--codefile | --6502s | --65c02
-              | --6502x | --sweet16 | --pcode | --6502 | --z80] <file>
+              [-l=<library>[,<library>...]]... [--6502 | --sweet16 | --6502s |
+              --6502x | --65c02 | --pcode | --z80 | --codefile] <file>
 
 AppleCommander Disassembler.
 
@@ -46,7 +46,7 @@ Processor Defaults:
   Show Descriptions?     No     No     No     No     No        No     Yes
 
 Library Groups:
-  F800, Applesoft, ProDOS, DOS, DISKII, Softswitches
+  DISKII, DOS, F800, Applesoft, ProDOS, Softswitches
 ```
 
 Sample runs:

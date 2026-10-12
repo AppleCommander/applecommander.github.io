@@ -6,10 +6,10 @@
 $ bt --help
 Usage: bt [-chVx] [--addresses] [--applesingle] [--debug] [--list] [--pretty]
           [--stdout] [--tokens] [--variables] [--wrapper] [-a=<address>]
-          [--max-line-length=<maxLineLength>] [-o=<outputFile>] [--modern |
-          --classic | --preserve] [-f=<selected>[,<selected>...] [-f=<selected>
-          [,<selected>...]]... | -O] [--checkit | --kp2 | --kp4 | --kp5 |
-          --proofreader | --apple-checker] <sourceFile>
+          [--max-line-length=<maxLineLength>] [-o=<outputFile>] [--preserve |
+          --modern | --classic] [-f=<selected>[,<selected>...] [-f=<selected>[,
+          <selected>...]]... | -O] [--kp5 | --kp4 | --apple-checker |
+          --proofreader | --checkit | --kp2] <sourceFile>
 
 Transforms an AppleSoft program from text back to its tokenized state.
       <sourceFile>          AppleSoft BASIC program to process.

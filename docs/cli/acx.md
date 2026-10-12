@@ -41,6 +41,7 @@ Commands:
   rename-disk       Rename volume of a disk image.
   rmdir, rd         Remove a directory on disk.
   scan              Scan directory and report on disks found and understood.
+  search            Search archives for a file.
   unlock            Unlock file(s) on a disk image.
   write             Write a block or sector.
 ```
@@ -538,3 +539,38 @@ Apply fix? [y/N] n
  -> Skipped.
 Found 5 items.
 ```
+
+## Searching for files
+
+This subcommand is intended to assist in finding a file or types of files on a large range of disks.
+
+For example, look for Akalabeth:
+
+```
+$ acx search ~/Apple2/ --name "*akalabeth*" --quiet
+Disk: /home/rob/Apple2/asimov.apple.archive.2013.03/apple_II/images/games/rpg/akalabeth/Akalabeth_original.dsk
+  Filename                       Type  Size     Addr 
+  ============================== ===== ======== =====
+* AKALABETH                      A          272 $0000
+Disk: /home/rob/Apple2/asimov.apple.archive.2013.03/apple_II/images/games/rpg/akalabeth/AkaWithDocs2.dsk
+  Filename                       Type  Size     Addr 
+  ============================== ===== ======== =====
+* AKALABETH                      A          272 $0000
+Disk: /home/rob/Apple2/asimov.apple.archive.2013.03/apple_II/images/games/rpg/akalabeth/aklabeth.dsk
+  Filename                       Type  Size     Addr 
+  ============================== ===== ======== =====
+* AKALABETH INSTRUCTIONS         A        2,499 $0000
+* AKALABETH START                A           52 $0000
+* AKALABETH                      A       21,649 $0000
+Disk: /home/rob/Apple2/asimov.apple.archive.2013.03/apple_II/images/games/rpg/akalabeth/akawithdocs.dsk
+  Filename                       Type  Size     Addr 
+  ============================== ===== ======== =====
+* AKALABETH                      A          272 $0000
+Disk: /home/rob/Apple2/asimov.apple.archive.2013.03/apple_II/images/games/rpg/akalabeth/akalebeth+.dsk
+  Filename                       Type  Size     Addr 
+  ============================== ===== ======== =====
+* AKALABETH                      T          256 $0000
+Searched 7851 disks. Encountered 36 errors.
+```
+
+(The `--quiet` hides the error messages related to bad disk images.)

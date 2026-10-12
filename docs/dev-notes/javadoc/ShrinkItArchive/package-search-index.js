@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html","k":"18"},{"l":"com.webcodepro.shrinkit"},{"l":"com.webcodepro.shrinkit.io"}];updateSearchResults();
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html","k":"18"},{"m":"org.applecommander.shrinkit","l":"org.applecommander.shrinkit"},{"m":"org.applecommander.shrinkit","l":"org.applecommander.shrinkit.io"}];updateSearchResults();

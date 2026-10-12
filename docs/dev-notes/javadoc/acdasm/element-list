@@ -1,3 +1,4 @@
+module:org.applecommander.disassembler
 org.applecommander.disassembler.api
 org.applecommander.disassembler.api.mos6502
 org.applecommander.disassembler.api.pcode
