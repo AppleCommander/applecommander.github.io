@@ -8,7 +8,10 @@ nav:
     - 'Command Line': installation/command-line.md
     - 'Original installation notes': installation/original.md
   - Screenshots: 'using.md'
-  - AppleCommanderFX: 'applecommanderfx.md'
+  - AppleCommanderFX (BETA):
+    - 'applecommanderfx/index.md'
+    - 'Screenshots': applecommanderfx/screenshots.md
+    - 'Capabilities': applecommanderfx/capabilities.md
   - Command-line tools:
     - cli/index.md
     - ac: cli/ac.md
@@ -76,6 +79,7 @@ markdown_extensions:
   - pymdownx.superfences
   - pymdownx.tabbed:
       alternate_style: true
+  - footnotes
 
 # Plugins
 plugins:
