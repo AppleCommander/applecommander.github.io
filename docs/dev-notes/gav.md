@@ -11,14 +11,14 @@ The AppleCommander libraries are available as a dependency.
     <dependency>
         <groupId>org.applecommander</groupId>
         <artifactId>AppleCommander</artifactId>
-        <version>15.0</version>
+        <version>15.1</version>
     </dependency>
     ```
 
     Gradle:
 
     ```groovy
-    implementation 'org.applecommander:AppleCommander:15.0'
+    implementation 'org.applecommander:AppleCommander:15.1'
     ```
 
 === "AppleCommander (before 12.0)"
