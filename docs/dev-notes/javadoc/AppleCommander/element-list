@@ -14,6 +14,7 @@ com.webcodepro.applecommander.ui
 com.webcodepro.applecommander.util
 com.webcodepro.applecommander.util.filestreamer
 com.webcodepro.applecommander.util.readerwriter
+org.applecommander.archive.aaf
 org.applecommander.archive.shrinkit
 org.applecommander.archive.zip
 org.applecommander.capability
@@ -29,5 +30,6 @@ org.applecommander.os.gamedos
 org.applecommander.os.pascal
 org.applecommander.source
 org.applecommander.transfer
+org.applecommander.ui
 org.applecommander.usage
 org.applecommander.util
