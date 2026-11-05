@@ -15,9 +15,12 @@ com.webcodepro.applecommander.util
 com.webcodepro.applecommander.util.filestreamer
 com.webcodepro.applecommander.util.readerwriter
 org.applecommander.archive.aaf
+org.applecommander.archive.binaryii
+org.applecommander.archive.binscii
 org.applecommander.archive.shrinkit
 org.applecommander.archive.zip
 org.applecommander.capability
+org.applecommander.change
 org.applecommander.device
 org.applecommander.device.nibble
 org.applecommander.exception
@@ -28,6 +31,7 @@ org.applecommander.os
 org.applecommander.os.dos
 org.applecommander.os.gamedos
 org.applecommander.os.pascal
+org.applecommander.os.rdos
 org.applecommander.source
 org.applecommander.transfer
 org.applecommander.ui
