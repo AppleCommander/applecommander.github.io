@@ -7,6 +7,9 @@ Changes (so far):
 
 * `FileStore` will be replacing `FormattedDisk`. There currently exists a shim to map the old `FormattedDisk` APIs into `FileStore` 
   while they get migrated.
+* `FileStores` is the discovery and creation hook for `FileStore`.
+* `FileStoreFactory` handles the discovery and creation for `FileStore`. It is used by `FileStores` for inspection. For `FileStore`
+  creation, the factory both offers the configuration options and the creation logic.
 * `Directory` is a read-only directory while `WritableDirectory` is a directory that supports file or directory creation. The 
   capabilities are outlined by the `CapabilityProvider` interface.
 * `FileEntry` is a read-only directory that supports resource forks while `WritableFileEntry` is a file entry that has write
@@ -22,6 +25,9 @@ Changes (so far):
 * `FormattedDisk` discovery mechanism is now in `DiskFactory`.
 * `Disks#inspect(Source)` is now used to initiate the `FormattedDisk` discovery mechanism.
 * `ImageOrder` was replaced by `Device`. Specific cases are `BlockDevice` and `TrackSectorDevice`.
+* Every `TrackSectorDevice` has a `SectorOrder`. Each `TrackSectorDevice` can also be requested in a certain `SectorOrder` and the 
+  sector skew will automatically be calculated and the resulting `TrackSectorDevice` will be returned. Current sector orders 
+  are: nibble, DOS, ProDOS, CP/M.
 * `Geometry` are embedded records in the `BlockDevice` and `TrackSectorDevice`.
 * `DisplayColumn` is a somewhat more type-safe display column mechanism. (The prior incarnation was all strings and more work to
   setup.)
@@ -30,6 +36,8 @@ Changes (so far):
   (eg, has the file data), the create call to `Directory` creates, names, translates the filetype, and writes file data
   in one operation.
 * `FileMagic` is an attempt to consolidate the "magic" in file identification.
+* An attempt is being made to generalize the allocation mechanism. At this point, GameDOS, RDOS, and Apple Pascal all use 
+  the `SequentialAllocator`. Bitmap allocators are (hopefully) forthcoming!
 
 ### Accessing a disk image
 
@@ -82,8 +90,9 @@ interface Source extends CapabilityProvider, HintProvider, Container, Informatio
     DataBuffer readAllBytes();
     DataBuffer readBytes(int offset, int length);
     void writeBytes(int offset, DataBuffer data);
+    void replaceAllBytes(DataBuffer data);
     boolean hasChanged();
-    void clearChanges();
+    void hasChanged(boolean hasChanged);
     void save();
     default boolean isApproxEQ(int value);
     default boolean isApproxLE(int value);
@@ -222,11 +231,25 @@ over to a `FileStore`, they will still be available.
 @startuml
 left to right direction
 interface FileStoreFactory {
+    String getName();
     void inspect(Context ctx);
+    List<FileStoreOrganization> getFileStoreOrganizations();
+    Map<String,ConfigurationOption> getConfigurationOptions();
+    FileStore create(FileStoreOrganization, Map<String,ConfigurationOption>);
+}
+class AppleArchiveFormatFileStore implements FileStoreFactory {
+}
+class BinaryIIFileStore implements FileStoreFactory {
+}
+class BinsciiFileStore implements FileStoreFactory {
 }
 class DiskFileStoreFactory implements FileStoreFactory {
 }
 class GamedosFileStoreFactory implements FileStoreFactory {
+}
+class PascalFileStore implements FileStoreFactory {
+}
+class RDOSFileStore implements FileStoreFactory {
 }
 class ShrinkitFileStoreFactory implements FileStoreFactory {
 }
@@ -334,7 +357,8 @@ public List<InformationGroup> information() {
         .item("Block Style").value(style.name())
         .item("Block Size (Bytes)").value(style.blockSize)
         .item("Sectors per Block").value(style.sectorsPerBlock)
-        .get(geometry, device);
+        .merge(geometry)
+        .get(device);
 }
 ```
 
