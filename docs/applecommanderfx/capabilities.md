@@ -32,6 +32,7 @@ non-visual differences.
 | ProDOS | Read/Write | Read/Write[^4] |
 | SSI's RDOS (140K formats only) | Read-only | Read/Write/Format[^3] |
 | UniDOS, OzDOS (800K formats only) | Read/Write | Read/Write[^4] |
+| US-DOS | N/A | Read/Write/Format[^3] |
 
 ### Archive formats
 

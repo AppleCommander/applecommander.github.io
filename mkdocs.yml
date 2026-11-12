@@ -20,6 +20,13 @@ nav:
     - asu: cli/asu.md
     - bt: cli/bt.md
     - st: cli/st.md
+  - Unique Disk Formats:
+    - formats/index.md
+    - US-DOS:
+      - formats/usdos/index.md
+      - 'Disk Layout': formats/usdos/disk-layout.md
+      - 'Internal Commands': formats/usdos/internal-commands.md
+      - 'External Commands': formats/usdos/external-commands.md
   - Developer Notes:
     - 'Maven/Gradle GAV': dev-notes/gav.md
     - 'Updated API and UML': dev-notes/redesign.md
