@@ -24,6 +24,7 @@ nav:
     - formats/index.md
     - US-DOS:
       - formats/usdos/index.md
+      - 'BASIC.COM': formats/usdos/basic.md
       - 'Disk Layout': formats/usdos/disk-layout.md
       - 'Internal Commands': formats/usdos/internal-commands.md
       - 'External Commands': formats/usdos/external-commands.md
