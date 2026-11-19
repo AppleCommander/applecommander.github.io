@@ -1,0 +1,1699 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Information site for the AppleCommander suite of tools">
+      
+      
+        <meta name="author" content="a2geek">
+      
+      
+        <link rel="canonical" href="https://applecommander.github.io/dev-notes/disassembler/">
+      
+      
+        <link rel="prev" href="../uml/">
+      
+      
+        <link rel="next" href="../applesingle/">
+      
+      
+      <link rel="icon" href="../../images/apple-logo.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.23">
+    
+    
+      
+        <title>Disassembler API - AppleCommander</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.84d31ad4.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/mkdocs_puml/puml.css">
+    
+      <link rel="stylesheet" href="../../assets/mkdocs_puml/interaction.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#disassembler-api" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="AppleCommander" class="md-header__button md-logo" aria-label="AppleCommander" data-md-component="logo">
+      
+  <img src="../../images/apple-logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            AppleCommander
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Disassembler API
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/AppleCommander/AppleCommander" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    AppleCommander
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="AppleCommander" class="md-nav__button md-logo" aria-label="AppleCommander" data-md-component="logo">
+      
+  <img src="../../images/apple-logo.png" alt="logo">
+
+    </a>
+    AppleCommander
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/AppleCommander/AppleCommander" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    AppleCommander
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../installation/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Installation
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Installation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installation/application/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Application
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installation/command-line/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Command Line
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../installation/original/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Original installation notes
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../using/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Screenshots
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../applecommanderfx/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    AppleCommanderFX (BETA)
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            AppleCommanderFX (BETA)
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applecommanderfx/screenshots/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Screenshots
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../applecommanderfx/capabilities/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Capabilities
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../cli/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Command-line tools
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Command-line tools
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cli/ac/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    ac
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cli/acx/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    acx
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cli/acdasm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    acdasm
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cli/asu/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    asu
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cli/bt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    bt
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cli/st/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    st
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Developer Notes
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Developer Notes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../gav/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Maven/Gradle GAV
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../redesign/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Updated API and UML
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../uml/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Historical UML diagrams
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Disassembler API
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Disassembler API
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#api" class="md-nav__link">
+    <span class="md-ellipsis">
+      API
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#important-interfacesclassesrecords" class="md-nav__link">
+    <span class="md-ellipsis">
+      Important Interfaces/Classes/Records
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../applesingle/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    AppleSingle API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bastools/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    BASIC/Shapes API
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ant/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Ant Task
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../javadoc/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Javadoc
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cc65-pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    cc65 Pipeline
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    History
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            History
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../history/current/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Current releases
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Legacy releases
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            Legacy releases
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../history/version13514/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.3.5.14 (27-Nov-2013)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../history/version135/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.3.5 (01-Jun-2008)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../history/version134/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.3.4 (31-Mar-2007)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../history/version133/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.3.3 (18-Jun-2004)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../history/version132/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.3.2 (05-Jun-2004)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../history/version131/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.3.1 (12-Dec-2003)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../history/version130/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.3.0 (04-Dec-2003)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../history/version123/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.2.3 (13-Apr-2003)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../history/version122/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.2.2 (15-Mar-2003)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../history/version121/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.2.1 (01-Mar-2003)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../history/version120/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.2.0 (11-Feb-2003)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../history/version111/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.1.1 (30-Nov-2002)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../history/version110/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.1 (12-Nov-2002)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../history/version100/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    1.0 (28-Oct-2002)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#api" class="md-nav__link">
+    <span class="md-ellipsis">
+      API
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#important-interfacesclassesrecords" class="md-nav__link">
+    <span class="md-ellipsis">
+      Important Interfaces/Classes/Records
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="disassembler-api">Disassembler API</h1>
+<p>The AppleCommander disassembler API is a reusable component that can be utilized by other Java projects.</p>
+<h2 id="api">API</h2>
+<p>Invoking the disassembler is done through a "builder" type interface. For example:</p>
+<div class="highlight"><pre><span></span><code><span class="n">List</span><span class="o">&lt;</span><span class="n">Instruction</span><span class="o">&gt;</span><span class="w"> </span><span class="n">assembly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Disassembler</span><span class="p">.</span><span class="na">with</span><span class="p">(</span><span class="n">code</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="na">startingAddress</span><span class="p">(</span><span class="n">startAddress</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="na">bytesToSkip</span><span class="p">(</span><span class="n">offset</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="na">bytesToDecode</span><span class="p">(</span><span class="n">length</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="na">use</span><span class="p">(</span><span class="n">instructionSet</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="na">section</span><span class="p">(</span><span class="n">libraries</span><span class="p">)</span>
+<span class="w">        </span><span class="p">.</span><span class="na">decode</span><span class="p">(</span><span class="n">labels</span><span class="p">);</span>
+</code></pre></div>
+<p>The only required components are <code>code</code> and the <code>InstructionSet</code>.</p>
+<p>The following instruction sets are available:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: left;">Name</th>
+<th style="text-align: left;">Creation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">6502</td>
+<td style="text-align: left;"><code>InstructionSet6502.for6502()</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">6502 + Illegal Instructions</td>
+<td style="text-align: left;"><code>InstructionSet6502.for6502withIllegalInstructions</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">65C02</td>
+<td style="text-align: left;"><code>InstructionSet6502.for65C02()</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">SWEET-16</td>
+<td style="text-align: left;"><code>InstructionSetSWEET16.forSWEET16()</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">6502 + SWEET-16</td>
+<td style="text-align: left;"><code>InstructionSet6502Switching.withSwitching()</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">Z80</td>
+<td style="text-align: left;"><code>InstructionSetZ80.forZ80()</code></td>
+</tr>
+<tr>
+<td style="text-align: left;">p-code</td>
+<td style="text-align: left;"><code>InstructionSetPCode.forApplePascal()</code></td>
+</tr>
+</tbody>
+</table>
+<p>As a minimal example, this would setup to disassemble 6502 code:</p>
+<div class="highlight"><pre><span></span><code><span class="kt">byte</span><span class="o">[]</span><span class="w"> </span><span class="n">code</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">File</span><span class="p">.</span><span class="na">readAllBytes</span><span class="p">(</span><span class="n">file</span><span class="p">);</span>
+<span class="n">List</span><span class="o">&lt;</span><span class="n">Instruction</span><span class="o">&gt;</span><span class="w"> </span><span class="n">assembly</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Disassembler</span><span class="p">.</span><span class="na">with</span><span class="p">(</span><span class="n">code</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="na">use</span><span class="p">(</span><span class="n">InstructionSet6502</span><span class="p">.</span><span class="na">for6502</span><span class="p">())</span>
+<span class="w">    </span><span class="p">.</span><span class="na">decode</span><span class="p">();</span>
+</code></pre></div>
+<p>If you want the labels, create a <code>Map&lt;String,Integer&gt;</code> to capture them and pass it in to the <code>decode(Map)</code> method.</p>
+<h2 id="important-interfacesclassesrecords">Important Interfaces/Classes/Records</h2>
+<p>The <code>Dissassembler</code> decode interface returns a list of <code>Instruction</code> components. Each component contains
+the address, bytes involved, the opcode mnemonic, and a list of operands. The operands have two format
+options: <code>format()</code> will format the operand as expected while <code>format(String)</code> will replace an address
+with the label instead. To determine if an operand contains an address, the <code>address()</code> method returns
+a Java Optional class, so use it as applicable as the return value is never null.</p>
+<div class='puml-container'><div class="puml light" style=""><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" data-diagram-type="CLASS" style="width:824px;height:831px;background:#FFFFFF;" width="824px" height="831px" viewBox="0 0 824 831" zoomAndPan="magnify" preserveAspectRatio="xMidYMid meet" contentStyleType="text/css" class="diagram"><?plantuml 1.2026.9beta4?><defs/><g font-family="sans-serif" lengthAdjust="spacing"><g class="entity" data-qualified-name="Instruction" id="ent0001" data-source-line="2"><rect x="7" y="180.89" width="253.938" height="162.078" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" rx="2.5" ry="2.5"/><ellipse cx="92.254" cy="196.89" rx="11" ry="11" fill="#F1F1F1" style="stroke:#181818;stroke-width:1;"/><path d="M93.458,197.031 Q93.817,197.109 94.083,197.39 Q94.364,197.656 94.754,198.437 L96.989,202.89 L94.301,202.89 L92.801,199.765 Q92.739,199.624 92.629,199.39 Q91.973,197.999 91.083,197.999 L90.301,197.999 L90.301,202.89 L87.864,202.89 L87.864,190.499 L91.395,190.499 Q93.786,190.499 94.817,191.343 Q95.864,192.187 95.864,194.093 Q95.864,195.374 95.239,196.14 Q94.629,196.89 93.458,197.031 Z M90.301,192.562 L90.301,195.937 L91.458,195.937 Q92.473,195.937 92.895,195.546 Q93.333,195.14 93.333,194.234 Q93.333,193.343 92.895,192.953 Q92.473,192.562 91.458,192.562 L90.301,192.562 Z " fill="#000"/><text x="112.754" y="201.737" fill="#000" font-size="14" textLength="74.929">Instruction</text><line x1="8" y1="212.89" x2="259.938" y2="212.89" style="stroke:#181818;stroke-width:0.5;"/><line x1="8" y1="220.89" x2="259.938" y2="220.89" style="stroke:#181818;stroke-width:0.5;"/><text x="13" y="237.885" fill="#000" font-size="14" textLength="93.652">int address();</text><text x="13" y="254.182" fill="#000" font-size="14" textLength="96.052">byte[] code();</text><text x="13" y="270.479" fill="#000" font-size="14" textLength="135.659">String mnemonic();</text><text x="13" y="286.776" fill="#000" font-size="14" textLength="194.093">List&lt;Operand&gt; operands();</text><text x="13" y="303.073" fill="#000" font-size="14" textLength="222.366">Optional&lt;String&gt; description();</text><text x="13" y="319.369" fill="#000" font-size="14" textLength="241.938">Optional&lt;Operand&gt; addressRef();</text><text x="13" y="335.666" fill="#000" font-size="14" textLength="134.791">boolean terminal();</text></g><g class="entity" data-qualified-name="Operand" id="ent0002" data-source-line="11"><rect x="32.25" y="403.97" width="203.434" height="129.484" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" rx="2.5" ry="2.5"/><ellipse cx="99.41" cy="419.97" rx="11" ry="11" fill="#F1F1F1" style="stroke:#181818;stroke-width:1;"/><path d="M100.613,420.111 Q100.972,420.189 101.238,420.47 Q101.519,420.736 101.91,421.517 L104.144,425.97 L101.457,425.97 L99.957,422.845 Q99.894,422.704 99.785,422.47 Q99.128,421.079 98.238,421.079 L97.457,421.079 L97.457,425.97 L95.019,425.97 L95.019,413.579 L98.55,413.579 Q100.941,413.579 101.972,414.423 Q103.019,415.267 103.019,417.173 Q103.019,418.454 102.394,419.22 Q101.785,419.97 100.613,420.111 Z M97.457,415.642 L97.457,419.017 L98.613,419.017 Q99.628,419.017 100.05,418.626 Q100.488,418.22 100.488,417.314 Q100.488,416.423 100.05,416.032 Q99.628,415.642 98.613,415.642 L97.457,415.642 Z " fill="#000"/><text x="119.91" y="424.817" fill="#000" font-size="14" textLength="60.614">Operand</text><line x1="33.25" y1="435.97" x2="234.684" y2="435.97" style="stroke:#181818;stroke-width:0.5;"/><line x1="33.25" y1="443.97" x2="234.684" y2="443.97" style="stroke:#181818;stroke-width:0.5;"/><text x="38.25" y="460.965" fill="#000" font-size="14" textLength="106.504">String opFmt();</text><text x="38.25" y="477.262" fill="#000" font-size="14" textLength="100.112">String value();</text><text x="38.25" y="493.559" fill="#000" font-size="14" textLength="191.434">Optional&lt;Target&gt; target();</text><text x="38.25" y="509.856" fill="#000" font-size="14" textLength="108.828">String format();</text><text x="38.25" y="526.153" fill="#000" font-size="14" textLength="188.918">String format(String label);</text></g><g class="entity" data-qualified-name="Target" id="ent0003" data-source-line="18"><rect x="81.14" y="594.45" width="105.652" height="80.594" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" rx="2.5" ry="2.5"/><ellipse cx="108.639" cy="610.45" rx="11" ry="11" fill="#F1F1F1" style="stroke:#181818;stroke-width:1;"/><path d="M109.842,610.591 Q110.202,610.669 110.467,610.95 Q110.749,611.216 111.139,611.997 L113.374,616.45 L110.686,616.45 L109.186,613.325 Q109.124,613.184 109.014,612.95 Q108.358,611.559 107.467,611.559 L106.686,611.559 L106.686,616.45 L104.249,616.45 L104.249,604.059 L107.78,604.059 Q110.171,604.059 111.202,604.903 Q112.249,605.747 112.249,607.653 Q112.249,608.934 111.624,609.7 Q111.014,610.45 109.842,610.591 Z M106.686,606.122 L106.686,609.497 L107.842,609.497 Q108.858,609.497 109.28,609.106 Q109.717,608.7 109.717,607.794 Q109.717,606.903 109.28,606.512 Q108.858,606.122 107.842,606.122 L106.686,606.122 Z " fill="#000"/><text x="125.417" y="615.297" fill="#000" font-size="14" textLength="45.876">Target</text><line x1="82.14" y1="626.45" x2="185.792" y2="626.45" style="stroke:#181818;stroke-width:0.5;"/><line x1="82.14" y1="634.45" x2="185.792" y2="634.45" style="stroke:#181818;stroke-width:0.5;"/><text x="87.14" y="651.445" fill="#000" font-size="14" textLength="93.652">int address();</text><text x="87.14" y="667.742" fill="#000" font-size="14" textLength="85.702">Type type();</text></g><g class="entity" data-qualified-name="Type" id="ent0004" data-source-line="22"><rect x="100.8" y="736.05" width="66.337" height="80.594" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" rx="2.5" ry="2.5"/><ellipse cx="115.8" cy="752.05" rx="11" ry="11" fill="#EB937F" style="stroke:#181818;stroke-width:1;"/><path d="M119.909,758.05 L112.191,758.05 L112.191,745.659 L119.909,745.659 L119.909,747.816 L114.644,747.816 L114.644,750.488 L119.409,750.488 L119.409,752.644 L114.644,752.644 L114.644,755.894 L119.909,755.894 L119.909,758.05 Z " fill="#000"/><text x="129.8" y="756.897" fill="#000" font-size="14" textLength="34.337">Type</text><line x1="101.8" y1="768.05" x2="166.137" y2="768.05" style="stroke:#181818;stroke-width:0.5;"/><text x="106.8" y="785.045" fill="#000" font-size="14" textLength="44.871">CODE,</text><text x="106.8" y="801.342" fill="#000" font-size="14" textLength="43.203">DATA;</text><line x1="101.8" y1="808.644" x2="166.137" y2="808.644" style="stroke:#181818;stroke-width:0.5;"/></g><g class="entity" data-qualified-name="InstructionSet" id="ent0005" data-source-line="26"><rect x="270.5" y="7" width="310.929" height="96.891" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" rx="2.5" ry="2.5"/><ellipse cx="372.755" cy="23" rx="11" ry="11" fill="#B4A7E5" style="stroke:#181818;stroke-width:1;"/><path d="M368.677,18.766 L368.677,16.609 L376.068,16.609 L376.068,18.766 L373.599,18.766 L373.599,26.844 L376.068,26.844 L376.068,29 L368.677,29 L368.677,26.844 L371.146,26.844 L371.146,18.766 L368.677,18.766 Z " fill="#000"/><text x="393.255" y="27.847" fill="#000" font-size="14" textLength="97.918" font-style="italic">InstructionSet</text><line x1="271.5" y1="39" x2="580.429" y2="39" style="stroke:#181818;stroke-width:0.5;"/><line x1="271.5" y1="47" x2="580.429" y2="47" style="stroke:#181818;stroke-width:0.5;"/><text x="276.5" y="63.995" fill="#000" font-size="14" textLength="135.092">Defaults defaults();</text><text x="276.5" y="80.292" fill="#000" font-size="14" textLength="298.929">Instruction decodeOne(Program program);</text><text x="276.5" y="96.589" fill="#000" font-size="14" textLength="257.243">List&lt;OpcodeTable&gt; opcodeTables();</text></g><g class="entity" data-qualified-name="OpcodeTable" id="ent0006" data-source-line="31"><rect x="296.1" y="221.63" width="259.741" height="80.594" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" rx="2.5" ry="2.5"/><ellipse cx="375.626" cy="237.63" rx="11" ry="11" fill="#B4A7E5" style="stroke:#181818;stroke-width:1;"/><path d="M371.548,233.396 L371.548,231.239 L378.938,231.239 L378.938,233.396 L376.47,233.396 L376.47,241.474 L378.938,241.474 L378.938,243.63 L371.548,243.63 L371.548,241.474 L374.017,241.474 L374.017,233.396 L371.548,233.396 Z " fill="#000"/><text x="396.126" y="242.477" fill="#000" font-size="14" textLength="92.189" font-style="italic">OpcodeTable</text><line x1="297.1" y1="253.63" x2="554.841" y2="253.63" style="stroke:#181818;stroke-width:0.5;"/><line x1="297.1" y1="261.63" x2="554.841" y2="261.63" style="stroke:#181818;stroke-width:0.5;"/><text x="302.1" y="278.625" fill="#000" font-size="14" textLength="101.575">String name();</text><text x="302.1" y="294.922" fill="#000" font-size="14" textLength="247.741">String opcodeExample(int opcode);</text></g><g class="entity" data-qualified-name="Defaults" id="ent0007" data-source-line="35"><rect x="590.71" y="205.34" width="218.521" height="113.188" fill="#F1F1F1" style="stroke:#181818;stroke-width:0.5;" rx="2.5" ry="2.5"/><ellipse cx="666.497" cy="221.34" rx="11" ry="11" fill="#F1F1F1" style="stroke:#181818;stroke-width:1;"/><path d="M667.7,221.481 Q668.059,221.559 668.325,221.84 Q668.606,222.106 668.997,222.887 L671.231,227.34 L668.543,227.34 L667.043,224.215 Q666.981,224.074 666.872,223.84 Q666.215,222.449 665.325,222.449 L664.543,222.449 L664.543,227.34 L662.106,227.34 L662.106,214.949 L665.637,214.949 Q668.028,214.949 669.059,215.793 Q670.106,216.637 670.106,218.543 Q670.106,219.824 669.481,220.59 Q668.872,221.34 667.7,221.481 Z M664.543,217.012 L664.543,220.387 L665.7,220.387 Q666.715,220.387 667.137,219.996 Q667.575,219.59 667.575,218.684 Q667.575,217.793 667.137,217.403 Q666.715,217.012 665.7,217.012 L664.543,217.012 Z " fill="#000"/><text x="686.997" y="226.187" fill="#000" font-size="14" textLength="58.447">Defaults</text><line x1="591.71" y1="237.34" x2="808.231" y2="237.34" style="stroke:#181818;stroke-width:0.5;"/><line x1="591.71" y1="245.34" x2="808.231" y2="245.34" style="stroke:#181818;stroke-width:0.5;"/><text x="596.71" y="262.335" fill="#000" font-size="14" textLength="127.258">int startAddress();</text><text x="596.71" y="278.632" fill="#000" font-size="14" textLength="199.91">List&lt;String&gt; libraryLabels();</text><text x="596.71" y="294.929" fill="#000" font-size="14" textLength="174.651">int bytesPerInstruction();</text><text x="596.71" y="311.226" fill="#000" font-size="14" textLength="206.521">boolean includeDescription();</text></g><g class="link" data-entity-1="ent0001" data-entity-2="ent0002" id="lnk8" data-source-line="41" data-link-type="dependency"><path d="M133.97,343.28 C133.97,363.33 133.97,379.58 133.97,398.72" style="stroke:#181818;stroke-width:1;" fill="none" id="Instruction-to-Operand" codeLine="41"/><polygon points="133.97,403.72,137.97,394.72,133.97,398.72,129.97,394.72,133.97,403.72" fill="#181818" style="stroke:#181818;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/></g><g class="link" data-entity-1="ent0002" data-entity-2="ent0003" id="lnk9" data-source-line="42" data-link-type="dependency"><path d="M133.97,533.6 C133.97,554.11 133.97,571.22 133.97,589.43" style="stroke:#181818;stroke-width:1;" fill="none" id="Operand-to-Target" codeLine="42"/><polygon points="133.97,594.43,137.97,585.43,133.97,589.43,129.97,585.43,133.97,594.43" fill="#181818" style="stroke:#181818;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/></g><g class="link" data-entity-1="ent0003" data-entity-2="ent0004" id="lnk10" data-source-line="43" data-link-type="dependency"><path d="M133.97,675.38 C133.97,694.24 133.97,711.74 133.97,730.62" style="stroke:#181818;stroke-width:1;" fill="none" id="Target-to-Type" codeLine="43"/><polygon points="133.97,735.62,137.97,726.62,133.97,730.62,129.97,726.62,133.97,735.62" fill="#181818" style="stroke:#181818;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/></g><g class="link" data-entity-1="ent0005" data-entity-2="ent0007" id="lnk11" data-source-line="44" data-link-type="dependency"><path d="M490.21,104.39 C530.54,134.49 578.723,170.45 620.953,201.96" style="stroke:#181818;stroke-width:1;" fill="none" id="InstructionSet-to-Defaults" codeLine="44"/><polygon points="624.96,204.95,620.139,196.362,620.953,201.96,615.355,202.774,624.96,204.95" fill="#181818" style="stroke:#181818;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/></g><g class="link" data-entity-1="ent0005" data-entity-2="ent0001" id="lnk12" data-source-line="45" data-link-type="dependency"><path d="M357.51,104.39 C325.14,127.05 289.716,151.862 252.946,177.612" style="stroke:#181818;stroke-width:1;stroke-dasharray:7,7;" fill="none" id="InstructionSet-to-Instruction" codeLine="45"/><polygon points="248.85,180.48,258.517,178.594,252.946,177.612,253.928,172.041,248.85,180.48" fill="#181818" style="stroke:#181818;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/><text x="315.97" y="146.957" fill="#000" font-size="13" textLength="74.071">decodeOne</text></g><g class="link" data-entity-1="ent0005" data-entity-2="ent0006" id="lnk13" data-source-line="46" data-link-type="composition"><path d="M425.97,116.39 C425.97,151.92 425.97,187.78 425.97,221.19" style="stroke:#181818;stroke-width:1;" fill="none" id="InstructionSet-backto-OpcodeTable" codeLine="46"/><polygon points="425.97,104.39,421.97,110.39,425.97,116.39,429.97,110.39,425.97,104.39" fill="#181818" style="stroke:#181818;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/></g><?plantuml-src TLDDRvmm4BtpAzpRjkh2FOrMMdLJgMggZPgzLLKrsBDWnHzeFAHTLVdlnHXO80e7R3zcnc_U6zvf9qshKDJCJRWf2e8_UQMvRiis84dl61tdqjlYktwgGPjl1C_8eR1FoilmkscjAIm4HYguHekXK7Y6rd1XT5Lp7WCoGkb9YQykCBMIjNVYNoQwHpiMe1HX29ltdtgel33-_2MaLpX2ZqpQLS8wjDvfESBtEl3jiK42ftR2fyrKvzZ4Uy3SfkoTK1WawHvz5JDL6SZymFF4ntk3u4JNeTLTRCHVnew6lA6RWQTllbXUSNy6q-AhQqz05V9ESB-kKiwUBBm13YS39PevdrJmRN5FbmO5Tw_K1RhM9YnbV3uUxZxskyF-j8yHNGsaCqYSc_SuNN58NWSnc3vTDBTQOJJpw73pGBuYiA99wzB767I2qc3qSZg4nFJAOnQubDs1NKzCgdFt5snZS1FrICXSigc5gsYXyuFtI-LwakCe6LqIqEK-oZz5nCmulE41QTR-Uew6F-wmdCQNRAxOThiRHoiRHonYoTviSBb7ElEobJKH7xjQVylptSARcwixwz0Fs-rSxFy0?></g></svg></div><div class="puml dark" style=""><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" data-diagram-type="CLASS" style="width:824px;height:831px;background:#1B1B1B;" width="824px" height="831px" viewBox="0 0 824 831" zoomAndPan="magnify" preserveAspectRatio="xMidYMid meet" contentStyleType="text/css" class="diagram"><?plantuml 1.2026.9beta4?><defs/><g font-family="sans-serif" lengthAdjust="spacing"><rect x="0" y="0" width="824" height="831" fill="#1B1B1B" style="stroke:none;"/><g class="entity" data-qualified-name="Instruction" id="ent0001" data-source-line="2"><rect x="7" y="180.89" width="253.938" height="162.078" fill="#313139" style="stroke:#E7E7E7;stroke-width:0.5;" rx="2.5" ry="2.5"/><ellipse cx="92.254" cy="196.89" rx="11" ry="11" fill="#313139" style="stroke:#E7E7E7;stroke-width:1;"/><path d="M93.458,197.031 Q93.817,197.109 94.083,197.39 Q94.364,197.656 94.754,198.437 L96.989,202.89 L94.301,202.89 L92.801,199.765 Q92.739,199.624 92.629,199.39 Q91.973,197.999 91.083,197.999 L90.301,197.999 L90.301,202.89 L87.864,202.89 L87.864,190.499 L91.395,190.499 Q93.786,190.499 94.817,191.343 Q95.864,192.187 95.864,194.093 Q95.864,195.374 95.239,196.14 Q94.629,196.89 93.458,197.031 Z M90.301,192.562 L90.301,195.937 L91.458,195.937 Q92.473,195.937 92.895,195.546 Q93.333,195.14 93.333,194.234 Q93.333,193.343 92.895,192.953 Q92.473,192.562 91.458,192.562 L90.301,192.562 Z " fill="#FFF"/><text x="112.754" y="201.737" fill="#FFF" font-size="14" textLength="74.929">Instruction</text><line x1="8" y1="212.89" x2="259.938" y2="212.89" style="stroke:#E7E7E7;stroke-width:0.5;"/><line x1="8" y1="220.89" x2="259.938" y2="220.89" style="stroke:#E7E7E7;stroke-width:0.5;"/><text x="13" y="237.885" fill="#FFF" font-size="14" textLength="93.652">int address();</text><text x="13" y="254.182" fill="#FFF" font-size="14" textLength="96.052">byte[] code();</text><text x="13" y="270.479" fill="#FFF" font-size="14" textLength="135.659">String mnemonic();</text><text x="13" y="286.776" fill="#FFF" font-size="14" textLength="194.093">List&lt;Operand&gt; operands();</text><text x="13" y="303.073" fill="#FFF" font-size="14" textLength="222.366">Optional&lt;String&gt; description();</text><text x="13" y="319.369" fill="#FFF" font-size="14" textLength="241.938">Optional&lt;Operand&gt; addressRef();</text><text x="13" y="335.666" fill="#FFF" font-size="14" textLength="134.791">boolean terminal();</text></g><g class="entity" data-qualified-name="Operand" id="ent0002" data-source-line="11"><rect x="32.25" y="403.97" width="203.434" height="129.484" fill="#313139" style="stroke:#E7E7E7;stroke-width:0.5;" rx="2.5" ry="2.5"/><ellipse cx="99.41" cy="419.97" rx="11" ry="11" fill="#313139" style="stroke:#E7E7E7;stroke-width:1;"/><path d="M100.613,420.111 Q100.972,420.189 101.238,420.47 Q101.519,420.736 101.91,421.517 L104.144,425.97 L101.457,425.97 L99.957,422.845 Q99.894,422.704 99.785,422.47 Q99.128,421.079 98.238,421.079 L97.457,421.079 L97.457,425.97 L95.019,425.97 L95.019,413.579 L98.55,413.579 Q100.941,413.579 101.972,414.423 Q103.019,415.267 103.019,417.173 Q103.019,418.454 102.394,419.22 Q101.785,419.97 100.613,420.111 Z M97.457,415.642 L97.457,419.017 L98.613,419.017 Q99.628,419.017 100.05,418.626 Q100.488,418.22 100.488,417.314 Q100.488,416.423 100.05,416.032 Q99.628,415.642 98.613,415.642 L97.457,415.642 Z " fill="#FFF"/><text x="119.91" y="424.817" fill="#FFF" font-size="14" textLength="60.614">Operand</text><line x1="33.25" y1="435.97" x2="234.684" y2="435.97" style="stroke:#E7E7E7;stroke-width:0.5;"/><line x1="33.25" y1="443.97" x2="234.684" y2="443.97" style="stroke:#E7E7E7;stroke-width:0.5;"/><text x="38.25" y="460.965" fill="#FFF" font-size="14" textLength="106.504">String opFmt();</text><text x="38.25" y="477.262" fill="#FFF" font-size="14" textLength="100.112">String value();</text><text x="38.25" y="493.559" fill="#FFF" font-size="14" textLength="191.434">Optional&lt;Target&gt; target();</text><text x="38.25" y="509.856" fill="#FFF" font-size="14" textLength="108.828">String format();</text><text x="38.25" y="526.153" fill="#FFF" font-size="14" textLength="188.918">String format(String label);</text></g><g class="entity" data-qualified-name="Target" id="ent0003" data-source-line="18"><rect x="81.14" y="594.45" width="105.652" height="80.594" fill="#313139" style="stroke:#E7E7E7;stroke-width:0.5;" rx="2.5" ry="2.5"/><ellipse cx="108.639" cy="610.45" rx="11" ry="11" fill="#313139" style="stroke:#E7E7E7;stroke-width:1;"/><path d="M109.842,610.591 Q110.202,610.669 110.467,610.95 Q110.749,611.216 111.139,611.997 L113.374,616.45 L110.686,616.45 L109.186,613.325 Q109.124,613.184 109.014,612.95 Q108.358,611.559 107.467,611.559 L106.686,611.559 L106.686,616.45 L104.249,616.45 L104.249,604.059 L107.78,604.059 Q110.171,604.059 111.202,604.903 Q112.249,605.747 112.249,607.653 Q112.249,608.934 111.624,609.7 Q111.014,610.45 109.842,610.591 Z M106.686,606.122 L106.686,609.497 L107.842,609.497 Q108.858,609.497 109.28,609.106 Q109.717,608.7 109.717,607.794 Q109.717,606.903 109.28,606.512 Q108.858,606.122 107.842,606.122 L106.686,606.122 Z " fill="#FFF"/><text x="125.417" y="615.297" fill="#FFF" font-size="14" textLength="45.876">Target</text><line x1="82.14" y1="626.45" x2="185.792" y2="626.45" style="stroke:#E7E7E7;stroke-width:0.5;"/><line x1="82.14" y1="634.45" x2="185.792" y2="634.45" style="stroke:#E7E7E7;stroke-width:0.5;"/><text x="87.14" y="651.445" fill="#FFF" font-size="14" textLength="93.652">int address();</text><text x="87.14" y="667.742" fill="#FFF" font-size="14" textLength="85.702">Type type();</text></g><g class="entity" data-qualified-name="Type" id="ent0004" data-source-line="22"><rect x="100.8" y="736.05" width="66.337" height="80.594" fill="#313139" style="stroke:#E7E7E7;stroke-width:0.5;" rx="2.5" ry="2.5"/><ellipse cx="115.8" cy="752.05" rx="11" ry="11" fill="#852D19" style="stroke:#E7E7E7;stroke-width:1;"/><path d="M119.909,758.05 L112.191,758.05 L112.191,745.659 L119.909,745.659 L119.909,747.816 L114.644,747.816 L114.644,750.488 L119.409,750.488 L119.409,752.644 L114.644,752.644 L114.644,755.894 L119.909,755.894 L119.909,758.05 Z " fill="#FFF"/><text x="129.8" y="756.897" fill="#FFF" font-size="14" textLength="34.337">Type</text><line x1="101.8" y1="768.05" x2="166.137" y2="768.05" style="stroke:#E7E7E7;stroke-width:0.5;"/><text x="106.8" y="785.045" fill="#FFF" font-size="14" textLength="44.871">CODE,</text><text x="106.8" y="801.342" fill="#FFF" font-size="14" textLength="43.203">DATA;</text><line x1="101.8" y1="808.644" x2="166.137" y2="808.644" style="stroke:#E7E7E7;stroke-width:0.5;"/></g><g class="entity" data-qualified-name="InstructionSet" id="ent0005" data-source-line="26"><rect x="270.5" y="7" width="310.929" height="96.891" fill="#313139" style="stroke:#E7E7E7;stroke-width:0.5;" rx="2.5" ry="2.5"/><ellipse cx="372.755" cy="23" rx="11" ry="11" fill="#352866" style="stroke:#E7E7E7;stroke-width:1;"/><path d="M368.677,18.766 L368.677,16.609 L376.068,16.609 L376.068,18.766 L373.599,18.766 L373.599,26.844 L376.068,26.844 L376.068,29 L368.677,29 L368.677,26.844 L371.146,26.844 L371.146,18.766 L368.677,18.766 Z " fill="#FFF"/><text x="393.255" y="27.847" fill="#FFF" font-size="14" textLength="97.918" font-style="italic">InstructionSet</text><line x1="271.5" y1="39" x2="580.429" y2="39" style="stroke:#E7E7E7;stroke-width:0.5;"/><line x1="271.5" y1="47" x2="580.429" y2="47" style="stroke:#E7E7E7;stroke-width:0.5;"/><text x="276.5" y="63.995" fill="#FFF" font-size="14" textLength="135.092">Defaults defaults();</text><text x="276.5" y="80.292" fill="#FFF" font-size="14" textLength="298.929">Instruction decodeOne(Program program);</text><text x="276.5" y="96.589" fill="#FFF" font-size="14" textLength="257.243">List&lt;OpcodeTable&gt; opcodeTables();</text></g><g class="entity" data-qualified-name="OpcodeTable" id="ent0006" data-source-line="31"><rect x="296.1" y="221.63" width="259.741" height="80.594" fill="#313139" style="stroke:#E7E7E7;stroke-width:0.5;" rx="2.5" ry="2.5"/><ellipse cx="375.626" cy="237.63" rx="11" ry="11" fill="#352866" style="stroke:#E7E7E7;stroke-width:1;"/><path d="M371.548,233.396 L371.548,231.239 L378.938,231.239 L378.938,233.396 L376.47,233.396 L376.47,241.474 L378.938,241.474 L378.938,243.63 L371.548,243.63 L371.548,241.474 L374.017,241.474 L374.017,233.396 L371.548,233.396 Z " fill="#FFF"/><text x="396.126" y="242.477" fill="#FFF" font-size="14" textLength="92.189" font-style="italic">OpcodeTable</text><line x1="297.1" y1="253.63" x2="554.841" y2="253.63" style="stroke:#E7E7E7;stroke-width:0.5;"/><line x1="297.1" y1="261.63" x2="554.841" y2="261.63" style="stroke:#E7E7E7;stroke-width:0.5;"/><text x="302.1" y="278.625" fill="#FFF" font-size="14" textLength="101.575">String name();</text><text x="302.1" y="294.922" fill="#FFF" font-size="14" textLength="247.741">String opcodeExample(int opcode);</text></g><g class="entity" data-qualified-name="Defaults" id="ent0007" data-source-line="35"><rect x="590.71" y="205.34" width="218.521" height="113.188" fill="#313139" style="stroke:#E7E7E7;stroke-width:0.5;" rx="2.5" ry="2.5"/><ellipse cx="666.497" cy="221.34" rx="11" ry="11" fill="#313139" style="stroke:#E7E7E7;stroke-width:1;"/><path d="M667.7,221.481 Q668.059,221.559 668.325,221.84 Q668.606,222.106 668.997,222.887 L671.231,227.34 L668.543,227.34 L667.043,224.215 Q666.981,224.074 666.872,223.84 Q666.215,222.449 665.325,222.449 L664.543,222.449 L664.543,227.34 L662.106,227.34 L662.106,214.949 L665.637,214.949 Q668.028,214.949 669.059,215.793 Q670.106,216.637 670.106,218.543 Q670.106,219.824 669.481,220.59 Q668.872,221.34 667.7,221.481 Z M664.543,217.012 L664.543,220.387 L665.7,220.387 Q666.715,220.387 667.137,219.996 Q667.575,219.59 667.575,218.684 Q667.575,217.793 667.137,217.403 Q666.715,217.012 665.7,217.012 L664.543,217.012 Z " fill="#FFF"/><text x="686.997" y="226.187" fill="#FFF" font-size="14" textLength="58.447">Defaults</text><line x1="591.71" y1="237.34" x2="808.231" y2="237.34" style="stroke:#E7E7E7;stroke-width:0.5;"/><line x1="591.71" y1="245.34" x2="808.231" y2="245.34" style="stroke:#E7E7E7;stroke-width:0.5;"/><text x="596.71" y="262.335" fill="#FFF" font-size="14" textLength="127.258">int startAddress();</text><text x="596.71" y="278.632" fill="#FFF" font-size="14" textLength="199.91">List&lt;String&gt; libraryLabels();</text><text x="596.71" y="294.929" fill="#FFF" font-size="14" textLength="174.651">int bytesPerInstruction();</text><text x="596.71" y="311.226" fill="#FFF" font-size="14" textLength="206.521">boolean includeDescription();</text></g><g class="link" data-entity-1="ent0001" data-entity-2="ent0002" id="lnk8" data-source-line="41" data-link-type="dependency"><path d="M133.97,343.28 C133.97,363.33 133.97,379.58 133.97,398.72" style="stroke:#E7E7E7;stroke-width:1;" fill="none" id="Instruction-to-Operand" codeLine="41"/><polygon points="133.97,403.72,137.97,394.72,133.97,398.72,129.97,394.72,133.97,403.72" fill="#E7E7E7" style="stroke:#E7E7E7;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/></g><g class="link" data-entity-1="ent0002" data-entity-2="ent0003" id="lnk9" data-source-line="42" data-link-type="dependency"><path d="M133.97,533.6 C133.97,554.11 133.97,571.22 133.97,589.43" style="stroke:#E7E7E7;stroke-width:1;" fill="none" id="Operand-to-Target" codeLine="42"/><polygon points="133.97,594.43,137.97,585.43,133.97,589.43,129.97,585.43,133.97,594.43" fill="#E7E7E7" style="stroke:#E7E7E7;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/></g><g class="link" data-entity-1="ent0003" data-entity-2="ent0004" id="lnk10" data-source-line="43" data-link-type="dependency"><path d="M133.97,675.38 C133.97,694.24 133.97,711.74 133.97,730.62" style="stroke:#E7E7E7;stroke-width:1;" fill="none" id="Target-to-Type" codeLine="43"/><polygon points="133.97,735.62,137.97,726.62,133.97,730.62,129.97,726.62,133.97,735.62" fill="#E7E7E7" style="stroke:#E7E7E7;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/></g><g class="link" data-entity-1="ent0005" data-entity-2="ent0007" id="lnk11" data-source-line="44" data-link-type="dependency"><path d="M490.21,104.39 C530.54,134.49 578.723,170.45 620.953,201.96" style="stroke:#E7E7E7;stroke-width:1;" fill="none" id="InstructionSet-to-Defaults" codeLine="44"/><polygon points="624.96,204.95,620.139,196.362,620.953,201.96,615.355,202.774,624.96,204.95" fill="#E7E7E7" style="stroke:#E7E7E7;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/></g><g class="link" data-entity-1="ent0005" data-entity-2="ent0001" id="lnk12" data-source-line="45" data-link-type="dependency"><path d="M357.51,104.39 C325.14,127.05 289.716,151.862 252.946,177.612" style="stroke:#E7E7E7;stroke-width:1;stroke-dasharray:7,7;" fill="none" id="InstructionSet-to-Instruction" codeLine="45"/><polygon points="248.85,180.48,258.517,178.594,252.946,177.612,253.928,172.041,248.85,180.48" fill="#E7E7E7" style="stroke:#E7E7E7;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/><text x="315.97" y="146.957" fill="#FFF" font-size="13" textLength="74.071">decodeOne</text></g><g class="link" data-entity-1="ent0005" data-entity-2="ent0006" id="lnk13" data-source-line="46" data-link-type="composition"><path d="M425.97,116.39 C425.97,151.92 425.97,187.78 425.97,221.19" style="stroke:#E7E7E7;stroke-width:1;" fill="none" id="InstructionSet-backto-OpcodeTable" codeLine="46"/><polygon points="425.97,104.39,421.97,110.39,425.97,116.39,429.97,110.39,425.97,104.39" fill="#E7E7E7" style="stroke:#E7E7E7;stroke-width:1;stroke-linejoin:miter;stroke-miterlimit:10;"/></g><?plantuml-src TLDDRzim3BtxLsYtR5ZiUrSO29OEADeXnPhRC0oqn2H2z65GTBTWw7-VPTcExQ8-sD8JIJs-Ht_GJff6eJWnr-6cA0Z-v4VDfwPg0fBqZj5nBhqjlklp2RHv87X13eKzAo_3xxgnfh0G6AdW4reCXS83D8OB1NJEutb6A3qfSUy2KoDPUoV-PQ9zj6C1IX66iFhufOEg2-FFNq9wXGFqpAJTKLY7rZij1_XH1xxTrKZWL2byMenrTdMy1ynjoYw5mY19T-YRcB5AJ-O77aO-tXi49ze6hMvZ8_uwTDJdzTtqF7tzpVA2-mkO1jzSkmSw8fU2k-yYvU39mZjWlpDGePdoIGNV5tT_gL5m-qfTe6jimbB6rztsxdEtscxscnZHra0wWCIfUS_Z5TjaTH2zv-D5KwiLHZDt3bTFv8y4LjJfE_Sn1ksXCXYz73SXCRtoc0JEPNTWbnEJwjpz1LiRN4Kz4ZALR6pXAbfe_U3DNBcEv31AHbS4T7cCyeyHCJCERtX2chI_dAF-XzlEf_4rcogsNfV3Q6N3Y4KisPlrBdT8Qrwsi2RYGrVBipmlPzxSNDrPXdvQhwTY_mS0?></g></svg></div></div>
+
+<p>If there is a new instruction set to add, implement the <code>InstructionSet</code>. The instruction set also
+supplies <code>Defaults</code> that have various attributes that can be passed into the <code>Disassembler</code>.</p>
+<blockquote>
+<p>Note that an instruction set not only decodes a program but also supplies opcode examples for 
+the <code>GenerateMarkdown</code> program. Since the instruction sets are manually added into this 
+application, the <code>opcodeTables()</code> method can likely be ignored (at least at first).</p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2002 - 2026 Robert Greene
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.indexes", "content.tabs.link"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      
+        <script src="../../assets/mkdocs_puml/puml.js"></script>
+      
+        <script src="https://unpkg.com/@panzoom/panzoom@4.5.1/dist/panzoom.min.js"></script>
+      
+        <script src="../../assets/mkdocs_puml/interaction.js"></script>
+      
+    
+  </body>
+</html>
