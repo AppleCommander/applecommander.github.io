@@ -161,14 +161,14 @@ The AppleCommander disassembler tooling is available in the acdasm API.
     <dependency>
         <groupId>org.applecommander</groupId>
         <artifactId>acdasm</artifactId>
-        <version>6.3</version>
+        <version>7.0</version>
     </dependency>
     ```
 
     Gradle:
 
     ```groovy
-    implementation 'org.applecommander:acdasm:6.3'
+    implementation 'org.applecommander:acdasm:7.0'
     ```
 
 === "acdasm (before 6.0)"
