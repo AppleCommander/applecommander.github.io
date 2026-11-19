@@ -58,17 +58,26 @@ record Instruction {
     List<Operand> operands();
     Optional<String> description();
     Optional<Operand> addressRef();
+    boolean terminal();
 }
 record Operand {
     String opFmt();
     String value();
-    Optional<Integer> address();
+    Optional<Target> target();
     String format();
     String format(String label);
 }
+record Target {
+    int address();
+    Type type();
+}
+enum Type {
+    CODE,
+    DATA;
+}
 interface InstructionSet {
     Defaults defaults();
-    List<Instruction> decode(Program program);
+    Instruction decodeOne(Program program);
     List<OpcodeTable> opcodeTables();
 }
 interface OpcodeTable {
@@ -82,8 +91,10 @@ record Defaults {
     boolean includeDescription();
 }
 Instruction --> Operand
+Operand --> Target
+Target --> Type
 InstructionSet --> Defaults
-InstructionSet ..> Instruction : decodes
+InstructionSet ..> Instruction : decodeOne
 InstructionSet *-- OpcodeTable
 @enduml
 ```
