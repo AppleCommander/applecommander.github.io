@@ -27,7 +27,7 @@ non-visual differences.
 | DOS (13-sector) | Read-only | Read-only[^4] |
 | DOS (16-sector) | Read/Write | Read/Write[^4] |
 | GameDOS | N/A | Read/Write/Format[^3] |
-| Gutenberg Word Processor | Read-only | Read-only[^4] |
+| Gutenberg Word Processor | Read-only | Read-only |
 | NakedOS (see the [Super-Mon page](https://bitbucket.org/martin.haye/super-mon/wiki/Home)) | Read-only |  Read-only[^4] |
 | ProDOS | Read/Write | Read/Write[^4] |
 | SSI's RDOS (140K formats only) | Read-only | Read/Write/Format[^3] |

@@ -22,6 +22,7 @@ nav:
     - st: cli/st.md
   - Unique Disk Formats:
     - formats/index.md
+    - Gutenberg: formats/gutenberg/index.md
     - US-DOS:
       - formats/usdos/index.md
       - 'BASIC.COM': formats/usdos/basic.md
